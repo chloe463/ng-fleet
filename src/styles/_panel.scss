@@ -1,0 +1,55 @@
+.panel {
+    margin: 15px;
+    border: 1px solid $base1;
+    border-left: 5px solid $base1;
+    border-radius: 3px;
+
+    &__header {
+        border-bottom: 1px solid $base1;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 13px;
+        color: $base1;
+        font-size: 18pt;
+    }
+
+    &__content {
+        padding: 15px;
+    }
+}
+
+.panel--info {
+    @extend .panel;
+
+    border: 1px solid $green;
+    border-left: 5px solid $green;
+
+    >.panel__header {
+        border-bottom: 1px solid $green;
+        color: $green;
+    }
+}
+
+.panel--warning {
+    @extend .panel;
+
+    border: 1px solid $yellow;
+    border-left: 5px solid $yellow;
+
+    >.panel__header {
+        border-bottom: 1px solid $yellow;
+        color: $yellow;
+    }
+}
+
+.panel--error {
+    @extend .panel;
+
+    border: 1px solid $red;
+    border-left: 5px solid $red;
+
+    >.panel__header {
+        border-bottom: 1px solid $red;
+        color: $red;
+    }
+}

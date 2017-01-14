@@ -1,0 +1,190 @@
+/*********************************
+ * Base button style
+ *********************************/
+.btn {
+    outline: none;
+    margin: 5px;
+    width: 80px;
+    height: 32px;
+    font-size: 12pt;
+    background: #FFFFFF;
+    color: $base02;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+
+    &:hover {
+        background: #FDFAF3;
+        cursor: pointer;
+    }
+}
+
+/*********************************
+ * Custom buttons
+ *********************************/
+@mixin custom_button($background, $color, $hover_background) {
+    @extend .btn;
+    background: $background;
+    color: $color;
+    &:hover {
+        background: $hover_background;
+    }
+}
+
+.btn--default {
+    @include custom_button($base2, $base03, $base3);
+}
+
+.btn--primary {
+    @include custom_button($blue, #FFFFFF, #289AEA);
+}
+
+.btn--info {
+    @include custom_button($green, #FFFFFF, #98AF02);
+}
+
+.btn--warning {
+    @include custom_button($yellow, #FFFFFF, #CC9B03);
+}
+
+.btn--danger {
+    @include custom_button($red, #FFFFFF, #EC2E2B);
+}
+
+.btn--disabled {
+    @include custom_button($base0, $base02, $base0);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    &:hover {
+        cursor: no-drop;
+    }
+}
+
+/*********************************
+ * Skeleton buttons
+ *********************************/
+@mixin skeleton($border_color, $color, $hover_background, $hover_color) {
+    @extend .btn;
+    border: 1px solid $border_color;
+    color: $color;
+    box-shadow: none;
+    background: #FFFFFF;
+    &:hover {
+        background: $hover_background;
+        color: $hover_color;
+    }
+}
+
+.btn-skeleton{
+    @include skeleton(#A1A1A1, #A1A1A1, #A1A1A1, #FFFFFF);
+}
+
+.btn-skeleton--default {
+    @include skeleton(#A1A1A1, $base02, #A1A1A1, #FFFFFF);
+}
+
+.btn-skeleton--primary {
+    @include skeleton($blue, $blue, #289AEA, #FFFFFF);
+}
+
+.btn-skeleton--info {
+    @include skeleton($green, $green, #98AF02, #FFFFFF);
+}
+
+.btn-skeleton--warning {
+    @include skeleton($yellow, $yellow, #CC9B03, #FFFFFF);
+}
+
+.btn-skeleton--danger {
+    @include skeleton($red, $red, #EC2E2B, #FFFFFF);
+}
+
+.btn-skeleton--disabled {
+    @include skeleton(#A1A1A1, #A1A1A1, #FFFFFF, #FFFFFF);
+    &:hover {
+        color: #A1A1A1;
+        background: #FFFFFF;
+        cursor: no-drop;
+    }
+}
+
+.btngroup {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 4px;
+
+    .btn {
+        margin-right: 0;
+        margin-left: 0;
+        border-radius: 0;
+        box-shadow: 0 0 0 0 rgba(0,0,0,0);
+
+        &:first-child {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+    }
+}
+
+/*********************************
+ * FAB buttons
+ *********************************/
+.btn-fab {
+    outline: none;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 12pt;
+    background: #FFFFFF;
+    color: $base02;
+    border: 0;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+
+    &:hover {
+        background: #FDFAF3;
+        cursor: pointer;
+    }
+}
+
+@mixin custom_fab_button($background, $color, $hover_background) {
+    @extend .btn-fab;
+    background: $background;
+    color: $color;
+    &:hover {
+        background: $hover_background;
+    }
+}
+
+.btn-fab--primary {
+    @include custom_fab_button($blue, #FFFFFF, #289AEA);
+}
+
+.btn-fab--default {
+    @include custom_fab_button($base2, $base03, $base3);
+}
+
+.btn-fab--info {
+    @include custom_fab_button($green, #FFFFFF, #98AF02);
+}
+
+.btn-fab--warning {
+    @include custom_fab_button($yellow, #FFFFFF, #CC9B03);
+}
+
+.btn-fab--danger {
+    @include custom_fab_button($red, #FFFFFF, #EC2E2B);
+}
+
+.btn-fab--disabled {
+    @include custom_fab_button($base0, $base02, $base0);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    &:hover {
+        background: $base0;
+        cursor: no-drop;
+    }
+}
