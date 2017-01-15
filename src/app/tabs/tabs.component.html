@@ -1,7 +1,7 @@
 <div>
   <ul class="tabs">
-    <li *ngFor="let tab of _tabs; let i = index" class="tabs__title" [class.tabs__title--active]="isSelectedIndex(tab)">
-      <a href="" class="tabs__link" (click)="select(tab)">{{tab.title}}</a>
+    <li *ngFor="let tab of _tabs; let i = index" class="tabs__title" [class.tabs__title--active]="isSelectedIndex(tab)" (click)="select(tab)">
+      <label class="tabs__link">{{tab.title}}</label>
     </li>
   </ul>
   <div class="tabs__content">

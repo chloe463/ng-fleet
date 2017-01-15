@@ -5,6 +5,7 @@
     &__title {
         margin: 0;
         padding: 5px 20px 10px 20px;
+        cursor: pointer;
 
         &:first-child {
             border-top-left-radius: 4px;
@@ -25,5 +26,6 @@
     &__link {
         text-decoration: none;
         color: $base00;
+        cursor: pointer;
     }
 }
