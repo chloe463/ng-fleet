@@ -1,14 +1,11 @@
 import {
-    Component,
+    Directive,
     OnInit,
-    OnDestroy,
     Input
 } from '@angular/core';
 
-@Component({
-    selector: 'fr-option',
-    templateUrl: './option.component.html',
-    styleUrls: ['./option.component.scss']
+@Directive({
+    selector: 'fr-option'
 })
 export class OptionComponent implements OnInit {
 
