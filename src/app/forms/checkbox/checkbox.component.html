@@ -1,0 +1,8 @@
+<label class="form__checkbox-label">
+  <span class="form__checkbox" [class.form__checkbox--checked]="value"></span>
+  <input type="checkbox"
+         [value]="false"
+         class="form__input-checkbox"
+         [(ngModel)]="value" >
+  <ng-content></ng-content>
+</label>
