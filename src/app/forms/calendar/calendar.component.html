@@ -1,0 +1,43 @@
+<div class="calendar__input">
+  {{_temp|date:'yyyy/MM/dd'}}
+  <input type="text" name="_calendar_date" class="calendar__input-text" [ngModel]="value|date:'yyyy/MM/dd'" disabled>
+  <button type="button" class="calendar__toggle-button" (click)="_toggleCalendar()">
+    <i class="fa fa-calendar"></i>
+  </button>
+</div>
+<table class="calendar" [hidden]="!_isFocus" (blur)="_hideCalendar()">
+  <colgroup class="calendar__date--sunday"></colgroup>
+  <colgroup></colgroup>
+  <colgroup></colgroup>
+  <colgroup></colgroup>
+  <colgroup></colgroup>
+  <colgroup></colgroup>
+  <colgroup class="calendar__date--saturday"></colgroup>
+  <thead>
+    <tr>
+      <td (click)="_move(-1)" class="calendar__arrow" style="background:#FFFFFF">
+        <div class="triangle--left"></div>
+      </td>
+      <td colspan="5" style="text-align:center">{{_target|date:'yyyy/MM'}}</td>
+      <td (click)="_move(1)" class="calendar__arrow" style="background:#FFFFFF">
+        <div class="triangle--right"></div>
+      </td>
+    </tr>
+    <tr>
+      <td style="background:#FFFFFF;color:#FF0000">Sun</td>
+      <td>Mon</td>
+      <td>Tue</td>
+      <td>Wed</td>
+      <td>Thu</td>
+      <td>Fri</td>
+      <td style="background:#FFFFFF;color:#0000FF">Sat</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let week of _weeks">
+      <td *ngFor="let date of week" class="calendar__date" (click)="_change(date.model)" [class.calendar__date--selected]="_isSelected(date.model)">
+        {{date.label}}
+      </td>
+    </tr>
+  </tbody>
+</table>
