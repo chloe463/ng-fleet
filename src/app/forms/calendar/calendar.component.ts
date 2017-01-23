@@ -1,5 +1,6 @@
 import {
     Component,
+    Input,
     OnInit,
     QueryList,
     forwardRef
@@ -27,6 +28,8 @@ export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class CalendarComponent implements OnInit, ControlValueAccessor {
 
+    @Input() name;
+
     private _innerValue: any;
     private _onChangeCallback: (_: any) => void = noop;
     private _onTouchedCallback: () => void = noop;
@@ -36,7 +39,6 @@ export class CalendarComponent implements OnInit, ControlValueAccessor {
     private _weeks: Array<any>;
 
     constructor() {
-        this._innerValue = new Date();
     }
 
     get value(): any {
@@ -51,7 +53,7 @@ export class CalendarComponent implements OnInit, ControlValueAccessor {
     }
 
     writeValue(obj: any): void {
-        if (obj instanceof Date) {
+        if (obj !== this._innerValue) {
             this._innerValue = obj;
         }
     }
@@ -70,7 +72,6 @@ export class CalendarComponent implements OnInit, ControlValueAccessor {
 
     ngOnInit() {
         this._isFocus    = false;
-        this._innerValue = new Date();
         this._target     = new Date();
         this._resetCalendar(this._target);
     }
@@ -121,7 +122,7 @@ export class CalendarComponent implements OnInit, ControlValueAccessor {
     }
 
     private _change(d: Date): void {
-        this._innerValue = d;
-        this._toggleCalendar();
+        this.value = d;
+        this._hideCalendar();
     }
 }
