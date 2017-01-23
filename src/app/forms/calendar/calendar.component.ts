@@ -112,7 +112,6 @@ export class CalendarComponent implements OnInit, ControlValueAccessor {
     }
 
     private _hideCalendar(): void {
-        console.log(this);
         this._isFocus = false;
     }
 
@@ -122,7 +121,6 @@ export class CalendarComponent implements OnInit, ControlValueAccessor {
     }
 
     private _change(d: Date): void {
-        console.log(d);
         this._innerValue = d;
         this._toggleCalendar();
     }
