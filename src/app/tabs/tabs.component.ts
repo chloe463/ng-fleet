@@ -16,27 +16,32 @@ export class TabsComponent implements OnInit {
 
     @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;
 
+    private _current: {index: number, tab: TabComponent};
+
     constructor() { }
 
     ngOnInit() {
     }
 
     ngAfterViewInit() {
-        this._tabs.forEach((tab: TabComponent, index: number) => {
-            tab.setSelected(false);
-        });
-        this._tabs.first.setSelected(true);
+        this._select(this._tabs.first);
     }
 
-    select(tab: TabComponent) {
-        this._tabs.forEach((tab: TabComponent, index: number) => {
-            tab.setSelected(false);
+    private _select(tab: TabComponent): void {
+        this._tabs.forEach((_tab: TabComponent, _index: number) => {
+            _tab.selected = false;
+            if (tab === _tab) {
+                _tab.selected = true;
+                _tab.state    = 'center';
+                this._current = {index: _index, tab: _tab};
+            }
         });
-        tab.setSelected(true);
-        return false;
-    }
-
-    isSelectedIndex(tab: TabComponent) {
-        return tab.getSelected();
+        this._tabs.forEach((_tab: TabComponent, _index: number) => {
+            if (this._current.index < _index) {
+                _tab.state = 'right';
+            } else if (this._current.index > _index) {
+                _tab.state = 'left';
+            }
+        });
     }
 }
