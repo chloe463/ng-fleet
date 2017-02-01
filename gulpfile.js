@@ -1,9 +1,9 @@
-var path = require('path');
-var gulp = require('gulp');
-var gulpBetterRollup = require('gulp-better-rollup');
-var gulpSass = require('gulp-sass');
-var autoPrefixer = require('gulp-autoprefixer');
-var gulpRename = require('gulp-rename');
+const path             = require('path');
+const gulp             = require('gulp');
+const gulpBetterRollup = require('gulp-better-rollup');
+const gulpSass         = require('gulp-sass');
+const autoPrefixer     = require('gulp-autoprefixer');
+const gulpRename       = require('gulp-rename');
 
 const PROJECT_ROOT = path.join(__dirname);
 const SOURCE_ROOT  = path.join(__dirname, 'src');
