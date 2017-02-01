@@ -11,9 +11,9 @@
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
     "build:css": "gulp build:css",
-    "tsc": "tsc --project ./src/tsconfig-src.json",
+    "build:js": "tsc --project ./src/tsconfig-src.json",
     "rollup": "gulp rollup",
-    "bundle": "npm run tsc && npm run rollup"
+    "bundle": "npm run build:js && npm run rollup"
   },
   "private": true,
   "dependencies": {
