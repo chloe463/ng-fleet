@@ -4,6 +4,7 @@ const gulpBetterRollup = require('gulp-better-rollup');
 const gulpSass         = require('gulp-sass');
 const autoPrefixer     = require('gulp-autoprefixer');
 const gulpRename       = require('gulp-rename');
+const gulpCleanCss     = require('gulp-clean-css');
 
 const PROJECT_ROOT = path.join(__dirname);
 const SOURCE_ROOT  = path.join(__dirname, 'src');
@@ -17,6 +18,15 @@ gulp.task('build:css', () => {
         .pipe(gulpSass())
         .pipe(autoPrefixer())
         .pipe(gulpRename('francette.css'))
+        .pipe(gulp.dest(BUNDLES_ROOT));
+});
+
+// Minify css
+gulp.task('minify:css', () => {
+    const TARGET_FILE = path.join(BUNDLES_ROOT, 'francette.css');
+    return gulp.src(TARGET_FILE)
+        .pipe(gulpCleanCss())
+        .pipe(gulpRename('francette.min.css'))
         .pipe(gulp.dest(BUNDLES_ROOT));
 });
 

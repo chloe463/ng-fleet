@@ -12,6 +12,7 @@
     "e2e": "protractor",
     "build:css": "gulp build:css",
     "build:js": "tsc --project ./src/tsconfig-src.json",
+    "minify:css": "gulp minify:css",
     "rollup": "gulp rollup",
     "bundle": "npm run build:js && npm run rollup"
   },
@@ -39,6 +40,7 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-better-rollup": "^1.0.2",
+    "gulp-clean-css": "^2.3.2",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "jasmine-core": "2.5.2",
