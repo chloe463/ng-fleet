@@ -19,6 +19,9 @@
     "test.ts",
     "polyfills.ts",
     "app/*.spec.ts",
-    "app*/**/*.spec.ts"
+    "app*/**/*.spec.ts",
+    "main.ts",
+    "assets/*.ts",
+    "environments/*.ts"
   ]
 }
