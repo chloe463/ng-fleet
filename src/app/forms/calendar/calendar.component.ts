@@ -23,7 +23,7 @@ export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
     selector: 'fr-calendar',
     templateUrl: './calendar.component.html',
-    styleUrls: ['./calendar.component.scss'],
+    styleUrls: [],
     providers: [CALENDAR_CONTROL_VALUE_ACCESSOR]
 })
 export class CalendarComponent implements OnInit, ControlValueAccessor {

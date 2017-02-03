@@ -21,7 +21,7 @@ export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-radio-group',
   templateUrl: './radio-group.component.html',
-  styleUrls: ['./radio-group.component.scss'],
+  styleUrls: [],
   providers: [RADIO_GROUP_CONTROL_VALUE_ACCESSOR]
 })
 export class RadioGroupComponent implements OnInit, ControlValueAccessor {

@@ -12,7 +12,7 @@ import {
 @Component({
     selector: 'fr-tab',
     templateUrl: './tab.component.html',
-    styleUrls: ['./tab.component.css'],
+    styleUrls: [],
     animations: [
         trigger('tabState', [
             state('center', style({

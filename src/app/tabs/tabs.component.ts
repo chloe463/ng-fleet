@@ -10,7 +10,7 @@ import {TabComponent} from './tab.component';
 @Component({
     selector: 'fr-tabs',
     templateUrl: './tabs.component.html',
-    styleUrls: ['./tabs.component.css']
+    styleUrls: []
 })
 export class TabsComponent implements OnInit {
 
