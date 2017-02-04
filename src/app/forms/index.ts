@@ -1,5 +1,4 @@
 export { CalendarComponent } from './calendar/calendar.component';
-export { CheckboxGroupComponent } from './checkbox/checkbox-group.component';
 export { CheckboxComponent } from './checkbox/checkbox.component';
 export { RadioGroupComponent } from './radio/radio-group.component';
 export { RadioComponent } from './radio/radio.component';
