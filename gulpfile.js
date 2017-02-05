@@ -113,7 +113,7 @@ gulp.task('rollup', () => {
         format: 'umd',
         globals,
         banner: '',
-        dest: 'francette.umd.js'
+        dest: 'francette.js'
     };
 
     return gulp.src(TARGET_FILE)
@@ -123,9 +123,9 @@ gulp.task('rollup', () => {
 
 // Minify js
 gulp.task('minify:js', () => {
-    const TARGET_FILE = path.join(BUNDLES_ROOT, 'francette.umd.js');
+    const TARGET_FILE = path.join(BUNDLES_ROOT, 'francette.js');
     return gulp.src(TARGET_FILE)
         .pipe(gulpUglify())
-        .pipe(gulpRename('francette.umd.min.js'))
+        .pipe(gulpRename('francette.min.js'))
         .pipe(gulp.dest(BUNDLES_ROOT));
 });

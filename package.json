@@ -20,7 +20,7 @@
     "bundle": "npm run build:js && npm run rollup"
   },
   "private": true,
-  "main": "./bundles/francette.umd.js",
+  "main": "./bundles/francette.js",
   "dependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
