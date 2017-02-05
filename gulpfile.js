@@ -59,7 +59,7 @@ function replaceStyle(content, filePath) {
     });
 }
 
-gulp.task('bundle:inline-resource', () => {
+gulp.task('build:inline-resource', () => {
     const files = glob(DIST_ROOT + '/**/**.js', (err, files) => {
         files.map((filePath) => {
             readFile(filePath, 'utf-8').then((content) => {
@@ -93,7 +93,7 @@ gulp.task('minify:css', () => {
 });
 
 // bundle js files
-gulp.task('rollup', () => {
+gulp.task('build:rollup', () => {
     const TARGET_FILE  = path.join(DIST_ROOT, 'index.js');
 
     const globals = {

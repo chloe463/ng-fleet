@@ -13,11 +13,11 @@
 
     "build:css": "gulp build:css",
     "build:js": "tsc --project ./src/tsconfig-src.json",
+    "build:rollup": "gulp build:inline-resource && gulp build:rollup",
     "minify:css": "gulp minify:css",
     "minify:js": "gulp minify:js",
     "minify": "npm run minify:css && npm run minify:js",
-    "rollup": "gulp bundle:inline-resource && gulp rollup",
-    "bundle": "npm run build:js && npm run rollup"
+    "bundle": "npm run build:js && npm run build:rollup"
   },
   "private": true,
   "main": "./bundles/francette.js",
