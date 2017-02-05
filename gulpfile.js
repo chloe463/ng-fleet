@@ -5,7 +5,6 @@ const gulpSass         = require('gulp-sass');
 const autoPrefixer     = require('gulp-autoprefixer');
 const gulpRename       = require('gulp-rename');
 const gulpCleanCss     = require('gulp-clean-css');
-const gulpUglify       = require('gulp-uglify');
 const glob             = require('glob');
 const fs               = require('fs');
 const del              = require('del');
@@ -118,14 +117,5 @@ gulp.task('build:rollup', () => {
 
     return gulp.src(TARGET_FILE)
         .pipe(gulpBetterRollup(rollupOptions, rollupGenerateOptions))
-        .pipe(gulp.dest(BUNDLES_ROOT));
-});
-
-// Minify js
-gulp.task('minify:js', () => {
-    const TARGET_FILE = path.join(BUNDLES_ROOT, 'francette.js');
-    return gulp.src(TARGET_FILE)
-        .pipe(gulpUglify())
-        .pipe(gulpRename('francette.min.js'))
         .pipe(gulp.dest(BUNDLES_ROOT));
 });
