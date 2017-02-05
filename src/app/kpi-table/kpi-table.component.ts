@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
     selector: 'fr-kpi-table',
     templateUrl: './kpi-table.component.html',
-    styleUrls: ['./kpi-table.component.scss']
+    styleUrls: []
 })
 export class KpiTableComponent implements OnInit {
     @Input() data;

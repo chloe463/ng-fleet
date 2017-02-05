@@ -17,7 +17,7 @@ import { NavbarItemComponent } from './navbar-item.component';
 @Component({
   selector: 'fr-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  styleUrls: [],
   providers: [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
 export class NavbarComponent implements OnInit {
