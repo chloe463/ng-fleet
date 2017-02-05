@@ -1,0 +1,11 @@
+<nav class="navbar">
+  <ul class="navbar">
+    <li *ngFor="let logo of _logos" class="navbar__logo">
+      {{logo.title}}
+    </li>
+    <li *ngFor="let item of _items" class="navbar__item" [class.navbar__item--active]="_isSelected(item.link)">
+      <a href="{{item.link}}">{{item.title}}</a>
+    </li>
+  </ul>
+  <ng-content></ng-content>
+</nav>

@@ -1,0 +1,9 @@
+<label *ngFor="let radio of _radios" class="form__radio-label">
+  <span class="form__radio" [class.form__radio--checked]="radio.value === this._innerValue"></span>
+  <input type="radio"
+         name="{{name}}"
+         class="form__input-radio"
+         [value]="radio.value"
+         [(ngModel)]="value" >
+  {{radio.label}}
+</label>
