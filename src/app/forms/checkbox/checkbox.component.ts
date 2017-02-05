@@ -1,11 +1,11 @@
 import {
-    Component,
-    Directive,
-    OnInit,
-    Input,
-    ContentChildren,
-    QueryList,
-    forwardRef
+  Component,
+  Directive,
+  OnInit,
+  Input,
+  ContentChildren,
+  QueryList,
+  forwardRef
 } from '@angular/core';
 import { DefaultValueAccessor } from '@angular/forms';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -13,56 +13,56 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {};
 
 export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => CheckboxComponent),
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => CheckboxComponent),
     multi: true
 };
 
 @Component({
-    selector: 'fr-checkbox',
-    templateUrl: './checkbox.component.html',
-    styleUrls: [],
-    providers: [CHECKBOX_CONTROL_VALUE_ACCESSOR]
+  selector: 'fr-checkbox',
+  templateUrl: './checkbox.component.html',
+  styleUrls: [],
+  providers: [CHECKBOX_CONTROL_VALUE_ACCESSOR]
 })
 export class CheckboxComponent implements OnInit, ControlValueAccessor {
 
-    @Input() label;
+  @Input() label;
 
-    private _innerValue: any;
-    private _onChangeCallback: (_: any) => void = noop;
-    private _onTouchedCallback: () => void = noop;
+  private _innerValue: any;
+  private _onChangeCallback: (_: any) => void = noop;
+  private _onTouchedCallback: () => void = noop;
 
-    constructor() { }
+  constructor() { }
 
-    ngOnInit() {
-        this.value = false;
+  ngOnInit() {
+    this.value = false;
+  }
+
+  get value(): any {
+    return this._innerValue;
+  }
+
+  set value(obj: any) {
+    if (obj !== this._innerValue) {
+      this._innerValue = obj;
+      this._onChangeCallback(obj);
     }
+  }
 
-    get value(): any {
-        return this._innerValue;
+  writeValue(obj: any): void {
+    if (obj !== this._innerValue) {
+      this._innerValue = obj;
     }
+  }
 
-    set value(obj: any) {
-        if (obj !== this._innerValue) {
-            this._innerValue = obj;
-            this._onChangeCallback(obj);
-        }
-    }
+  registerOnChange(fn: any): void {
+    this._onChangeCallback = fn;
+  }
 
-    writeValue(obj: any): void {
-        if (obj !== this._innerValue) {
-            this._innerValue = obj;
-        }
-    }
+  registerOnTouched(fn: any): void {
+    this._onTouchedCallback = fn;
+  }
 
-    registerOnChange(fn: any): void {
-        this._onChangeCallback = fn;
-    }
-
-    registerOnTouched(fn: any): void {
-        this._onTouchedCallback = fn;
-    }
-
-    setDisableState(isDisabled: boolean): void {
-    }
+  setDisableState(isDisabled: boolean): void {
+  }
 }

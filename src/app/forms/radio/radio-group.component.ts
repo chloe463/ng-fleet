@@ -1,11 +1,11 @@
 import {
-    Component,
-    OnInit,
-    Input,
-    Output,
-    ContentChildren,
-    QueryList,
-    forwardRef
+  Component,
+  OnInit,
+  Input,
+  Output,
+  ContentChildren,
+  QueryList,
+  forwardRef
 } from '@angular/core';
 import { RadioComponent } from './radio.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -13,8 +13,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {};
 
 export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => RadioGroupComponent),
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => RadioGroupComponent),
     multi: true
 };
 
@@ -25,50 +25,50 @@ export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   providers: [RADIO_GROUP_CONTROL_VALUE_ACCESSOR]
 })
 export class RadioGroupComponent implements OnInit, ControlValueAccessor {
-    @Input() name;
+  @Input() name;
 
-    @ContentChildren(RadioComponent) _radios: QueryList<RadioComponent>;
+  @ContentChildren(RadioComponent) _radios: QueryList<RadioComponent>;
 
-    private _innerValue: any;
+  private _innerValue: any;
 
-    private _onChangeCallback: (_: any) => void = noop;
-    private _onTouchedCallback: () => void = noop;
+  private _onChangeCallback: (_: any) => void = noop;
+  private _onTouchedCallback: () => void = noop;
 
-    constructor() { }
+  constructor() { }
 
-    ngOnInit() {
+  ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+  }
+
+  get value(): any {
+    return this._innerValue;
+  }
+
+  set value(obj: any) {
+    if (obj !== this._innerValue) {
+      this._innerValue = obj;
+      this._onChangeCallback(obj);
     }
+  }
 
-    ngAfterViewInit() {
+  writeValue(obj: any): void {
+    if (obj !== this._innerValue) {
+      this._innerValue = obj;
     }
+  }
 
-    get value(): any {
-        return this._innerValue;
-    }
+  registerOnChange(fn: any): void {
+    this._onChangeCallback = fn;
+  }
 
-    set value(obj: any) {
-        if (obj !== this._innerValue) {
-            this._innerValue = obj;
-            this._onChangeCallback(obj);
-        }
-    }
+  registerOnTouched(fn: any): void {
+    this._onTouchedCallback = fn;
+  }
 
-    writeValue(obj: any): void {
-        if (obj !== this._innerValue) {
-            this._innerValue = obj;
-        }
-    }
+  setDisableState(isDisabled: boolean): void {
+  }
 
-    registerOnChange(fn: any): void {
-        this._onChangeCallback = fn;
-    }
-
-    registerOnTouched(fn: any): void {
-        this._onTouchedCallback = fn;
-    }
-
-    setDisableState(isDisabled: boolean): void {
-    }
-
-    _onChange() {}
+  _onChange() {}
 }

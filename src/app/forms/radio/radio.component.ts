@@ -1,7 +1,7 @@
 import {
-    Component,
-    OnInit,
-    Input
+  Component,
+  OnInit,
+  Input
 } from '@angular/core';
 
 @Component({
@@ -11,12 +11,12 @@ import {
 })
 export class RadioComponent implements OnInit {
 
-    @Input() value;
-    @Input() label;
+  @Input() value;
+  @Input() label;
 
-    constructor() {
-    }
+  constructor() {
+  }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 }

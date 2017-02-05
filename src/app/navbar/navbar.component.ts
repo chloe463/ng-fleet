@@ -1,15 +1,15 @@
 import {
-    Component,
-    OnInit,
-    Input,
-    ContentChildren,
-    QueryList
+  Component,
+  OnInit,
+  Input,
+  ContentChildren,
+  QueryList
 } from '@angular/core';
 import {
-    Location,
-    LocationStrategy,
-    PathLocationStrategy,
-    HashLocationStrategy
+  Location,
+  LocationStrategy,
+  PathLocationStrategy,
+  HashLocationStrategy
 } from '@angular/common';
 import { NavbarLogoComponent } from './navbar-logo.component';
 import { NavbarItemComponent } from './navbar-item.component';
@@ -22,16 +22,16 @@ import { NavbarItemComponent } from './navbar-item.component';
 })
 export class NavbarComponent implements OnInit {
 
-    @ContentChildren(NavbarLogoComponent) _logos: QueryList<NavbarLogoComponent>;
-    @ContentChildren(NavbarItemComponent) _items: QueryList<NavbarItemComponent>;
+  @ContentChildren(NavbarLogoComponent) _logos: QueryList<NavbarLogoComponent>;
+  @ContentChildren(NavbarItemComponent) _items: QueryList<NavbarItemComponent>;
 
-    constructor(private _location: Location) {
-    }
+  constructor(private _location: Location) {
+  }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
-    private _isSelected(link: string) {
-        return link.substr(1) === this._location.path();
-    }
+  private _isSelected(link: string) {
+    return link.substr(1) === this._location.path();
+  }
 }

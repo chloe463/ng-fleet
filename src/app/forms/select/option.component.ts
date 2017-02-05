@@ -1,20 +1,20 @@
 import {
-    Directive,
-    OnInit,
-    Input
+  Directive,
+  OnInit,
+  Input
 } from '@angular/core';
 
 @Directive({
-    selector: 'fr-option'
+  selector: 'fr-option'
 })
 export class OptionComponent implements OnInit {
 
-    @Input() value;
-    @Input() label;
+  @Input() value;
+  @Input() label;
 
-    constructor() { }
+  constructor() { }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
 }

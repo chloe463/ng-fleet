@@ -1,7 +1,7 @@
 import {
-    Directive,
-    OnInit,
-    Input
+  Directive,
+  OnInit,
+  Input
 } from '@angular/core';
 
 @Directive({
@@ -9,11 +9,11 @@ import {
 })
 export class NavbarLogoComponent implements OnInit {
 
-    @Input() title: string;
+  @Input() title: string;
 
-    constructor() { }
+  constructor() { }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
 }
