@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  AfterContentInit,
   ContentChildren,
   QueryList,
   Input
@@ -12,7 +13,7 @@ import {TabComponent} from './tab.component';
   templateUrl: './tabs.component.html',
   styleUrls: []
 })
-export class TabsComponent implements OnInit {
+export class TabsComponent implements OnInit, AfterContentInit {
 
   @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;
 
@@ -23,7 +24,7 @@ export class TabsComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this._select(this._tabs.first);
   }
 
