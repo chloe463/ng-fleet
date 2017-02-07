@@ -117,7 +117,7 @@ export class CalendarComponent implements OnInit, ControlValueAccessor {
   }
 
   private _isSelected(d: Date): boolean {
-    if (this._innerValue === undefined || this._innerValue === '' || d === null) return false;
+    if (this._innerValue === undefined || this._innerValue === '' || this._innerValue === null || d === null) return false;
     return this._innerValue.toDateString() == d.toDateString();
   }
 
