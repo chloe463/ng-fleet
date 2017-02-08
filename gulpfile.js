@@ -47,6 +47,9 @@ function replaceStyle(content, filePath) {
         const styles = urls.map((url) => {
             const dir       = path.dirname(filePath).replace(/dist\/out-tsc/, 'src/app');
             const stylePath = path.join(dir, url);
+            if (!fs.exists(stylePath)) {
+                return ``;
+            }
             const styleContent = fs.readFileSync(stylePath, 'utf-8');
             const shortened    = styleContent
                 .replace(/([\n\r]\s*)+/gm, ' ')
