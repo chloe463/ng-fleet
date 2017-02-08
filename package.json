@@ -18,7 +18,9 @@
     "bundle": "npm run build:js && npm run build:rollup"
   },
   "private": true,
-  "main": "./bundles/francette.js",
+  "main": "./dist/bundles/francette.js",
+  "module": "./dist/out-tsc/index.js",
+  "typings": "./dist/out-tsc/index.d.ts",
   "dependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",

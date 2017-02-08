@@ -12,7 +12,7 @@ const del              = require('del');
 const PROJECT_ROOT = path.join(__dirname);
 const SOURCE_ROOT  = path.join(__dirname, 'src');
 const DIST_ROOT    = path.join(__dirname, 'dist/out-tsc');
-const BUNDLES_ROOT = path.join(__dirname, 'bundles');
+const BUNDLES_ROOT = path.join(__dirname, 'dist/bundles');
 
 function promiseify(fn) {
     return function() {
