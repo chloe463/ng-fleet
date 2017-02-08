@@ -5,7 +5,6 @@ const gulpSass         = require('gulp-sass');
 const autoPrefixer     = require('gulp-autoprefixer');
 const gulpRename       = require('gulp-rename');
 const gulpCleanCss     = require('gulp-clean-css');
-const gulpUglify       = require('gulp-uglify');
 const glob             = require('glob');
 const fs               = require('fs');
 const del              = require('del');
@@ -13,7 +12,7 @@ const del              = require('del');
 const PROJECT_ROOT = path.join(__dirname);
 const SOURCE_ROOT  = path.join(__dirname, 'src');
 const DIST_ROOT    = path.join(__dirname, 'dist/out-tsc');
-const BUNDLES_ROOT = path.join(__dirname, 'bundles');
+const BUNDLES_ROOT = path.join(__dirname, 'dist/bundles');
 
 function promiseify(fn) {
     return function() {
@@ -48,6 +47,9 @@ function replaceStyle(content, filePath) {
         const styles = urls.map((url) => {
             const dir       = path.dirname(filePath).replace(/dist\/out-tsc/, 'src/app');
             const stylePath = path.join(dir, url);
+            if (!fs.exists(stylePath)) {
+                return ``;
+            }
             const styleContent = fs.readFileSync(stylePath, 'utf-8');
             const shortened    = styleContent
                 .replace(/([\n\r]\s*)+/gm, ' ')
@@ -59,7 +61,7 @@ function replaceStyle(content, filePath) {
     });
 }
 
-gulp.task('bundle:inline-resource', () => {
+gulp.task('build:inline-resource', () => {
     const files = glob(DIST_ROOT + '/**/**.js', (err, files) => {
         files.map((filePath) => {
             readFile(filePath, 'utf-8').then((content) => {
@@ -93,7 +95,7 @@ gulp.task('minify:css', () => {
 });
 
 // bundle js files
-gulp.task('rollup', () => {
+gulp.task('build:rollup', () => {
     const TARGET_FILE  = path.join(DIST_ROOT, 'index.js');
 
     const globals = {
@@ -113,19 +115,10 @@ gulp.task('rollup', () => {
         format: 'umd',
         globals,
         banner: '',
-        dest: 'francette.umd.js'
+        dest: 'francette.js'
     };
 
     return gulp.src(TARGET_FILE)
         .pipe(gulpBetterRollup(rollupOptions, rollupGenerateOptions))
-        .pipe(gulp.dest(BUNDLES_ROOT));
-});
-
-// Minify js
-gulp.task('minify:js', () => {
-    const TARGET_FILE = path.join(BUNDLES_ROOT, 'francette.umd.js');
-    return gulp.src(TARGET_FILE)
-        .pipe(gulpUglify())
-        .pipe(gulpRename('francette.umd.min.js'))
         .pipe(gulp.dest(BUNDLES_ROOT));
 });

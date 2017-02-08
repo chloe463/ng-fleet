@@ -13,14 +13,14 @@
 
     "build:css": "gulp build:css",
     "build:js": "tsc --project ./src/tsconfig-src.json",
+    "build:rollup": "gulp build:inline-resource && gulp build:rollup",
     "minify:css": "gulp minify:css",
-    "minify:js": "gulp minify:js",
-    "minify": "npm run minify:css && npm run minify:js",
-    "rollup": "gulp bundle:inline-resource && gulp rollup",
-    "bundle": "npm run build:js && npm run rollup"
+    "bundle": "npm run build:js && npm run build:rollup"
   },
   "private": true,
-  "main": "./bundles/francette.umd.js",
+  "main": "./dist/bundles/francette.js",
+  "module": "./dist/out-tsc/index.js",
+  "typings": "./dist/out-tsc/index.d.ts",
   "dependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
@@ -48,7 +48,6 @@
     "gulp-clean-css": "^2.3.2",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^2.0.1",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
