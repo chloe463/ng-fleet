@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "",
-    "declaration": false,
+    "baseUrl": ".",
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],
-    "mapRoot": "./",
     "module": "es6",
     "moduleResolution": "node",
     "outDir": "../dist/out-tsc",
@@ -13,8 +12,17 @@
     "target": "es5",
     "typeRoots": [
       "../node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "@angular/core": ["../node_modules/@angular/core"],
+      "@angular/forms": ["../node_modules/@anglar/forms"],
+      "@angular/common": ["../node_modules/@anglar/common"],
+      "rxjs/*": ["../node_modules/rxjs/*"]
+    }
   },
+  "files": [
+    "./app/index.ts"
+  ],
   "exclude": [
     "test.ts",
     "polyfills.ts",
@@ -23,5 +31,9 @@
     "main.ts",
     "assets/*.ts",
     "environments/*.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "genDir": "../dist/out-tsc",
+    "strictMetadataEmit": true
+  }
 }
