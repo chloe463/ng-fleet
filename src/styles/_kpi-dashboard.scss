@@ -1,71 +1,71 @@
 .kpi-dashboard {
-    margin: 15px;
-    border-spacing: 17px;
-    background: #F9F9F9;
-    width: 98%;
+  margin: 15px;
+  border-spacing: 17px;
+  background: #F9F9F9;
+  width: 98%;
 
-    &__title {
-        margin: 0;
-        padding: 7px;
-        background: #36A097;
-        font-size: 16pt;
-        font-weight: bold;
-        text-indent: 1em;
-        color: #FFFFFF;
+  &__title {
+    margin: 0;
+    padding: 7px;
+    background: #36A097;
+    font-size: 16pt;
+    font-weight: bold;
+    text-indent: 1em;
+    color: #FFFFFF;
+  }
+
+  &__head {
+  }
+
+  &__column {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: $base00;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: normal;
+    width: 80px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
+  }
+
+  &__row-name {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: $blue;
+    color: #FFFFFF;
+    text-align: center;
+    width: 80px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  }
+
+  &__value {
+    padding-top: 17px;
+    padding-bottom: 17px;
+    background: #FFFFFF;
+    text-align: center;
+    font-size: 15pt;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.04);
+
+    &--up {
+      background: #FFCBCA;
     }
 
-    &__head {
+    &--down {
+      background: #BEE2FB;
     }
-
-    &__column {
-        padding-top: 7px;
-        padding-bottom: 7px;
-        background: $base00;
-        text-align: center;
-        color: #FFFFFF;
-        font-weight: normal;
-        width: 80px;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
+  }
+  &__note {
+    &--up {
+      margin: 0;
+      padding: 1px;
+      font-size: 8pt;
+      color: $red;
     }
-
-    &__row-name {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        background: $blue;
-        color: #FFFFFF;
-        text-align: center;
-        width: 80px;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    &--down {
+      margin: 0;
+      padding: 1px;
+      font-size: 8pt;
+      color: $blue;
     }
-
-    &__value {
-        padding-top: 17px;
-        padding-bottom: 17px;
-        background: #FFFFFF;
-        text-align: center;
-        font-size: 15pt;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.04);
-
-        &--up {
-            background: #FFCBCA;
-        }
-
-        &--down {
-            background: #BEE2FB;
-        }
-    }
-    &__note {
-        &--up {
-            margin: 0;
-            padding: 1px;
-            font-size: 8pt;
-            color: $red;
-        }
-        &--down {
-            margin: 0;
-            padding: 1px;
-            font-size: 8pt;
-            color: $blue;
-        }
-    }
+  }
 }

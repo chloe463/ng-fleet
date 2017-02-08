@@ -1,31 +1,31 @@
 .tabs {
-    list-style: none;
-    border-bottom: 1px solid #CCCCCC;
-    display: flex;
-    &__title {
-        margin: 0;
-        padding: 5px 20px 10px 20px;
-        cursor: pointer;
+  list-style: none;
+  border-bottom: 1px solid #CCCCCC;
+  display: flex;
+  &__title {
+    margin: 0;
+    padding: 5px 20px 10px 20px;
+    cursor: pointer;
 
-        &:first-child {
-            border-top-left-radius: 4px;
-        }
-
-        &:last-child {
-            border-top-right-radius: 4px;
-        }
-
-        &--active {
-            border-bottom: 2px solid $red;
-            .tabs__link {
-                color: $blue;
-            }
-        }
+    &:first-child {
+      border-top-left-radius: 4px;
     }
 
-    &__link {
-        text-decoration: none;
-        color: $base00;
-        cursor: pointer;
+    &:last-child {
+      border-top-right-radius: 4px;
     }
+
+    &--active {
+      border-bottom: 2px solid $red;
+      .tabs__link {
+        color: $blue;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $base00;
+    cursor: pointer;
+  }
 }
