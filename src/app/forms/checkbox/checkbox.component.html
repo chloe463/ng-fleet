@@ -1,8 +1,8 @@
 <label class="form__checkbox-label">
   <span class="form__checkbox" [class.form__checkbox--checked]="value"></span>
-  <input type="checkbox"
-         [value]="false"
+  <input #input type="checkbox"
+         name="{{name}}"
          class="form__input-checkbox"
-         [(ngModel)]="value" >
+         (click)="onClick()">
   <ng-content></ng-content>
 </label>

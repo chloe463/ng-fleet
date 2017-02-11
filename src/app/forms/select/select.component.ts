@@ -38,6 +38,10 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
   }
 
+  public onChange(value) {
+    this.value = value;
+  }
+
   get value(): any {
     return this._innerValue;
   }
