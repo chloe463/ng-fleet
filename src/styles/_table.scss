@@ -1,68 +1,68 @@
 .table {
-    width: 95%;
-    margin: 15px;
-    border-collapse: collapse;
+  width: 95%;
+  margin: 15px;
+  border-collapse: collapse;
 
-    &__head {
-        padding: 5px;
+  &__head {
+    padding: 5px;
+  }
+
+  &__row {
+    border-bottom: 1px solid $base1;
+
+    &--even, &--odd {
+      background: #F7F7F7;
     }
+  }
 
-    &__row {
-        border-bottom: 1px solid $base1;
+  &__body {
+  }
 
-        &--even, &--odd {
-            background: #F7F7F7;
-        }
-    }
-
-    &__body {
-    }
-
-    &__value {
-        padding: 5px;
-        text-align: center;
-    }
+  &__value {
+    padding: 5px;
+    text-align: center;
+  }
 }
 
 .kpi-table {
-    margin: 15px;
-    border-collapse: collapse;
+  margin: 15px;
+  border-collapse: collapse;
 
-    &__column {
-        &--sunday {
-            background: #FFCFCF;
-        }
-
-        &--saturday {
-            background: #BEE2FB;
-        }
-
-        &--holiday {
-            background: #FFC0CB;
-        }
+  &__column {
+    &--sunday {
+      background: #FFCFCF;
     }
 
-    &__head {
-        padding: 5px;
-        border: 1px solid $base1;
-        font-size: 10pt;
-        background: #36A097;
-        color: #FFFFFF;
-        font-weight: 100;
+    &--saturday {
+      background: #BEE2FB;
     }
 
-    &__row {
-        border: 1px solid $base1;
+    &--holiday {
+      background: #FFC0CB;
     }
+  }
 
-    &__body {
-    }
+  &__head {
+    padding: 5px;
+    border: 1px solid $base1;
+    font-size: 10pt;
+    background: #36A097;
+    color: #FFFFFF;
+    font-weight: 100;
+  }
 
-    &__value {
-        padding: 3px;
-        width: 60px;
-        text-align: center;
-        border: 1px solid $base1;
-        font-size: 10pt;
-    }
+  &__row {
+    border: 1px solid $base1;
+  }
+
+  &__body {
+  }
+
+  &__value {
+    padding: 3px;
+    width: 60px;
+    text-align: center;
+    border: 1px solid $base1;
+    font-size: 10pt;
+  }
 }

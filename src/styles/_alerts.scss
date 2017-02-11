@@ -1,27 +1,27 @@
 .alert {
-    margin: 15px;
-    padding: 10px;
-    border: 1px solid $base1;
-    border-radius: 4px;
+  margin: 15px;
+  padding: 10px;
+  border: 1px solid $base1;
+  border-radius: 4px;
 }
 
 .alert--info {
-    @extend .alert;
-    border: 1px solid $green;
-    background: lighten($green, 50%);
-    color: $base02;
+  @extend .alert;
+  border: 1px solid $green;
+  background: lighten($green, 50%);
+  color: $base02;
 }
 
 .alert--warning {
-    @extend .alert;
-    border: 1px solid $yellow;
-    background: lighten($yellow, 50%);
-    color: $yellow;
+  @extend .alert;
+  border: 1px solid $yellow;
+  background: lighten($yellow, 50%);
+  color: $yellow;
 }
 
 .alert--error{
-    @extend .alert;
-    border: 1px solid $red;
-    background: lighten($red, 30%);
-    color: $red;
+  @extend .alert;
+  border: 1px solid $red;
+  background: lighten($red, 30%);
+  color: $red;
 }

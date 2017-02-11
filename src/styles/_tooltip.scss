@@ -1,43 +1,43 @@
 @mixin custom_tooltip_content($top, $left) {
-    display: inline-block;
-    background: #A1A1A1;
-    padding: 5px;
-    color: #FFFFFF;
-    border-radius: 3px;
-    position: absolute;
-    top: $top;
-    left: $left;
-    z-index: 10;
-    width: 250px;
+  display: inline-block;
+  background: #A1A1A1;
+  padding: 5px;
+  color: #FFFFFF;
+  border-radius: 3px;
+  position: absolute;
+  top: $top;
+  left: $left;
+  z-index: 10;
+  width: 250px;
 }
 
 .tooltip {
-    display: inline-block;
+  display: inline-block;
 
-    &:hover {
-        position: relative;
-    }
+  &:hover {
+    position: relative;
+  }
 
-    &__content--top,
-    &__content--right,
-    &__content--bottom,
-    &__content--left {
-        display: none;
-    }
+  &__content--top,
+  &__content--right,
+  &__content--bottom,
+  &__content--left {
+    display: none;
+  }
 
-    &:hover &__content--top {
-        @include custom_tooltip_content(-200%, 0);
-    }
+  &:hover &__content--top {
+    @include custom_tooltip_content(-200%, 0);
+  }
 
-    &:hover &__content--right {
-        @include custom_tooltip_content(-5px, 110%);
-    }
+  &:hover &__content--right {
+    @include custom_tooltip_content(-5px, 110%);
+  }
 
-    &:hover &__content--bottom {
-        @include custom_tooltip_content(20px, 0);
-    }
+  &:hover &__content--bottom {
+    @include custom_tooltip_content(20px, 0);
+  }
 
-    &:hover &__content--left {
-        @include custom_tooltip_content(-5px, -110%);
-    }
+  &:hover &__content--left {
+    @include custom_tooltip_content(-5px, -110%);
+  }
 }

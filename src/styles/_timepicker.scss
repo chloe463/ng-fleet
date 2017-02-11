@@ -1,31 +1,31 @@
 .timepicker {
-    &__arrow {
-        color: #A1A1A1;
-        text-align: center;
-        cursor: pointer;
-    }
+  &__arrow {
+    color: #A1A1A1;
+    text-align: center;
+    cursor: pointer;
+  }
 
-    &__input {
-        outline: none;
-        border: 1px solid #A1A1A1;
-        border-radius: 3px;
-        height: 1.8em;
-        width: 40px;
-        padding: 3px;
-        text-align: center;
-    }
+  &__input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #A1A1A1;
+    height: 1.8em;
+    width: 40px;
+    padding: 3px;
+    text-align: center;
+  }
 
-    &__reset-button {
-        outline: none;
-        height: 2.3em;
-        width: 65px;
-        border: 1px solid #A1A1A1;
-        border-radius: 3px;
-        background: #FFFFFF;
-        cursor: pointer;
-    }
+  &__reset-button {
+    outline: none;
+    height: 2.3em;
+    width: 65px;
+    border: 1px solid #A1A1A1;
+    border-radius: 3px;
+    background: #FFFFFF;
+    cursor: pointer;
+  }
 
-    &__second--none {
-        display: none;
-    }
+  &__second--none {
+    display: none;
+  }
 }
