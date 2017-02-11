@@ -14,7 +14,7 @@ const noop = () => {};
 export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SelectComponent),
-    multi: true
+  multi: true
 };
 
 @Component({

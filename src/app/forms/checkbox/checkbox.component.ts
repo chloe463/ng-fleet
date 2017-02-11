@@ -15,7 +15,7 @@ const noop = () => {};
 export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => CheckboxComponent),
-    multi: true
+  multi: true
 };
 
 @Component({

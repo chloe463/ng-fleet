@@ -17,7 +17,7 @@ const WEEK_DATE_COUNT = 7;
 export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => CalendarComponent),
-    multi: true
+  multi: true
 };
 
 @Component({

@@ -15,7 +15,7 @@ const noop = () => {};
 export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => RadioGroupComponent),
-    multi: true
+  multi: true
 };
 
 @Component({

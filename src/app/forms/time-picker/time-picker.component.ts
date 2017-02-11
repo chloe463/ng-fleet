@@ -17,7 +17,7 @@ const noop = () => {};
 export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => TimePickerComponent),
-    multi: true
+  multi: true
 };
 
 @Component({
