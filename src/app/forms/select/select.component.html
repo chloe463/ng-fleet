@@ -1,6 +1,6 @@
 <label class="form__select-label">
-  <select class="form__select" name="name" [(ngModel)]="value">
-    <option *ngFor="let option of _options" [ngValue]="option.value" class="form__select-option">
+  <select class="form__select" name="{{name}}" [value]="value" (change)="onChange(input.value)" #input>
+    <option *ngFor="let option of _options" [value]="option.value" class="form__select-option">
       {{option.label}}
     </option>
   </select>

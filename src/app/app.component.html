@@ -7,7 +7,7 @@
 
 <fr-tabs>
   <fr-tab title="forms">
-    <form>
+    <form (ngSubmit)="onSubmit(formValue.value)" #formValue="ngForm">
       <table style="width:80%;margin:15px auto">
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">input</td>
@@ -18,8 +18,8 @@
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">select</td>
           <td>
-            <fr-select [(ngModel)]="form.select" name="sampleSelect" [disabled]="selectDisabled">
-              <fr-option *ngFor="let option of options; let i = index; trackBy index" [value]="option" label="{{option.label}}"></fr-option>
+            <fr-select [(ngModel)]="form.select" name="sampleSelect">
+              <fr-option *ngFor="let option of options; let i = index; trackBy index" [value]="option.value" label="{{option.label}}"></fr-option>
               <fr-option value="123" label="label123"></fr-option>
               <fr-option value="987" label="label987"></fr-option>
             </fr-select>
@@ -44,7 +44,10 @@
           <td style="width:25%;text-align:right;padding-right:15px">checkbox</td>
           <td>
             <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1">checkbox1</fr-checkbox>
-            <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[1]" name="checkbox1">checkbox2</fr-checkbox>
+            <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[1]" name="checkbox2">checkbox2</fr-checkbox>
+            <fr-checkbox label="checkbox1" name="checkbox3" ngModel>checkbox3</fr-checkbox>
+            <fr-checkbox label="checkbox1" name="checkbox4" ngModel>checkbox4</fr-checkbox>
+            <fr-checkbox *ngFor="let chk of chks; let i = index" name="{{chk.name}}" [(ngModel)]="form.checkbox[i+2]">{{chk.label}}</fr-checkbox>
           </td>
         </tr>
         <tr style="height:50px">

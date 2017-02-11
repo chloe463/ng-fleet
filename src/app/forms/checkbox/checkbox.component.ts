@@ -27,6 +27,7 @@ export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 export class CheckboxComponent implements OnInit, ControlValueAccessor {
 
   @Input() label;
+  @Input() name;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
@@ -36,6 +37,10 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.value = false;
+  }
+
+  public onClick() {
+    this.value = !this.value;
   }
 
   get value(): any {

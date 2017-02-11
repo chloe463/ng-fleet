@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Francette';
+  chks = [
+    {name: 'chk1', label:'chk1'},
+    {name: 'chk2', label:'chk2'},
+    {name: 'chk3', label:'chk3'},
+  ];
   data = {
     dateList: [
       20170101, 20170102, 20170103, 20170104, 20170105, 20170106, 20170107
@@ -61,5 +66,10 @@ export class AppComponent {
       date: new Date(),
       time: {hour: 0, minute:0, second: 0}
     }
+  }
+
+  public onSubmit(e) {
+    console.log(e);
+    return false;
   }
 }
