@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-interface IKpiRow {
+export interface IKpiRow {
   name: string;
   values: Array<string | number>
 }
 
-interface IKpiData {
+export interface IKpiData {
   dateList: Array<Date>;
   kpi: Array<IKpiRow>;
 }

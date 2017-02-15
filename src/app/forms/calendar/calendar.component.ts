@@ -20,7 +20,7 @@ export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
   multi: true
 };
 
-interface IFrDate {
+export interface IFrDate {
   label: string;
   model: Date | null;
 }
