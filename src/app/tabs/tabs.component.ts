@@ -6,18 +6,18 @@ import {
   QueryList,
   Input
 } from '@angular/core';
-import {TabComponent} from './tab.component';
+import {FrTabComponent} from './tab.component';
 
 @Component({
   selector: 'fr-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: []
 })
-export class TabsComponent implements OnInit, AfterContentInit {
+export class FrTabsComponent implements OnInit, AfterContentInit {
 
-  @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;
+  @ContentChildren(FrTabComponent) _tabs: QueryList<FrTabComponent>;
 
-  private _current: {index: number, tab: TabComponent};
+  private _current: {index: number, tab: FrTabComponent};
 
   constructor() { }
 
@@ -28,8 +28,8 @@ export class TabsComponent implements OnInit, AfterContentInit {
     this._select(this._tabs.first);
   }
 
-  private _select(tab: TabComponent): void {
-    this._tabs.forEach((_tab: TabComponent, _index: number) => {
+  private _select(tab: FrTabComponent): void {
+    this._tabs.forEach((_tab: FrTabComponent, _index: number) => {
       _tab.selected = false;
       if (tab === _tab) {
         _tab.selected = true;
@@ -37,7 +37,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
         this._current = {index: _index, tab: _tab};
       }
     });
-    this._tabs.forEach((_tab: TabComponent, _index: number) => {
+    this._tabs.forEach((_tab: FrTabComponent, _index: number) => {
       if (this._current.index < _index) {
         _tab.state = 'right';
       } else if (this._current.index > _index) {

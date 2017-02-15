@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './kpi-table.component.html',
   styleUrls: []
 })
-export class KpiTableComponent implements OnInit {
+export class FrKpiTableComponent implements OnInit {
   @Input() data;
 
   constructor() {

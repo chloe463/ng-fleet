@@ -16,7 +16,7 @@ const noop = () => {};
 
 export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => TimePickerComponent),
+  useExisting: forwardRef(() => FrTimePickerComponent),
   multi: true
 };
 
@@ -26,7 +26,7 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: [],
   providers: [TIME_PICKER_CONTROL_VALUE_ACCESSOR]
 })
-export class TimePickerComponent implements OnInit, ControlValueAccessor {
+export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
 
   @Input() showSeconds: boolean;
 

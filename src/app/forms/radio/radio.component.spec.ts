@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { RadioComponent } from './radio.component';
+import { FrRadioComponent } from './radio.component';
 
-describe('RadioComponent', () => {
-  let component: RadioComponent;
-  let fixture: ComponentFixture<RadioComponent>;
+describe('FrRadioComponent', () => {
+  let component: FrRadioComponent;
+  let fixture: ComponentFixture<FrRadioComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RadioComponent ]
+      declarations: [ FrRadioComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RadioComponent);
+    fixture = TestBed.createComponent(FrRadioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

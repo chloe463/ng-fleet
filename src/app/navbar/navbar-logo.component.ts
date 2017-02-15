@@ -7,7 +7,7 @@ import {
 @Directive({
   selector: 'fr-navbar-logo'
 })
-export class NavbarLogoComponent implements OnInit {
+export class FrNavbarLogoComponent implements OnInit {
 
   @Input() title: string;
 

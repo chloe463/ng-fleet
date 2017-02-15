@@ -7,14 +7,14 @@ import {
   QueryList,
   forwardRef
 } from '@angular/core';
-import { RadioComponent } from './radio.component';
+import { FrRadioComponent } from './radio.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => {};
 
 export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => RadioGroupComponent),
+  useExisting: forwardRef(() => FrRadioGroupComponent),
   multi: true
 };
 
@@ -24,10 +24,10 @@ export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: [],
   providers: [RADIO_GROUP_CONTROL_VALUE_ACCESSOR]
 })
-export class RadioGroupComponent implements OnInit, ControlValueAccessor {
+export class FrRadioGroupComponent implements OnInit, ControlValueAccessor {
   @Input() name;
 
-  @ContentChildren(RadioComponent) _radios: QueryList<RadioComponent>;
+  @ContentChildren(FrRadioComponent) _radios: QueryList<FrRadioComponent>;
 
   private _innerValue: any;
 

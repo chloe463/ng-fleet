@@ -11,8 +11,8 @@ import {
   PathLocationStrategy,
   HashLocationStrategy
 } from '@angular/common';
-import { NavbarLogoComponent } from './navbar-logo.component';
-import { NavbarItemComponent } from './navbar-item.component';
+import { FrNavbarLogoComponent } from './navbar-logo.component';
+import { FrNavbarItemComponent } from './navbar-item.component';
 
 @Component({
   selector: 'fr-navbar',
@@ -20,10 +20,10 @@ import { NavbarItemComponent } from './navbar-item.component';
   styleUrls: [],
   providers: [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
-export class NavbarComponent implements OnInit {
+export class FrNavbarComponent implements OnInit {
 
-  @ContentChildren(NavbarLogoComponent) _logos: QueryList<NavbarLogoComponent>;
-  @ContentChildren(NavbarItemComponent) _items: QueryList<NavbarItemComponent>;
+  @ContentChildren(FrNavbarLogoComponent) _logos: QueryList<FrNavbarLogoComponent>;
+  @ContentChildren(FrNavbarItemComponent) _items: QueryList<FrNavbarItemComponent>;
 
   constructor(private _location: Location) {
   }

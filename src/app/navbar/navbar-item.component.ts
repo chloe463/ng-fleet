@@ -7,7 +7,7 @@ import {
 @Directive({
   selector: 'fr-navbar-item'
 })
-export class NavbarItemComponent implements OnInit {
+export class FrNavbarItemComponent implements OnInit {
 
   @Input() title: string;
   @Input() link: string;
