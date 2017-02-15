@@ -21,8 +21,8 @@ export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
 };
 
 interface IFrDate {
-  label: string,
-  model: Date | null
+  label: string;
+  model: Date | null;
 }
 
 @Component({
@@ -39,9 +39,9 @@ export class FrCalendarComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
-  private _isFocus: boolean;
-  private _target: Date;
-  private _weeks: Array<Array<IFrDate>>;
+  public isFocus: boolean;
+  public target: Date;
+  public weeks: Array<Array<IFrDate>>;
 
   constructor() {
   }
@@ -76,13 +76,13 @@ export class FrCalendarComponent implements OnInit, ControlValueAccessor {
 
 
   ngOnInit() {
-    this._isFocus    = false;
-    this._target     = new Date();
-    this._resetCalendar(this._target);
+    this.isFocus    = false;
+    this.target     = new Date();
+    this._resetCalendar(this.target);
   }
 
   private _resetCalendar(target: Date): void {
-    this._weeks  = [];
+    this.weeks  = [];
 
     const first: Date = new Date(target.getFullYear(), target.getMonth(), 1);
     let week: Array<IFrDate> = [];
@@ -98,36 +98,38 @@ export class FrCalendarComponent implements OnInit, ControlValueAccessor {
       }
       week.push({label: d.getDate().toString(), model: d});
       if (d.getDay() === SATURDAY) {
-        this._weeks.push(week);
+        this.weeks.push(week);
         week = [];
       }
     }
     while (week.length < WEEK_DATE_COUNT) {
       week.push({label: '', model: null});
     }
-    this._weeks.push(week);
+    this.weeks.push(week);
   }
 
-  private _move(diff: number): void {
-    this._target = new Date(this._target.getFullYear(), this._target.getMonth() + diff, 1);
-    this._resetCalendar(this._target);
+  public move(diff: number): void {
+    this.target = new Date(this.target.getFullYear(), this.target.getMonth() + diff, 1);
+    this._resetCalendar(this.target);
   }
 
-  private _toggleCalendar(): void {
-    this._isFocus = !this._isFocus;
+  public toggleCalendar(): void {
+    this.isFocus = !this.isFocus;
   }
 
-  private _hideCalendar(): void {
-    this._isFocus = false;
+  public hideCalendar(): void {
+    this.isFocus = false;
   }
 
-  private _isSelected(d: Date): boolean {
-    if (this._innerValue === undefined || this._innerValue === '' || this._innerValue === null || d === null) return false;
-    return this._innerValue.toDateString() == d.toDateString();
+  public isSelected(d: Date): boolean {
+    if (this._innerValue === undefined || this._innerValue === '' || this._innerValue === null || d === null) {
+      return false;
+    }
+    return this._innerValue.toDateString() === d.toDateString();
   }
 
-  private _change(d: Date): void {
+  public change(d: Date): void {
     this.value = d;
-    this._hideCalendar();
+    this.hideCalendar();
   }
 }

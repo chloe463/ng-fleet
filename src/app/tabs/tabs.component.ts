@@ -25,10 +25,10 @@ export class FrTabsComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this._select(this._tabs.first);
+    this.select(this._tabs.first);
   }
 
-  private _select(tab: FrTabComponent): void {
+  public select(tab: FrTabComponent): void {
     this._tabs.forEach((_tab: FrTabComponent, _index: number) => {
       _tab.selected = false;
       if (tab === _tab) {

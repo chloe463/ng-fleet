@@ -31,7 +31,7 @@ export class FrKpiTableComponent implements OnInit {
     let year  = objectDate.toString().substr(0, 4),
       month = objectDate.toString().substr(4, 2),
       date  = objectDate.toString().substr(6, 2);
-    return new Date(year, parseInt(month)-1, date);
+    return new Date(year, parseInt(month, 10) - 1, date);
   }
 
   public objectDate2MonthDate(objectDate): string {

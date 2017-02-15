@@ -39,9 +39,6 @@ export class FrRadioGroupComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-  }
-
   get value(): any {
     return this._innerValue;
   }

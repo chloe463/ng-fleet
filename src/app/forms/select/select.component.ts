@@ -26,12 +26,12 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
 export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @Input() name;
 
-  @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent>
+  @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent>;
 
   private _innerValue: any;
-  private _onChangeCallback: (_:any) => void = noop;
+  private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
 
   constructor() { }
 
