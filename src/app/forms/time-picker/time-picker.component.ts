@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-interface ITime {
+interface IFrTime {
   hour: number,
   minute: number,
   second: number
@@ -34,7 +34,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
-  private _model: ITime;
+  private _model: IFrTime;
 
   constructor() { }
 
@@ -75,7 +75,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
     this._resetModel();
   }
 
-  private _resetModel() {
+  private _resetModel(): void {
     const now   = new Date();
     this._model = {
       hour: now.getHours(),
@@ -85,7 +85,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
     this.value = this._model;
   }
 
-  private _change() {
+  private _change(): void {
     this.value = {
       hour: this._model.hour,
       minute: this._model.minute,
@@ -96,7 +96,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   /**
    * Add 1 hour
    */
-  private _addHour() {
+  private _addHour(): void {
     this._model.hour = (this._model.hour + 1) % 24;
     this._change();
   }
@@ -104,7 +104,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   /**
    * Subtract 1 hour
    */
-  private _subHour() {
+  private _subHour(): void {
     this._model.hour = (this._model.hour - 1 + 24) % 24;
     this._change();
   }
@@ -112,7 +112,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   /**
    * Add 1 minute
    */
-  private _addMinute() {
+  private _addMinute(): void {
     this._model.minute = (this._model.minute + 1) % 60;
     this._change();
   }
@@ -120,7 +120,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   /**
    * Subtract 1 minute
    */
-  private _subMinute() {
+  private _subMinute(): void {
     this._model.minute = (this._model.minute - 1 + 60) % 60;
     this._change();
   }
@@ -128,7 +128,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   /**
    * Add 1 second
    */
-  private _addSecond() {
+  private _addSecond(): void {
     this._model.second = (this._model.second + 1) % 60;
     this._change();
   }
@@ -136,7 +136,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   /**
    * Subtract 1 second
    */
-  private _subSecond() {
+  private _subSecond(): void {
     this._model.second = (this._model.second - 1 + 60) % 60;
     this._change();
   }
