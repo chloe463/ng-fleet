@@ -1,11 +1,12 @@
 import {
-  Directive,
+  Component,
   OnInit,
   Input
 } from '@angular/core';
 
-@Directive({
-  selector: 'fr-option'
+@Component({
+  selector: 'fr-option',
+  template: ``
 })
 export class FrOptionComponent implements OnInit {
 

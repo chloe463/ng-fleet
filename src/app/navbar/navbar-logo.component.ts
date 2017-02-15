@@ -1,11 +1,12 @@
 import {
-  Directive,
+  Component,
   OnInit,
   Input
 } from '@angular/core';
 
-@Directive({
-  selector: 'fr-navbar-logo'
+@Component({
+  selector: 'fr-navbar-logo',
+  template: ``
 })
 export class FrNavbarLogoComponent implements OnInit {
 
