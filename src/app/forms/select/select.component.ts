@@ -6,14 +6,14 @@ import {
   QueryList,
   forwardRef
 } from '@angular/core';
-import { OptionComponent } from './option.component';
+import { FrOptionComponent } from './option.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => {};
 
 export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => SelectComponent),
+  useExisting: forwardRef(() => FrSelectComponent),
   multi: true
 };
 
@@ -23,10 +23,10 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: [],
   providers: [SELECT_CONTROL_VALUE_ACCESSOR]
 })
-export class SelectComponent implements OnInit, ControlValueAccessor {
+export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @Input() name;
 
-  @ContentChildren(OptionComponent) _options: QueryList<OptionComponent>
+  @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent>
 
   private _innerValue: any;
   private _onChangeCallback: (_:any) => void = noop;

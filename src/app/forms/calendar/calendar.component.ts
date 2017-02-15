@@ -16,7 +16,7 @@ const WEEK_DATE_COUNT = 7;
 
 export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => CalendarComponent),
+  useExisting: forwardRef(() => FrCalendarComponent),
   multi: true
 };
 
@@ -26,7 +26,7 @@ export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: [],
   providers: [CALENDAR_CONTROL_VALUE_ACCESSOR]
 })
-export class CalendarComponent implements OnInit, ControlValueAccessor {
+export class FrCalendarComponent implements OnInit, ControlValueAccessor {
 
   @Input() name;
 

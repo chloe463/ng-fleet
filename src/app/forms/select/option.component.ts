@@ -7,7 +7,7 @@ import {
 @Directive({
   selector: 'fr-option'
 })
-export class OptionComponent implements OnInit {
+export class FrOptionComponent implements OnInit {
 
   @Input() value;
   @Input() label;

@@ -1,1 +1,1 @@
-export { KpiTableComponent } from './kpi-table.component';
+export { FrKpiTableComponent } from './kpi-table.component';

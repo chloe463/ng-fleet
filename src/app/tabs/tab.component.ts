@@ -39,7 +39,7 @@ import {
     ]),
   ]
 })
-export class TabComponent implements OnInit {
+export class FrTabComponent implements OnInit {
 
   @Input() title;
 

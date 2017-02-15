@@ -14,7 +14,7 @@ const noop = () => {};
 
 export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => CheckboxComponent),
+  useExisting: forwardRef(() => FrCheckboxComponent),
   multi: true
 };
 
@@ -24,7 +24,7 @@ export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: [],
   providers: [CHECKBOX_CONTROL_VALUE_ACCESSOR]
 })
-export class CheckboxComponent implements OnInit, ControlValueAccessor {
+export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
   @Input() label;
   @Input() name;

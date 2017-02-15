@@ -9,7 +9,7 @@ import {
   templateUrl: './radio.component.html',
   styleUrls: []
 })
-export class RadioComponent implements OnInit {
+export class FrRadioComponent implements OnInit {
 
   @Input() value;
   @Input() label;

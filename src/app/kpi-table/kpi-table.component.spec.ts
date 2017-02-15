@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { KpiTableComponent } from './kpi-table.component';
+import { FrKpiTableComponent } from './kpi-table.component';
 
-describe('KpiTableComponent', () => {
-  let component: KpiTableComponent;
-  let fixture: ComponentFixture<KpiTableComponent>;
+describe('FrKpiTableComponent', () => {
+  let component: FrKpiTableComponent;
+  let fixture: ComponentFixture<FrKpiTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KpiTableComponent ]
+      declarations: [ FrKpiTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KpiTableComponent);
+    fixture = TestBed.createComponent(FrKpiTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
