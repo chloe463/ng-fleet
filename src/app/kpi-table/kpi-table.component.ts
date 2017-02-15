@@ -14,12 +14,12 @@ export class FrKpiTableComponent implements OnInit {
   ngOnInit() {
   }
 
-  public isSunday(date) {
+  public isSunday(date): boolean {
     const d = this.int2DateObj(date);
     return d.getDay() === 0;
   }
 
-  public isSaturday(date) {
+  public isSaturday(date): boolean {
     const d = this.int2DateObj(date);
     return d.getDay() === 6;
   }
