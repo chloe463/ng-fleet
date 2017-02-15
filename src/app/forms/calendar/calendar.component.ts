@@ -20,6 +20,11 @@ export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
   multi: true
 };
 
+interface IFrDate {
+  label: string,
+  model: Date | null
+}
+
 @Component({
   selector: 'fr-calendar',
   templateUrl: './calendar.component.html',
@@ -36,7 +41,7 @@ export class FrCalendarComponent implements OnInit, ControlValueAccessor {
 
   private _isFocus: boolean;
   private _target: Date;
-  private _weeks: Array<any>;
+  private _weeks: Array<Array<IFrDate>>;
 
   constructor() {
   }
@@ -79,19 +84,19 @@ export class FrCalendarComponent implements OnInit, ControlValueAccessor {
   private _resetCalendar(target: Date): void {
     this._weeks  = [];
 
-    const first = new Date(target.getFullYear(), target.getMonth(), 1);
-    let week    = [];
+    const first: Date = new Date(target.getFullYear(), target.getMonth(), 1);
+    let week: Array<IFrDate> = [];
 
     for (let i = 0; i < first.getDay(); ++i) {
       week.push({label: '', model: null});
     }
 
     for (let i = 1; i <= DATE_MAX; ++i) {
-      const d = new Date(target.getFullYear(), target.getMonth(), i);
+      const d: Date = new Date(target.getFullYear(), target.getMonth(), i);
       if (d.getMonth() !== target.getMonth()) {
         break;
       }
-      week.push({label: d.getDate(), model: d});
+      week.push({label: d.getDate().toString(), model: d});
       if (d.getDay() === SATURDAY) {
         this._weeks.push(week);
         week = [];
