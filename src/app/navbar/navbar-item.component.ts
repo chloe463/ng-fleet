@@ -1,11 +1,12 @@
 import {
-  Directive,
+  Component,
   OnInit,
   Input
 } from '@angular/core';
 
-@Directive({
-  selector: 'fr-navbar-item'
+@Component({
+  selector: 'fr-navbar-item',
+  template: ``
 })
 export class FrNavbarItemComponent implements OnInit {
 

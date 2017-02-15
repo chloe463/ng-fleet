@@ -11,8 +11,8 @@ import {
 })
 export class FrRadioComponent implements OnInit {
 
-  @Input() value;
-  @Input() label;
+  @Input() value: string;
+  @Input() label: string;
 
   constructor() {
   }

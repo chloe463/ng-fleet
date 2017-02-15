@@ -3,7 +3,7 @@
     <li *ngFor="let logo of _logos" class="navbar__logo">
       {{logo.title}}
     </li>
-    <li *ngFor="let item of _items" class="navbar__item" [class.navbar__item--active]="_isSelected(item.link)">
+    <li *ngFor="let item of _items" class="navbar__item" [class.navbar__item--active]="isSelected(item.link)">
       <a href="{{item.link}}">{{item.title}}</a>
     </li>
   </ul>

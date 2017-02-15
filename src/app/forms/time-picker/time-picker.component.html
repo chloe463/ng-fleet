@@ -4,44 +4,44 @@
   </thead>
   <tbody>
     <tr>
-      <td class="timepicker__arrow" (click)="_addHour()">
+      <td class="timepicker__arrow" (click)="addHour()">
         <i class="fa fa-chevron-up"></i>
       </td>
       <td></td>
-      <td class="timepicker__arrow" (click)="_addMinute()">
+      <td class="timepicker__arrow" (click)="addMinute()">
         <i class="fa fa-chevron-up"></i>
       </td>
       <td></td>
-      <td class="timepicker__arrow" (click)="_addSecond()" [class.timepicker__second--none]="!showSeconds">
+      <td class="timepicker__arrow" (click)="addSecond()" [class.timepicker__second--none]="!showSeconds">
         <i class="fa fa-chevron-up"></i>
       </td>
     </tr>
     <tr>
       <td>
-        <input type="text" class="timepicker__input" [value]="_model.hour" (change)="_change()">
+        <input type="text" class="timepicker__input" [value]="model.hour" (change)="change()">
       </td>
       <td style="text-align:center">:</td>
       <td>
-        <input type="text" class="timepicker__input" [value]="_model.minute" (change)="_change()">
+        <input type="text" class="timepicker__input" [value]="model.minute" (change)="change()">
       </td>
       <td style="text-align:center" [class.timepicker__second--none]="!showSeconds">:</td>
       <td>
-        <input type="text" class="timepicker__input" [value]="_model.second" (change)="_change()" [class.timepicker__second--none]="!showSeconds">
+        <input type="text" class="timepicker__input" [value]="model.second" (change)="change()" [class.timepicker__second--none]="!showSeconds">
       </td>
       <td>
-        <button type="button" class="timepicker__reset-button" (click)="_resetModel()">Reset</button>
+        <button type="button" class="timepicker__reset-button" (click)="resetModel()">Reset</button>
       </td>
     </tr>
     <tr>
-      <td class="timepicker__arrow" (click)="_subHour()">
+      <td class="timepicker__arrow" (click)="subHour()">
         <i class="fa fa-chevron-down"></i>
       </td>
       <td></td>
-      <td class="timepicker__arrow" (click)="_subMinute()">
+      <td class="timepicker__arrow" (click)="subMinute()">
         <i class="fa fa-chevron-down"></i>
       </td>
       <td></td>
-      <td class="timepicker__arrow" (click)="_subSecond()" [class.timepicker__second--none]="!showSeconds">
+      <td class="timepicker__arrow" (click)="subSecond()" [class.timepicker__second--none]="!showSeconds">
         <i class="fa fa-chevron-down"></i>
       </td>
     </tr>

@@ -6,10 +6,10 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-interface ITime {
-  hour: number,
-  minute: number,
-  second: number
+interface IFrTime {
+  hour: number;
+  minute: number;
+  second: number;
 }
 
 const noop = () => {};
@@ -34,7 +34,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
-  private _model: ITime;
+  public model: IFrTime;
 
   constructor() { }
 
@@ -52,7 +52,7 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   writeValue(obj: any): void {
     if (obj !== null && obj !== this._innerValue) {
       this._innerValue = obj;
-      this._model = {
+      this.model = {
         hour: obj.hour,
         minute: obj.minute,
         second: obj.second
@@ -72,72 +72,72 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-    this._resetModel();
+    this.resetModel();
   }
 
-  private _resetModel() {
+  public resetModel(): void {
     const now   = new Date();
-    this._model = {
+    this.model = {
       hour: now.getHours(),
       minute: now.getMinutes(),
       second: now.getSeconds()
     };
-    this.value = this._model;
+    this.value = this.model;
   }
 
-  private _change() {
+  public change(): void {
     this.value = {
-      hour: this._model.hour,
-      minute: this._model.minute,
-      second: this._model.second
+      hour: this.model.hour,
+      minute: this.model.minute,
+      second: this.model.second
     };
   }
 
   /**
    * Add 1 hour
    */
-  private _addHour() {
-    this._model.hour = (this._model.hour + 1) % 24;
-    this._change();
+  public addHour(): void {
+    this.model.hour = (this.model.hour + 1) % 24;
+    this.change();
   }
 
   /**
    * Subtract 1 hour
    */
-  private _subHour() {
-    this._model.hour = (this._model.hour - 1 + 24) % 24;
-    this._change();
+  public subHour(): void {
+    this.model.hour = (this.model.hour - 1 + 24) % 24;
+    this.change();
   }
 
   /**
    * Add 1 minute
    */
-  private _addMinute() {
-    this._model.minute = (this._model.minute + 1) % 60;
-    this._change();
+  public addMinute(): void {
+    this.model.minute = (this.model.minute + 1) % 60;
+    this.change();
   }
 
   /**
    * Subtract 1 minute
    */
-  private _subMinute() {
-    this._model.minute = (this._model.minute - 1 + 60) % 60;
-    this._change();
+  public subMinute(): void {
+    this.model.minute = (this.model.minute - 1 + 60) % 60;
+    this.change();
   }
 
   /**
    * Add 1 second
    */
-  private _addSecond() {
-    this._model.second = (this._model.second + 1) % 60;
-    this._change();
+  public addSecond(): void {
+    this.model.second = (this.model.second + 1) % 60;
+    this.change();
   }
 
   /**
    * Subtract 1 second
    */
-  private _subSecond() {
-    this._model.second = (this._model.second - 1 + 60) % 60;
-    this._change();
+  public subSecond(): void {
+    this.model.second = (this.model.second - 1 + 60) % 60;
+    this.change();
   }
 }

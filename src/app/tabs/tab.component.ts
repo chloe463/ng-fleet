@@ -41,7 +41,7 @@ import {
 })
 export class FrTabComponent implements OnInit {
 
-  @Input() title;
+  @Input() title: string;
 
   private _selected: boolean;
   private _state: string;

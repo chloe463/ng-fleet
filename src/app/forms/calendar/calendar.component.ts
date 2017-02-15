@@ -20,6 +20,11 @@ export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
   multi: true
 };
 
+interface IFrDate {
+  label: string;
+  model: Date | null;
+}
+
 @Component({
   selector: 'fr-calendar',
   templateUrl: './calendar.component.html',
@@ -28,15 +33,15 @@ export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class FrCalendarComponent implements OnInit, ControlValueAccessor {
 
-  @Input() name;
+  @Input() name: string;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
-  private _isFocus: boolean;
-  private _target: Date;
-  private _weeks: Array<any>;
+  public isFocus: boolean;
+  public target: Date;
+  public weeks: Array<Array<IFrDate>>;
 
   constructor() {
   }
@@ -71,58 +76,60 @@ export class FrCalendarComponent implements OnInit, ControlValueAccessor {
 
 
   ngOnInit() {
-    this._isFocus    = false;
-    this._target     = new Date();
-    this._resetCalendar(this._target);
+    this.isFocus    = false;
+    this.target     = new Date();
+    this._resetCalendar(this.target);
   }
 
   private _resetCalendar(target: Date): void {
-    this._weeks  = [];
+    this.weeks  = [];
 
-    const first = new Date(target.getFullYear(), target.getMonth(), 1);
-    let week    = [];
+    const first: Date = new Date(target.getFullYear(), target.getMonth(), 1);
+    let week: Array<IFrDate> = [];
 
     for (let i = 0; i < first.getDay(); ++i) {
       week.push({label: '', model: null});
     }
 
     for (let i = 1; i <= DATE_MAX; ++i) {
-      const d = new Date(target.getFullYear(), target.getMonth(), i);
+      const d: Date = new Date(target.getFullYear(), target.getMonth(), i);
       if (d.getMonth() !== target.getMonth()) {
         break;
       }
-      week.push({label: d.getDate(), model: d});
+      week.push({label: d.getDate().toString(), model: d});
       if (d.getDay() === SATURDAY) {
-        this._weeks.push(week);
+        this.weeks.push(week);
         week = [];
       }
     }
     while (week.length < WEEK_DATE_COUNT) {
       week.push({label: '', model: null});
     }
-    this._weeks.push(week);
+    this.weeks.push(week);
   }
 
-  private _move(diff: number): void {
-    this._target = new Date(this._target.getFullYear(), this._target.getMonth() + diff, 1);
-    this._resetCalendar(this._target);
+  public move(diff: number): void {
+    this.target = new Date(this.target.getFullYear(), this.target.getMonth() + diff, 1);
+    this._resetCalendar(this.target);
   }
 
-  private _toggleCalendar(): void {
-    this._isFocus = !this._isFocus;
+  public toggleCalendar(): void {
+    this.isFocus = !this.isFocus;
   }
 
-  private _hideCalendar(): void {
-    this._isFocus = false;
+  public hideCalendar(): void {
+    this.isFocus = false;
   }
 
-  private _isSelected(d: Date): boolean {
-    if (this._innerValue === undefined || this._innerValue === '' || this._innerValue === null || d === null) return false;
-    return this._innerValue.toDateString() == d.toDateString();
+  public isSelected(d: Date): boolean {
+    if (this._innerValue === undefined || this._innerValue === '' || this._innerValue === null || d === null) {
+      return false;
+    }
+    return this._innerValue.toDateString() === d.toDateString();
   }
 
-  private _change(d: Date): void {
+  public change(d: Date): void {
     this.value = d;
-    this._hideCalendar();
+    this.hideCalendar();
   }
 }

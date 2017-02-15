@@ -24,21 +24,21 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
   providers: [SELECT_CONTROL_VALUE_ACCESSOR]
 })
 export class FrSelectComponent implements OnInit, ControlValueAccessor {
-  @Input() name;
+  @Input() name: string;
 
-  @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent>
+  @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent>;
 
   private _innerValue: any;
-  private _onChangeCallback: (_:any) => void = noop;
+  private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  public onChange(value) {
+  public onChange(value): void {
     this.value = value;
   }
 
