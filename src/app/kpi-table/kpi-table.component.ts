@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export interface IKpiRow {
   name: string;
-  values: Array<string | number>
+  values: Array<string | number>;
 }
 
 export interface IKpiData {
