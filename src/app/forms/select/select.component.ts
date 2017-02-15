@@ -24,7 +24,7 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
   providers: [SELECT_CONTROL_VALUE_ACCESSOR]
 })
 export class FrSelectComponent implements OnInit, ControlValueAccessor {
-  @Input() name;
+  @Input() name: string;
 
   @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent>;
 
@@ -38,7 +38,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
   }
 
-  public onChange(value) {
+  public onChange(value): void {
     this.value = value;
   }
 

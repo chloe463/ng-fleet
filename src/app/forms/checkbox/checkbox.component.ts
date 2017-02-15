@@ -26,8 +26,8 @@ export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
-  @Input() label;
-  @Input() name;
+  @Input() label: string;
+  @Input() name: string;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;

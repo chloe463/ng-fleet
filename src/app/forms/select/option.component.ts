@@ -10,8 +10,8 @@ import {
 })
 export class FrOptionComponent implements OnInit {
 
-  @Input() value;
-  @Input() label;
+  @Input() value: string;
+  @Input() label: string;
 
   constructor() { }
 

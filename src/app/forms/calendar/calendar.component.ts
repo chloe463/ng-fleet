@@ -33,7 +33,7 @@ interface IFrDate {
 })
 export class FrCalendarComponent implements OnInit, ControlValueAccessor {
 
-  @Input() name;
+  @Input() name: string;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
