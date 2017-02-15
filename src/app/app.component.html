@@ -1,8 +1,8 @@
 <fr-navbar>
   <fr-navbar-logo title="Francette"></fr-navbar-logo>
-  <fr-navbar-item link="#nav1" title="nav1"></fr-navbar-item>
-  <fr-navbar-item link="#nav2" title="nav2"></fr-navbar-item>
-  <fr-navbar-item link="#nav3" title="nav3"></fr-navbar-item>
+  <fr-navbar-item link="/nav1" title="nav1"></fr-navbar-item>
+  <fr-navbar-item link="/nav2" title="nav2"></fr-navbar-item>
+  <fr-navbar-item link="/nav3" title="nav3"></fr-navbar-item>
 </fr-navbar>
 
 <fr-tabs>
@@ -111,6 +111,8 @@
     <button class="btn-skeleton--default">default</button>
     <button class="btn-skeleton--disabled" disabled>disabled</button>
   </fr-tab>
-  <fr-tab title="tab2">tab2 content</fr-tab>
+  <fr-tab title="router-outlets">
+    <router-outlet></router-outlet>
+  </fr-tab>
 </fr-tabs>
 
