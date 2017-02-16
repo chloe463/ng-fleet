@@ -5,17 +5,28 @@
   outline: none;
   margin: 5px;
   padding: 0 10px;
-  height: 32px;
+  min-height: 33px;
+  min-width: 80px;
   font-size: 12pt;
   background: #FFFFFF;
   color: $base02;
   border: 0;
-  border-radius: 4px;
+  border-radius: 2px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
 
   &:hover {
     background: #FDFAF3;
     cursor: pointer;
+  }
+}
+
+.btn-flat {
+  @extend .btn;
+  background: transparent;
+  border: none;
+
+  &:hover {
+    background: #CCCCCC;
   }
 }
 
