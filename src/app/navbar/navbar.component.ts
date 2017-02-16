@@ -30,8 +30,4 @@ export class FrNavbarComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  public isSelected(link: string): boolean {
-    return link.substr(1) === this._location.path();
-  }
 }

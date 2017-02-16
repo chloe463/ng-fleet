@@ -73,3 +73,19 @@ export class AppComponent {
     return false;
   }
 }
+
+@Component({
+  selector: 'fr-nav-sample1',
+  template: `<h1>Nav1 content</h1>`
+})
+export class FrNavSample1Component { }
+@Component({
+  selector: 'fr-nav-sample2',
+  template: `<h1>Nav2 content</h1>`
+})
+export class FrNavSample2Component { }
+@Component({
+  selector: 'fr-nav-sample3',
+  template: `<h1>Nav3 content</h1>`
+})
+export class FrNavSample3Component { }

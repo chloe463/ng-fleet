@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
 import { FrSelectComponent } from './forms/select/select.component';
 import { FrOptionComponent } from './forms/select/option.component';
@@ -34,7 +35,8 @@ import { FrNavbarLogoComponent } from './navbar/navbar-logo.component';
   ],
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    RouterModule.forRoot([])
   ],
   exports: [
     FrSelectComponent,
