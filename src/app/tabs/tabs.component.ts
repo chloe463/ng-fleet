@@ -38,7 +38,7 @@ export class FrTabsComponent implements OnInit, AfterContentInit, OnChanges {
   }
 
   public select(tab: FrTabComponent): void {
-    let state = 'right';
+    let state = 'left';
     this._tabs.forEach((_tab: FrTabComponent, _index: number) => {
       _tab.state    = state;
       _tab.selected = false;
@@ -46,7 +46,7 @@ export class FrTabsComponent implements OnInit, AfterContentInit, OnChanges {
         _tab.selected = true;
         _tab.state    = 'center';
         this._current = {index: _index, tab: _tab};
-        state         = 'left';
+        state         = 'right';
         this.selectedIndex = _index;
       }
     });
