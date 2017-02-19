@@ -4,15 +4,16 @@
 .btn {
   outline: none;
   margin: 5px;
-  padding: 0 10px;
-  min-height: 33px;
-  min-width: 80px;
-  font-size: 12pt;
+  padding: 0 16px;
+  min-height: 36px;
+  min-width: 88px;
+  font-size: 14px;
   background: #FFFFFF;
   color: $base02;
   border: 0;
   border-radius: 2px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  text-transform: uppercase;
 
   &:hover {
     background: #FDFAF3;
