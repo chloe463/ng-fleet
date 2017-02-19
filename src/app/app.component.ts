@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Francette';
+  selectedIndex = 0;
   chks = [
     { name: 'chk1', label: 'chk1' },
     { name: 'chk2', label: 'chk2' },
