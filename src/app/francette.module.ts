@@ -39,7 +39,7 @@ import { FrRippleDirective } from './ripple/ripple.directive';
   imports: [
     FormsModule,
     CommonModule,
-    RouterModule.forRoot([])
+    RouterModule
   ],
   exports: [
     FrSelectComponent,
