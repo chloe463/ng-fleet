@@ -27,17 +27,17 @@ export class FrRippleDirective {
     if (element.offsetParent.offsetTop) {
       offsetTop += element.offsetParent.offsetTop;
     }
+    if (element.offsetParent.offsetLeft) {
+      offsetLeft += element.offsetParent.offsetLeft;
+    }
 
-    let x = event.pageX;
-    let y = event.pageY;
+    const xPos = event.pageX - offsetLeft;
+    const yPos = event.pageY - offsetTop;
 
-    let xPos = x - offsetLeft;
-    let yPos = y - offsetTop;
+    const rippleHeight = Math.max(element.clientWidth, element.clientHeight);
+    const rippleWidth  = Math.max(element.clientWidth, element.clientHeight);
 
-    const rippleHeight = Math.max(element.offsetWidth, element.offsetHeight);
-    const rippleWidth  = Math.max(element.offsetWidth, element.offsetHeight);
-
-    let ripple = document.createElement('span');
+    const ripple = document.createElement('div');
     ripple.style.setProperty('background', this.rippleColor || 'white');
     ripple.style.setProperty('height', `${rippleHeight}px`);
     ripple.style.setProperty('width',  `${rippleWidth}px`);
