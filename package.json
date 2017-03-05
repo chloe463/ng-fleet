@@ -17,9 +17,9 @@
     "bundle": "npm run build:js && npm run build:rollup"
   },
   "private": true,
-  "main": "./dist/bundles/francette.js",
-  "module": "./dist/out-tsc/index.js",
-  "typings": "./dist/out-tsc/index.d.ts",
+  "main": "./builds/bundles/francette.js",
+  "module": "./builds/out-tsc/index.js",
+  "typings": "./builds/out-tsc/index.d.ts",
   "dependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
@@ -37,11 +37,10 @@
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
-    "@angular/cli": "^1.0.0-beta.32.3",
+    "@angular/cli": "^1.0.0-rc.1",
     "@angular/compiler-cli": "^2.3.1",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
-    "angular-cli": "1.0.0-beta.24",
     "codelyzer": "~2.0.0-beta.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
