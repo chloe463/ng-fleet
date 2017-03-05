@@ -7,7 +7,7 @@
     "lib": ["es6", "dom"],
     "module": "es6",
     "moduleResolution": "node",
-    "outDir": "../dist/out-tsc",
+    "outDir": "../builds/out-tsc",
     "sourceMap": true,
     "target": "es5",
     "typeRoots": [
@@ -15,8 +15,8 @@
     ],
     "paths": {
       "@angular/core": ["../node_modules/@angular/core"],
-      "@angular/forms": ["../node_modules/@anglar/forms"],
-      "@angular/common": ["../node_modules/@anglar/common"],
+      "@angular/forms": ["../node_modules/@angular/forms"],
+      "@angular/common": ["../node_modules/@angular/common"],
       "rxjs/*": ["../node_modules/rxjs/*"]
     }
   },
@@ -33,7 +33,7 @@
     "environments/*.ts"
   ],
   "angularCompilerOptions": {
-    "genDir": "../dist/out-tsc",
+    "genDir": "../builds/out-ngc",
     "strictMetadataEmit": true
   }
 }

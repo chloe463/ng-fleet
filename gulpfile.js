@@ -11,8 +11,8 @@ const del              = require('del');
 
 const PROJECT_ROOT = path.join(__dirname);
 const SOURCE_ROOT  = path.join(__dirname, 'src');
-const DIST_ROOT    = path.join(__dirname, 'dist/out-tsc');
-const BUNDLES_ROOT = path.join(__dirname, 'dist/bundles');
+const BUILDS_ROOT  = path.join(__dirname, 'builds/out-tsc');
+const BUNDLES_ROOT = path.join(__dirname, 'builds/bundles');
 
 function promiseify(fn) {
     return function() {
@@ -32,7 +32,7 @@ function promiseify(fn) {
 const readFile = promiseify(fs.readFile);
 
 function replaceTemplate(content, filePath) {
-    const templatePath    = filePath.replace(/dist\/out-tsc/, 'src/app').replace(/\.js$/, '.html');
+    const templatePath    = filePath.replace(/builds\/out-tsc/, 'src/app').replace(/\.js$/, '.html');
     if (!fs.existsSync(templatePath)) {
         return content.replace(/templateUrl: \'.*html\'/, 'template: ``');
     }
@@ -45,7 +45,7 @@ function replaceStyle(content, filePath) {
         const urls = eval(styleUrls);
 
         const styles = urls.map((url) => {
-            const dir       = path.dirname(filePath).replace(/dist\/out-tsc/, 'src/app');
+            const dir       = path.dirname(filePath).replace(/builds\/out-tsc/, 'src/app');
             const stylePath = path.join(dir, url);
             if (!fs.exists(stylePath)) {
                 return ``;
@@ -62,7 +62,7 @@ function replaceStyle(content, filePath) {
 }
 
 gulp.task('build:inline-resource', () => {
-    const files = glob(DIST_ROOT + '/**/**.js', (err, files) => {
+    const files = glob(BUILDS_ROOT + '/**/**.js', (err, files) => {
         files.map((filePath) => {
             readFile(filePath, 'utf-8').then((content) => {
                 content = replaceTemplate(content, filePath);
@@ -96,7 +96,7 @@ gulp.task('minify:css', () => {
 
 // bundle js files
 gulp.task('build:rollup', () => {
-    const TARGET_FILE  = path.join(DIST_ROOT, 'index.js');
+    const TARGET_FILE  = path.join(BUILDS_ROOT, 'index.js');
 
     const globals = {
         '@angular/core': 'ng.core',
