@@ -1,0 +1,5 @@
+<span class="chip" [class.chip--on]="on" (click)="toggleOn()">
+  <ng-content></ng-content>
+  <span class="chip__dismiss-btn" (click)="disappear()" [hidden]="!dismiss.observers.length">&times;</span>
+</span>
+

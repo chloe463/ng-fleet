@@ -6,6 +6,14 @@
 </fr-navbar>
 
 <fr-tabs [(selectedIndex)]="selectedIndex">
+  <fr-tab title="chips">
+    <div>
+      <fr-chip *ngFor="let chip of chips; let i = index" (dismiss)="removeChip(i)">
+        {{chip.label}}
+      </fr-chip>
+      <fr-chip on="true">readOnly</fr-chip>
+    </div>
+  </fr-tab>
   <fr-tab title="forms">
     <form (ngSubmit)="onSubmit(formValue.value)" #formValue="ngForm">
       <table style="width:80%;margin:15px auto">
