@@ -18,6 +18,7 @@ import { FrNavbarItemComponent } from './navbar/navbar-item.component';
 import { FrNavbarLogoComponent } from './navbar/navbar-logo.component';
 
 import { FrRippleDirective } from './ripple/ripple.directive';
+import { FrChipComponent } from './chip/chip.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FrRippleDirective } from './ripple/ripple.directive';
     FrNavbarComponent,
     FrNavbarItemComponent,
     FrNavbarLogoComponent,
-    FrRippleDirective
+    FrRippleDirective,
+    FrChipComponent
   ],
   imports: [
     FormsModule,
@@ -55,7 +57,8 @@ import { FrRippleDirective } from './ripple/ripple.directive';
     FrNavbarComponent,
     FrNavbarItemComponent,
     FrNavbarLogoComponent,
-    FrRippleDirective
+    FrRippleDirective,
+    FrChipComponent
   ]
 })
 export class FrancetteModule { }
