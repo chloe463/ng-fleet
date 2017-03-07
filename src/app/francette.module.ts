@@ -11,7 +11,7 @@ import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
 import { FrRadioGroupComponent } from './forms/radio/radio-group.component';
 import { FrRadioComponent } from './forms/radio/radio.component';
 import { FrCheckboxComponent } from './forms/checkbox/checkbox.component';
-import { FrCalendarComponent } from './forms/calendar/calendar.component';
+import { FrDatePickerComponent } from './forms/date-picker/date-picker.component';
 import { FrTimePickerComponent } from './forms/time-picker/time-picker.component';
 import { FrNavbarComponent } from './navbar/navbar.component';
 import { FrNavbarItemComponent } from './navbar/navbar-item.component';
@@ -30,7 +30,7 @@ import { FrChipComponent } from './chip/chip.component';
     FrRadioComponent,
     FrRadioGroupComponent,
     FrCheckboxComponent,
-    FrCalendarComponent,
+    FrDatePickerComponent,
     FrTimePickerComponent,
     FrNavbarComponent,
     FrNavbarItemComponent,
@@ -52,7 +52,7 @@ import { FrChipComponent } from './chip/chip.component';
     FrRadioComponent,
     FrRadioGroupComponent,
     FrCheckboxComponent,
-    FrCalendarComponent,
+    FrDatePickerComponent,
     FrTimePickerComponent,
     FrNavbarComponent,
     FrNavbarItemComponent,
