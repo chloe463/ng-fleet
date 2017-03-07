@@ -3,7 +3,9 @@ import {
   Input,
   OnInit,
   QueryList,
-  forwardRef
+  forwardRef,
+  HostListener,
+  ElementRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -14,9 +16,9 @@ const SATURDAY = 6;
 const DATE_MAX = 31;
 const WEEK_DATE_COUNT = 7;
 
-export const CALENDAR_CONTROL_VALUE_ACCESSOR: any = {
+export const DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => FrCalendarComponent),
+  useExisting: forwardRef(() => FrDatePickerComponent),
   multi: true
 };
 
@@ -26,12 +28,12 @@ export interface IFrDate {
 }
 
 @Component({
-  selector: 'fr-calendar',
-  templateUrl: './calendar.component.html',
+  selector: 'fr-date-picker',
+  templateUrl: './date-picker.component.html',
   styleUrls: [],
-  providers: [CALENDAR_CONTROL_VALUE_ACCESSOR]
+  providers: [DATE_PICKER_CONTROL_VALUE_ACCESSOR]
 })
-export class FrCalendarComponent implements OnInit, ControlValueAccessor {
+export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
 
   @Input() name: string;
 
@@ -43,7 +45,7 @@ export class FrCalendarComponent implements OnInit, ControlValueAccessor {
   public target: Date;
   public weeks: Array<Array<IFrDate>>;
 
-  constructor() {
+  constructor(private el: ElementRef) {
   }
 
   get value(): any {
@@ -121,6 +123,20 @@ export class FrCalendarComponent implements OnInit, ControlValueAccessor {
     this.isFocus = false;
   }
 
+  public isToday(d: Date): boolean {
+    if (d === null) {
+      return false;
+    }
+    const today = new Date();
+    return (d.getFullYear() === today.getFullYear()
+            && d.getMonth() === today.getMonth()
+            && d.getDate() === today.getDate());
+  }
+
+  private toObjectDate(d: Date): string {
+    return '';
+  }
+
   public isSelected(d: Date): boolean {
     if (this._innerValue === undefined || this._innerValue === '' || this._innerValue === null || d === null) {
       return false;
@@ -131,5 +147,12 @@ export class FrCalendarComponent implements OnInit, ControlValueAccessor {
   public change(d: Date): void {
     this.value = d;
     this.hideCalendar();
+  }
+
+  @HostListener('document:click', ['$event'])
+  public disapper(event) {
+    if (!this.el.nativeElement.contains(event.target)) {
+      this.isFocus = false;
+    }
   }
 }

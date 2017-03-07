@@ -1,12 +1,19 @@
 .calendar {
-  width: 300px;
-  border: 1px solid #CCCCCC;
-  border-radius: 3px;
-  border-spacing: 5px;
-  text-align: center;
-  position: absolute;
-  background: #FFFFFF;
-  z-index: 100;
+  position: relative;
+
+  &__body {
+    position: absolute;
+    z-index: 100;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+  }
+
+  &__table {
+    width: 300px;
+    border-spacing: 5px;
+    text-align: center;
+    background: #FFFFFF;
+  }
 
   &__input-text {
     outline: 0;
@@ -28,25 +35,52 @@
     cursor: pointer;
   }
 
+  &__day {
+    font-size: 13px;
+    color: #A1A1A1;
+    &--sun {
+      color: #A1A1A1;
+    }
+    &--sat {
+      color: #A1A1A1;
+    }
+  }
+
   &__date, &__arrow {
     border: none;
-    border-bottom: 1px solid #CCCCCC;
+    // border-bottom: 1px solid #CCCCCC;
     width: (1% / 7 * 100);
     height: 33px;
     cursor: pointer;
+    font-size: 13px;
+    vertical-align: middle;
+
+    &--today {
+      color: $magenta;
+    }
 
     &--sunday {
-      background: #FFCFCF;
+      // background: #FFCFCF;
     }
 
     &--saturday {
-      background: #BEE2FB;
+      // background: #BEE2FB;
     }
 
     &--selected {
       color: #FFFFFF;
       background: $magenta;
+      border-radius: 50%;
     }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__ok-button {
+    color: $magenta;
   }
 }
 
