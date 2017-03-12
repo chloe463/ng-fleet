@@ -48,6 +48,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   public pickTarget: string = HOURS;
   public dials: Array<number> = [];
   public changing: boolean = false;
+  private _oldValue: Date;
 
   constructor(private el: ElementRef) { }
 
@@ -109,6 +110,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   public toggleTimePickerVisibility(): void {
+    this._oldValue = new Date(this._innerValue.getTime());
     this.clockVisibility = !this.clockVisibility;
   }
 
@@ -166,6 +168,11 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
       this.putDialsRightPosition();
       this.changing = false;
     }, 50);
+  }
+
+  public cancel(): void {
+    this.value = this._oldValue;
+    this.toggleTimePickerVisibility();
   }
 
   public commit(): void {
