@@ -1,7 +1,7 @@
 <div class="timepicker">
-  <div class="timepicker__input">
+  <div class="timepicker__input" (click)="toggleTimePickerVisibility()">
     <input type="text" name={{name}} class="timepicker__input-text" [value]="value|date: 'hh:mm a'" disabled>
-    <span class="timepicker__toggle-button" (click)="toggleTimePickerVisibility()">
+    <span class="timepicker__toggle-button">
       <i class="fa fa-clock-o"></i>
     </span>
   </div>

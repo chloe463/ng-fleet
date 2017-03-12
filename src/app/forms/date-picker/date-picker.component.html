@@ -1,7 +1,7 @@
 <div class="calendar">
-  <div class="calendar__input">
+  <div class="calendar__input" (click)="toggleCalendar()">
     <input type="text" name="{{name}}" class="calendar__input-text" [value]="value|date:'yyyy/MM/dd'" disabled>
-    <span class="calendar__toggle-button" (click)="toggleCalendar()">
+    <span class="calendar__toggle-button">
       <i class="fa fa-calendar"></i>
     </span>
   </div>
