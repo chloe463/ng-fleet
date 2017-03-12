@@ -6,6 +6,7 @@
     position: absolute;
     z-index: 100;
     border: 1px solid #CCCCCC;
+    background: #FFFFFF;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
 
     &-header {
@@ -18,8 +19,9 @@
   }
 
   &__table {
-    width: 300px;
-    border-spacing: 5px;
+    width: 320px;
+    margin: 5px;
+    border-spacing: 0;
     text-align: center;
     background: #FFFFFF;
   }
@@ -45,7 +47,7 @@
   }
 
   &__day {
-    font-size: 13px;
+    font-size: 11px;
     color: #A1A1A1;
     &--sun {
       color: #A1A1A1;
@@ -57,12 +59,16 @@
 
   &__date, &__arrow {
     border: none;
-    // border-bottom: 1px solid #CCCCCC;
-    width: (1% / 7 * 100);
-    height: 33px;
+    width: 43px;
+    height: 43px;
     cursor: pointer;
     font-size: 13px;
     vertical-align: middle;
+    border-radius: 50%;
+
+    transition-property: background;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
 
     &--today {
       color: $magenta;
@@ -81,6 +87,12 @@
       background: $magenta;
       border-radius: 50%;
     }
+
+    &:hover {
+      color: #FFFFFF;
+      background: lighten($magenta, 20%);
+      border-radius: 50%;
+    }
   }
 
   &__actions {
@@ -95,13 +107,13 @@
 
 .triangle {
   &--left {
-    margin-right: 15px;
+    margin-right: 20px;
     height: 0;
     border: 6px solid transparent;
     border-right: 6px solid #A1A1A1;
   }
   &--right {
-    margin-left: 15px;
+    margin-left: 20px;
     height: 0;
     border: 6px solid transparent;
     border-left: 6px solid #A1A1A1;
