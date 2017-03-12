@@ -1,18 +1,23 @@
 import {
   Component,
   OnInit,
+  AfterViewInit,
   Input,
-  forwardRef
+  forwardRef,
+  ElementRef,
+  HostListener,
+  ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export interface IFrTime {
-  hour: number;
-  minute: number;
-  second: number;
-}
-
 const noop = () => {};
+
+const DIALS = {
+  hours: [12,1,2,3,4,5,6,7,8,9,10,11],
+  minutes: [0,5,10,15,20,25,30,35,40,45,50,55]
+}
+const HOURS   = 'hours';
+const MINUTES = 'minutes';
 
 export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -26,17 +31,25 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: [],
   providers: [TIME_PICKER_CONTROL_VALUE_ACCESSOR]
 })
-export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
+export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
-  @Input() showSeconds: boolean;
+  @Input() name: string;
 
+  @ViewChild('clock') clock: ElementRef;
+
+  /**
+   * For ControlValueAccessor
+   */
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
-  public model: IFrTime;
+  public clockVisibility: boolean;
+  public pickTarget: string = HOURS;
+  public dials: Array<number> = [];
+  public changing: boolean = false;
 
-  constructor() { }
+  constructor(private el: ElementRef) { }
 
   get value(): any {
     return this._innerValue;
@@ -50,13 +63,8 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    if (obj !== null && obj !== this._innerValue) {
+    if (obj !== this._innerValue) {
       this._innerValue = obj;
-      this.model = {
-        hour: obj.hour,
-        minute: obj.minute,
-        second: obj.second
-      };
     }
   }
 
@@ -72,72 +80,103 @@ export class FrTimePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-    this.resetModel();
+    this._innerValue     = new Date();
+    this.pickTarget      = HOURS;
+    this.clockVisibility = false;
+    this.setDials();
   }
 
-  public resetModel(): void {
-    const now   = new Date();
-    this.model = {
-      hour: now.getHours(),
-      minute: now.getMinutes(),
-      second: now.getSeconds()
-    };
-    this.value = this.model;
+  ngAfterViewInit() {
+    this.putDialsRightPosition();
   }
 
-  public change(): void {
-    this.value = {
-      hour: this.model.hour,
-      minute: this.model.minute,
-      second: this.model.second
-    };
+  public setDials(type: string = HOURS): void {
+    this.dials = DIALS[type];
   }
 
-  /**
-   * Add 1 hour
-   */
-  public addHour(): void {
-    this.model.hour = (this.model.hour + 1) % 24;
-    this.change();
+  public putDialsRightPosition(): void {
+    const dials  = this.clock.nativeElement.children;
+    const radian = (30 * Math.PI / 180.0);
+    const radius = 125;
+
+    for (let i = 0; i < dials.length; ++i) {
+      const dial = dials[i];
+      const x    = Math.cos(radian * (i - 3)) * radius + radius;
+      const y    = Math.sin(radian * (i - 3)) * radius + radius;
+      dial.style.top  = y + 'px';
+      dial.style.left = x + 'px';
+    }
   }
 
-  /**
-   * Subtract 1 hour
-   */
-  public subHour(): void {
-    this.model.hour = (this.model.hour - 1 + 24) % 24;
-    this.change();
+  public toggleTimePickerVisibility(): void {
+    this.clockVisibility = !this.clockVisibility;
   }
 
-  /**
-   * Add 1 minute
-   */
-  public addMinute(): void {
-    this.model.minute = (this.model.minute + 1) % 60;
-    this.change();
+  public isAm(): boolean {
+    return this._innerValue.getHours() < 12;
   }
 
-  /**
-   * Subtract 1 minute
-   */
-  public subMinute(): void {
-    this.model.minute = (this.model.minute - 1 + 60) % 60;
-    this.change();
+  public isPm(): boolean {
+    return this._innerValue.getHours() >= 12;
   }
 
-  /**
-   * Add 1 second
-   */
-  public addSecond(): void {
-    this.model.second = (this.model.second + 1) % 60;
-    this.change();
+  public toggleAmPm(): void {
+    const newDateObj = new Date(this._innerValue.getTime());
+    newDateObj.setHours((this._innerValue.getHours() + 12) % 24);
+    this.value = newDateObj;
   }
 
-  /**
-   * Subtract 1 second
-   */
-  public subSecond(): void {
-    this.model.second = (this.model.second - 1 + 60) % 60;
-    this.change();
+  public setHours(h: number): void {
+    if (this.isPm()) {
+      h = (h + 12) % 24;
+    }
+    const newDateObj = new Date(this._innerValue.getTime());
+    newDateObj.setHours(h);
+    this.value = newDateObj;
+  }
+
+  public setMinute(m: number): void {
+    const newDateObj = new Date(this._innerValue.getTime());
+    newDateObj.setMinutes(m);
+    this.value = newDateObj;
+  }
+
+  public setTime(dial: number): void {
+    if (this.pickTarget === HOURS) {
+      this.setHours(dial);
+    } else if (this.pickTarget === MINUTES) {
+      this.setMinute(dial);
+    }
+  }
+
+  public isPickedTime(dial: number): boolean {
+    if (this.pickTarget === HOURS) {
+      return (this._innerValue.getHours() % 12) === (dial % 12);
+    } else if (this.pickTarget === MINUTES) {
+      return this._innerValue.getMinutes() === dial;
+    }
+  }
+
+  public togglePickTarget(): void {
+    this.changing   = true;
+    this.pickTarget = this.pickTarget === HOURS ? MINUTES : HOURS;
+    this.setDials(this.pickTarget);
+    // wait for dials rendering
+    setTimeout(() => {
+      this.putDialsRightPosition();
+      this.changing = false;
+    }, 50);
+  }
+
+  public commit(): void {
+    this.value = this._innerValue;
+    this.toggleTimePickerVisibility();
+  }
+
+  @HostListener('document:click', ['$event'])
+  public disapper(event) {
+    if (!this.el.nativeElement.contains(event.target)) {
+      this.clockVisibility = false;
+    }
   }
 }

@@ -1,31 +1,96 @@
 .timepicker {
-  &__arrow {
-    color: #A1A1A1;
-    text-align: center;
-    cursor: pointer;
-  }
 
-  &__input {
+  &__input-text {
     outline: none;
     border: none;
     border-bottom: 1px solid #A1A1A1;
     height: 1.8em;
-    width: 40px;
     padding: 3px;
-    text-align: center;
   }
 
-  &__reset-button {
+  &__toggle-button {
     outline: none;
-    height: 2.3em;
-    width: 65px;
-    border: 1px solid #A1A1A1;
-    border-radius: 3px;
+    position: relative;
+    right: 25px;
+    height: 34px;
+    vertical-align: top;
     background: #FFFFFF;
+    border: none;
     cursor: pointer;
   }
 
-  &__second--none {
-    display: none;
+  &__body {
+    width: 300px;
+    position: absolute;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+
+    &-header {
+      background: $indigo;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &__meridian {
+    margin: 0 5px;
+    color: #CCCCCC;
+    cursor: pointer;
+
+    &--selected {
+      color: #FFFFFF;
+    }
+  }
+
+  &__time {
+    font-size: 38px;
+    color: #FFFFFF;
+  }
+
+  &__clock {
+    position: relative;
+    height: 300px;
+  }
+
+  &__clock-dial {
+    position: absolute;
+    width: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    // font-size: 12px;
+    margin: 7px;
+    padding: 5px;
+    cursor: pointer;
+    transition-property: background;
+    transition-duration: 0.3s;
+    traisition-timing-function: linear;
+
+    &:hover {
+      background: lighten($indigo, 15%);
+      color: #FFFFFF;
+    }
+
+    &--picked {
+      background: $indigo;
+      color: #FFFFFF;
+      &:hover {
+        background: $indigo;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  &__button--primary {
+    color: $indigo;
   }
 }
+

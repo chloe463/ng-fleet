@@ -46,7 +46,7 @@ export class AppComponent {
     radio: '',
     checkbox: {},
     date: new Date(),
-    time: { hour: 0, minute: 0, second: 0 }
+    time: new Date()
   };
 
   public toggleSelect() {
@@ -72,7 +72,7 @@ export class AppComponent {
       radio: '',
       checkbox: {},
       date: new Date(),
-      time: { hour: 0, minute: 0, second: 0 }
+      time: new Date()
     };
   }
 
