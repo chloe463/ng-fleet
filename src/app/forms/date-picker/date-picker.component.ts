@@ -44,6 +44,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   public calendarVisibility: boolean;
   public target: Date;
   public weeks: Array<Array<IFrDate>>;
+  private _oldValue: Date;
 
   constructor(private el: ElementRef) {
   }
@@ -116,11 +117,8 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   public toggleCalendarVisibility(): void {
+    this._oldValue = new Date(this._innerValue.getTime());
     this.calendarVisibility = !this.calendarVisibility;
-  }
-
-  public hideCalendar(): void {
-    this.calendarVisibility = false;
   }
 
   public isToday(d: Date): boolean {
@@ -144,9 +142,13 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
     return this._innerValue.toDateString() === d.toDateString();
   }
 
-  public change(d: Date): void {
-    this.value = d;
-    this.hideCalendar();
+  public cancel(): void {
+    this.value = this._oldValue;
+    this.calendarVisibility = false;
+  }
+
+  public commit(): void {
+    this.calendarVisibility = false;
   }
 
   @HostListener('document:click', ['$event'])

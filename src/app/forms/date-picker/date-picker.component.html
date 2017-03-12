@@ -36,11 +36,18 @@
       </thead>
       <tbody>
         <tr *ngFor="let week of weeks">
-          <td *ngFor="let date of week" class="calendar__date" (click)="change(date.model)" [class.calendar__date--today]="isToday(date.model)" [class.calendar__date--selected]="isSelected(date.model)">
+          <td *ngFor="let date of week" class="calendar__date"
+            (click)="value = date.model"
+            [class.calendar__date--today]="isToday(date.model)"
+            [class.calendar__date--selected]="isSelected(date.model)">
             {{date.label}}
           </td>
         </tr>
       </tbody>
     </table>
+    <div class="calendar__body-footer">
+      <button type="button" class="btn btn-flat" (click)="cancel()">CANCEL</button>
+      <button type="button" class="btn btn-flat" (click)="commit()">OK</button>
+    </div>
   </div>
 </div>

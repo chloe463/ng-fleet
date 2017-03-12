@@ -7,6 +7,14 @@
     z-index: 100;
     border: 1px solid #CCCCCC;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
+
+    &-header {
+    }
+
+    &-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 
   &__table {
