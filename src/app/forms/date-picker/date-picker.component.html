@@ -6,9 +6,6 @@
     </span>
   </div>
   <div class="calendar__body" [hidden]="!calendarVisibility">
-    <!--
-    <table class="calendar__table" [hidden]="!isFocus" (blur)="hideCalendar()">
-    -->
     <table class="calendar__table">
       <colgroup class="calendar__date--sunday"></colgroup>
       <colgroup></colgroup>
@@ -22,9 +19,6 @@
           <td (click)="move(-1)" class="calendar__arrow" style="background:#FFFFFF">
             <div class="triangle--left"></div>
           </td>
-          <!--
-          <td colspan="5" style="text-align:center">{{target|date:'yyyy MM'}}</td>
-          -->
           <td colspan="5" style="text-align:center">{{target|date:'MMM yyyy'}}</td>
           <td (click)="move(1)" class="calendar__arrow" style="background:#FFFFFF">
             <div class="triangle--right"></div>
