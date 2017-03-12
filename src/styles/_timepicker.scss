@@ -22,7 +22,7 @@
   }
 
   &__body {
-    width: 300px;
+    width: 320px;
     position: absolute;
     background: #FFFFFF;
     border: 1px solid #CCCCCC;
@@ -60,7 +60,10 @@
 
   &__clock {
     position: relative;
+    margin: 10px;
     height: 300px;
+    border-radius: 50%;
+    background: #EAEAEA;
   }
 
   &__clock-dial {
