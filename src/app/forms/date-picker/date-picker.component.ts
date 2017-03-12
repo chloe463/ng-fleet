@@ -41,7 +41,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
-  public isFocus: boolean;
+  public calendarVisibility: boolean;
   public target: Date;
   public weeks: Array<Array<IFrDate>>;
 
@@ -78,7 +78,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
 
 
   ngOnInit() {
-    this.isFocus    = false;
+    this.calendarVisibility = false;
     this.target     = new Date();
     this._resetCalendar(this.target);
   }
@@ -115,12 +115,12 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
     this._resetCalendar(this.target);
   }
 
-  public toggleCalendar(): void {
-    this.isFocus = !this.isFocus;
+  public toggleCalendarVisibility(): void {
+    this.calendarVisibility = !this.calendarVisibility;
   }
 
   public hideCalendar(): void {
-    this.isFocus = false;
+    this.calendarVisibility = false;
   }
 
   public isToday(d: Date): boolean {
@@ -152,7 +152,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   @HostListener('document:click', ['$event'])
   public disapper(event) {
     if (!this.el.nativeElement.contains(event.target)) {
-      this.isFocus = false;
+      this.calendarVisibility = false;
     }
   }
 }
