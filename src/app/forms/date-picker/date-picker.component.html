@@ -37,7 +37,7 @@
       <tbody>
         <tr *ngFor="let week of weeks">
           <td *ngFor="let date of week" class="calendar__date"
-            (click)="value = date.model"
+            (click)="changeDate(date.model)"
             [class.calendar__date--today]="isToday(date.model)"
             [class.calendar__date--selected]="isSelected(date.model)">
             {{date.label}}

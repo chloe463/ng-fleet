@@ -142,6 +142,13 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
     return this._innerValue.toDateString() === d.toDateString();
   }
 
+  public changeDate(d: Date): void {
+    if (d === null) {
+      return;
+    }
+    this.value = d;
+  }
+
   public cancel(): void {
     this.value = this._oldValue;
     this.calendarVisibility = false;
