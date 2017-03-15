@@ -1,7 +1,16 @@
-<label class="form__select-label">
-  <select class="form__select" name="{{name}}" [value]="value" (change)="onChange(input.value)" #input>
-    <option *ngFor="let option of _options" [value]="option.value" class="form__select-option">
+<div class="fr-select">
+  <input type="hidden" [(value)]="value" name="{{name}}">
+  <input type="text"
+    class="fr-select__text"
+    value="{{label}}"
+    placeholder="{{placeholder}}"
+    (click)="optionsVisibility = !optionsVisibility">
+  <ul class="fr-select__list" [hidden]="!optionsVisibility">
+    <li *ngFor="let option of _options; trackBy: $index"
+      class="fr-select__item"
+      [class.fr-select__item--selected]="isSelected(option)"
+      (click)="select(option)">
       {{option.label}}
-    </option>
-  </select>
-</label>
+    </li>
+  </ul>
+</div>

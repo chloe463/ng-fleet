@@ -4,10 +4,17 @@ import {
   Input,
   ContentChildren,
   QueryList,
-  forwardRef
+  forwardRef,
+  ElementRef,
+  HostListener
 } from '@angular/core';
 import { FrOptionComponent } from './option.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+interface IFrDropDownOption {
+  value: any;
+  label: string | number;
+}
 
 const noop = () => {};
 
@@ -25,6 +32,7 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @Input() name: string;
+  @Input() placeholder: string | number;
 
   @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent>;
 
@@ -33,9 +41,13 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
 
-  constructor() { }
+  public optionsVisibility: boolean;
+  public label: string | number;
+
+  constructor(private el: ElementRef) { }
 
   ngOnInit() {
+    this.optionsVisibility = false;
   }
 
   public onChange(value): void {
@@ -77,5 +89,22 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
 
   setDisableState(isDisabled: boolean): void {
     this._isDisabled = isDisabled;
+  }
+
+  public select(option) {
+    this.value = option;
+    this.label = option.label;
+    this.optionsVisibility = false;
+  }
+
+  public isSelected(option) {
+    return this.value === option;
+  }
+
+  @HostListener('document:click', ['$event'])
+  disappear(event) {
+    if (!this.el.nativeElement.contains(event.target)) {
+      this.optionsVisibility = false;
+    }
   }
 }
