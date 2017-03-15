@@ -20,7 +20,7 @@
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">input</td>
           <td>
-            <input type="text" name="text" class="form__text" placeholder="text" [(ngModel)]="form.text">
+            <input type="text" name="text" class="fr-form__text" placeholder="text" [(ngModel)]="form.text">
           </td>
         </tr>
         <tr style="height:50px">
@@ -73,15 +73,15 @@
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">text area</td>
           <td>
-            <textarea class="form__textarea" name="textarea" [(ngModel)]="form.textarea"></textarea>
+            <textarea class="fr-form__textarea" name="textarea" [(ngModel)]="form.textarea"></textarea>
           </td>
         </tr>
         <tr style="height:50px">
           <td>
-            <button class="btn-skeleton--primary" (click)="submit()" style="margin: auto 50%" frRipple>submit</button>
+            <button class="fr-btn-skeleton--primary" (click)="submit()" style="margin: auto 50%" frRipple>submit</button>
           </td>
           <td>
-            <button class="btn-skeleton--danger" (click)="reset()" style="margin: auto 50%" [frRipple]="'#EAEAEA'">reset</button>
+            <button class="fr-btn-skeleton--danger" (click)="reset()" style="margin: auto 50%" [frRipple]="'#EAEAEA'">reset</button>
           </td>
         </tr>
       </table>
@@ -95,35 +95,35 @@
   </fr-tab>
   <fr-tab title="buttons">
     <h2>Buttons</h2>
-    <button frRipple class="btn">button</button>
-    <button frRipple class="btn--primary" frRipple>primary</button>
-    <button frRipple class="btn--info">info</button>
-    <button frRipple class="btn--warning">warning</button>
-    <button frRipple class="btn--danger">danger</button>
-    <button frRipple class="btn--default">default</button>
-    <button frRipple class="btn--disabled" disabled>disabled</button>
+    <button frRipple class="fr-btn">button</button>
+    <button frRipple class="fr-btn--primary" frRipple>primary</button>
+    <button frRipple class="fr-btn--info">info</button>
+    <button frRipple class="fr-btn--warning">warning</button>
+    <button frRipple class="fr-btn--danger">danger</button>
+    <button frRipple class="fr-btn--default">default</button>
+    <button frRipple class="fr-btn--disabled" disabled>disabled</button>
     <div></div>
-    <button frRipple class="btn-fab">&nbsp;</button>
-    <button frRipple class="btn-fab--primary">+</button>
-    <button frRipple class="btn-fab--info">+</button>
-    <button frRipple class="btn-fab--warning">-</button>
-    <button frRipple class="btn-fab--danger">-</button>
-    <button frRipple class="btn-fab--default">*</button>
-    <button frRipple class="btn-fab--disabled" disabled>-</button>
+    <button frRipple class="fr-btn-fab">&nbsp;</button>
+    <button frRipple class="fr-btn-fab--primary">+</button>
+    <button frRipple class="fr-btn-fab--info">+</button>
+    <button frRipple class="fr-btn-fab--warning">-</button>
+    <button frRipple class="fr-btn-fab--danger">-</button>
+    <button frRipple class="fr-btn-fab--default">*</button>
+    <button frRipple class="fr-btn-fab--disabled" disabled>-</button>
     <div></div>
-    <button frRipple class="btn-skeleton">skeleton</button>
-    <button frRipple class="btn-skeleton--primary">primary</button>
-    <button frRipple class="btn-skeleton--info">info</button>
-    <button frRipple class="btn-skeleton--warning">warning</button>
-    <button frRipple class="btn-skeleton--danger">danger</button>
-    <button frRipple class="btn-skeleton--default">default</button>
-    <button frRipple class="btn-skeleton--disabled" disabled>disabled</button>
+    <button frRipple class="fr-btn-skeleton">skeleton</button>
+    <button frRipple class="fr-btn-skeleton--primary">primary</button>
+    <button frRipple class="fr-btn-skeleton--info">info</button>
+    <button frRipple class="fr-btn-skeleton--warning">warning</button>
+    <button frRipple class="fr-btn-skeleton--danger">danger</button>
+    <button frRipple class="fr-btn-skeleton--default">default</button>
+    <button frRipple class="fr-btn-skeleton--disabled" disabled>disabled</button>
     <div></div>
-    <button class="btn-flat" [frRipple]="'#CCC'">flat</button>
+    <button class="fr-btn-flat" [frRipple]="'#CCC'">flat</button>
     <div style="margin:15px">
       <span style="margin:15px">
-        <button class="btn btn-skeleton" frRipple>default</button>
-        <button class="btn--primary" [frRipple]="'white'">primary</button>
+        <button class="fr-btn fr-btn-skeleton" frRipple>default</button>
+        <button class="fr-btn--primary" [frRipple]="'white'">primary</button>
       </span>
     </div>
   </fr-tab>

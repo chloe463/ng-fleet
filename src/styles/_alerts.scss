@@ -1,26 +1,26 @@
-.alert {
+.fr-alert {
   margin: 15px;
   padding: 10px;
   border: 1px solid $base1;
   border-radius: 4px;
 }
 
-.alert--info {
-  @extend .alert;
+.fr-alert--info {
+  @extend .fr-alert;
   border: 1px solid $green;
   background: lighten($green, 50%);
   color: $base02;
 }
 
-.alert--warning {
-  @extend .alert;
+.fr-alert--warning {
+  @extend .fr-alert;
   border: 1px solid $yellow;
   background: lighten($yellow, 50%);
   color: $yellow;
 }
 
-.alert--error{
-  @extend .alert;
+.fr-alert--error{
+  @extend .fr-alert;
   border: 1px solid $red;
   background: lighten($red, 30%);
   color: $red;

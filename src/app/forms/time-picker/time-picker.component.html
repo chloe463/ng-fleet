@@ -1,32 +1,32 @@
-<div class="timepicker">
-  <div class="timepicker__input" (click)="toggleTimePickerVisibility()">
-    <input type="text" name={{name}} class="timepicker__input-text" [value]="value|date: 'hh:mm a'" disabled>
-    <span class="timepicker__toggle-button">
+<div class="fr-timepicker">
+  <div class="fr-timepicker__input" (click)="toggleTimePickerVisibility()">
+    <input type="text" name={{name}} class="fr-timepicker__input-text" [value]="value|date: 'hh:mm a'" disabled>
+    <span class="fr-timepicker__toggle-button">
       <i class="fa fa-clock-o"></i>
     </span>
   </div>
-  <div class="timepicker__body" [hidden]="!clockVisibility">
-    <div class="timepicker__body-header">
-      <span class="timepicker__time" (click)="togglePickTarget()">
+  <div class="fr-timepicker__body" [hidden]="!clockVisibility">
+    <div class="fr-timepicker__body-header">
+      <span class="fr-timepicker__time" (click)="togglePickTarget()">
         {{value|date:'hh:mm'}}
       </span>
-      <span class="timepicker__meridian" [class.timepicker__meridian--selected]="isAm()" (click)="toggleAmPm()">
+      <span class="fr-timepicker__meridian" [class.fr-timepicker__meridian--selected]="isAm()" (click)="toggleAmPm()">
         AM
       </span>
-      <span class="timepicker__meridian" [class.timepicker__meridian--selected]="isPm()" (click)="toggleAmPm()">
+      <span class="fr-timepicker__meridian" [class.fr-timepicker__meridian--selected]="isPm()" (click)="toggleAmPm()">
         PM
       </span>
     </div>
-    <div class="timepicker__clock" #clock>
-      <span class="timepicker__clock-dial"
-        [class.timepicker__clock-dial--picked]="isPickedTime(dial)"
+    <div class="fr-timepicker__clock" #clock>
+      <span class="fr-timepicker__clock-dial"
+        [class.fr-timepicker__clock-dial--picked]="isPickedTime(dial)"
         [hidden]="changing"
         *ngFor="let dial of dials"
         (click)="setTime(dial)">{{dial}}</span>
     </div>
-    <div class="timepicker__body-footer">
-      <button type="button" class="btn btn-flat timepicker__button--primary" (click)="cancel()">CANCEL</button>
-      <button type="button" class="btn btn-flat timepicker__button--primary" (click)="commit()">OK</button>
+    <div class="fr-timepicker__body-footer">
+      <button type="button" class="fr-btn fr-btn-flat fr-timepicker__button--primary" (click)="cancel()">CANCEL</button>
+      <button type="button" class="fr-btn fr-btn-flat fr-timepicker__button--primary" (click)="commit()">OK</button>
     </div>
   </div>
 </div>
