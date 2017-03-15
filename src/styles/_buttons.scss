@@ -1,7 +1,7 @@
 /*********************************
  * Base button style
  *********************************/
-.btn {
+.fr-btn {
   outline: none;
   margin: 5px;
   padding: 0 16px;
@@ -21,8 +21,8 @@
   }
 }
 
-.btn-flat {
-  @extend .btn;
+.fr-btn-flat {
+  @extend .fr-btn;
   background: transparent;
   border: none;
   box-shadow: none;
@@ -36,7 +36,7 @@
  * Custom buttons
  *********************************/
 @mixin custom_button($background, $color, $hover_background) {
-  @extend .btn;
+  @extend .fr-btn;
   background: $background;
   color: $color;
   &:hover {
@@ -44,27 +44,27 @@
   }
 }
 
-.btn--default {
+.fr-btn--default {
   @include custom_button($base2, $base03, $base3);
 }
 
-.btn--primary {
+.fr-btn--primary {
   @include custom_button($blue, #FFFFFF, #289AEA);
 }
 
-.btn--info {
+.fr-btn--info {
   @include custom_button($green, #FFFFFF, #98AF02);
 }
 
-.btn--warning {
+.fr-btn--warning {
   @include custom_button($yellow, #FFFFFF, #CC9B03);
 }
 
-.btn--danger {
+.fr-btn--danger {
   @include custom_button($red, #FFFFFF, #EC2E2B);
 }
 
-.btn--disabled {
+.fr-btn--disabled {
   @include custom_button($base0, $base02, $base0);
   box-shadow: 0 0 0 0 rgba(0,0,0,0);
   &:hover {
@@ -76,7 +76,7 @@
  * Skeleton buttons
  *********************************/
 @mixin skeleton($border_color, $color, $hover_background, $hover_color) {
-  @extend .btn;
+  @extend .fr-btn;
   border: 1px solid $border_color;
   color: $color;
   box-shadow: none;
@@ -87,31 +87,31 @@
   }
 }
 
-.btn-skeleton{
+.fr-btn-skeleton{
   @include skeleton(#A1A1A1, #A1A1A1, #A1A1A1, #FFFFFF);
 }
 
-.btn-skeleton--default {
+.fr-btn-skeleton--default {
   @include skeleton(#A1A1A1, $base02, #A1A1A1, #FFFFFF);
 }
 
-.btn-skeleton--primary {
+.fr-btn-skeleton--primary {
   @include skeleton($blue, $blue, #289AEA, #FFFFFF);
 }
 
-.btn-skeleton--info {
+.fr-btn-skeleton--info {
   @include skeleton($green, $green, #98AF02, #FFFFFF);
 }
 
-.btn-skeleton--warning {
+.fr-btn-skeleton--warning {
   @include skeleton($yellow, $yellow, #CC9B03, #FFFFFF);
 }
 
-.btn-skeleton--danger {
+.fr-btn-skeleton--danger {
   @include skeleton($red, $red, #EC2E2B, #FFFFFF);
 }
 
-.btn-skeleton--disabled {
+.fr-btn-skeleton--disabled {
   @include skeleton(#A1A1A1, #A1A1A1, #FFFFFF, #FFFFFF);
   &:hover {
     color: #A1A1A1;
@@ -120,12 +120,12 @@
   }
 }
 
-.btngroup {
+.fr-btngroup {
   display: flex;
   flex-wrap: wrap;
   border-radius: 4px;
 
-  .btn {
+  .fr-btn {
     margin-right: 0;
     margin-left: 0;
     border-radius: 0;
@@ -146,7 +146,7 @@
 /*********************************
  * FAB buttons
  *********************************/
-.btn-fab {
+.fr-btn-fab {
   outline: none;
   margin: 5px;
   width: 40px;
@@ -165,7 +165,7 @@
 }
 
 @mixin custom_fab_button($background, $color, $hover_background) {
-  @extend .btn-fab;
+  @extend .fr-btn-fab;
   background: $background;
   color: $color;
   &:hover {
@@ -173,27 +173,27 @@
   }
 }
 
-.btn-fab--primary {
+.fr-btn-fab--primary {
   @include custom_fab_button($blue, #FFFFFF, #289AEA);
 }
 
-.btn-fab--default {
+.fr-btn-fab--default {
   @include custom_fab_button($base2, $base03, $base3);
 }
 
-.btn-fab--info {
+.fr-btn-fab--info {
   @include custom_fab_button($green, #FFFFFF, #98AF02);
 }
 
-.btn-fab--warning {
+.fr-btn-fab--warning {
   @include custom_fab_button($yellow, #FFFFFF, #CC9B03);
 }
 
-.btn-fab--danger {
+.fr-btn-fab--danger {
   @include custom_fab_button($red, #FFFFFF, #EC2E2B);
 }
 
-.btn-fab--disabled {
+.fr-btn-fab--disabled {
   @include custom_fab_button($base0, $base02, $base0);
   box-shadow: 0 0 0 0 rgba(0,0,0,0);
   &:hover {

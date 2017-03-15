@@ -1,4 +1,4 @@
-.tabs {
+.fr-tabs {
   list-style: none;
   border-bottom: 1px solid #CCCCCC;
   display: flex;
@@ -19,7 +19,7 @@
 
     &--active {
       border-bottom: 2px solid $red;
-      .tabs__link {
+      .fr-tabs__link {
         color: $blue;
       }
     }

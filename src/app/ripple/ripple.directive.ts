@@ -8,7 +8,7 @@ import {
 @Directive({
   selector: '[frRipple]',
   host: {
-    '[class.ripple]': 'true'
+    '[class.fr-ripple]': 'true'
   }
 })
 export class FrRippleDirective {
@@ -43,7 +43,7 @@ export class FrRippleDirective {
     ripple.style.setProperty('width',  `${rippleWidth}px`);
     ripple.style.setProperty('top',    `${yPos - rippleHeight / 2}px`);
     ripple.style.setProperty('left',   `${xPos - rippleWidth / 2}px`);
-    ripple.classList.add('ripple-effect');
+    ripple.classList.add('fr-ripple-effect');
     element.appendChild(ripple);
 
     window.setTimeout(() => {

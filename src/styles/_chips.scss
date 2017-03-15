@@ -1,4 +1,4 @@
-.chip {
+.fr-chip {
   display: inline-block;
   padding: 0 12px 0 12px;
   font-size: 16px;
@@ -11,17 +11,18 @@
     background-color: $magenta;
     color: #ffffff;
   }
+
+  &__dismiss-btn {
+    margin: 4px -4px 4px 4px;
+    background: #CCC;
+    border-radius: 50%;
+    line-height: 24px;
+    width: 24px;
+    font-size: 13px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+  }
 }
 
-.chip__dismiss-btn {
-  margin: 4px -4px 4px 4px;
-  background: #CCC;
-  border-radius: 50%;
-  line-height: 24px;
-  width: 24px;
-  font-size: 13px;
-  font-weight: bold;
-  float: right;
-  cursor: pointer;
-  text-align: center;
-}
