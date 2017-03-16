@@ -1,10 +1,8 @@
 <div class="fr-select">
   <input type="hidden" [(value)]="value" name="{{name}}">
-  <input type="text"
-    class="fr-select__text"
-    value="{{label}}"
-    placeholder="{{placeholder}}"
-    (click)="optionsVisibility = !optionsVisibility">
+  <span class="fr-select__text" (click)="optionsVisibility = !optionsVisibility">
+    {{label}}
+  </span>
   <ul class="fr-select__list" [hidden]="!optionsVisibility">
     <li *ngFor="let option of _options; trackBy: $index"
       class="fr-select__item"
