@@ -4,7 +4,12 @@ import {
   Input,
   forwardRef,
   ElementRef,
-  HostListener
+  HostListener,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -20,7 +25,31 @@ export const INPUT_TEXT_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'fr-input-text',
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.scss'],
-  providers: [INPUT_TEXT_CONTROL_VALUE_ACCESSOR]
+  providers: [INPUT_TEXT_CONTROL_VALUE_ACCESSOR],
+  animations: [
+    trigger('labelState', [
+      state('placeholder', style({
+        top: '5px',
+        left: '3px',
+        color: '#CCCCCC'
+      })),
+      state('label', style({
+        top: '-10px',
+        left: '0px',
+        color: '#CCCCCC',
+        'font-size': '12px'
+      })),
+      state('labelOnFocus', style({
+        top: '-10px',
+        left: '0px',
+        color: '#D33682',
+        'font-size': '12px'
+      })),
+      transition('placeholder => labelOnFocus, labelOnFocus => placeholder, labelOnFocus => label, label => labelOnFocus', [
+        animate('200ms ease-out')
+      ])
+    ])
+  ]
 })
 export class FrInputTextComponent implements OnInit, ControlValueAccessor {
 
@@ -31,6 +60,8 @@ export class FrInputTextComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
+
+  private _state: string = 'placeholder';
 
   get value(): any {
     return this._innerValue;
@@ -78,4 +109,23 @@ export class FrInputTextComponent implements OnInit, ControlValueAccessor {
     this.value = value;
   }
 
+  get state(): string {
+    return this._state;
+  }
+
+  set state(newState) {
+    this._state = newState;
+  }
+
+  public onFocus() {
+    this.state = 'labelOnFocus';
+  }
+
+  public onBlur() {
+    if (!this.value.length) {
+      this.state = 'placeholder';
+      return;
+    }
+    this.state = 'label';
+  }
 }

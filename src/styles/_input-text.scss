@@ -1,5 +1,10 @@
 .fr-input-text {
   position: relative;
+
+  &__label {
+    position: absolute;
+  }
+
   &__form {
     outline: none;
     width: 100%;

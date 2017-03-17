@@ -1,9 +1,13 @@
 <div class="fr-input-text">
+  <label class="fr-input-text__label" [@labelState]="state">
+    {{placeholder}}
+  </label>
   <input type="text"
          name="{{name}}"
          class="fr-input-text__form"
          [value]="value"
          [class.fr-input-text--disabled]="disabled"
          (keyup)="updateValue($event.target.value)"
-         placeholder="{{placeholder}}">
+         (focus)="onFocus()"
+         (blur)="onBlur()">
 </div>
