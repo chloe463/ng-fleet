@@ -1,3 +1,4 @@
+export { FrInputTextComponent } from './input-text/input-text.component';
 export { FrCalendarComponent } from './calendar/calendar.component';
 export { FrCheckboxComponent } from './checkbox/checkbox.component';
 export { FrRadioGroupComponent } from './radio/radio-group.component';
