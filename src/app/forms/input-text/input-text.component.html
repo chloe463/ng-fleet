@@ -1,0 +1,9 @@
+<div class="fr-input-text">
+  <input type="text"
+         name="{{name}}"
+         class="fr-input-text__form"
+         [value]="value"
+         [class.fr-input-text--disabled]="disabled"
+         (keyup)="updateValue($event.target.value)"
+         placeholder="{{placeholder}}">
+</div>

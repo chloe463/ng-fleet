@@ -18,9 +18,9 @@
     <form (ngSubmit)="onSubmit(formValue.value)" #formValue="ngForm">
       <table style="width:80%;margin:15px auto">
         <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">input</td>
+          <td style="width:25%;text-align:right;padding-right:15px">fr-input-text</td>
           <td>
-            <input type="text" name="text" class="fr-form__text" placeholder="text" [(ngModel)]="form.text">
+            <fr-input-text name="text" placeholder="text" [(ngModel)]="form.text"></fr-input-text>
           </td>
         </tr>
         <tr style="height:50px">
