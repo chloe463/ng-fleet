@@ -16,6 +16,7 @@ import { FrTimePickerComponent } from './forms/time-picker/time-picker.component
 import { FrNavbarComponent } from './navbar/navbar.component';
 import { FrNavbarItemComponent } from './navbar/navbar-item.component';
 import { FrNavbarLogoComponent } from './navbar/navbar-logo.component';
+import { FrNavbarMenuComponent } from './navbar/navbar-menu.component';
 import { FrInputTextComponent } from './forms/input-text/input-text.component';
 
 import { FrRippleDirective } from './ripple/ripple.directive';
@@ -36,6 +37,7 @@ import { FrChipComponent } from './chip/chip.component';
     FrNavbarComponent,
     FrNavbarItemComponent,
     FrNavbarLogoComponent,
+    FrNavbarMenuComponent,
     FrRippleDirective,
     FrChipComponent,
     FrInputTextComponent
@@ -59,6 +61,7 @@ import { FrChipComponent } from './chip/chip.component';
     FrNavbarComponent,
     FrNavbarItemComponent,
     FrNavbarLogoComponent,
+    FrNavbarMenuComponent,
     FrRippleDirective,
     FrChipComponent,
     FrInputTextComponent
