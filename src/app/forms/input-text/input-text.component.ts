@@ -61,7 +61,7 @@ export class FrInputTextComponent implements OnInit, ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
 
-  private _state: string = 'placeholder';
+  private _state = 'placeholder';
 
   get value(): any {
     return this._innerValue;

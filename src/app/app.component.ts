@@ -84,7 +84,7 @@ export class AppComponent {
   public removeChip(index: number) {
     this.chips = [
       ...this.chips.slice(0, index),
-      ...this.chips.slice(index+1),
+      ...this.chips.slice(index + 1),
     ];
   }
 }

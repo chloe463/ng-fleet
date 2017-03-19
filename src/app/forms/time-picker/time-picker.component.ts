@@ -13,9 +13,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {};
 
 const DIALS = {
-  hours: [12,1,2,3,4,5,6,7,8,9,10,11],
-  minutes: [0,5,10,15,20,25,30,35,40,45,50,55]
-}
+  hours: [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  minutes: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
+};
 const HOURS   = 'hours';
 const MINUTES = 'minutes';
 
@@ -47,7 +47,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   public clockVisibility: boolean;
   public pickTarget: string = HOURS;
   public dials: Array<number> = [];
-  public changing: boolean = false;
+  public changing = false;
   private _oldValue: Date;
 
   constructor(private el: ElementRef) { }
