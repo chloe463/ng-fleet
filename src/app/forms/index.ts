@@ -1,5 +1,5 @@
 export { FrInputTextComponent } from './input-text/input-text.component';
-export { FrCalendarComponent } from './calendar/calendar.component';
+export { FrDatePickerComponent } from './date-picker/date-picker.component';
 export { FrCheckboxComponent } from './checkbox/checkbox.component';
 export { FrRadioGroupComponent } from './radio/radio-group.component';
 export { FrRadioComponent } from './radio/radio.component';
