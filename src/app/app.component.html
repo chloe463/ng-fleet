@@ -1,8 +1,13 @@
 <fr-navbar>
-  <fr-navbar-logo title="Francette"></fr-navbar-logo>
+  <fr-navbar-logo link="/" title="Francette"></fr-navbar-logo>
   <fr-navbar-item link="/nav1" title="nav1"></fr-navbar-item>
   <fr-navbar-item link="/nav2" title="nav2"></fr-navbar-item>
   <fr-navbar-item link="/nav3" title="nav3"></fr-navbar-item>
+  <fr-navbar-item link="/nav4" title="nav-menu">
+    <fr-navbar-menu link="/nav4/1" title="nav4-1"></fr-navbar-menu>
+    <fr-navbar-menu link="/nav4/2" title="nav4-2"></fr-navbar-menu>
+    <fr-navbar-menu link="/nav4/3" title="nav4-3"></fr-navbar-menu>
+  </fr-navbar-item>
 </fr-navbar>
 
 <fr-tabs [(selectedIndex)]="selectedIndex">

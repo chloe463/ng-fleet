@@ -22,8 +22,8 @@ import { FrNavbarItemComponent } from './navbar-item.component';
 })
 export class FrNavbarComponent implements OnInit {
 
-  @ContentChildren(FrNavbarLogoComponent) _logos: QueryList<FrNavbarLogoComponent>;
-  @ContentChildren(FrNavbarItemComponent) _items: QueryList<FrNavbarItemComponent>;
+  @ContentChildren(FrNavbarLogoComponent) logos: QueryList<FrNavbarLogoComponent>;
+  @ContentChildren(FrNavbarItemComponent) items: QueryList<FrNavbarItemComponent>;
 
   constructor(private _location: Location) {
   }

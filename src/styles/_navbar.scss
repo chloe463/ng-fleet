@@ -1,10 +1,13 @@
 .fr-navbar {
   width: 100%;
   &__items {
+    background: #3F51B5;
+    padding-left: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    color: #FFFFFF;
     margin-top: 0;
     margin-bottom: 15px;
     list-style: none;
-    height: 41px;
     display: flex;
     justify-content: flex-start;
     border-top: 1px solid #A1A1A1;
@@ -14,8 +17,7 @@
   &__logo {
     height: 27px;
     margin: 0;
-    margin-left: -40px;
-    padding: 7px 12px;
+    padding: 12px 12px;
     font-weight: bold;
     text-align: center;
   }
@@ -23,33 +25,72 @@
   &__item {
     height: 27px;
     margin: 0;
-    padding: 7px 12px;
+    padding: 12px 6px;
     text-align: center;
-    border-left: 1px solid #A1A1A1;
-
-    &:last-child {
-      border-right: 1px solid #A1A1A1;
-    }
-
-    &:hover {
-    }
 
     &--active {
-      border-bottom: 2px solid #DC322F;
+      color: #FFFFFF;
       &:hover {
-      }
-
-      > a {
-        color: #DC322F;
       }
     }
 
-    > a {
-      color: $base00;
-      text-decoration: none;
+    &:hover .fr-navbar__menu {
+      visibility: visible;
+      top: 38px;
+      opacity: 1;
+    }
+    &:hover .fr-navbar__label {
+      background: lighten(#3F51B5, 15%);
+    }
+  }
 
-      &:visited {
-        text-decoration: none;
+  &__label {
+    font-size: 15px;
+    padding: 8px 16px;
+    vertical-align: middle;
+    border-radius: 2px;
+    background: transparent;
+    color: #FFFFFF;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      background: lighten(#3F51B5, 15%);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 28px;
+    list-style: none;
+    line-height: 20px;
+    min-width: 180px;
+    background: lighten(#3F51B5, 15%);
+    color: #000;
+    padding: 0;
+    visibility: hidden;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    opacity: 0;
+
+    transition-duration: .2s;
+    transition-property: all;
+    transition-timing-function: ease;
+
+    &-item {
+      line-height: 36px;
+      border-bottom: 1px solid #CCCCCC;
+
+      &:hover {
+        background: lighten(#3F51B5, 20%);
+      }
+
+      &:hover .fr-navbar__label {
+        background: lighten(#3F51B5, 20%);
+      }
+
+      &:last-child {
+        border-bottom: none;
       }
     }
   }
