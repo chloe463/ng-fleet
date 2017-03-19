@@ -13,7 +13,7 @@ import {
 })
 export class FrChipComponent implements OnInit {
 
-  @Input() on: boolean = false;
+  @Input() on = false;
 
   @Output() dismiss = new EventEmitter();
 

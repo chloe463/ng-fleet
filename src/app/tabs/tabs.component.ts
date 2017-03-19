@@ -18,7 +18,7 @@ export class FrTabsComponent implements OnInit, AfterContentInit, OnChanges {
 
   @ContentChildren(FrTabComponent) _tabs: QueryList<FrTabComponent>;
 
-  @Input() selectedIndex: number = 0;
+  @Input() selectedIndex = 0;
 
   private _current: {index: number, tab: FrTabComponent};
 
