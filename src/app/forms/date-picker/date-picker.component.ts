@@ -159,9 +159,17 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   @HostListener('document:click', ['$event'])
-  public disapper(event) {
+  public disapperOnClick(event) {
     if (!this.el.nativeElement.contains(event.target)) {
       this.calendarVisibility = false;
     }
   }
+
+  @HostListener('window:keydown', ['$event'])
+  public disapperOnKeyDown(event) {
+    if (event.key === 'Escape') {
+      this.calendarVisibility = false;
+    }
+  }
+
 }

@@ -181,8 +181,15 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   @HostListener('document:click', ['$event'])
-  public disapper(event) {
+  public disapperOnClick(event) {
     if (!this.el.nativeElement.contains(event.target)) {
+      this.clockVisibility = false;
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  public disapperOnKeyDown(event) {
+    if (event.key === 'Escape') {
       this.clockVisibility = false;
     }
   }
