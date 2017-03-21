@@ -31,7 +31,7 @@
     z-index: 100;
 
     &-header {
-      background: $indigo;
+      background: #3F51B5;
       height: 80px;
       display: flex;
       justify-content: center;
@@ -64,7 +64,7 @@
     margin: 10px;
     height: 300px;
     border-radius: 50%;
-    background: #EAEAEA;
+    background: #EEEEEE;
   }
 
   &__clock-dial {
@@ -82,22 +82,22 @@
     traisition-timing-function: linear;
 
     &:hover {
-      background: lighten($indigo, 15%);
+      background: lighten($magenta, 15%);
       color: #FFFFFF;
     }
 
     &--picked {
-      background: $indigo;
+      background: $magenta;
       color: #FFFFFF;
       &:hover {
-        background: $indigo;
+        background: $magenta;
         color: #FFFFFF;
       }
     }
   }
 
   &__button--primary {
-    color: $indigo;
+    color: #3F51B5;
   }
 }
 
