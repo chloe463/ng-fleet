@@ -6,6 +6,14 @@
     </span>
   </div>
   <div class="fr-calendar__body" [hidden]="!calendarVisibility">
+    <div class="fr-calendar__body-header">
+      <div class="fr-calendar__body-header-year">
+        {{value|date: 'yyyy'}}
+      </div>
+      <div class="fr-calendar__body-header-date">
+        {{value|date: 'EEE, MMM d'}}
+      </div>
+    </div>
     <table class="fr-calendar__table">
       <colgroup class="fr-calendar__date--sunday"></colgroup>
       <colgroup></colgroup>

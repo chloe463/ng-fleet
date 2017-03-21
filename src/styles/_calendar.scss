@@ -10,6 +10,19 @@
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
 
     &-header {
+      line-height: 25px;
+      background: #3F51B5;
+      color: #FFFFFF;
+
+      &-year {
+        padding: 10px 10px 0 10px;
+        font-size: 14px;
+      }
+      &-date {
+        padding: 10px 20px;
+        font-size: 26px;
+        font-weight: bold;
+      }
     }
 
     &-footer {
@@ -24,6 +37,7 @@
     border-spacing: 0;
     text-align: center;
     background: #FFFFFF;
+    table-layout: fixed;
   }
 
   &__input-text {
