@@ -73,6 +73,7 @@
 
     &--today {
       color: $magenta;
+      border: 1px solid $magenta;
     }
 
     &--sunday {
@@ -87,6 +88,10 @@
       color: #FFFFFF;
       background: $magenta;
       border-radius: 50%;
+    }
+
+    &--outofmonth {
+      color: #A1A1A1;
     }
 
     &:hover {

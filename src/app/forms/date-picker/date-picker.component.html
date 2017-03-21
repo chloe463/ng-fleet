@@ -37,10 +37,11 @@
       <tbody>
         <tr *ngFor="let week of weeks">
           <td *ngFor="let date of week" class="fr-calendar__date"
-            (click)="changeDate(date.model)"
-            [class.fr-calendar__date--today]="isToday(date.model)"
-            [class.fr-calendar__date--selected]="isSelected(date.model)">
-            {{date.label}}
+            (click)="changeDate(date)"
+            [class.fr-calendar__date--today]="isToday(date)"
+            [class.fr-calendar__date--outofmonth]="isOutOfMonth(date)"
+            [class.fr-calendar__date--selected]="isSelected(date)">
+            {{date | date: 'd'}}
           </td>
         </tr>
       </tbody>
