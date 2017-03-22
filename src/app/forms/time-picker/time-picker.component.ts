@@ -159,9 +159,12 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     }
   }
 
-  public togglePickTarget(): void {
+  public togglePickTarget(pickTarget = HOURS): void {
+    if (this.pickTarget === pickTarget) {
+      return;
+    }
     this.changing   = true;
-    this.pickTarget = this.pickTarget === HOURS ? MINUTES : HOURS;
+    this.pickTarget = pickTarget;
     this.setDials(this.pickTarget);
     // wait for dials rendering
     setTimeout(() => {
