@@ -7,8 +7,18 @@
   </div>
   <div class="fr-timepicker__body" [hidden]="!clockVisibility">
     <div class="fr-timepicker__body-header">
-      <span class="fr-timepicker__time" (click)="togglePickTarget()">
-        {{value|date:'hh:mm'}}
+      <span class="fr-timepicker__time">
+        <span class="fr-timepicker__time-hours"
+          [class.fr-timepicker__time-hours--picking]="pickTarget === 'hours'"
+          (click)="togglePickTarget('hours')">
+          {{value|date:'h'}}
+        </span>
+        <span class="fr-timepicker__time-colon">:</span>
+        <span class="fr-timepicker__time-minutes"
+          [class.fr-timepicker__time-minutes--picking]="pickTarget === 'minutes'"
+          (click)="togglePickTarget('minutes')">
+          {{value|date:'mm'}}
+        </span>
       </span>
       <span class="fr-timepicker__meridian" [class.fr-timepicker__meridian--selected]="isAm()" (click)="toggleAmPm()">
         AM
@@ -25,7 +35,7 @@
         (click)="setTime(dial)">{{dial}}</span>
     </div>
     <div class="fr-timepicker__body-footer">
-      <button type="button" class="fr-btn fr-btn-flat fr-timepicker__button--primary" (click)="cancel()">CANCEL</button>
+      <button type="button" class="fr-btn fr-btn-flat fr-timepicker__button--secondary" (click)="cancel()">CANCEL</button>
       <button type="button" class="fr-btn fr-btn-flat fr-timepicker__button--primary" (click)="commit()">OK</button>
     </div>
   </div>

@@ -159,9 +159,12 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     }
   }
 
-  public togglePickTarget(): void {
+  public togglePickTarget(pickTarget = HOURS): void {
+    if (this.pickTarget === pickTarget) {
+      return;
+    }
     this.changing   = true;
-    this.pickTarget = this.pickTarget === HOURS ? MINUTES : HOURS;
+    this.pickTarget = pickTarget;
     this.setDials(this.pickTarget);
     // wait for dials rendering
     setTimeout(() => {
@@ -181,8 +184,15 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   @HostListener('document:click', ['$event'])
-  public disapper(event) {
+  public disapperOnClick(event) {
     if (!this.el.nativeElement.contains(event.target)) {
+      this.clockVisibility = false;
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  public disapperOnKeyDown(event) {
+    if (event.key === 'Escape') {
       this.clockVisibility = false;
     }
   }

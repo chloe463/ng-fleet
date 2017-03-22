@@ -6,6 +6,14 @@
     </span>
   </div>
   <div class="fr-calendar__body" [hidden]="!calendarVisibility">
+    <div class="fr-calendar__body-header">
+      <div class="fr-calendar__body-header-year">
+        {{value|date: 'yyyy'}}
+      </div>
+      <div class="fr-calendar__body-header-date">
+        {{value|date: 'EEE, MMM d'}}
+      </div>
+    </div>
     <table class="fr-calendar__table">
       <colgroup class="fr-calendar__date--sunday"></colgroup>
       <colgroup></colgroup>
@@ -37,17 +45,18 @@
       <tbody>
         <tr *ngFor="let week of weeks">
           <td *ngFor="let date of week" class="fr-calendar__date"
-            (click)="changeDate(date.model)"
-            [class.fr-calendar__date--today]="isToday(date.model)"
-            [class.fr-calendar__date--selected]="isSelected(date.model)">
-            {{date.label}}
+            (click)="changeDate(date)"
+            [class.fr-calendar__date--today]="isToday(date)"
+            [class.fr-calendar__date--outofmonth]="isOutOfMonth(date)"
+            [class.fr-calendar__date--selected]="isSelected(date)">
+            {{date | date: 'd'}}
           </td>
         </tr>
       </tbody>
     </table>
     <div class="fr-calendar__body-footer">
-      <button type="button" class="fr-btn fr-btn-flat" (click)="cancel()">CANCEL</button>
-      <button type="button" class="fr-btn fr-btn-flat" (click)="commit()">OK</button>
+      <button type="button" class="fr-btn fr-btn-flat fr-calendar__button--secondary" (click)="cancel()">CANCEL</button>
+      <button type="button" class="fr-btn fr-btn-flat fr-calendar__button--primary" (click)="commit()">OK</button>
     </div>
   </div>
 </div>

@@ -22,11 +22,6 @@ export const DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   multi: true
 };
 
-export interface IFrDate {
-  label: string;
-  model: Date | null;
-}
-
 @Component({
   selector: 'fr-date-picker',
   templateUrl: './date-picker.component.html',
@@ -43,8 +38,9 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
 
   public calendarVisibility: boolean;
   public target: Date;
-  public weeks: Array<Array<IFrDate>>;
+  public weeks: Array<Array<Date | null>>;
   private _oldValue: Date;
+  private _selectOutOfMonth: boolean;
 
   constructor(private el: ElementRef) {
   }
@@ -80,7 +76,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.calendarVisibility = false;
-    this.target     = new Date();
+    this.target             = new Date();
     this._resetCalendar(this.target);
   }
 
@@ -88,25 +84,30 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
     this.weeks  = [];
 
     const first: Date = new Date(target.getFullYear(), target.getMonth(), 1);
-    let week: Array<IFrDate> = [];
+    let week: Array<Date> = [];
 
-    for (let i = 0; i < first.getDay(); ++i) {
-      week.push({label: '', model: null});
+    // A month before target month
+    for (let i = -(first.getDay() - 1); i <= 0; ++i) {
+      const d: Date = new Date(target.getFullYear(), target.getMonth(), i);
+      week.push(d);
     }
 
+    // target month
     for (let i = 1; i <= DATE_MAX; ++i) {
       const d: Date = new Date(target.getFullYear(), target.getMonth(), i);
       if (d.getMonth() !== target.getMonth()) {
         break;
       }
-      week.push({label: d.getDate().toString(), model: d});
+      week.push(d);
       if (d.getDay() === SATURDAY) {
         this.weeks.push(week);
         week = [];
       }
     }
-    while (week.length < WEEK_DATE_COUNT) {
-      week.push({label: '', model: null});
+
+    // Next month
+    for (let i = 1; week.length < WEEK_DATE_COUNT; ++i) {
+      week.push(new Date(target.getFullYear(), target.getMonth() + 1, i));
     }
     this.weeks.push(week);
   }
@@ -147,6 +148,16 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
       return;
     }
     this.value = d;
+    if (d.getMonth() !== this.target.getMonth()) {
+      this.target = d;
+      this._resetCalendar(d);
+      this._selectOutOfMonth = true;
+    }
+  }
+
+  public isOutOfMonth(d: Date): boolean {
+    return (d.getFullYear() !== this.target.getFullYear()
+            || d.getMonth() !== this.target.getMonth());
   }
 
   public cancel(): void {
@@ -159,9 +170,24 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   @HostListener('document:click', ['$event'])
-  public disapper(event) {
+  public disapperOnClick(event) {
+    // Without this condition, calendar disappear
+    // when select previous or next month date.
+    if (this._selectOutOfMonth) {
+      this._selectOutOfMonth = false;
+      return;
+    }
+
     if (!this.el.nativeElement.contains(event.target)) {
       this.calendarVisibility = false;
     }
   }
+
+  @HostListener('window:keydown', ['$event'])
+  public disapperOnKeyDown(event) {
+    if (event.key === 'Escape') {
+      this.calendarVisibility = false;
+    }
+  }
+
 }
