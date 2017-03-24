@@ -6,8 +6,7 @@ import {
 
 @Component({
   selector: 'fr-navbar-menu',
-  templateUrl: './navbar-menu.component.html',
-  styleUrls: ['./navbar-menu.component.scss']
+  templateUrl: './navbar-menu.component.html'
 })
 export class FrNavbarMenuComponent implements OnInit {
 

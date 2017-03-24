@@ -27,7 +27,6 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-select',
   templateUrl: './select.component.html',
-  styleUrls: [],
   providers: [SELECT_CONTROL_VALUE_ACCESSOR]
 })
 export class FrSelectComponent implements OnInit, ControlValueAccessor {

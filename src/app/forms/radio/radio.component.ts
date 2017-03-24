@@ -6,8 +6,7 @@ import {
 
 @Component({
   selector: 'fr-radio',
-  templateUrl: './radio.component.html',
-  styleUrls: []
+  templateUrl: './radio.component.html'
 })
 export class FrRadioComponent implements OnInit {
 

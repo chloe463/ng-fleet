@@ -12,8 +12,7 @@ export interface IKpiData {
 
 @Component({
   selector: 'fr-kpi-table',
-  templateUrl: './kpi-table.component.html',
-  styleUrls: []
+  templateUrl: './kpi-table.component.html'
 })
 export class FrKpiTableComponent implements OnInit {
   @Input() data: IKpiData;

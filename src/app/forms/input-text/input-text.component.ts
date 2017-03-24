@@ -24,7 +24,6 @@ export const INPUT_TEXT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-input-text',
   templateUrl: './input-text.component.html',
-  styleUrls: ['./input-text.component.scss'],
   providers: [INPUT_TEXT_CONTROL_VALUE_ACCESSOR],
   animations: [
     trigger('labelState', [
