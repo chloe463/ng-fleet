@@ -1,4 +1,5 @@
 export * from './chip/chip.component';
+export * from './data-table/index';
 export * from './forms/index';
 export * from './kpi-table/index';
 export * from './navbar/index';

@@ -1,0 +1,69 @@
+<div class="fr-data-table__wrapper">
+  <div class="fr-data-table__header">
+    <span class="fr-data-table__header-title">
+      {{title}}
+    </span>
+    <span class="fr-data-table__header-buttons"
+      [hidden]="!countCheckedRows()">
+      <a class="fr-data-table__header-btn" (click)="updateRowAction('edit')">
+        <i class="fa fa-pencil"></i>
+      </a>
+      <a class="fr-data-table__header-btn" (click)="updateRowAction('delete')">
+        <i class="fa fa-trash"></i>
+      </a>
+    </span>
+  </div>
+  <table class="fr-data-table">
+    <colgroup *ngFor="let column of columns; trackBy: index"
+         class="fr-data-table__column">
+    </colgroup>
+    <thead class="fr-data-table__thead">
+      <tr class="fr-data-table__thead-row">
+        <td class="fr-data-table__thead-checkbox" [hidden]="!selectable">
+          <fr-checkbox [(ngModel)]="checkAllFlag" (change)="checkAll()"></fr-checkbox>
+        </td>
+        <th *ngFor="let column of columns; let i = index; trackBy: index"
+          class="fr-data-table__thead-column"
+          [class.fr-data-table__thead-column--first]="i === 0"
+          [class.fr-data-table__thead-column--string]="column.type === 'string'"
+          [class.fr-data-table__thead-column--number]="column.type === 'number'">
+          {{column.name}}
+        </th>
+      </tr>
+    </thead>
+    <tbody class="fr-data-table__tbody">
+      <tr *ngFor="let row of rows; let i = index; trackBy: index"
+           class="fr-data-table__tbody-row">
+        <td class="fr-data-table__tbody-checkbox" [hidden]="!selectable">
+          <fr-checkbox [(ngModel)]="checkedRowIndices[i]"></fr-checkbox>
+        </td>
+        <td *ngFor="let column of columns; let i = index; trackBy: index"
+           class="fr-data-table__tbody-cell"
+           [class.fr-data-table__tbody-cell--first]="i === 0"
+           [class.fr-data-table__tbody-cell--string]="columns[i].type === 'string'"
+           [class.fr-data-table__tbody-cell--number]="columns[i].type === 'number'">
+          <span class="fr-data-table__tbody-value">{{row[column.name]}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="fr-data-table__footer">
+    <span class="fr-data-table__footer-rows-info" [hidden]="!paginationInfo.page">
+      Page: {{paginationInfo.page}}
+    </span>
+    <span class="fr-data-table__footer-select-label" [hidden]="!paginationInfo.rowsPerPageValues">
+      Rows per page :
+    </span>
+    <span class="fr-data-table__footer-select" [hidden]="!paginationInfo.rowsPerPageValues">
+      <fr-select [(ngModel)]="rowsPerPage" (ngModelChange)="paginationAction('changeRowsValue', rowsPerPage.value)">
+        <fr-option *ngFor="let option of paginationInfo.rowsPerPageValues" [value]="option" [label]="option"></fr-option>
+      </fr-select>
+    </span>
+    <a class="fr-data-table__footer-left-arrow" (click)="paginationAction('showPreviousPage')">
+      <i class="fa fa-chevron-left"></i>
+    </a>
+    <a class="fr-data-table__footer-right-arrow" (click)="paginationAction('showNextPage')">
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>

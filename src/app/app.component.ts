@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'fr-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'Francette';
@@ -48,6 +47,20 @@ export class AppComponent {
     date: new Date(),
     time: new Date()
   };
+  records = {
+    columns: [
+      { name: 'column1', type: 'number' },
+      { name: 'column2', type: 'string' },
+      { name: 'column3', type: 'number' },
+      { name: 'column4', type: 'string' },
+      { name: 'column5', type: 'number' },
+    ],
+    rows: [
+      { column1: 1, column2: 'value1', column3: 100, column4: '2017-03-01 00:00:00', column5: 999 },
+      { column1: 2, column2: 'value2', column3: 100, column4: '2017-03-01 00:00:00', column5: 987 },
+      { column1: 3, column2: 'value3', column3: 100, column4: '2017-03-01 00:00:00', column5: 989 }
+    ]
+  }
 
   public toggleSelect() {
     this.selectDisabled = !this.selectDisabled;
@@ -86,6 +99,14 @@ export class AppComponent {
       ...this.chips.slice(0, index),
       ...this.chips.slice(index + 1),
     ];
+  }
+
+  public updateAction(event) {
+    console.log(event);
+  }
+
+  public paginationAction(event) {
+    console.log(event);
   }
 }
 

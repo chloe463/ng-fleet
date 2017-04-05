@@ -21,6 +21,11 @@ import { FrInputTextComponent } from './forms/input-text/input-text.component';
 
 import { FrRippleDirective } from './ripple/ripple.directive';
 import { FrChipComponent } from './chip/chip.component';
+import { FrDataTableComponent } from './data-table/data-table/data-table.component';
+import { FrDataTableHeaderComponent } from './data-table/data-table-header/data-table-header.component';
+import { FrDataTableFooterComponent } from './data-table/data-table-footer/data-table-footer.component';
+import { FrDataTableRowsComponent } from './data-table/data-table-rows/data-table-rows.component';
+import { FrDataTableColumnsComponent } from './data-table/data-table-columns/data-table-columns.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,12 @@ import { FrChipComponent } from './chip/chip.component';
     FrNavbarMenuComponent,
     FrRippleDirective,
     FrChipComponent,
-    FrInputTextComponent
+    FrInputTextComponent,
+    FrDataTableComponent,
+    FrDataTableColumnsComponent,
+    FrDataTableHeaderComponent,
+    FrDataTableFooterComponent,
+    FrDataTableRowsComponent
   ],
   imports: [
     FormsModule,
@@ -64,7 +74,12 @@ import { FrChipComponent } from './chip/chip.component';
     FrNavbarMenuComponent,
     FrRippleDirective,
     FrChipComponent,
-    FrInputTextComponent
+    FrInputTextComponent,
+    FrDataTableComponent,
+    FrDataTableColumnsComponent,
+    FrDataTableHeaderComponent,
+    FrDataTableFooterComponent,
+    FrDataTableRowsComponent
   ]
 })
 export class FrancetteModule { }

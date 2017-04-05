@@ -11,6 +11,16 @@
 </fr-navbar>
 
 <fr-tabs [(selectedIndex)]="selectedIndex">
+  <fr-tab title="data-table">
+    <fr-data-table [selectable]="true">
+      <fr-data-table-header title="Header" (updateAction)="updateAction($event)"></fr-data-table-header>
+      <fr-data-table-columns [columns]="records.columns"></fr-data-table-columns>
+      <fr-data-table-rows [rows]="records.rows"></fr-data-table-rows>
+      <fr-data-table-footer
+        [paginationInfo]="{ totalRows: 100, rowsPerPageValues: [10, 30, 50], page: 1 }"
+        (paginationAction)="paginationAction($event)"></fr-data-table-footer>
+    </fr-data-table>
+  </fr-tab>
   <fr-tab title="chips">
     <div>
       <fr-chip *ngFor="let chip of chips; let i = index" (dismiss)="removeChip(i)">
