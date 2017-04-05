@@ -17,7 +17,6 @@ import { FrNavbarItemComponent } from './navbar-item.component';
 @Component({
   selector: 'fr-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: [],
   providers: [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
 export class FrNavbarComponent implements OnInit {

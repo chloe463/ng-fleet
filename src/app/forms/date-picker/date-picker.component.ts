@@ -25,7 +25,6 @@ export const DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: [],
   providers: [DATE_PICKER_CONTROL_VALUE_ACCESSOR]
 })
 export class FrDatePickerComponent implements OnInit, ControlValueAccessor {

@@ -28,7 +28,6 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-time-picker',
   templateUrl: './time-picker.component.html',
-  styleUrls: [],
   providers: [TIME_PICKER_CONTROL_VALUE_ACCESSOR]
 })
 export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValueAccessor {
