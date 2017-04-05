@@ -14,8 +14,7 @@ export interface IFrPaginationInfo {
 
 @Component({
   selector: 'fr-data-table-footer',
-  templateUrl: './data-table-footer.component.html',
-  styleUrls: ['./data-table-footer.component.scss']
+  templateUrl: './data-table-footer.component.html'
 })
 export class FrDataTableFooterComponent implements OnInit {
 

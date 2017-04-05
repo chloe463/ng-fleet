@@ -11,8 +11,7 @@ export interface IFrDataTableColumn {
 
 @Component({
   selector: 'fr-data-table-columns',
-  templateUrl: './data-table-columns.component.html',
-  styleUrls: ['./data-table-columns.component.scss']
+  templateUrl: './data-table-columns.component.html'
 })
 export class FrDataTableColumnsComponent implements OnInit {
 
