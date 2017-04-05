@@ -17,8 +17,7 @@ import { FrDataTableFooterComponent } from '../data-table-footer/data-table-foot
 
 @Component({
   selector: 'fr-data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss']
+  templateUrl: './data-table.component.html'
 })
 export class FrDataTableComponent implements OnInit, AfterContentInit {
 

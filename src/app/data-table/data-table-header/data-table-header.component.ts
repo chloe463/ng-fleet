@@ -13,8 +13,7 @@ export interface IFrUpdateAction {
 
 @Component({
   selector: 'fr-data-table-header',
-  templateUrl: './data-table-header.component.html',
-  styleUrls: ['./data-table-header.component.scss']
+  templateUrl: './data-table-header.component.html'
 })
 export class FrDataTableHeaderComponent implements OnInit {
 

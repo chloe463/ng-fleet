@@ -7,8 +7,7 @@ import {
 
 @Component({
   selector: 'fr-data-table-rows',
-  templateUrl: './data-table-rows.component.html',
-  styleUrls: ['./data-table-rows.component.scss']
+  templateUrl: './data-table-rows.component.html'
 })
 export class FrDataTableRowsComponent implements OnInit {
 
