@@ -29,7 +29,7 @@ export const INPUT_TEXT_CONTROL_VALUE_ACCESSOR: any = {
     trigger('labelState', [
       state('placeholder', style({
         top: '5px',
-        left: '3px',
+        left: '0',
         color: '#CCCCCC'
       })),
       state('label', style({
