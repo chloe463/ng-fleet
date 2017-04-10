@@ -1,6 +1,9 @@
 <div class="fr-select">
   <input type="hidden" [(value)]="value" name="{{name}}">
-  <span class="fr-select__text" (click)="optionsVisibility = !optionsVisibility">
+  <label class="fr-input-text__label" [@labelState]="state">
+    {{placeholder}}
+  </label>
+  <span class="fr-select__text" (click)="toggleOptionsVisiblity()">
     {{label}}
   </span>
   <ul class="fr-select__list" [hidden]="!optionsVisibility">
