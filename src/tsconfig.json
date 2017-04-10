@@ -16,6 +16,10 @@
     ]
   },
   "exclude": [
-    "test.ts"
+    "test.ts",
+    "app/*.spec.ts",
+    "app/**/**.spec.ts",
+    "app/**/**/**.spec.ts",
+    "assets/*.ts"
   ]
 }
