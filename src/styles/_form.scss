@@ -66,13 +66,18 @@
   }
 
   &__checkbox {
-    border: 1px solid #A1A1A1;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    font-size: 14px;
+    border: 2px solid #A1A1A1;
     border-radius: 2px;
     padding: 0px;
     cursor: pointer;
     background: transparent;
     transition-property: background;
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
     &:after {
       content: "\f00c";
       color: transparent;
@@ -82,7 +87,7 @@
     &--checked {
       color: #FFFFFF;
       background: $magenta;
-      border: 1px solid $magenta;
+      border: 2px solid $magenta;
       &:after {
         content: "\f00c";
         color: #FFFFFF;
