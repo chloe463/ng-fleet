@@ -1,9 +1,14 @@
 <label *ngFor="let radio of _radios" class="fr-form__radio-label">
-  <span class="fr-form__radio" [class.fr-form__radio--checked]="radio.value === value"></span>
+  <div class="fr-form__radio-container">
+    <span class="fr-form__radio-outer-circle" [class.fr-form__radio-outer-circle--checked]="radio.value === value"></span>
+    <span class="fr-form__radio-inner-circle" [class.fr-form__radio-inner-circle--checked]="radio.value === value"></span>
+  </div>
   <input type="radio"
          name="{{name}}"
          class="fr-form__input-radio"
          [value]="radio.value"
          [(ngModel)]="value" >
-  {{radio.label}}
+  <div class="fr-form__radio-label-text">
+    {{radio.label}}
+  </div>
 </label>
