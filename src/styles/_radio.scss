@@ -65,3 +65,96 @@
     }
   }
 }
+
+.fr-form {
+  &__radio {
+    &-container {
+      position: relative;
+      display: inline-flex;
+    }
+
+    &-outer-circle {
+      display: inline-block;
+      background: transparent;
+      padding: 0px;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #A1A1A1;
+      border-radius: 50%;
+      cursor: pointer;
+      transition-property: border-color;
+      transition-duration: 0.3s;
+      transition-timing-function: ease;
+      &--checked {
+        border-color: $magenta;
+      }
+    }
+
+    &-inner-circle {
+      position: absolute;
+      display: inline-block;
+      background: transparent;
+      width: 10px;
+      height: 10px;
+      top: 5px;
+      left: 5px;
+      border-radius: 50%;
+      transition-property: background, transform;
+      transition-duration: 0.3s;
+      transition-timing-function: ease;
+      transform: scale(0);
+      &--checked {
+        background: $magenta;
+        transform: none;
+      }
+    }
+
+    &-ripple {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      opacity: 0.3;
+      transform: scale(0);
+      transition-property: background, transform;
+      transition-duration: 0.2s;
+      transition-timing-function: ease;
+      &--on {
+        background: lighten($magenta, 30%);
+        transform: none;
+        opacity: 0.3;
+      }
+    }
+
+    &-label {
+      cursor: pointer;
+      @media all and (max-width: 768px) {
+        display: block;
+        margin: 20px 0;
+      }
+      &-text {
+        display: inline-block;
+      }
+    }
+
+    &:after {
+      content: "\00a0\00a0\00a0";
+    }
+
+    &--checked {
+      color: #FFFFFF;
+      background: $magenta;
+      border: 2px solid #E4E4E4;
+      padding: 0px;
+      &:after {
+        content: "\00a0\00a0\00a0";
+      }
+    }
+  }
+
+  &__input-radio {
+    display: none;
+  }
+}
