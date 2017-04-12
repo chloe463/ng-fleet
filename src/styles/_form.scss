@@ -146,10 +146,15 @@
       color: #FFFFFF;
       background: $magenta;
       border: 2px solid $magenta;
-      &:after {
-        content: "\f00c";
-        color: #FFFFFF;
-        font-family: "FontAwesome";
+    }
+
+    &-checkmark {
+      &-path {
+        stroke-width: 2.3px;
+        stroke: transparent;
+      }
+      &--on > &-path {
+        stroke: #FFFFFF;
       }
     }
 

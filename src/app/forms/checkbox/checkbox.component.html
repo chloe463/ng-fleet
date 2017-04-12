@@ -1,5 +1,11 @@
 <label class="fr-form__checkbox-label">
-  <span class="fr-form__checkbox" [class.fr-form__checkbox--checked]="value"></span>
+  <span class="fr-form__checkbox" [class.fr-form__checkbox--checked]="value">
+    <svg class="fr-form__checkbox-checkmark"
+      [class.fr-form__checkbox-checkmark--on]="value"
+      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path class="fr-form__checkbox-checkmark-path" d="M 21.921 6.06 L 10.097 18.581 L 2.99 12.124" style="fill: none;"/>
+    </svg>
+  </span>
   <span class="fr-form__checkbox-ripple" [class.fr-form__checkbox-ripple--on]="isRippleOn"></span>
   <input #input type="checkbox"
          name="{{name}}"
