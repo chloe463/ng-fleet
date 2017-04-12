@@ -57,6 +57,25 @@
       }
     }
 
+    &-ripple {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      opacity: 0.3;
+      transform: scale(0);
+      transition-property: background, transform;
+      transition-duration: 0.2s;
+      transition-timing-function: ease;
+      &--on {
+        background: lighten($magenta, 30%);
+        transform: none;
+        opacity: 0.3;
+      }
+    }
+
     &-label {
       cursor: pointer;
       @media all and (max-width: 768px) {

@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  AfterContentInit,
   Input,
   Output,
   ContentChildren,
@@ -23,7 +24,7 @@ export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './radio-group.component.html',
   providers: [RADIO_GROUP_CONTROL_VALUE_ACCESSOR]
 })
-export class FrRadioGroupComponent implements OnInit, ControlValueAccessor {
+export class FrRadioGroupComponent implements OnInit, AfterContentInit, ControlValueAccessor {
   @Input() name;
 
   @ContentChildren(FrRadioComponent) _radios: QueryList<FrRadioComponent>;
@@ -33,9 +34,17 @@ export class FrRadioGroupComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
+  public isRippleOn: {[key: number]: boolean} = {};
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngAfterContentInit() {
+    this._radios.forEach((radio, index) => {
+      this.isRippleOn[index] = false;
+    });
   }
 
   get value(): any {
@@ -67,4 +76,11 @@ export class FrRadioGroupComponent implements OnInit, ControlValueAccessor {
   }
 
   _onChange() {}
+
+  public turnOnRipple(index: number): void {
+    this.isRippleOn[index] = true;
+    setTimeout(() => {
+      this.isRippleOn[index] = false;
+    }, 1000);
+  }
 }
