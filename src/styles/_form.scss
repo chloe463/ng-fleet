@@ -108,6 +108,8 @@
 
   &__checkbox-label {
     cursor: pointer;
+    display: inline-flex;
+    vertical-align: middle;
     @media all and (max-width: 768px) {
       display: block;
       margin: 20px 0;
@@ -120,9 +122,11 @@
 
   &__checkbox {
     display: inline-block;
+    margin-right: 8px;
     width: 18px;
     height: 18px;
     text-align: center;
+    vertical-align: middle;
     font-size: 14px;
     border: 2px solid #A1A1A1;
     border-radius: 2px;
