@@ -110,6 +110,7 @@
     cursor: pointer;
     display: inline-flex;
     vertical-align: middle;
+    position: relative;
     @media all and (max-width: 768px) {
       display: block;
       margin: 20px 0;
@@ -149,6 +150,25 @@
         content: "\f00c";
         color: #FFFFFF;
         font-family: "FontAwesome";
+      }
+    }
+
+    &-ripple {
+      position: absolute;
+      top: -14px;
+      left: -14px;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background: lighten($magenta, 30%);
+      opacity: 0.3;
+      border-radius: 50%;
+      transform: scale(0);
+      transition-property: transform;
+      transition-duration: .2s;
+      transition-timing-function: ease;
+      &--on {
+        transform: none;
       }
     }
   }

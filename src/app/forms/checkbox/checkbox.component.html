@@ -1,5 +1,6 @@
 <label class="fr-form__checkbox-label">
   <span class="fr-form__checkbox" [class.fr-form__checkbox--checked]="value"></span>
+  <span class="fr-form__checkbox-ripple" [class.fr-form__checkbox-ripple--on]="isRippleOn"></span>
   <input #input type="checkbox"
          name="{{name}}"
          class="fr-form__input-checkbox"

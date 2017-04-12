@@ -32,6 +32,8 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
+  public isRippleOn = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -40,6 +42,10 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
   public onClick() {
     this.value = !this.value;
+    this.isRippleOn = true;
+    setTimeout(() => {
+      this.isRippleOn = false;
+    }, 1000);
   }
 
   get value(): any {
