@@ -6,7 +6,12 @@ import {
   QueryList,
   forwardRef,
   ElementRef,
-  HostListener
+  HostListener,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
 } from '@angular/core';
 import { FrOptionComponent } from './option.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -27,7 +32,31 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-select',
   templateUrl: './select.component.html',
-  providers: [SELECT_CONTROL_VALUE_ACCESSOR]
+  providers: [SELECT_CONTROL_VALUE_ACCESSOR],
+  animations: [
+    trigger('labelState', [
+      state('placeholder', style({
+        top: '5px',
+        left: '0',
+        color: '#CCCCCC'
+      })),
+      state('label', style({
+        top: '-10px',
+        left: '0px',
+        color: '#CCCCCC',
+        'font-size': '12px'
+      })),
+      state('labelOnFocus', style({
+        top: '-10px',
+        left: '0px',
+        color: '#D33682',
+        'font-size': '12px'
+      })),
+      transition('placeholder => labelOnFocus, labelOnFocus => placeholder, labelOnFocus => label, label => labelOnFocus', [
+        animate('200ms ease-out')
+      ])
+    ])
+  ]
 })
 export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @Input() name: string;
@@ -42,6 +71,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
 
   public optionsVisibility: boolean;
   public label: string | number;
+  private _state: string = 'placeholder';
 
   constructor(private el: ElementRef) { }
 
@@ -90,10 +120,16 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     this._isDisabled = isDisabled;
   }
 
+  public toggleOptionsVisiblity(): void {
+    this.optionsVisibility = !this.optionsVisibility;
+    this.onFocus();
+  }
+
   public select(option) {
     this.value = option;
     this.label = option.label;
     this.optionsVisibility = false;
+    this.state = 'label';
   }
 
   public isSelected(option) {
@@ -104,6 +140,27 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   disappear(event) {
     if (!this.el.nativeElement.contains(event.target)) {
       this.optionsVisibility = false;
+      this.onBlur();
     }
+  }
+
+  get state(): string {
+    return this._state;
+  }
+
+  set state(newState) {
+    this._state = newState;
+  }
+
+  public onFocus() {
+    this.state = 'labelOnFocus';
+  }
+
+  public onBlur() {
+    if (!this.value) {
+      this.state = 'placeholder';
+      return;
+    }
+    this.state = 'label';
   }
 }

@@ -1,9 +1,16 @@
-<label *ngFor="let radio of _radios" class="fr-form__radio-label">
-  <span class="fr-form__radio" [class.fr-form__radio--checked]="radio.value === value"></span>
+<label *ngFor="let radio of _radios; let i = index" class="fr-radio-label">
+  <div class="fr-radio-container">
+    <span class="fr-radio-outer-circle" [class.fr-radio-outer-circle--checked]="radio.value === value"></span>
+    <span class="fr-radio-inner-circle" [class.fr-radio-inner-circle--checked]="radio.value === value"></span>
+    <span class="fr-radio-ripple" [class.fr-radio-ripple--on]="isRippleOn[i]"></span>
+  </div>
   <input type="radio"
          name="{{name}}"
-         class="fr-form__input-radio"
+         class="fr-radio__input"
          [value]="radio.value"
-         [(ngModel)]="value" >
-  {{radio.label}}
+         [(ngModel)]="value"
+         (ngModelChange)="turnOnRipple(i)">
+  <div class="fr-radio-label-text">
+    {{radio.label}}
+  </div>
 </label>
