@@ -1,0 +1,144 @@
+.fr-date-picker {
+  position: relative;
+  display: inline-block;
+
+  &__body {
+    position: absolute;
+    z-index: 100;
+    border: 1px solid #CCCCCC;
+    background: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+
+    &-header {
+      line-height: 25px;
+      background: #3F51B5;
+      color: #FFFFFF;
+
+      &-year {
+        padding: 10px 10px 0 10px;
+        font-size: 14px;
+      }
+      &-date {
+        padding: 10px 20px;
+        font-size: 26px;
+        font-weight: bold;
+      }
+    }
+
+    &-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &__table {
+    width: 320px;
+    margin: 5px;
+    border-spacing: 0;
+    text-align: center;
+    background: #FFFFFF;
+    table-layout: fixed;
+  }
+
+  &__input-text {
+    outline: 0;
+    height: 30px;
+    font-size: 12pt;
+    border: none;
+    border-bottom: 1px solid #A1A1A1;
+    cursor: pointer;
+  }
+
+  &__toggle-button {
+    outline: none;
+    position: relative;
+    right: 25px;
+    height: 34px;
+    vertical-align: top;
+    background: #FFFFFF;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__day {
+    font-size: 11px;
+    color: #A1A1A1;
+    &--sun {
+      color: #A1A1A1;
+    }
+    &--sat {
+      color: #A1A1A1;
+    }
+  }
+
+  &__date, &__arrow {
+    border: none;
+    width: 43px;
+    height: 43px;
+    cursor: pointer;
+    font-size: 13px;
+    vertical-align: middle;
+    border-radius: 50%;
+
+    transition-property: background;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+
+    &--today {
+      color: $magenta;
+      border: 1px solid $magenta;
+    }
+
+    &--sunday {
+      // background: #FFCFCF;
+    }
+
+    &--saturday {
+      // background: #BEE2FB;
+    }
+
+    &--selected {
+      color: #FFFFFF;
+      background: $magenta;
+      border-radius: 50%;
+    }
+
+    &--outofmonth {
+      color: #A1A1A1;
+    }
+
+    &:hover {
+      color: #FFFFFF;
+      background: lighten($magenta, 20%);
+      border-radius: 50%;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__button--primary, &__button--secondary {
+    color: #3F51B5;
+  }
+
+  &__ok-button {
+    color: $magenta;
+  }
+}
+
+.fr-triangle {
+  &--left {
+    margin-right: 20px;
+    height: 0;
+    border: 6px solid transparent;
+    border-right: 6px solid #A1A1A1;
+  }
+  &--right {
+    margin-left: 20px;
+    height: 0;
+    border: 6px solid transparent;
+    border-left: 6px solid #A1A1A1;
+  }
+}

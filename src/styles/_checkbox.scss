@@ -1,20 +1,14 @@
-.fr-form {
-  &__checkbox-label {
-    cursor: pointer;
-    display: inline-flex;
-    vertical-align: middle;
-    position: relative;
-    @media all and (max-width: 768px) {
-      display: block;
-      margin: 20px 0;
-    }
+.fr-checkbox {
+  cursor: pointer;
+  display: inline-flex;
+  vertical-align: middle;
+  position: relative;
+  @media all and (max-width: 768px) {
+    display: block;
+    margin: 20px 0;
   }
 
-  &__input-checkbox {
-    display: none;
-  }
-
-  &__checkbox {
+  &__square {
     display: inline-block;
     margin-right: 8px;
     width: 18px;
@@ -34,40 +28,114 @@
       color: transparent;
       font-family: "FontAwesome";
     }
-
     &--checked {
       color: #FFFFFF;
       background: $magenta;
       border: 2px solid $magenta;
     }
-
-    &-checkmark {
-      &-path {
-        stroke-width: 2.3px;
-        stroke: transparent;
-      }
-      &--on > &-path {
-        stroke: #FFFFFF;
-      }
+  }
+  &-ripple {
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: lighten($magenta, 30%);
+    opacity: 0.3;
+    border-radius: 50%;
+    transform: scale(0);
+    transition-property: transform;
+    transition-duration: .2s;
+    transition-timing-function: ease;
+    &--on {
+      transform: none;
     }
-
-    &-ripple {
-      position: absolute;
-      top: -14px;
-      left: -14px;
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      background: lighten($magenta, 30%);
-      opacity: 0.3;
-      border-radius: 50%;
-      transform: scale(0);
-      transition-property: transform;
-      transition-duration: .2s;
-      transition-timing-function: ease;
-      &--on {
-        transform: none;
-      }
+  }
+  &__input {
+    display: none;
+  }
+  &-checkmark {
+    &-path {
+      stroke-width: 2.3px;
+      stroke: transparent;
+    }
+    &--on > &-path {
+      stroke: #FFFFFF;
     }
   }
 }
+
+// .fr-checkbox {
+//   &__label {
+//     cursor: pointer;
+//     display: inline-flex;
+//     vertical-align: middle;
+//     position: relative;
+//     @media all and (max-width: 768px) {
+//       display: block;
+//       margin: 20px 0;
+//     }
+//   }
+//
+//   &__input-checkbox {
+//     display: none;
+//   }
+//
+//   &__checkbox {
+//     display: inline-block;
+//     margin-right: 8px;
+//     width: 18px;
+//     height: 18px;
+//     text-align: center;
+//     vertical-align: middle;
+//     font-size: 14px;
+//     border: 2px solid #A1A1A1;
+//     border-radius: 2px;
+//     padding: 0px;
+//     cursor: pointer;
+//     background: transparent;
+//     transition-property: background;
+//     transition-duration: 0.3s;
+//     &:after {
+//       content: "\f00c";
+//       color: transparent;
+//       font-family: "FontAwesome";
+//     }
+//
+//     &--checked {
+//       color: #FFFFFF;
+//       background: $magenta;
+//       border: 2px solid $magenta;
+//     }
+//
+//     &-checkmark {
+//       &-path {
+//         stroke-width: 2.3px;
+//         stroke: transparent;
+//       }
+//       &--on > &-path {
+//         stroke: #FFFFFF;
+//       }
+//     }
+//
+//     &-ripple {
+//       position: absolute;
+//       top: -14px;
+//       left: -14px;
+//       display: inline-block;
+//       width: 50px;
+//       height: 50px;
+//       background: lighten($magenta, 30%);
+//       opacity: 0.3;
+//       border-radius: 50%;
+//       transform: scale(0);
+//       transition-property: transform;
+//       transition-duration: .2s;
+//       transition-timing-function: ease;
+//       &--on {
+//         transform: none;
+//       }
+//     }
+//   }
+// }
