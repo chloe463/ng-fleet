@@ -61,6 +61,7 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
 export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @Input() name: string;
   @Input() placeholder: string | number;
+  @Input() browserNative: boolean;
 
   @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent>;
 
@@ -81,6 +82,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
 
   public onChange(value): void {
     this.value = value;
+    this._state = 'label';
   }
 
   get value(): any {
@@ -126,7 +128,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   public select(option) {
-    this.value = option;
+    this.value = option.value;
     this.label = option.label;
     this.optionsVisibility = false;
     this.state = 'label';
@@ -157,7 +159,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   public onBlur() {
-    if (!this.value) {
+    if (this.value === null || this.value === undefined || this.value === '') {
       this.state = 'placeholder';
       return;
     }
