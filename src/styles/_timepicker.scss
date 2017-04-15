@@ -3,9 +3,11 @@
   display: inline-block;
 
   &__input-text {
+    background: transparent;
     outline: none;
     border: none;
     border-bottom: 1px solid #A1A1A1;
+    border-radius: 0;
     height: 1.8em;
     padding: 3px 0;
     cursor: pointer;
