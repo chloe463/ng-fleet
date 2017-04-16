@@ -15,11 +15,13 @@
 
   &__toggle-button {
     outline: none;
-    position: relative;
-    right: 25px;
-    height: 34px;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    width: 24px;
+    height: 24px;
     vertical-align: top;
-    background: #FFFFFF;
+    background: transparent;
     border: none;
     cursor: pointer;
   }
