@@ -11,15 +11,15 @@
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
     "build:css": "gulp build:css",
-    "build:js": "tsc --project ./src/tsconfig-src.json",
+    "build:js": "ngc --project ./src/tsconfig-ngc.json",
     "build:rollup": "gulp build:inline-resource && gulp build:rollup",
     "minify:css": "gulp minify:css",
     "bundle": "npm run build:js && npm run build:rollup"
   },
   "private": true,
   "main": "./builds/bundles/francette.js",
-  "module": "./builds/out-tsc/index.js",
-  "typings": "./builds/out-tsc/index.d.ts",
+  "module": "./builds/index.js",
+  "typings": "./builds/index.d.ts",
   "dependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",

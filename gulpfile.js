@@ -11,7 +11,7 @@ const del              = require('del');
 
 const PROJECT_ROOT = path.join(__dirname);
 const SOURCE_ROOT  = path.join(__dirname, 'src');
-const BUILDS_ROOT  = path.join(__dirname, 'builds/out-tsc');
+const BUILDS_ROOT  = path.join(__dirname, 'builds');
 const BUNDLES_ROOT = path.join(__dirname, 'builds/bundles');
 
 function promiseify(fn) {
@@ -32,7 +32,7 @@ function promiseify(fn) {
 const readFile = promiseify(fs.readFile);
 
 function replaceTemplate(content, filePath) {
-    const templatePath    = filePath.replace(/builds\/out-tsc/, 'src/app').replace(/\.js$/, '.html');
+    const templatePath    = filePath.replace(/builds/, 'src/app').replace(/\.js$/, '.html');
     if (!fs.existsSync(templatePath)) {
         return content.replace(/templateUrl: \'.*html\'/, 'template: ``');
     }
@@ -45,7 +45,7 @@ function replaceStyle(content, filePath) {
         const urls = eval(styleUrls);
 
         const styles = urls.map((url) => {
-            const dir       = path.dirname(filePath).replace(/builds\/out-tsc/, 'src/app');
+            const dir       = path.dirname(filePath).replace(/builds/, 'src/app');
             const stylePath = path.join(dir, url);
             if (!fs.exists(stylePath)) {
                 return ``;
