@@ -11,7 +11,7 @@ import {
   FrNavSample3Component,
 } from './app.component';
 
-import { FrancetteModule } from './francette.module';
+import { FrancetteModule } from '../app/francette.module';
 
 const routeConfig: Routes = [
   { path: 'nav1', component: FrNavSample1Component },
