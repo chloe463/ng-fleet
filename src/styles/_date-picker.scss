@@ -40,22 +40,31 @@
     table-layout: fixed;
   }
 
+  &__input {
+    position: relative;
+  }
+
   &__input-text {
+    background: transparent;
+    padding: 3px 0;
     outline: 0;
     height: 30px;
     font-size: 12pt;
     border: none;
     border-bottom: 1px solid #A1A1A1;
+    border-radius: 0;
     cursor: pointer;
   }
 
   &__toggle-button {
     outline: none;
-    position: relative;
-    right: 25px;
-    height: 34px;
+    position: absolute;
+    top: 6px;
+    right: 3px;
+    width: 24px;
+    height: 24px;
     vertical-align: top;
-    background: #FFFFFF;
+    background: transparent;
     border: none;
     cursor: pointer;
   }

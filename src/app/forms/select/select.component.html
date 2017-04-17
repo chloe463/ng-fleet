@@ -3,15 +3,24 @@
   <label class="fr-input-text__label" [@labelState]="state">
     {{placeholder}}
   </label>
-  <span class="fr-select__text" (click)="toggleOptionsVisiblity()">
-    {{label}}
-  </span>
-  <ul class="fr-select__list" [hidden]="!optionsVisibility">
-    <li *ngFor="let option of _options; trackBy: $index"
-      class="fr-select__item"
-      [class.fr-select__item--selected]="isSelected(option)"
-      (click)="select(option)">
-      {{option.label}}
-    </li>
-  </ul>
+  <div class="fr-select-browser" *ngIf="browserNative">
+    <select class="fr-select-browser__pulldown" name="{{name}}" [value]="value" (change)="onChange(input.value)" #input>
+      <option *ngFor="let option of _options" [value]="option.value" class="form__select-option">
+          {{option.label}}
+        </option>
+    </select>
+  </div>
+  <div class="fr-select-non-browser" *ngIf="!browserNative">
+    <span class="fr-select__text" (click)="toggleOptionsVisiblity()">
+      {{label}}
+    </span>
+    <ul class="fr-select__list" [hidden]="!optionsVisibility">
+      <li *ngFor="let option of _options; trackBy: $index"
+        class="fr-select__item"
+        [class.fr-select__item--selected]="isSelected(option.value)"
+        (click)="select(option)">
+        {{option.label}}
+      </li>
+    </ul>
+  </div>
 </div>

@@ -1,8 +1,13 @@
 <div class="fr-timepicker">
   <div class="fr-timepicker__input" (click)="toggleTimePickerVisibility()">
     <input type="text" name={{name}} class="fr-timepicker__input-text" [value]="value|date: 'hh:mm a'" disabled>
-    <span class="fr-timepicker__toggle-button">
-      <i class="fa fa-clock-o"></i>
+    <span class="fr-timepicker__toggle-button"
+          [class.fr-timepicker__toggle-button--on]="clockVisibility">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <ellipse style="stroke-width: 2; fill: rgb(255, 255, 255); stroke: rgba(0, 0, 0, 0.541176);" cx="12.5" cy="12.5" rx="9.5" ry="9.5"/>
+        <path d="M 12 6.369 Z" style="stroke: black; fill: none;"/>
+        <path d="M 12.202 5.022 L 12.337 13.525 L 18.446 13.424" style="fill: none; stroke: rgba(0, 0, 0, 0.541176);" transform="matrix(1.0, 0.014119, -0.014119, 0.9999, 0.13246, -0.215435)"/>
+      </svg>
     </span>
   </div>
   <div class="fr-timepicker__body" [hidden]="!clockVisibility">
