@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  OnChanges,
   Input,
   Output
 } from '@angular/core';
@@ -9,9 +10,11 @@ import {
   selector: 'fr-data-table-rows',
   templateUrl: './data-table-rows.component.html'
 })
-export class FrDataTableRowsComponent implements OnInit {
+export class FrDataTableRowsComponent implements OnInit, OnChanges {
 
   private _rows;
+
+  private _listener: () => void = () => {};
 
   @Input()
   set rows(rows: Array<any>) {
@@ -27,4 +30,11 @@ export class FrDataTableRowsComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges () {
+    this._listener();
+  }
+
+  public subscribe(fn: () => void): void {
+    this._listener = fn;
+  }
 }
