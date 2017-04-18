@@ -101,6 +101,14 @@ export class AppComponent {
     ];
   }
 
+  public resetData(): void {
+    this.records.rows = [
+      { column1: 100, column2: 'value100', column3: 100, column4: '2017-03-01 00:00:00', column5: 123 },
+      { column1: 101, column2: 'value101', column3: 100, column4: '2017-03-01 00:00:00', column5: 456 },
+      { column1: 102, column2: 'value101', column3: 100, column4: '2017-03-01 00:00:00', column5: 789 }
+    ];
+  }
+
   public updateAction(event) {
     console.log(event);
   }
