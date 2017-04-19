@@ -17,11 +17,11 @@
     border-radius: 0;
     padding: 0;
     text-indent: 0;
-    transition-property: border-bottom;
-    transition-duration: 0.5s;
+    transition-property: border-bottom-color;
+    transition-duration: 0.3s;
 
     &:focus {
-      border-bottom: 1px solid $magenta;
+      border-bottom: 2px solid $magenta;
     }
   }
 }

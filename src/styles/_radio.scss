@@ -10,7 +10,7 @@
     padding: 0px;
     width: 16px;
     height: 16px;
-    border: 2px solid #A1A1A1;
+    border: 2px solid rgba(0,0,0,.54);
     border-radius: 50%;
     cursor: pointer;
     transition-property: border-color;
@@ -61,12 +61,16 @@
 
   &-label {
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
     @media all and (max-width: 768px) {
       display: block;
       margin: 20px 0;
     }
     &-text {
       display: inline-block;
+      padding-left: 8px;
+      padding-right: 8px;
     }
   }
 

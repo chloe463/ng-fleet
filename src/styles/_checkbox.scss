@@ -1,7 +1,7 @@
 .fr-checkbox {
   cursor: pointer;
   display: inline-flex;
-  vertical-align: middle;
+  align-items: center;
   position: relative;
   @media all and (max-width: 768px) {
     display: block;
@@ -16,7 +16,7 @@
     text-align: center;
     vertical-align: middle;
     font-size: 14px;
-    border: 2px solid #A1A1A1;
+    border: 2px solid rgba(0,0,0,.54);
     border-radius: 2px;
     padding: 0px;
     cursor: pointer;
