@@ -49,6 +49,8 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   public changing = false;
   private _oldValue: Date;
 
+  public isAm = false;
+
   constructor(private el: ElementRef) { }
 
   get value(): any {
@@ -113,22 +115,19 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     this.clockVisibility = !this.clockVisibility;
   }
 
-  public isAm(): boolean {
-    return this._innerValue.getHours() < 12;
-  }
-
-  public isPm(): boolean {
-    return this._innerValue.getHours() >= 12;
+  public setIsAm(): void {
+    this.isAm = this._innerValue.getHours() < 12;
   }
 
   public toggleAmPm(): void {
     const newDateObj = new Date(this._innerValue.getTime());
     newDateObj.setHours((this._innerValue.getHours() + 12) % 24);
     this.value = newDateObj;
+    this.isAm  = !this.isAm;
   }
 
   public setHours(h: number): void {
-    if (this.isPm()) {
+    if (!this.isAm) {
       h = (h + 12) % 24;
     }
     const newDateObj = new Date(this._innerValue.getTime());
@@ -151,6 +150,9 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   public isPickedTime(dial: number): boolean {
+    if (!this._innerValue) {
+      return false;
+    }
     if (this.pickTarget === HOURS) {
       return (this._innerValue.getHours() % 12) === (dial % 12);
     } else if (this.pickTarget === MINUTES) {
