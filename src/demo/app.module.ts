@@ -17,6 +17,7 @@ const routeConfig: Routes = [
   { path: 'nav1', component: FrNavSample1Component },
   { path: 'nav2', component: FrNavSample2Component },
   { path: 'nav3', component: FrNavSample3Component },
+  { path: 'menu1-1', component: FrNavSample1Component },
 ];
 
 @NgModule({
