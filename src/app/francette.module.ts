@@ -26,6 +26,9 @@ import { FrDataTableHeaderComponent } from './data-table/data-table-header/data-
 import { FrDataTableFooterComponent } from './data-table/data-table-footer/data-table-footer.component';
 import { FrDataTableRowsComponent } from './data-table/data-table-rows/data-table-rows.component';
 import { FrDataTableColumnsComponent } from './data-table/data-table-columns/data-table-columns.component';
+import { FrSideNavComponent } from './side-nav/side-nav/side-nav.component';
+import { FrSideNavItemGroupComponent } from './side-nav/side-nav-item-group/side-nav-item-group.component';
+import { FrSideNavItemComponent } from './side-nav/side-nav-item/side-nav-item.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { FrDataTableColumnsComponent } from './data-table/data-table-columns/dat
     FrDataTableColumnsComponent,
     FrDataTableHeaderComponent,
     FrDataTableFooterComponent,
-    FrDataTableRowsComponent
+    FrDataTableRowsComponent,
+    FrSideNavComponent,
+    FrSideNavItemGroupComponent,
+    FrSideNavItemComponent
   ],
   imports: [
     FormsModule,
@@ -79,7 +85,10 @@ import { FrDataTableColumnsComponent } from './data-table/data-table-columns/dat
     FrDataTableColumnsComponent,
     FrDataTableHeaderComponent,
     FrDataTableFooterComponent,
-    FrDataTableRowsComponent
+    FrDataTableRowsComponent,
+    FrSideNavComponent,
+    FrSideNavItemGroupComponent,
+    FrSideNavItemComponent
   ]
 })
 export class FrancetteModule { }

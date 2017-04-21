@@ -1,12 +1,29 @@
 .fr-navbar {
   width: 100%;
+
+  &__menu-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 7px;
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    rect {
+      fill: white;
+    }
+    &:hover {
+      background: lighten(#3F51B5, 15%);
+    }
+  }
+
   &__items {
     background: #3F51B5;
     padding-left: 0;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
     color: #FFFFFF;
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     list-style: none;
     display: flex;
     justify-content: flex-start;

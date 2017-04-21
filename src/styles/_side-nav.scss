@@ -1,0 +1,66 @@
+.fr-side-nav {
+  position: relative;
+  margin-top: 0;
+  &__menu {
+    display: block;
+    height: 100vh;
+    width: 240px;
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #FFF;
+    resize: horizontal;
+    overflow-x: scroll;
+
+    &-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &-title {
+      background: rgba(0,0,0,.3);
+      padding: 3px 0 3px 7px;
+      font-size: 14px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+    }
+
+    &-item {
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid #CCCCCC;
+    }
+
+    &-link {
+      display: block;
+      text-decoration: none;
+      padding: 15px;
+      font-size: 14px;
+      color: rgba(0,0,0,.54);
+      &:hover {
+        background: rgba(0,0,0,.05);
+        color: #3F51B5;
+      }
+      &--active {
+        background: rgba(0,0,0,.05);
+        color: #3F51B5;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__curtain {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+  }
+}
