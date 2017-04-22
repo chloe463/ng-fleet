@@ -1,0 +1,11 @@
+.fr-form-group {
+  position: relative;
+
+  &__label {
+    position: absolute;
+    top: -18px;
+    left: 0;
+    color: #CCCCCC;
+    font-size: 12px;
+  }
+}

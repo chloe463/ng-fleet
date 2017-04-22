@@ -6,6 +6,7 @@ export {
   FrDataTableFooterComponent
 } from './data-table/index';
 export {
+  FrFormGroupComponent,
   FrCheckboxComponent,
   FrDatePickerComponent,
   FrInputTextComponent,
