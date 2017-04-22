@@ -12,6 +12,7 @@ export class FrOptionComponent implements OnInit {
 
   @Input() value: string;
   @Input() label: string;
+  @Input() selected: boolean = false;
 
   constructor() { }
 

@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   Input,
+  AfterContentInit,
   ContentChildren,
   QueryList,
   forwardRef,
@@ -58,7 +59,7 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
     ])
   ]
 })
-export class FrSelectComponent implements OnInit, ControlValueAccessor {
+export class FrSelectComponent implements OnInit, AfterContentInit, ControlValueAccessor {
   @Input() name: string;
   @Input() placeholder: string | number;
   @Input() browserNative: boolean;
@@ -78,6 +79,14 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.optionsVisibility = false;
+  }
+
+  ngAfterContentInit() {
+    this._options.forEach((option) => {
+      if (option.selected) {
+        this.select(option);
+      }
+    });
   }
 
   public onChange(value): void {
