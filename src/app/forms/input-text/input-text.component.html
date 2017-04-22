@@ -7,7 +7,6 @@
          class="fr-input-text__form"
          [value]="value"
          [class.fr-input-text--disabled]="disabled"
-         (keyup)="updateValue($event.target.value)"
          (focus)="onFocus()"
-         (blur)="onBlur()">
+         (blur)="onBlur($event.target.value)">
 </div>
