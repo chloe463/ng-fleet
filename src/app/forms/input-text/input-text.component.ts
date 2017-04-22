@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  AfterContentChecked,
   Input,
   forwardRef,
   ElementRef,
@@ -50,7 +51,7 @@ export const INPUT_TEXT_CONTROL_VALUE_ACCESSOR: any = {
     ])
   ]
 })
-export class FrInputTextComponent implements OnInit, ControlValueAccessor {
+export class FrInputTextComponent implements OnInit, AfterContentChecked, ControlValueAccessor {
 
   @Input() name: string;
   @Input() placeholder: string;
@@ -84,6 +85,7 @@ export class FrInputTextComponent implements OnInit, ControlValueAccessor {
   writeValue(obj: any): void {
     if (obj !== this._innerValue) {
       this._innerValue = obj;
+      this._onChangeCallback(obj);
     }
   }
 
@@ -104,8 +106,10 @@ export class FrInputTextComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
   }
 
-  public updateValue(value) {
-    this.value = value;
+  ngAfterContentChecked () {
+    if (this.value !== undefined && this.value !== '' && this.state !== 'labelOnFocus') {
+      this.state = 'label';
+    }
   }
 
   get state(): string {
@@ -120,8 +124,9 @@ export class FrInputTextComponent implements OnInit, ControlValueAccessor {
     this.state = 'labelOnFocus';
   }
 
-  public onBlur() {
-    if (!this.value.length) {
+  public onBlur(value) {
+    this.value = value;
+    if (!value.length) {
       this.state = 'placeholder';
       return;
     }
