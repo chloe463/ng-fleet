@@ -4,8 +4,8 @@
     {{placeholder}}
   </label>
   <div class="fr-select-browser" *ngIf="browserNative">
-    <select class="fr-select-browser__pulldown" name="{{name}}" [value]="value" (change)="onChange(input.value)" #input>
-      <option *ngFor="let option of _options" [value]="option.value" class="form__select-option">
+    <select class="fr-select-browser__pulldown" name="{{name}}" [value]="value" (change)="select(input)" #input>
+      <option *ngFor="let option of _options" [value]="option.value" class="form__select-option" selected="option.selected">
           {{option.label}}
         </option>
     </select>

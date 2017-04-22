@@ -143,8 +143,8 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
     this.state = 'label';
   }
 
-  public isSelected(option) {
-    return this.value === option;
+  public isSelected(value) {
+    return this.value === value;
   }
 
   @HostListener('document:click', ['$event'])
