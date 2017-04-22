@@ -1,6 +1,5 @@
 .fr-data-table__wrapper {
   width: 100%;
-  overflow: scroll;
   display: inline-block;
 }
 
@@ -64,6 +63,8 @@
 .fr-data-table {
   width: 100%;
   border-collapse: collapse;
+  overflow-y: scroll;
+  overflow-x: auto;
   // table-layout: fixed;
 
   &__column {
