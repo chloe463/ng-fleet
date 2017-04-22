@@ -1,27 +1,42 @@
 export { FrChipComponent } from './chip/chip.component';
 export {
-  FrDataTableComponent,
+  FrDataTableColumnsComponent,
+  FrDataTableFooterComponent,
   FrDataTableHeaderComponent,
   FrDataTableRowsComponent,
-  FrDataTableFooterComponent
+  FrDataTableComponent,
+  FrDataTableModule
 } from './data-table/index';
 export {
-  FrFormGroupComponent,
   FrCheckboxComponent,
   FrDatePickerComponent,
+  FrFormGroupComponent,
   FrInputTextComponent,
   FrRadioGroupComponent,
   FrOptionComponent,
   FrSelectComponent,
-  FrTimePickerComponent
+  FrTimePickerComponent,
+  FrFormsModule
 } from './forms/index';
 export { FrKpiTableComponent } from './kpi-table/index';
 export {
   FrNavbarComponent,
   FrNavbarItemComponent,
   FrNavbarMenuComponent,
-  FrNavbarLogoComponent
+  FrNavbarLogoComponent,
+  FrNavbarModule
 } from './navbar/index';
 export { FrRippleDirective } from './ripple/ripple.directive';
-export { FrTabsComponent, FrTabComponent } from './tabs/index';
+export { FrRippleModule } from './ripple/ripple.module';
+export {
+  FrSideNavComponent,
+  FrSideNavItemGroupComponent,
+  FrSideNavItemComponent,
+  FrSideNavModule
+} from './side-nav/index';
+export {
+  FrTabsComponent,
+  FrTabComponent,
+  FrTabsModule
+} from './tabs/index';
 export { FrancetteModule } from './francette.module';
