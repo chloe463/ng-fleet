@@ -49,11 +49,14 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
     this.title   = this.headerComponent.title;
     this.columns = this.columnsComponent.columns;
     this.rows    = this.rowsComponent.rows;
-    this.rowsComponent.subscribe(() => {
-      this.rows = this.rowsComponent.rows;
-    });
     this.rows.forEach((row, index) => {
       this.checkedRowIndices[index] = false;
+    });
+    this.rowsComponent.subscribe(() => {
+      this.rows = this.rowsComponent.rows;
+      this.rows.forEach((row, index) => {
+        this.checkedRowIndices[index] = false;
+      });
     });
     this.paginationInfo = this.footerComponent.paginationInfo;
     this.rowsPerPage = this.rows.length;
