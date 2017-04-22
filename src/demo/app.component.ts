@@ -49,11 +49,11 @@ export class AppComponent {
   };
   records = {
     columns: [
-      { name: 'column1', type: 'number' },
-      { name: 'column2', type: 'string' },
-      { name: 'column3', type: 'number' },
-      { name: 'column4', type: 'string' },
-      { name: 'column5', type: 'number' },
+      { key: 'column1', name: 'Column1 (number)', type: 'number' },
+      { key: 'column2', name: 'Column2 (string)', type: 'string' },
+      { key: 'column3', name: 'Column3 (number)', type: 'number' },
+      { key: 'column4', name: 'Column4 (string)', type: 'string' },
+      { key: 'column5', name: 'Column5 (number)', type: 'number' },
     ],
     rows: [
       { column1: 1, column2: 'value1', column3: 100, column4: '2017-03-01 00:00:00', column5: 999 },

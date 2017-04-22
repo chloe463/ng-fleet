@@ -42,7 +42,7 @@
            [class.fr-data-table__tbody-cell--first]="i === 0"
            [class.fr-data-table__tbody-cell--string]="columns[i].type === 'string'"
            [class.fr-data-table__tbody-cell--number]="columns[i].type === 'number'">
-          <span class="fr-data-table__tbody-value">{{row[column.name]}}</span>
+          <span class="fr-data-table__tbody-value">{{row[column.key]}}</span>
         </td>
       </tr>
     </tbody>
