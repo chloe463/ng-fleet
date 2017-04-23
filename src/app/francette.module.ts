@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
+import { FrFormGroupComponent } from './forms/form-group/form-group.component';
 import { FrSelectComponent } from './forms/select/select.component';
 import { FrOptionComponent } from './forms/select/option.component';
 import { FrTabsComponent } from './tabs/tabs.component';
@@ -32,6 +33,7 @@ import { FrSideNavItemComponent } from './side-nav/side-nav-item/side-nav-item.c
 
 @NgModule({
   declarations: [
+    FrFormGroupComponent,
     FrSelectComponent,
     FrOptionComponent,
     FrTabsComponent,
@@ -64,6 +66,7 @@ import { FrSideNavItemComponent } from './side-nav/side-nav-item/side-nav-item.c
     RouterModule
   ],
   exports: [
+    FrFormGroupComponent,
     FrSelectComponent,
     FrOptionComponent,
     FrTabsComponent,

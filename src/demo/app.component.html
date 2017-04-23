@@ -56,7 +56,7 @@
           <td>
             <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select" [browserNative]="false">
               <fr-option *ngFor="let option of options; let i = index; trackBy index" [value]="option.value" label="{{option.label}}"></fr-option>
-              <fr-option value="123" label="label123" [selected]="true"></fr-option>
+              <fr-option value="123" label="label123"></fr-option>
               <fr-option value="987" label="label987"></fr-option>
             </fr-select>
           </td>
@@ -69,33 +69,41 @@
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">radio</td>
           <td>
-            <fr-radio-group name="testRadio" [(ngModel)]="form.radio">
-              <fr-radio value="1" label="radio1"></fr-radio>
-              <fr-radio value="2" label="radio2"></fr-radio>
-              <fr-radio *ngFor="let selectValue of selectValues" [value]="selectValue" label="{{selectValue.value}}"></fr-radio>
-            </fr-radio-group>
+            <fr-form-group label="radio">
+              <fr-radio-group name="testRadio" [(ngModel)]="form.radio">
+                <fr-radio value="1" label="radio1"></fr-radio>
+                <fr-radio value="2" label="radio2"></fr-radio>
+                <fr-radio *ngFor="let selectValue of selectValues" [value]="selectValue" label="{{selectValue.value}}"></fr-radio>
+              </fr-radio-group>
+            </fr-form-group>
           </td>
         </tr>
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">checkbox</td>
           <td>
-            <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1">checkbox1</fr-checkbox>
-            <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[1]" name="checkbox2">checkbox2</fr-checkbox>
-            <fr-checkbox label="checkbox1" name="checkbox3" ngModel>checkbox3</fr-checkbox>
-            <fr-checkbox label="checkbox1" name="checkbox4" ngModel>checkbox4</fr-checkbox>
-            <fr-checkbox *ngFor="let chk of chks; let i = index" name="{{chk.name}}" [(ngModel)]="form.checkbox[i+2]">{{chk.label}}</fr-checkbox>
+            <fr-form-group label="checkbox">
+              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1">checkbox1</fr-checkbox>
+              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[1]" name="checkbox2">checkbox2</fr-checkbox>
+              <fr-checkbox label="checkbox1" name="checkbox3" ngModel>checkbox3</fr-checkbox>
+              <fr-checkbox label="checkbox1" name="checkbox4" ngModel>checkbox4</fr-checkbox>
+              <fr-checkbox *ngFor="let chk of chks; let i = index" name="{{chk.name}}" [(ngModel)]="form.checkbox[i+2]">{{chk.label}}</fr-checkbox>
+            </fr-form-group>
           </td>
         </tr>
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">date picker</td>
           <td>
-            <fr-date-picker name="calendar" [(ngModel)]="form.date"></fr-date-picker>
+            <fr-form-group label="date">
+              <fr-date-picker name="calendar" [(ngModel)]="form.date"></fr-date-picker>
+            </fr-form-group>
           </td>
         </tr>
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">time picker</td>
           <td>
-            <fr-time-picker name="time" [(ngModel)]="form.date"></fr-time-picker>
+            <fr-form-group label="time">
+              <fr-time-picker name="time" [(ngModel)]="form.date"></fr-time-picker>
+            </fr-form-group>
           </td>
         </tr>
         <tr style="height:50px">
