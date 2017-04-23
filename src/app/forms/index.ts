@@ -6,3 +6,4 @@ export { FrRadioGroupComponent } from './radio/radio-group.component';
 export { FrOptionComponent } from './select/option.component';
 export { FrSelectComponent } from './select/select.component';
 export { FrTimePickerComponent } from './time-picker/time-picker.component';
+export { FrFormsModule } from './forms.module';
