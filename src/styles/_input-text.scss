@@ -23,5 +23,10 @@
     &:focus {
       border-bottom: 2px solid $magenta;
     }
+
+    &:disabled {
+      color: #CCCCCC;
+      border-bottom: 1px dotted #CCCCCC;
+    }
   }
 }
