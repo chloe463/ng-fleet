@@ -6,6 +6,7 @@ import { FrCheckboxComponent } from './checkbox/checkbox.component';
 import { FrDatePickerComponent } from './date-picker/date-picker.component';
 import { FrFormGroupComponent } from './form-group/form-group.component';
 import { FrInputTextComponent } from './input-text/input-text.component';
+import { FrInputDirective, FrInputTextContainerComponent } from './input-text-container/input-text-container.component';
 import { FrOptionComponent } from './select/option.component';
 import { FrRadioGroupComponent } from './radio/radio-group.component';
 import { FrRadioComponent } from './radio/radio.component';
@@ -18,6 +19,8 @@ import { FrTimePickerComponent } from './time-picker/time-picker.component';
     FrDatePickerComponent,
     FrFormGroupComponent,
     FrInputTextComponent,
+    FrInputDirective,
+    FrInputTextContainerComponent,
     FrOptionComponent,
     FrRadioComponent,
     FrRadioGroupComponent,
@@ -33,6 +36,8 @@ import { FrTimePickerComponent } from './time-picker/time-picker.component';
     FrDatePickerComponent,
     FrFormGroupComponent,
     FrInputTextComponent,
+    FrInputDirective,
+    FrInputTextContainerComponent,
     FrOptionComponent,
     FrRadioComponent,
     FrRadioGroupComponent,

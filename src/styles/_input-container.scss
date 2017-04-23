@@ -1,0 +1,8 @@
+.fr-input-text {
+  & > input::placeholder {
+    opacity: 0;
+  }
+  & > textarea::placeholder {
+    opacity: 0;
+  }
+}
