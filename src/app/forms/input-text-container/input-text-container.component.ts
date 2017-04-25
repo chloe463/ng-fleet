@@ -49,11 +49,13 @@ export class FrInputDirective implements OnInit {
   }
 
   constructor(public ngModel: NgModel) {
-    console.log(this);
   }
 
   ngOnInit() {
     this.labelState = (this.ngModel.model) ? 'label' : 'placeholder';
+    this.ngModel.valueChanges.subscribe((v) => {
+      this.labelState = v ? 'label' : 'placeholder';
+    });
   }
 
   public onFocus() {
@@ -95,7 +97,7 @@ export class FrInputDirective implements OnInit {
         color: '#D33682',
         'font-size': '12px'
       })),
-      transition('placeholder => labelOnFocus, labelOnFocus => placeholder, labelOnFocus => label, label => labelOnFocus', [
+      transition('placeholder => labelOnFocus, labelOnFocus => placeholder, labelOnFocus => label, label => labelOnFocus, placeholder => label', [
         animate('200ms ease-out')
       ])
     ])
