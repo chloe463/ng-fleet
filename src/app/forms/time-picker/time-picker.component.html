@@ -25,10 +25,10 @@
           {{value|date:'mm'}}
         </span>
       </span>
-      <span class="fr-timepicker__meridian" [class.fr-timepicker__meridian--selected]="isAm" (click)="toggleAmPm()">
+      <span class="fr-timepicker__meridian" [class.fr-timepicker__meridian--selected]="isAm()" (click)="toggleAmPm()">
         AM
       </span>
-      <span class="fr-timepicker__meridian" [class.fr-timepicker__meridian--selected]="!isAm" (click)="toggleAmPm()">
+      <span class="fr-timepicker__meridian" [class.fr-timepicker__meridian--selected]="!isAm()" (click)="toggleAmPm()">
         PM
       </span>
     </div>
