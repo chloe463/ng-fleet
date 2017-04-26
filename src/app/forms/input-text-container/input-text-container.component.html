@@ -3,4 +3,7 @@
     {{placeholder}}
   </label>
   <ng-content selector="input, textarea"></ng-content>
+  <span [hidden]="!maxLength"
+    class="fr-input-text__count"
+    [class.fr-input-text__count--error]="_input.valueLength > maxLength">{{_input.valueLength}}/{{maxLength}}</span>
 </div>

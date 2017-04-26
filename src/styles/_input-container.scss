@@ -5,4 +5,18 @@
   & > textarea::placeholder {
     opacity: 0;
   }
+
+  &__count {
+    position: absolute;
+    right: 0;
+    font-size: 14px;
+    color: #CCCCCC;
+
+    &--error {
+      color: #FF5722;
+    }
+  }
+}
+textarea.fr-input-text__form {
+  height: 60px;
 }
