@@ -54,17 +54,21 @@ export class FrInputDirective implements OnInit, OnDestroy {
   ngOnInit() {
     this.labelState = (this.ngModel.model) ? 'label' : 'placeholder';
     this._ngModelSubscribtion = this.ngModel.valueChanges.subscribe((v) => {
-      if (this.labelState === 'labelOnFocus') {
-        this.labelState  = v ? 'labelOnFocus' : 'placeholder';
-      } else {
-        this.labelState  = v ? 'label' : 'placeholder';
-      }
-      this.valueLength = v.length;
+      this._updateLabelState(v);
     });
   }
 
   ngOnDestroy() {
     this._ngModelSubscribtion.unsubscribe();
+  }
+
+  private _updateLabelState(v: any) {
+    if (this.labelState === 'labelOnFocus') {
+      this.labelState  = v ? 'labelOnFocus' : 'placeholder';
+    } else {
+      this.labelState  = v ? 'label' : 'placeholder';
+    }
+    this.valueLength = v ? v.length : 0;
   }
 
   public onFocus() {
