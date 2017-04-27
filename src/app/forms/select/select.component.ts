@@ -2,7 +2,6 @@ import {
   Component,
   OnInit,
   Input,
-  AfterContentInit,
   ContentChildren,
   QueryList,
   forwardRef,
@@ -14,6 +13,7 @@ import {
   transition,
   animate
 } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { FrOptionComponent } from './option.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -53,18 +53,18 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
         color: '#D33682',
         'font-size': '12px'
       })),
-      transition('placeholder => labelOnFocus, labelOnFocus => placeholder, labelOnFocus => label, label => labelOnFocus', [
+      transition('* => *', [
         animate('200ms ease-out')
       ])
     ])
   ]
 })
-export class FrSelectComponent implements OnInit, AfterContentInit, ControlValueAccessor {
+export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @Input() name: string;
   @Input() placeholder: string | number;
   @Input() browserNative: boolean;
 
-  @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent>;
+  @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent> = new QueryList<FrOptionComponent>();
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
@@ -79,14 +79,6 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
 
   ngOnInit() {
     this.optionsVisibility = false;
-  }
-
-  ngAfterContentInit() {
-    this._options.forEach((option) => {
-      if (option.selected) {
-        this.select(option);
-      }
-    });
   }
 
   public onChange(value): void {
@@ -117,6 +109,12 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
     if (obj !== this._innerValue) {
       this._innerValue = obj;
     }
+    this._options.forEach((option) => {
+      if (option.value === obj) {
+        this.label = option.label;
+        this.onBlur();
+      }
+    });
   }
 
   registerOnChange(fn: any): void {

@@ -6,8 +6,7 @@ import {
 
 @Component({
   selector: 'fr-form-group',
-  templateUrl: './form-group.component.html',
-  styleUrls: ['./form-group.component.scss']
+  templateUrl: './form-group.component.html'
 })
 export class FrFormGroupComponent implements OnInit {
 

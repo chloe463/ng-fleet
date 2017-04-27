@@ -2,10 +2,9 @@ import {
   Component,
   Directive,
   OnInit,
+  OnDestroy,
   AfterContentInit,
-  AfterViewInit,
   AfterContentChecked,
-  AfterViewChecked,
   Input,
   Output,
   EventEmitter,
@@ -20,8 +19,6 @@ import {
   animate
 } from '@angular/core';
 import { NgModel, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 
 @Directive({
   selector: 'input[frInput], textarea[frInput]',
@@ -32,11 +29,14 @@ import { Observer } from 'rxjs/Observer';
     '(blur)': 'onBlur()'
   }
 })
-export class FrInputDirective implements OnInit {
+export class FrInputDirective implements OnInit, OnDestroy {
+
+  private _ngModelSubscribtion;
 
   private _placeholder: string = '';
 
   public labelState: string;
+  public valueLength: number = 0;
 
   @Input()
   get placeholder() {
@@ -49,11 +49,26 @@ export class FrInputDirective implements OnInit {
   }
 
   constructor(public ngModel: NgModel) {
-    console.log(this);
   }
 
   ngOnInit() {
     this.labelState = (this.ngModel.model) ? 'label' : 'placeholder';
+    this._ngModelSubscribtion = this.ngModel.valueChanges.subscribe((v) => {
+      this._updateLabelState(v);
+    });
+  }
+
+  ngOnDestroy() {
+    this._ngModelSubscribtion.unsubscribe();
+  }
+
+  private _updateLabelState(v: any) {
+    if (this.labelState === 'labelOnFocus') {
+      this.labelState  = v ? 'labelOnFocus' : 'placeholder';
+    } else {
+      this.labelState  = v ? 'label' : 'placeholder';
+    }
+    this.valueLength = v ? v.length : 0;
   }
 
   public onFocus() {
@@ -95,18 +110,21 @@ export class FrInputDirective implements OnInit {
         color: '#D33682',
         'font-size': '12px'
       })),
-      transition('placeholder => labelOnFocus, labelOnFocus => placeholder, labelOnFocus => label, label => labelOnFocus', [
+      transition('placeholder => labelOnFocus, labelOnFocus => placeholder, labelOnFocus => label, label => labelOnFocus, placeholder => label', [
         animate('200ms ease-out')
       ])
     ])
   ]
 })
-export class FrInputTextContainerComponent implements OnInit, AfterContentInit, AfterViewChecked {
+export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
   @ContentChild(FrInputDirective) _input: FrInputDirective;
 
+  @Input() maxLength: number;
+
   public labelState = 'placeholder';
   public placeholder: string = '';
+  public modelLength: number = 0;
 
   constructor() { }
 
@@ -121,10 +139,6 @@ export class FrInputTextContainerComponent implements OnInit, AfterContentInit, 
       throw "Child component input[frInput] is required!";
     }
     this.placeholder = this._input.placeholder;
-  }
-
-  ngAfterViewChecked () {
-    // console.log(this);
   }
 
 }

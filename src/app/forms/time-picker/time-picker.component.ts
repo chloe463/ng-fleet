@@ -49,8 +49,6 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   public changing = false;
   private _oldValue: Date;
 
-  public isAm = false;
-
   constructor(private el: ElementRef) { }
 
   get value(): any {
@@ -115,19 +113,21 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     this.clockVisibility = !this.clockVisibility;
   }
 
-  public setIsAm(): void {
-    this.isAm = this._innerValue.getHours() < 12;
+  public isAm(): boolean {
+    if (this._innerValue === undefined || this._innerValue === null) {
+      return false;
+    }
+    return this._innerValue.getHours() < 12;
   }
 
   public toggleAmPm(): void {
     const newDateObj = new Date(this._innerValue.getTime());
     newDateObj.setHours((this._innerValue.getHours() + 12) % 24);
     this.value = newDateObj;
-    this.isAm  = !this.isAm;
   }
 
   public setHours(h: number): void {
-    if (!this.isAm) {
+    if (!this.isAm()) {
       h = (h + 12) % 24;
     }
     const newDateObj = new Date(this._innerValue.getTime());
