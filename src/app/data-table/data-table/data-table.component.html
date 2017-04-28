@@ -6,10 +6,37 @@
     <span class="fr-data-table__header-buttons"
       [hidden]="!countCheckedRows()">
       <a class="fr-data-table__header-btn" (click)="updateRowAction('edit')">
-        <i class="fa fa-pencil"></i>
+        <span class="fr-data-table__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+            <g transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 13.336039, -4.363963)">
+            <rect x="7" y="5" width="7" height="16" style="fill: rgba(0, 0, 0, 0.560784);"/>
+            <rect x="7" y="2" width="7" height="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
+            <path d="M -10.5 -25.86 L -7 -21 L -14 -21 L -10.5 -25.86 Z" transform="matrix(-1, 0, 0, -1, 0, 0)" style="fill: rgba(0, 0, 0, 0.560784);" bx:shape="triangle -14 -25.86 7 4.86 0.5 0 1@8bac0b8a"/>
+            </g>
+          </svg>
+        </span>
       </a>
       <a class="fr-data-table__header-btn" (click)="updateRowAction('delete')">
-        <i class="fa fa-trash"></i>
+        <span class="fr-data-table__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" width="15" height="18" y="5" style="fill: rgba(0, 0, 0, 0.560784);"/>
+            <rect x="8" width="1" height="13" rx="0.337" ry="0.337" style="fill: rgb(255, 255, 255);" y="7"/>
+            <rect x="4" width="17" height="2" style="fill: rgba(0, 0, 0, 0.560784);" y="3"/>
+            <rect x="8" y="1" width="9" height="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
+            <rect x="9" y="2" width="7" height="1" style="fill: rgb(255, 255, 255);"/>
+            <rect x="12" width="1" height="13" rx="0.337" ry="0.337" style="fill: rgb(255, 255, 255);" y="7"/>
+            <rect x="16" width="1" height="13" rx="0.337" ry="0.337" style="fill: rgb(255, 255, 255);" y="7"/>
+          </svg>
+        </span>
+      </a>
+      <a class="fr-data-table__header-btn" (click)="updateRowAction()">
+        <span class="fr-data-table__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="12" cy="5" rx="3" ry="3" style="fill: rgba(0, 0, 0, 0.560784);"/>
+            <ellipse cx="12" cy="12" rx="3" ry="3" style="fill: rgba(0, 0, 0, 0.560784);"/>
+            <ellipse cx="12" cy="19" rx="3" ry="3" style="fill: rgba(0, 0, 0, 0.560784);"/>
+          </svg>
+        </span>
       </a>
     </span>
   </div>
@@ -60,10 +87,20 @@
       </fr-select>
     </span>
     <a class="fr-data-table__footer-left-arrow" (click)="paginationAction('showPreviousPage')">
-      <i class="fa fa-chevron-left"></i>
+      <span class="fr-data-table__icon--small">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 17.719 2.5 L 8 12.051 L 17.672 21.534" style="fill: none; stroke: rgba(0, 0, 0, 0.560784); stroke-width: 5;"/>
+          <path d="M 24.407 18.581 C 24.407 18.581 24.407 18.581 24.407 18.581 Z" style="fill: none; stroke: black;"/>
+        </svg>
+      </span>
     </a>
     <a class="fr-data-table__footer-right-arrow" (click)="paginationAction('showNextPage')">
-      <i class="fa fa-chevron-right"></i>
+      <span class="fr-data-table__icon--smap">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 17.719 21.534 L 8 11.983 L 17.672 2.5" style="fill: none; stroke: rgba(0, 0, 0, 0.560784); stroke-width: 5;" transform="matrix(-1, 0, 0, -1, 25.719, 24.034)"/>
+          <path d="M 24.407 18.581 C 24.407 18.581 24.407 18.581 24.407 18.581 Z" style="fill: none; stroke: black;"/>
+        </svg>
+      </span>
     </a>
   </div>
 </div>
