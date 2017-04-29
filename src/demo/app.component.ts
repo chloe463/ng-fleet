@@ -117,6 +117,10 @@ export class AppComponent {
     console.log(event);
   }
 
+  public otherAction(event) {
+    console.log(event);
+  }
+
   public paginationAction(event) {
     console.log(event);
   }

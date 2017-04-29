@@ -33,7 +33,7 @@
           </svg>
         </span>
       </a>
-      <a class="fr-data-table__header-btn" (click)="toggleOtherActionList()" [hidden]="!headerComponent.otherActions.length">
+      <a class="fr-data-table__header-btn" (click)="toggleOtherActionList()" [hidden]="!headerComponent.otherActionKeys.length">
         <span class="fr-data-table__icon">
           <!-- dots -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
       </a>
       <span class="fr-data-table__other-actions">
         <ul class="fr-data-table__other-action-list" [@actionListState]="actionListState">
-          <li *ngFor="let action of headerComponent.otherActions; let i = index; trackBy index" class="fr-data-table__other-action-item" (click)="updateRowAction(action.key, true)">
+          <li *ngFor="let action of headerComponent.otherActionKeys; let i = index; trackBy index" class="fr-data-table__other-action-item" (click)="otherAction(action.key)">
             {{action.label}}
           </li>
         </ul>

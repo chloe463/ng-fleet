@@ -23,9 +23,10 @@ export interface IFrOtherAction {
 export class FrDataTableHeaderComponent implements OnInit {
 
   @Output() updateAction = new EventEmitter();
+  @Output() otherAction  = new EventEmitter();
 
   private _title: string;
-  private _otherActions: Array<IFrOtherAction> = [];
+  private _otherActionKeys: Array<IFrOtherAction> = [];
 
   @Input()
   set title(title) {
@@ -37,12 +38,12 @@ export class FrDataTableHeaderComponent implements OnInit {
   }
 
   @Input()
-  set otherActions(otherActions) {
-    this._otherActions = otherActions;
+  set otherActionKeys(otherActionKeys) {
+    this._otherActionKeys = otherActionKeys;
   }
 
-  get otherActions(): Array<IFrOtherAction> {
-    return this._otherActions;
+  get otherActionKeys(): Array<IFrOtherAction> {
+    return this._otherActionKeys;
   }
 
   constructor() { }
@@ -52,6 +53,10 @@ export class FrDataTableHeaderComponent implements OnInit {
 
   public invokeUpdateAction(event: IFrUpdateAction) {
     this.updateAction.emit(event);
+  }
+
+  public invokeOtherAction(event: IFrUpdateAction) {
+    this.otherAction.emit(event);
   }
 
 }

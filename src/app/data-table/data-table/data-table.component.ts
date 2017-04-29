@@ -107,10 +107,16 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
     this.headerComponent.invokeUpdateAction({
       action: updateAction, rows: checkedRows
     });
+  }
 
-    if (changeListState) {
-      this.actionListState = 'hidden';
-    }
+  public otherAction(key: string) {
+    const checkedRows = this.rows.filter((row: any, index: number) => {
+      return this.checkedRowIndices[index] === true;
+    });
+    this.headerComponent.invokeOtherAction({
+      action: key, rows: checkedRows
+    });
+    this.actionListState = 'hidden';
   }
 
   public paginationAction(action: string, value) {
