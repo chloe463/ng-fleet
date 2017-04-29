@@ -2,7 +2,7 @@
   <!--
   <input type="hidden" [(value)]="value" name="{{name}}">
   -->
-  <label class="fr-input-text__label" [@labelState]="state">
+  <label class="fr-select__label" [@labelState]="labelState">
     {{placeholder}}
   </label>
   <div class="fr-select-browser" *ngIf="browserNative">
@@ -16,7 +16,7 @@
     <span class="fr-select__text" (click)="toggleOptionsVisiblity()">
       {{label}}
     </span>
-    <ul class="fr-select__list" [hidden]="!optionsVisibility">
+    <ul class="fr-select__list" [@listState]="optionsVisibility">
       <li *ngFor="let option of _options; trackBy: $index"
         class="fr-select__item"
         [class.fr-select__item--selected]="isSelected(option.value)"

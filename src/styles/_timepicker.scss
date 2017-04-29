@@ -27,6 +27,8 @@
   }
 
   &__body {
+    opacity: 0;
+    transform-origin: 0 0;
     width: 320px;
     position: absolute;
     background: #FFFFFF;

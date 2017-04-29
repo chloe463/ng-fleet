@@ -1,6 +1,14 @@
 .fr-select {
   position: relative;
 
+  &__label {
+    position: absolute;
+    z-index: -1;
+    top: 5px;
+    left: 0;
+    color: #CCCCCC;
+  }
+
   &-browser__pulldown {
     appearance: none;
     outline: none;
@@ -42,6 +50,8 @@
 
     max-height: 200px;
     overflow-y: scroll;
+    transform-origin: 0 0;
+    opacity: 0;
   }
 
   &__item {

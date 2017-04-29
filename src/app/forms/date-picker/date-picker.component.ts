@@ -5,7 +5,12 @@ import {
   QueryList,
   forwardRef,
   HostListener,
-  ElementRef
+  ElementRef,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -16,6 +21,9 @@ const SATURDAY = 6;
 const DATE_MAX = 31;
 const WEEK_DATE_COUNT = 7;
 
+const HIDDEN = 'hidden';
+const SHOW   = 'show';
+
 export const DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => FrDatePickerComponent),
@@ -25,7 +33,22 @@ export const DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-date-picker',
   templateUrl: './date-picker.component.html',
-  providers: [DATE_PICKER_CONTROL_VALUE_ACCESSOR]
+  providers: [DATE_PICKER_CONTROL_VALUE_ACCESSOR],
+  animations: [
+    trigger('calendarVisibility', [
+      state(HIDDEN, style({
+        opacity: 0,
+        transform: 'scaleY(0)'
+      })),
+      state(SHOW, style({
+        opacity: 1,
+        transform: 'scaleY(1)'
+      })),
+      transition('* => *', [
+        animate('.2s ease-in')
+      ])
+    ])
+  ]
 })
 export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
 
@@ -35,7 +58,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
-  public calendarVisibility: boolean;
+  public calendarVisibility: string;
   public target: Date;
   public weeks: Array<Array<Date | null>>;
   private _oldValue: Date;
@@ -74,7 +97,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
 
 
   ngOnInit() {
-    this.calendarVisibility = false;
+    this.calendarVisibility = HIDDEN;
     this.target             = new Date();
     this._resetCalendar(this.target);
   }
@@ -118,7 +141,8 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
 
   public toggleCalendarVisibility(): void {
     this._oldValue = new Date(this._innerValue.getTime());
-    this.calendarVisibility = !this.calendarVisibility;
+    // this.calendarVisibility = !this.calendarVisibility;
+    this.calendarVisibility = (this.calendarVisibility === HIDDEN) ? SHOW : HIDDEN;
   }
 
   public isToday(d: Date): boolean {
@@ -161,11 +185,11 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
 
   public cancel(): void {
     this.value = this._oldValue;
-    this.calendarVisibility = false;
+    this.calendarVisibility = HIDDEN;
   }
 
   public commit(): void {
-    this.calendarVisibility = false;
+    this.calendarVisibility = HIDDEN;
   }
 
   @HostListener('document:click', ['$event'])
@@ -178,14 +202,14 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
     }
 
     if (!this.el.nativeElement.contains(event.target)) {
-      this.calendarVisibility = false;
+      this.calendarVisibility = HIDDEN;
     }
   }
 
   @HostListener('window:keydown', ['$event'])
   public disapperOnKeyDown(event) {
     if (event.key === 'Escape') {
-      this.calendarVisibility = false;
+      this.calendarVisibility = HIDDEN;
     }
   }
 
