@@ -56,6 +56,19 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
       transition('* => *', [
         animate('200ms ease-out')
       ])
+    ]),
+    trigger('listState', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'scaleY(0)'
+      })),
+      state('show', style({
+        opacity: 1,
+        transform: 'scaleY(1)'
+      })),
+      transition('* => *', [
+        animate('200ms ease-out')
+      ])
     ])
   ]
 })
@@ -71,19 +84,19 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
 
-  public optionsVisibility: boolean;
+  public optionsVisibility: string = 'hidden';
   public label: string | number;
-  private _state: string = 'placeholder';
+  public labelState: string = 'placeholder';
 
   constructor(private el: ElementRef) { }
 
   ngOnInit() {
-    this.optionsVisibility = false;
+    this.optionsVisibility = 'hidden';
   }
 
   public onChange(value): void {
-    this.value = value;
-    this._state = 'label';
+    this.value      = value;
+    this.labelState = 'label';
   }
 
   get value(): any {
@@ -130,15 +143,15 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   public toggleOptionsVisiblity(): void {
-    this.optionsVisibility = !this.optionsVisibility;
+    this.optionsVisibility = (this.optionsVisibility === 'show') ? 'hidden': 'show';
     this.onFocus();
   }
 
   public select(option) {
-    this.value = option.value;
-    this.label = option.label;
-    this.optionsVisibility = false;
-    this.state = 'label';
+    this.value             = option.value;
+    this.label             = option.label;
+    this.optionsVisibility = 'hidden';
+    this.labelState        = 'label';
   }
 
   public isSelected(value) {
@@ -148,28 +161,21 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @HostListener('document:click', ['$event'])
   disappear(event) {
     if (!this.el.nativeElement.contains(event.target)) {
-      this.optionsVisibility = false;
+      this.optionsVisibility = 'hidden';
       this.onBlur();
     }
   }
 
-  get state(): string {
-    return this._state;
-  }
-
-  set state(newState) {
-    this._state = newState;
-  }
-
   public onFocus() {
-    this.state = 'labelOnFocus';
+    this.labelState = 'labelOnFocus';
   }
 
   public onBlur() {
     if (this.value === null || this.value === undefined || this.value === '') {
-      this.state = 'placeholder';
+      this.labelState = 'placeholder';
       return;
     }
-    this.state = 'label';
+    this.labelState        = 'label';
+    this.optionsVisibility = 'hidden';
   }
 }
