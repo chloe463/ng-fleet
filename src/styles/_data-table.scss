@@ -17,6 +17,7 @@
     margin-left: auto;
   }
   &-btn {
+    display: inline-block;
     margin-left: 24px;
     color: rgba(0,0,0,.56);
     cursor: pointer;
@@ -24,6 +25,31 @@
 
   &--checked {
     background: #E8EAF6;
+  }
+}
+
+.fr-data-table__other-actions {
+  position: relative;
+}
+
+.fr-data-table__other-action-list {
+  position: absolute;
+  padding: 0;
+  top: -30px;
+  background: white;
+  list-style: none;
+  width: 150px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.26);
+  transform-origin: 0 0;
+}
+
+.fr-data-table__other-action-item {
+  padding: 15px;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background: #EEEEEE;
   }
 }
 

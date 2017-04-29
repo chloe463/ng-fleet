@@ -26,7 +26,7 @@
   <fr-tab title="data-table">
     <button class="fr-btn fr-btn-flat" (click)="resetData()">Reset rows</button>
     <fr-data-table [selectable]="true">
-      <fr-data-table-header title="Header" (updateAction)="updateAction($event)"></fr-data-table-header>
+      <fr-data-table-header title="Header" (updateAction)="updateAction($event)" [otherActions]="dataTableOtherActions"></fr-data-table-header>
       <fr-data-table-columns [columns]="records.columns"></fr-data-table-columns>
       <fr-data-table-rows [rows]="records.rows"></fr-data-table-rows>
       <fr-data-table-footer

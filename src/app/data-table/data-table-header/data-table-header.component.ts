@@ -11,6 +11,11 @@ export interface IFrUpdateAction {
   rows: Array<any>;
 }
 
+export interface IFrOtherAction {
+  key: string;
+  label: string;
+}
+
 @Component({
   selector: 'fr-data-table-header',
   templateUrl: './data-table-header.component.html'
@@ -20,6 +25,7 @@ export class FrDataTableHeaderComponent implements OnInit {
   @Output() updateAction = new EventEmitter();
 
   private _title: string;
+  private _otherActions: Array<IFrOtherAction> = [];
 
   @Input()
   set title(title) {
@@ -28,6 +34,15 @@ export class FrDataTableHeaderComponent implements OnInit {
 
   get title(): string {
     return this._title;
+  }
+
+  @Input()
+  set otherActions(otherActions) {
+    this._otherActions = otherActions;
+  }
+
+  get otherActions(): Array<IFrOtherAction> {
+    return this._otherActions;
   }
 
   constructor() { }
