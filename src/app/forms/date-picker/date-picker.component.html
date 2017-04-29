@@ -11,7 +11,7 @@
       </svg>
     </span>
   </div>
-  <div class="fr-date-picker__body" [hidden]="!calendarVisibility">
+  <div class="fr-date-picker__body" [@calendarVisibility]="calendarVisibility">
     <div class="fr-date-picker__body-header">
       <div class="fr-date-picker__body-header-year">
         {{value|date: 'yyyy'}}
