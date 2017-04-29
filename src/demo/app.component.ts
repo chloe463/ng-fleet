@@ -47,6 +47,10 @@ export class AppComponent {
     date: new Date(),
     time: new Date()
   };
+  dataTableOtherActions = [
+    { key: 'action1', label: 'Action1' },
+    { key: 'action2', label: 'Action2' },
+  ];
   records = {
     columns: [
       { key: 'column1', name: 'Column1 (number)', type: 'number' },
@@ -110,6 +114,10 @@ export class AppComponent {
   }
 
   public updateAction(event) {
+    console.log(event);
+  }
+
+  public otherAction(event) {
     console.log(event);
   }
 

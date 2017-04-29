@@ -7,7 +7,12 @@ import {
   EventEmitter,
   ContentChild,
   ContentChildren,
-  QueryList
+  QueryList,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
 } from '@angular/core';
 
 import { FrDataTableColumnsComponent } from '../data-table-columns/data-table-columns.component';
@@ -17,7 +22,22 @@ import { FrDataTableFooterComponent } from '../data-table-footer/data-table-foot
 
 @Component({
   selector: 'fr-data-table',
-  templateUrl: './data-table.component.html'
+  templateUrl: './data-table.component.html',
+  animations: [
+    trigger('actionListState', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'scaleY(0)'
+      })),
+      state('show', style({
+        opacity: 1,
+        transform: 'scaleY(1)'
+      })),
+      transition('* => *', [
+        animate('500ms cubic-bezier(0.35, 0.25, 0, 1)')
+      ])
+    ])
+  ]
 })
 export class FrDataTableComponent implements OnInit, AfterContentInit {
 
@@ -37,6 +57,8 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
 
   public checkedRowIndices: any;
   public checkAllFlag: boolean;
+
+  public actionListState: string = 'hidden';
 
   constructor() {
   }
@@ -78,7 +100,7 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
     return count;
   }
 
-  public updateRowAction(updateAction: string) {
+  public updateRowAction(updateAction: string, changeListState = false) {
     const checkedRows = this.rows.filter((row: any, index: number) => {
       return this.checkedRowIndices[index] === true;
     });
@@ -87,9 +109,24 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
     });
   }
 
+  public otherAction(key: string) {
+    const checkedRows = this.rows.filter((row: any, index: number) => {
+      return this.checkedRowIndices[index] === true;
+    });
+    this.headerComponent.invokeOtherAction({
+      action: key, rows: checkedRows
+    });
+    this.actionListState = 'hidden';
+  }
+
   public paginationAction(action: string, value) {
     this.footerComponent.invokePaginationAction({
       action, rowsPerPage: this.rowsPerPage
     });
   }
+
+  public toggleOtherActionList(): void {
+    this.actionListState = (this.actionListState === 'hidden') ? 'show': 'hidden';
+  }
+
 }
