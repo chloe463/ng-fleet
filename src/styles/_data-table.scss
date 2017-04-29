@@ -34,11 +34,14 @@
 
 .fr-data-table__other-action-list {
   position: absolute;
+  margin: 0;
   padding: 0;
-  top: -30px;
+  top: -15px;
   background: white;
   list-style: none;
   width: 150px;
+  max-height: 160px;
+  overflow: auto;
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
   transform-origin: 0 0;
 }
