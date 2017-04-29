@@ -10,7 +10,7 @@
       </svg>
     </span>
   </div>
-  <div class="fr-timepicker__body" [hidden]="!clockVisibility">
+  <div class="fr-timepicker__body" [@clockVisibility]="clockVisibility">
     <div class="fr-timepicker__body-header">
       <span class="fr-timepicker__time">
         <span class="fr-timepicker__time-hours"

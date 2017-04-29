@@ -6,7 +6,12 @@ import {
   forwardRef,
   ElementRef,
   HostListener,
-  ViewChild
+  ViewChild,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -19,6 +24,9 @@ const DIALS = {
 const HOURS   = 'hours';
 const MINUTES = 'minutes';
 
+const HIDDEN = 'hidden';
+const SHOW   = 'show';
+
 export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => FrTimePickerComponent),
@@ -28,7 +36,22 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-time-picker',
   templateUrl: './time-picker.component.html',
-  providers: [TIME_PICKER_CONTROL_VALUE_ACCESSOR]
+  providers: [TIME_PICKER_CONTROL_VALUE_ACCESSOR],
+  animations: [
+    trigger('clockVisibility', [
+      state(HIDDEN, style({
+        opacity: 0,
+        transform: 'scaleY(0)'
+      })),
+      state(SHOW, style({
+        opacity: 1,
+        transform: 'scaleY(1)'
+      })),
+      transition('* => *', [
+        animate('.3s ease')
+      ])
+    ])
+  ]
 })
 export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
@@ -43,7 +66,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
-  public clockVisibility: boolean;
+  public clockVisibility: string;
   public pickTarget: string = HOURS;
   public dials: Array<number> = [];
   public changing = false;
@@ -82,7 +105,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   ngOnInit() {
     this._innerValue     = new Date();
     this.pickTarget      = HOURS;
-    this.clockVisibility = false;
+    this.clockVisibility = HIDDEN;
     this.setDials();
   }
 
@@ -110,7 +133,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
 
   public toggleTimePickerVisibility(): void {
     this._oldValue = new Date(this._innerValue.getTime());
-    this.clockVisibility = !this.clockVisibility;
+    this.clockVisibility = (this.clockVisibility === HIDDEN) ? SHOW : HIDDEN;
   }
 
   public isAm(): boolean {
@@ -187,14 +210,14 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   @HostListener('document:click', ['$event'])
   public disapperOnClick(event) {
     if (!this.el.nativeElement.contains(event.target)) {
-      this.clockVisibility = false;
+      this.clockVisibility = HIDDEN;
     }
   }
 
   @HostListener('window:keydown', ['$event'])
   public disapperOnKeyDown(event) {
     if (event.key === 'Escape') {
-      this.clockVisibility = false;
+      this.clockVisibility = HIDDEN;
     }
   }
 }
