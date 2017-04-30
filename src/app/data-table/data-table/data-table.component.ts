@@ -2,12 +2,15 @@ import {
   Component,
   OnInit,
   AfterContentInit,
+  ElementRef,
   Input,
   Output,
   EventEmitter,
   ContentChild,
   ContentChildren,
+  ViewChild,
   QueryList,
+  HostListener,
   trigger,
   state,
   style,
@@ -27,11 +30,11 @@ import { FrDataTableFooterComponent } from '../data-table-footer/data-table-foot
     trigger('actionListState', [
       state('hidden', style({
         opacity: 0,
-        transform: 'scaleY(0)'
+        transform: 'scale(0)'
       })),
       state('show', style({
         opacity: 1,
-        transform: 'scaleY(1)'
+        transform: 'scale(1)'
       })),
       transition('* => *', [
         animate('500ms cubic-bezier(0.35, 0.25, 0, 1)')
@@ -42,6 +45,8 @@ import { FrDataTableFooterComponent } from '../data-table-footer/data-table-foot
 export class FrDataTableComponent implements OnInit, AfterContentInit {
 
   @Input() selectable: boolean;
+
+  @ViewChild('dots') dots: ElementRef;
 
   @ContentChild(FrDataTableHeaderComponent) headerComponent: FrDataTableHeaderComponent;
   @ContentChild(FrDataTableColumnsComponent) columnsComponent: FrDataTableColumnsComponent;
@@ -127,6 +132,20 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
 
   public toggleOtherActionList(): void {
     this.actionListState = (this.actionListState === 'hidden') ? 'show': 'hidden';
+  }
+
+  @HostListener('document:click', ['$event'])
+  public hideActionListOnClick(event) {
+    if (!this.dots.nativeElement.contains(event.target)) {
+      this.actionListState = 'hidden';
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  public hideActionListOnEscape(event) {
+    if (event.code === 'Escape' && event.key === 'Escape') {
+      this.actionListState = 'hidden';
+    }
   }
 
 }
