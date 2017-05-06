@@ -47,7 +47,7 @@ export class AppComponent {
     date: new Date(),
     time: new Date()
   };
-  dataTableOtherActions = [
+  dataTableOtherActionKeys = [
     { key: 'action1', label: 'Action1' },
     { key: 'action2', label: 'Action2' },
   ];
