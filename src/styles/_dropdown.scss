@@ -8,7 +8,7 @@
     text-indent: 5px;
     font-size: 12pt;
     border: none;
-    border-bottom: 1px solid #A1A1A1;
+    border-bottom: 1px solid $gray;
     transition-property: border-bottom;
     transition-duration: 0.5s;
     cursor: pointer;
@@ -26,7 +26,7 @@
     top: 15px;
     z-index: 100;
     width: 100%;
-    background: #FFFFFF;
+    background: $white;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
 
     max-height: 200px;
@@ -58,7 +58,7 @@
     height: 0;
     margin: auto;
     content: '';
-    border-top: 7px solid #A1A1A1;
+    border-top: 7px solid $gray;
     border-right: 5px solid transparent;
     border-left: 5px solid transparent;
   }

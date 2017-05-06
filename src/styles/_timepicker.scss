@@ -6,7 +6,7 @@
     background: transparent;
     outline: none;
     border: none;
-    border-bottom: 1px solid #A1A1A1;
+    border-bottom: 1px solid $gray;
     border-radius: 0;
     height: 1.8em;
     padding: 3px 0;
@@ -31,13 +31,13 @@
     transform-origin: 0 0;
     width: 320px;
     position: absolute;
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
+    background: $white;
+    border: 1px solid $light-gray;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
     z-index: 100;
 
     &-header {
-      background: #3F51B5;
+      background: $blue;
       height: 80px;
       display: flex;
       justify-content: center;
@@ -52,30 +52,30 @@
 
   &__meridian {
     margin: 0 5px;
-    color: lighten(#3F51B5, 30%);
+    color: lighten($blue, 30%);
     cursor: pointer;
 
     &--selected {
-      color: #FFFFFF;
+      color: $white;
     }
   }
 
   &__time {
     font-size: 38px;
-    color: #FFFFFF;
+    color: $white;
 
     &-hours {
-      color: lighten(#3F51B5, 30%);
+      color: lighten($blue, 30%);
       cursor: pointer;
       &--picking {
-        color: #FFFFFF;
+        color: $white;
       }
     }
     &-minutes {
-      color: lighten(#3F51B5, 30%);
+      color: lighten($blue, 30%);
       cursor: pointer;
       &--picking {
-        color: #FFFFFF;
+        color: $white;
       }
     }
     &-colon {
@@ -88,7 +88,7 @@
     margin: 10px;
     height: 300px;
     border-radius: 50%;
-    background: #EEEEEE;
+    background: lighten($light-gray, 10%);
   }
 
   &__clock-dial {
@@ -107,21 +107,21 @@
 
     &:hover {
       background: lighten($magenta, 15%);
-      color: #FFFFFF;
+      color: $white;
     }
 
     &--picked {
       background: $magenta;
-      color: #FFFFFF;
+      color: $white;
       &:hover {
         background: $magenta;
-        color: #FFFFFF;
+        color: $white;
       }
     }
   }
 
   &__button--primary, &__button--secondary {
-    color: #3F51B5;
+    color: $blue;
   }
 }
 

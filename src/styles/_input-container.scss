@@ -10,10 +10,10 @@
     position: absolute;
     right: 0;
     font-size: 14px;
-    color: #CCCCCC;
+    color: $light-gray;
 
     &--error {
-      color: #FF5722;
+      color: $error;
     }
   }
 }

@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background: #FFF;
+    background: $white;
     resize: horizontal;
     overflow-x: scroll;
 
@@ -24,14 +24,14 @@
       background: rgba(0,0,0,.3);
       padding: 3px 0 3px 7px;
       font-size: 14px;
-      color: #FFFFFF;
+      color: $white;
       text-transform: uppercase;
     }
 
     &-item {
       margin: 0;
       padding: 0;
-      border-bottom: 1px solid #CCCCCC;
+      border-bottom: 1px solid $light-gray;
     }
 
     &-link {
@@ -42,11 +42,11 @@
       color: rgba(0,0,0,.54);
       &:hover {
         background: rgba(0,0,0,.05);
-        color: #3F51B5;
+        color: $blue;
       }
       &--active {
         background: rgba(0,0,0,.05);
-        color: #3F51B5;
+        color: $blue;
         font-weight: bold;
       }
     }

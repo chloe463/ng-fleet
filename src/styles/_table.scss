@@ -11,7 +11,7 @@
     border-bottom: 1px solid $base1;
 
     &--even, &--odd {
-      background: #F7F7F7;
+      background: lighten($light-gray, 15%);
     }
   }
 
@@ -47,7 +47,7 @@
     border: 1px solid $base1;
     font-size: 10pt;
     background: #36A097;
-    color: #FFFFFF;
+    color: $white;
     font-weight: 100;
   }
 
