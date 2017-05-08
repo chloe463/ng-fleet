@@ -2,6 +2,7 @@ const path             = require('path');
 const gulp             = require('gulp');
 const gulpBetterRollup = require('gulp-better-rollup');
 const gulpSass         = require('gulp-sass');
+const gulpSassThemes   = require('gulp-sass-themes');
 const autoPrefixer     = require('gulp-autoprefixer');
 const gulpRename       = require('gulp-rename');
 const gulpCleanCss     = require('gulp-clean-css');
@@ -92,6 +93,17 @@ gulp.task('minify:css', () => {
     .pipe(gulpCleanCss())
     .pipe(gulpRename('francette.min.css'))
     .pipe(gulp.dest(BUNDLES_ROOT));
+});
+
+// Build css with themes
+gulp.task('build:css:themes', () => {
+  const TARGET_FILE = path.join(SOURCE_ROOT, 'francette-themed.scss');
+  return gulp.src(TARGET_FILE)
+    .pipe(gulpSassThemes('./styles/themes/_*.scss', { cwd: './src', placeholder: /^francette\-(themed)\.(scss|sass)$/ }))
+    .pipe(gulpSass()).on('error', gulpSass.logError)
+    .pipe(autoPrefixer())
+    .pipe(gulpCleanCss())
+    .pipe(gulp.dest('builds/bundles'));
 });
 
 // bundle js files
