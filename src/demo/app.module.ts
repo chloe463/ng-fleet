@@ -5,20 +5,21 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import {
-  DataTableDemoComponent
-} from './data-table-demo.component';
+import { DataTableDemoComponent } from './data-table-demo.component';
+import { ChipsDemoComponent } from './chips-demo.component';
 
 import { FrancetteModule } from '../app/francette.module';
 
 const routeConfig: Routes = [
-  { path: 'data-table', component: DataTableDemoComponent }
+  { path: 'data-table', component: DataTableDemoComponent },
+  { path: 'chips', component: ChipsDemoComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataTableDemoComponent
+    DataTableDemoComponent,
+    ChipsDemoComponent
   ],
   imports: [
     BrowserModule,

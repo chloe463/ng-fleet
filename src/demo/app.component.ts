@@ -6,13 +6,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Francette';
-  chips = [
-    { label: 'chip1' },
-    { label: 'chip2' },
-    { label: 'chip3' },
-    { label: 'chip4' },
-    { label: 'chip5' }
-  ];
   selectedIndex = 0;
   chks = [
     { name: 'chk1', label: 'chk1' },
@@ -78,13 +71,6 @@ export class AppComponent {
   public onSubmit(e) {
     console.log(e);
     return false;
-  }
-
-  public removeChip(index: number) {
-    this.chips = [
-      ...this.chips.slice(0, index),
-      ...this.chips.slice(index + 1),
-    ];
   }
 
 }

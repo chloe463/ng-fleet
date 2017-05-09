@@ -8,6 +8,7 @@
   </fr-navbar-item>
   <fr-side-nav>
     <fr-side-nav-item-group title="components">
+      <fr-side-nav-item label="chips" link="chips"></fr-side-nav-item>
       <fr-side-nav-item label="data-table" link="data-table"></fr-side-nav-item>
     </fr-side-nav-item-group>
     <fr-side-nav-item-group title="menu1">
@@ -28,14 +29,6 @@
 </div>
 
 <fr-tabs [(selectedIndex)]="selectedIndex">
-  <fr-tab title="chips">
-    <div>
-      <fr-chip *ngFor="let chip of chips; let i = index" (dismiss)="removeChip(i)">
-        {{chip.label}}
-      </fr-chip>
-      <fr-chip on="true">readOnly</fr-chip>
-    </div>
-  </fr-tab>
   <fr-tab title="forms">
     <form (ngSubmit)="onSubmit(formValue.value)" #formValue="ngForm">
       <table style="width:80%;margin:15px auto">
