@@ -6,26 +6,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import {
-  FrNavSample1Component,
-  FrNavSample2Component,
-  FrNavSample3Component,
-} from './app.component';
+  DataTableDemoComponent
+} from './data-table-demo.component';
 
 import { FrancetteModule } from '../app/francette.module';
 
 const routeConfig: Routes = [
-  { path: 'nav1', component: FrNavSample1Component },
-  { path: 'nav2', component: FrNavSample2Component },
-  { path: 'nav3', component: FrNavSample3Component },
-  { path: 'menu1-1', component: FrNavSample1Component },
+  { path: 'data-table', component: DataTableDemoComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    FrNavSample1Component,
-    FrNavSample2Component,
-    FrNavSample3Component
+    DataTableDemoComponent
   ],
   imports: [
     BrowserModule,
