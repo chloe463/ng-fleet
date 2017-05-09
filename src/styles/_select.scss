@@ -7,6 +7,29 @@
     top: 5px;
     left: 0;
     color: $light-gray;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+
+    &--placeholder {
+      top: 5px;
+      left: 0;
+      color: #CCCCCC;
+    }
+
+    &--label {
+      top: -10px;
+      left: 0;
+      color: #CCCCCC;
+      font-size: 12px;
+    }
+
+    &--label-on-focus {
+      top: -10px;
+      left: 0;
+      color: $magenta;
+      font-size: 12px;
+    }
   }
 
   &-browser__pulldown {
@@ -52,6 +75,19 @@
     overflow-y: scroll;
     transform-origin: 0 0;
     opacity: 0;
+
+    transition-property: opacity, transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    &--hidden {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+
+    &--show {
+      opacity: 1;
+      transform: scaleY(1);
+    }
   }
 
   &__item {
