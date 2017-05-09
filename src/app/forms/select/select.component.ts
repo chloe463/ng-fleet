@@ -33,44 +33,7 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-select',
   templateUrl: './select.component.html',
-  providers: [SELECT_CONTROL_VALUE_ACCESSOR],
-  animations: [
-    trigger('labelState', [
-      state('placeholder', style({
-        top: '5px',
-        left: '0',
-        color: '#CCCCCC'
-      })),
-      state('label', style({
-        top: '-10px',
-        left: '0px',
-        color: '#CCCCCC',
-        'font-size': '12px'
-      })),
-      state('labelOnFocus', style({
-        top: '-10px',
-        left: '0px',
-        color: '#D33682',
-        'font-size': '12px'
-      })),
-      transition('* => *', [
-        animate('200ms ease-out')
-      ])
-    ]),
-    trigger('listState', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'scaleY(0)'
-      })),
-      state('show', style({
-        opacity: 1,
-        transform: 'scaleY(1)'
-      })),
-      transition('* => *', [
-        animate('200ms ease-out')
-      ])
-    ])
-  ]
+  providers: [SELECT_CONTROL_VALUE_ACCESSOR]
 })
 export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @Input() name: string;

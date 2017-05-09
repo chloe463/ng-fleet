@@ -13,22 +13,22 @@
       fill: white;
     }
     &:hover {
-      background: lighten(#3F51B5, 15%);
+      background: lighten($blue, 15%);
     }
   }
 
   &__items {
-    background: #3F51B5;
+    background: $blue;
     padding-left: 0;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
-    color: #FFFFFF;
+    color: $white;
     margin-top: 0;
     margin-bottom: 0px;
     list-style: none;
     display: flex;
     justify-content: flex-start;
-    border-top: 1px solid #A1A1A1;
-    border-bottom: 1px solid #A1A1A1;
+    border-top: 1px solid $gray;
+    border-bottom: 1px solid $gray;
   }
 
   &__logo {
@@ -46,7 +46,7 @@
     text-align: center;
 
     &--active {
-      color: #FFFFFF;
+      color: $white;
       &:hover {
       }
     }
@@ -57,7 +57,7 @@
       opacity: 1;
     }
     &:hover .fr-navbar__label {
-      background: lighten(#3F51B5, 15%);
+      background: lighten($blue, 15%);
     }
   }
 
@@ -67,12 +67,12 @@
     vertical-align: middle;
     border-radius: 2px;
     background: transparent;
-    color: #FFFFFF;
+    color: $white;
     cursor: pointer;
     text-decoration: none;
 
     &:hover {
-      background: lighten(#3F51B5, 15%);
+      background: lighten($blue, 15%);
     }
   }
 
@@ -82,8 +82,8 @@
     list-style: none;
     line-height: 20px;
     min-width: 180px;
-    background: lighten(#3F51B5, 15%);
-    color: #000;
+    background: lighten($blue, 15%);
+    color: $black;
     padding: 0;
     visibility: hidden;
     z-index: 1;
@@ -96,14 +96,14 @@
 
     &-item {
       line-height: 36px;
-      border-bottom: 1px solid #CCCCCC;
+      border-bottom: 1px solid $light-gray;
 
       &:hover {
-        background: lighten(#3F51B5, 20%);
+        background: lighten($blue, 20%);
       }
 
       &:hover .fr-navbar__label {
-        background: lighten(#3F51B5, 20%);
+        background: lighten($blue, 20%);
       }
 
       &:last-child {

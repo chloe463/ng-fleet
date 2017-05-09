@@ -90,31 +90,7 @@ export class FrInputDirective implements OnInit, OnDestroy {
   templateUrl: './input-text-container.component.html',
   host: {
     '[class.fr-input-text__label--focused]': '_input.focus'
-  },
-  animations: [
-    trigger('labelState', [
-      state('placeholder', style({
-        top: '5px',
-        left: '0',
-        color: '#CCCCCC'
-      })),
-      state('label', style({
-        top: '-10px',
-        left: '0px',
-        color: '#CCCCCC',
-        'font-size': '12px'
-      })),
-      state('labelOnFocus', style({
-        top: '-10px',
-        left: '0px',
-        color: '#D33682',
-        'font-size': '12px'
-      })),
-      transition('placeholder => labelOnFocus, labelOnFocus => placeholder, labelOnFocus => label, label => labelOnFocus, placeholder => label', [
-        animate('200ms ease-out')
-      ])
-    ])
-  ]
+  }
 })
 export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 

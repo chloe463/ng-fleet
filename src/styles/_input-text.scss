@@ -4,6 +4,29 @@
   &__label {
     position: absolute;
     pointer-events: none;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+
+    &--placeholder {
+      top: 5px;
+      left: 0;
+      color: #CCCCCC;
+    }
+
+    &--label {
+      top: -10px;
+      left: 0;
+      color: #CCCCCC;
+      font-size: 12px;
+    }
+
+    &--label-on-focus {
+      top: -10px;
+      left: 0;
+      color: $magenta;
+      font-size: 12px;
+    }
   }
 
   &__form {
@@ -13,7 +36,7 @@
     font-size: 12pt;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #A1A1A1;
+    border-bottom: 1px solid $gray;
     border-radius: 0;
     padding: 0;
     text-indent: 0;
@@ -25,8 +48,8 @@
     }
 
     &:disabled {
-      color: #CCCCCC;
-      border-bottom: 1px dotted #CCCCCC;
+      color: $light-gray;
+      border-bottom: 1px dotted $light-gray;
     }
   }
 }

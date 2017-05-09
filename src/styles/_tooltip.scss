@@ -1,8 +1,8 @@
 @mixin custom_tooltip_content($top, $left) {
   display: inline-block;
-  background: #A1A1A1;
+  background: $gray;
   padding: 5px;
-  color: #FFFFFF;
+  color: $white;
   border-radius: 3px;
   position: absolute;
   top: $top;

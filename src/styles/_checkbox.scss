@@ -29,7 +29,7 @@
       font-family: "FontAwesome";
     }
     &--checked {
-      color: #FFFFFF;
+      color: $white;
       background: $magenta;
       border: 2px solid $magenta;
     }
@@ -61,7 +61,7 @@
       stroke: transparent;
     }
     &--on > &-path {
-      stroke: #FFFFFF;
+      stroke: $white;
     }
   }
 }
@@ -90,7 +90,7 @@
 //     text-align: center;
 //     vertical-align: middle;
 //     font-size: 14px;
-//     border: 2px solid #A1A1A1;
+//     border: 2px solid $gray;
 //     border-radius: 2px;
 //     padding: 0px;
 //     cursor: pointer;
@@ -104,7 +104,7 @@
 //     }
 //
 //     &--checked {
-//       color: #FFFFFF;
+//       color: $white;
 //       background: $magenta;
 //       border: 2px solid $magenta;
 //     }
@@ -115,7 +115,7 @@
 //         stroke: transparent;
 //       }
 //       &--on > &-path {
-//         stroke: #FFFFFF;
+//         stroke: $white;
 //       }
 //     }
 //

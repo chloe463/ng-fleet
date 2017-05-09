@@ -11,7 +11,7 @@
     font-size: 16pt;
     font-weight: bold;
     text-indent: 1em;
-    color: #FFFFFF;
+    color: $white;
   }
 
   &__head {
@@ -22,7 +22,7 @@
     padding-bottom: 7px;
     background: $base00;
     text-align: center;
-    color: #FFFFFF;
+    color: $white;
     font-weight: normal;
     width: 80px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
@@ -32,7 +32,7 @@
     padding-top: 15px;
     padding-bottom: 15px;
     background: $blue;
-    color: #FFFFFF;
+    color: $white;
     text-align: center;
     width: 80px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
@@ -41,7 +41,7 @@
   &__value {
     padding-top: 17px;
     padding-bottom: 17px;
-    background: #FFFFFF;
+    background: $white;
     text-align: center;
     font-size: 15pt;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.04);

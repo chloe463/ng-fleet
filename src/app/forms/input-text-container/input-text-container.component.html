@@ -1,5 +1,8 @@
 <div class="fr-input-text">
-  <label class="fr-input-text__label" [@labelState]="_input.labelState">
+  <label class="fr-input-text__label"
+    [class.fr-input-text__label--placeholder]="_input.labelState === 'placeholder'"
+    [class.fr-input-text__label--label]="_input.labelState === 'label'"
+    [class.fr-input-text__label--label-on-focus]="_input.labelState === 'labelOnFocus'">
     {{placeholder}}
   </label>
   <ng-content selector="input, textarea"></ng-content>

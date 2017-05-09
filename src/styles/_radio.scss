@@ -74,20 +74,6 @@
     }
   }
 
-  &:after {
-    content: "\00a0\00a0\00a0";
-  }
-
-  &--checked {
-    color: #FFFFFF;
-    background: $magenta;
-    border: 2px solid #E4E4E4;
-    padding: 0px;
-    &:after {
-      content: "\00a0\00a0\00a0";
-    }
-  }
-
   &__input {
     display: none;
   }

@@ -5,14 +5,14 @@
   &__body {
     position: absolute;
     z-index: 100;
-    border: 1px solid #CCCCCC;
-    background: #FFFFFF;
+    border: 1px solid $light-gray;
+    background: $white;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
 
     &-header {
       line-height: 25px;
-      background: #3F51B5;
-      color: #FFFFFF;
+      background: $blue;
+      color: $white;
 
       &-year {
         padding: 10px 10px 0 10px;
@@ -36,7 +36,7 @@
     margin: 5px;
     border-spacing: 0;
     text-align: center;
-    background: #FFFFFF;
+    background: $white;
     table-layout: fixed;
   }
 
@@ -45,7 +45,7 @@
     height: 30px;
     font-size: 12pt;
     border: none;
-    border-bottom: 1px solid #A1A1A1;
+    border-bottom: 1px solid $gray;
     cursor: pointer;
   }
 
@@ -55,19 +55,19 @@
     right: 25px;
     height: 34px;
     vertical-align: top;
-    background: #FFFFFF;
+    background: $white;
     border: none;
     cursor: pointer;
   }
 
   &__day {
     font-size: 11px;
-    color: #A1A1A1;
+    color: $gray;
     &--sun {
-      color: #A1A1A1;
+      color: $gray;
     }
     &--sat {
-      color: #A1A1A1;
+      color: $gray;
     }
   }
 
@@ -90,25 +90,23 @@
     }
 
     &--sunday {
-      // background: #FFCFCF;
     }
 
     &--saturday {
-      // background: #BEE2FB;
     }
 
     &--selected {
-      color: #FFFFFF;
+      color: $white;
       background: $magenta;
       border-radius: 50%;
     }
 
     &--outofmonth {
-      color: #A1A1A1;
+      color: $gray;
     }
 
     &:hover {
-      color: #FFFFFF;
+      color: $white;
       background: lighten($magenta, 20%);
       border-radius: 50%;
     }
@@ -120,7 +118,7 @@
   }
 
   &__button--primary, &__button--secondary {
-    color: #3F51B5;
+    color: $blue;
   }
 
   &__ok-button {
@@ -133,12 +131,12 @@
     margin-right: 20px;
     height: 0;
     border: 6px solid transparent;
-    border-right: 6px solid #A1A1A1;
+    border-right: 6px solid $gray;
   }
   &--right {
     margin-left: 20px;
     height: 0;
     border: 6px solid transparent;
-    border-left: 6px solid #A1A1A1;
+    border-left: 6px solid $gray;
   }
 }
