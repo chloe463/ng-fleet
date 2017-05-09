@@ -9,6 +9,7 @@ import { DataTableDemoComponent } from './data-table-demo.component';
 import { ChipsDemoComponent } from './chips-demo.component';
 import { FormsDemoComponent } from './forms-demo.component';
 import { ButtonsDemoComponent } from './buttons-demo.component';
+import { TabsDemoComponent } from './tabs-demo.component';
 
 import { FrancetteModule } from '../app/francette.module';
 
@@ -16,7 +17,8 @@ const routeConfig: Routes = [
   { path: 'data-table', component: DataTableDemoComponent },
   { path: 'chips', component: ChipsDemoComponent },
   { path: 'forms', component: FormsDemoComponent },
-  { path: 'buttons', component: ButtonsDemoComponent }
+  { path: 'buttons', component: ButtonsDemoComponent },
+  { path: 'tabs', component: TabsDemoComponent }
 ];
 
 @NgModule({
@@ -25,7 +27,8 @@ const routeConfig: Routes = [
     DataTableDemoComponent,
     ChipsDemoComponent,
     FormsDemoComponent,
-    ButtonsDemoComponent
+    ButtonsDemoComponent,
+    TabsDemoComponent
   ],
   imports: [
     BrowserModule,
