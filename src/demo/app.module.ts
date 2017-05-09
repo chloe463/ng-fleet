@@ -10,6 +10,7 @@ import { ChipsDemoComponent } from './chips-demo.component';
 import { FormsDemoComponent } from './forms-demo.component';
 import { ButtonsDemoComponent } from './buttons-demo.component';
 import { TabsDemoComponent } from './tabs-demo.component';
+import { KpiTableDemoComponent } from './kpi-table-demo.component';
 
 import { FrancetteModule } from '../app/francette.module';
 
@@ -18,7 +19,8 @@ const routeConfig: Routes = [
   { path: 'chips', component: ChipsDemoComponent },
   { path: 'forms', component: FormsDemoComponent },
   { path: 'buttons', component: ButtonsDemoComponent },
-  { path: 'tabs', component: TabsDemoComponent }
+  { path: 'tabs', component: TabsDemoComponent },
+  { path: 'kpi-table', component: KpiTableDemoComponent }
 ];
 
 @NgModule({
@@ -28,7 +30,8 @@ const routeConfig: Routes = [
     ChipsDemoComponent,
     FormsDemoComponent,
     ButtonsDemoComponent,
-    TabsDemoComponent
+    TabsDemoComponent,
+    KpiTableDemoComponent
   ],
   imports: [
     BrowserModule,
