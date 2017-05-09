@@ -5,27 +5,33 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import {
-  FrNavSample1Component,
-  FrNavSample2Component,
-  FrNavSample3Component,
-} from './app.component';
+import { DataTableDemoComponent } from './data-table-demo.component';
+import { ChipsDemoComponent } from './chips-demo.component';
+import { FormsDemoComponent } from './forms-demo.component';
+import { ButtonsDemoComponent } from './buttons-demo.component';
+import { TabsDemoComponent } from './tabs-demo.component';
+import { KpiTableDemoComponent } from './kpi-table-demo.component';
 
 import { FrancetteModule } from '../app/francette.module';
 
 const routeConfig: Routes = [
-  { path: 'nav1', component: FrNavSample1Component },
-  { path: 'nav2', component: FrNavSample2Component },
-  { path: 'nav3', component: FrNavSample3Component },
-  { path: 'menu1-1', component: FrNavSample1Component },
+  { path: 'data-table', component: DataTableDemoComponent },
+  { path: 'chips', component: ChipsDemoComponent },
+  { path: 'forms', component: FormsDemoComponent },
+  { path: 'buttons', component: ButtonsDemoComponent },
+  { path: 'tabs', component: TabsDemoComponent },
+  { path: 'kpi-table', component: KpiTableDemoComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    FrNavSample1Component,
-    FrNavSample2Component,
-    FrNavSample3Component
+    DataTableDemoComponent,
+    ChipsDemoComponent,
+    FormsDemoComponent,
+    ButtonsDemoComponent,
+    TabsDemoComponent,
+    KpiTableDemoComponent
   ],
   imports: [
     BrowserModule,

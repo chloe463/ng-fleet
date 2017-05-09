@@ -1,188 +1,23 @@
 <fr-navbar>
-  <fr-navbar-logo link="/" title="Francette"></fr-navbar-logo>
-  <fr-navbar-item link="/nav1" title="nav1"></fr-navbar-item>
-  <fr-navbar-item link="/nav2" title="nav2"></fr-navbar-item>
-  <fr-navbar-item link="/nav3" title="nav3"></fr-navbar-item>
-  <fr-navbar-item link="/nav4" title="nav-menu">
-    <fr-navbar-menu link="/nav4/1" title="nav4-1"></fr-navbar-menu>
-    <fr-navbar-menu link="/nav4/2" title="nav4-2"></fr-navbar-menu>
-    <fr-navbar-menu link="/nav4/3" title="nav4-3"></fr-navbar-menu>
+  <fr-navbar-logo link="" title="Francette"></fr-navbar-logo>
+  <fr-navbar-item link="" title="nav"></fr-navbar-item>
+  <fr-navbar-item link="" title="nav-menu">
+    <fr-navbar-menu link="" title="nav-menu-1"></fr-navbar-menu>
+    <fr-navbar-menu link="" title="nav-menu-2"></fr-navbar-menu>
+    <fr-navbar-menu link="" title="nav-menu-3"></fr-navbar-menu>
   </fr-navbar-item>
   <fr-side-nav>
-    <fr-side-nav-item-group title="menu1">
-      <fr-side-nav-item label="menu1-1" link="/menu1-1"></fr-side-nav-item>
-      <fr-side-nav-item label="menu1-2" link="/menu1-2"></fr-side-nav-item>
-      <fr-side-nav-item label="menu1-3" link="/menu1-3"></fr-side-nav-item>
-    </fr-side-nav-item-group>
-    <fr-side-nav-item-group title="menu2">
-      <fr-side-nav-item label="menu2-1" link="/menu2-1"></fr-side-nav-item>
-      <fr-side-nav-item label="menu2-2" link="/menu2-2"></fr-side-nav-item>
-      <fr-side-nav-item label="menu2-3" link="/menu2-3"></fr-side-nav-item>
+    <fr-side-nav-item-group title="components">
+      <fr-side-nav-item label="buttons" link="buttons"></fr-side-nav-item>
+      <fr-side-nav-item label="chips" link="chips"></fr-side-nav-item>
+      <fr-side-nav-item label="data-table" link="data-table"></fr-side-nav-item>
+      <fr-side-nav-item label="forms" link="forms"></fr-side-nav-item>
+      <fr-side-nav-item label="tabs" link="tabs"></fr-side-nav-item>
+      <fr-side-nav-item label="kpi-table" link="kpi-table"></fr-side-nav-item>
     </fr-side-nav-item-group>
   </fr-side-nav>
 </fr-navbar>
 
-<fr-tabs [(selectedIndex)]="selectedIndex">
-  <fr-tab title="data-table">
-    <button class="fr-btn fr-btn-flat" (click)="resetData()">Reset rows</button>
-    <fr-data-table [selectable]="true">
-      <fr-data-table-header title="Header"
-        (updateAction)="updateAction($event)"
-        [otherActionKeys]="dataTableOtherActionKeys"
-        (otherAction)="otherAction($event)"></fr-data-table-header>
-      <fr-data-table-columns [columns]="records.columns"></fr-data-table-columns>
-      <fr-data-table-rows [rows]="records.rows"></fr-data-table-rows>
-      <fr-data-table-footer
-        [paginationInfo]="{ totalRows: 100, rowsPerPageValues: [10, 30, 50], page: 1 }"
-        (paginationAction)="paginationAction($event)"></fr-data-table-footer>
-    </fr-data-table>
-  </fr-tab>
-  <fr-tab title="chips">
-    <div>
-      <fr-chip *ngFor="let chip of chips; let i = index" (dismiss)="removeChip(i)">
-        {{chip.label}}
-      </fr-chip>
-      <fr-chip on="true">readOnly</fr-chip>
-    </div>
-  </fr-tab>
-  <fr-tab title="forms">
-    <form (ngSubmit)="onSubmit(formValue.value)" #formValue="ngForm">
-      <table style="width:80%;margin:15px auto">
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">input-text-container</td>
-          <td>
-            <fr-input-text-container>
-              <input frInput type="text" name="text" placeholder="text" [(ngModel)]="form.text">
-              <!--
-              <textarea frInput type="text" name="text" placeholder="text" [(ngModel)]="form.text"></textarea>
-              -->
-            </fr-input-text-container>
-          </td>
-        </tr>
-        <!--
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">fr-input-text</td>
-          <td>
-            <fr-input-text name="text" placeholder="text" [(ngModel)]="form.text"></fr-input-text>
-          </td>
-        </tr>
-        -->
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">select</td>
-          <td>
-            <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select" [browserNative]="false">
-              <fr-option *ngFor="let option of options; let i = index; trackBy index" [value]="option.value" label="{{option.label}}"></fr-option>
-              <fr-option value="123" label="label123"></fr-option>
-              <fr-option value="987" label="label987"></fr-option>
-            </fr-select>
-          </td>
-          <!--
-          <td>
-            <button type="button" class="btn" (click)="resetSelect()">resetSelect()</button>
-          </td>
-          -->
-        </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">radio</td>
-          <td>
-            <fr-form-group label="radio">
-              <fr-radio-group name="testRadio" [(ngModel)]="form.radio">
-                <fr-radio value="1" label="radio1"></fr-radio>
-                <fr-radio value="2" label="radio2"></fr-radio>
-                <fr-radio *ngFor="let selectValue of selectValues" [value]="selectValue" label="{{selectValue.value}}"></fr-radio>
-              </fr-radio-group>
-            </fr-form-group>
-          </td>
-        </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">checkbox</td>
-          <td>
-            <fr-form-group label="checkbox">
-              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1">checkbox1</fr-checkbox>
-              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[1]" name="checkbox2">checkbox2</fr-checkbox>
-              <fr-checkbox label="checkbox1" name="checkbox3" ngModel>checkbox3</fr-checkbox>
-              <fr-checkbox label="checkbox1" name="checkbox4" ngModel>checkbox4</fr-checkbox>
-              <fr-checkbox *ngFor="let chk of chks; let i = index" name="{{chk.name}}" [(ngModel)]="form.checkbox[i+2]">{{chk.label}}</fr-checkbox>
-            </fr-form-group>
-          </td>
-        </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">date picker</td>
-          <td>
-            <fr-form-group label="date">
-              <fr-date-picker name="calendar" [(ngModel)]="form.date"></fr-date-picker>
-            </fr-form-group>
-          </td>
-        </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">time picker</td>
-          <td>
-            <fr-form-group label="time">
-              <fr-time-picker name="time" [(ngModel)]="form.date"></fr-time-picker>
-            </fr-form-group>
-          </td>
-        </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">text area</td>
-          <td>
-            <fr-input-text-container maxLength="10">
-              <textarea frInput placeholder="TextArea" name="textarea" [(ngModel)]="form.textarea"></textarea>
-            </fr-input-text-container>
-          </td>
-        </tr>
-        <tr style="height:50px">
-          <td>
-            <button class="fr-btn-skeleton--primary" (click)="submit()" style="margin: auto 50%" frRipple>submit</button>
-          </td>
-          <td>
-            <button class="fr-btn-skeleton--danger" (click)="reset()" style="margin: auto 50%" [frRipple]="'#EAEAEA'">reset</button>
-          </td>
-        </tr>
-      </table>
-    </form>
-    <pre>
-      {{form|json}}
-    </pre>
-  </fr-tab>
-  <fr-tab title="kpi-table">
-    <fr-kpi-table [data]="data"></fr-kpi-table>
-  </fr-tab>
-  <fr-tab title="buttons">
-    <h2>Buttons</h2>
-    <button frRipple class="fr-btn">button</button>
-    <button frRipple class="fr-btn--primary" frRipple>primary</button>
-    <button frRipple class="fr-btn--info">info</button>
-    <button frRipple class="fr-btn--warning">warning</button>
-    <button frRipple class="fr-btn--danger">danger</button>
-    <button frRipple class="fr-btn--default">default</button>
-    <button frRipple class="fr-btn--disabled" disabled>disabled</button>
-    <div></div>
-    <button frRipple class="fr-btn-fab">&nbsp;</button>
-    <button frRipple class="fr-btn-fab--primary">+</button>
-    <button frRipple class="fr-btn-fab--info">+</button>
-    <button frRipple class="fr-btn-fab--warning">-</button>
-    <button frRipple class="fr-btn-fab--danger">-</button>
-    <button frRipple class="fr-btn-fab--default">*</button>
-    <button frRipple class="fr-btn-fab--disabled" disabled>-</button>
-    <div></div>
-    <button frRipple class="fr-btn-skeleton">skeleton</button>
-    <button frRipple class="fr-btn-skeleton--primary">primary</button>
-    <button frRipple class="fr-btn-skeleton--info">info</button>
-    <button frRipple class="fr-btn-skeleton--warning">warning</button>
-    <button frRipple class="fr-btn-skeleton--danger">danger</button>
-    <button frRipple class="fr-btn-skeleton--default">default</button>
-    <button frRipple class="fr-btn-skeleton--disabled" disabled>disabled</button>
-    <div></div>
-    <button class="fr-btn-flat" [frRipple]="'#CCC'">flat</button>
-    <div style="margin:15px">
-      <span style="margin:15px">
-        <button class="fr-btn fr-btn-skeleton" frRipple>default</button>
-        <button class="fr-btn--primary" [frRipple]="'white'">primary</button>
-      </span>
-    </div>
-  </fr-tab>
-  <fr-tab title="router-outlets">
-    <router-outlet></router-outlet>
-  </fr-tab>
-</fr-tabs>
-
+<div style="margin: 24px">
+  <router-outlet></router-outlet>
+</div>
