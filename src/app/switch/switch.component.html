@@ -1,0 +1,12 @@
+<div class="fr-switch">
+  <label class="fr-switch__label">
+    <input type="checkbox" class="fr-switch__input" [value]="value" (click)="toggle()">
+    <span class="fr-switch__bar"
+          [class.fr-switch__bar--off]="value === false"
+          [class.fr-switch__bar--on]="value === true"></span>
+    <span class="fr-switch__btn"
+          [class.fr-switch__btn--off]="value === false"
+          [class.fr-switch__btn--on]="value === true"></span>
+    <span class="fr-switch__label-text">{{labelText}}</span>
+  </label>
+</div>

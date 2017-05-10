@@ -1,0 +1,52 @@
+.fr-switch {
+  position: relative;
+
+  &__input {
+    display: none;
+  }
+
+  &__bar {
+    display: inline-block;
+    width: 40px;
+    height: 15px;
+    border-radius: 10px;
+
+    transition-property: background;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+
+    &--off {
+      background: $light-gray;
+    }
+
+    &--on {
+      background: lighten($blue, 20%);
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    position: absolute;
+    top: -5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background: $white;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+
+    transition-property: background, left;
+    transition-duration: 0.5s, 0.2s;
+    transition-timing-function: ease;
+
+    &--off {
+      background: $white;
+      left: 0;
+    }
+
+    &--on {
+      background: $blue;
+      left: 18px;
+    }
+  }
+
+}
