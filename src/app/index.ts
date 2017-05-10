@@ -34,6 +34,7 @@ export {
   FrSideNavItemComponent,
   FrSideNavModule
 } from './side-nav/index';
+export { FrSwitchComponent } from './switch/switch.component';
 export {
   FrTabsComponent,
   FrTabComponent,

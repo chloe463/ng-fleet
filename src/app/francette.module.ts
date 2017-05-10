@@ -12,11 +12,13 @@ import { FrSideNavModule } from './side-nav/side-nav.module';
 
 import { FrChipComponent } from './chip/chip.component';
 import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
+import { FrSwitchComponent } from './switch/switch.component';
 
 @NgModule({
   declarations: [
     FrChipComponent,
-    FrKpiTableComponent
+    FrKpiTableComponent,
+    FrSwitchComponent
   ],
   imports: [
     FormsModule,
@@ -37,7 +39,8 @@ import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
     FrNavbarModule,
     FrTabsModule,
     FrRippleModule,
-    FrSideNavModule
+    FrSideNavModule,
+    FrSwitchComponent
   ]
 })
 export class FrancetteModule { }
