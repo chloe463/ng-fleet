@@ -1,0 +1,15 @@
+<div class="fr-dialog" [hidden]="!show">
+  <div class="fr-dialog__wrapper" [ngStyle]="getStyle()" [@dialogState]="dialogState">
+    <div class="fr-dialog__content">
+      <div class="fr-dialog__body">
+        <ng-content></ng-content>
+      </div>
+      <div class="fr-dialog__buttons">
+        <button *ngFor="let action of actionKeys"
+          class="fr-btn fr-btn-flat" frRipple
+          (click)="emit(action.value)">{{action.label}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="fr-dialog__backdrop" (click)="dismiss()"></div>
+</div>

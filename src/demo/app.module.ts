@@ -12,6 +12,7 @@ import { ButtonsDemoComponent } from './buttons-demo.component';
 import { TabsDemoComponent } from './tabs-demo.component';
 import { KpiTableDemoComponent } from './kpi-table-demo.component';
 import { SwitchDemoComponent } from './switch-demo.component';
+import { DialogDemoComponent } from './dialog-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
 
 import { FrancetteModule } from '../app/francette.module';
@@ -20,6 +21,7 @@ const routeConfig: Routes = [
   { path: '', component: DevelopAreaComponent },
   { path: 'develop', component: DevelopAreaComponent },
   { path: 'data-table', component: DataTableDemoComponent },
+  { path: 'dialog', component: DialogDemoComponent },
   { path: 'chips', component: ChipsDemoComponent },
   { path: 'forms', component: FormsDemoComponent },
   { path: 'buttons', component: ButtonsDemoComponent },
@@ -38,7 +40,8 @@ const routeConfig: Routes = [
     SwitchDemoComponent,
     TabsDemoComponent,
     KpiTableDemoComponent,
-    DevelopAreaComponent
+    DevelopAreaComponent,
+    DialogDemoComponent
   ],
   imports: [
     BrowserModule,
