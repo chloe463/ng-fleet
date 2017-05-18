@@ -73,13 +73,13 @@ export class FrDialogComponent implements OnInit, OnChanges {
   }
 
   public getStyle() {
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const contentWidth = this.size.width;
+    const windowWidth   = window.innerWidth;
+    const windowHeight  = window.innerHeight;
+    const contentWidth  = this.size.width;
     const contentHeight = this.size.height;
 
-    const top = ((windowHeight / 2) - (contentHeight / 2)) + 'px';
-    const left = ((windowWidth/ 2) - (contentWidth / 2)) + 'px';
+    const top  = window.pageYOffset + ((windowHeight / 2) - (contentHeight / 2)) + 'px';
+    const left = window.pageXOffset + ((windowWidth/ 2) - (contentWidth / 2)) + 'px';
 
     return {
       top,
