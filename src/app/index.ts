@@ -7,11 +7,14 @@ export {
   FrDataTableComponent,
   FrDataTableModule
 } from './data-table/index';
+export { FrDialogComponent } from './dialog/dialog.component';
 export {
   FrCheckboxComponent,
   FrDatePickerComponent,
   FrFormGroupComponent,
   FrInputTextComponent,
+  FrInputDirective,
+  FrInputTextContainerComponent,
   FrRadioGroupComponent,
   FrOptionComponent,
   FrSelectComponent,
@@ -40,4 +43,5 @@ export {
   FrTabComponent,
   FrTabsModule
 } from './tabs/index';
+export { FrToasterComponent } from './toaster/toaster.component';
 export { FrancetteModule } from './francette.module';
