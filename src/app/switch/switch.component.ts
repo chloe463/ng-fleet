@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-interface IFrSwitchLabels {
+export interface IFrSwitchLabels {
   on: string;
   off: string;
 };
