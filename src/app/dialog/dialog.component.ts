@@ -40,14 +40,13 @@ export interface IFrDialogActionKey {
 export class FrDialogComponent implements OnInit, OnChanges {
 
   private _show = false;
+  public dialogState: string = 'hidden';
 
   @Input() actionKeys: Array<IFrDialogActionKey>;
   @Input() size: any;
 
   @Output() action     = new EventEmitter();
   @Output() showChange = new EventEmitter();
-
-  public dialogState: string = 'hidden';
 
   constructor() { }
 
@@ -65,21 +64,17 @@ export class FrDialogComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this._show) {
-      this.dialogState = 'shown';
-    } else {
-      this.dialogState = 'hidden';
-    }
+    this.dialogState = this.show ? 'shown' : 'hidden';
   }
 
   public getStyle() {
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const contentWidth = this.size.width;
+    const windowWidth   = window.innerWidth;
+    const windowHeight  = window.innerHeight;
+    const contentWidth  = this.size.width;
     const contentHeight = this.size.height;
 
-    const top = ((windowHeight / 2) - (contentHeight / 2)) + 'px';
-    const left = ((windowWidth/ 2) - (contentWidth / 2)) + 'px';
+    const top  = window.pageYOffset + ((windowHeight / 2) - (contentHeight / 2)) + 'px';
+    const left = window.pageXOffset + ((windowWidth/ 2) - (contentWidth / 2)) + 'px';
 
     return {
       top,
