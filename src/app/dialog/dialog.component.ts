@@ -40,14 +40,13 @@ export interface IFrDialogActionKey {
 export class FrDialogComponent implements OnInit, OnChanges {
 
   private _show = false;
+  public dialogState: string = 'hidden';
 
   @Input() actionKeys: Array<IFrDialogActionKey>;
   @Input() size: any;
 
   @Output() action     = new EventEmitter();
   @Output() showChange = new EventEmitter();
-
-  public dialogState: string = 'hidden';
 
   constructor() { }
 
@@ -65,11 +64,7 @@ export class FrDialogComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this._show) {
-      this.dialogState = 'shown';
-    } else {
-      this.dialogState = 'hidden';
-    }
+    this.dialogState = this.show ? 'shown' : 'hidden';
   }
 
   public getStyle() {
