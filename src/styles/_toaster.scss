@@ -1,0 +1,28 @@
+.fr-toaster {
+  position: fixed;
+  bottom: 0;
+  min-width: 288px;
+  max-width: 586px;
+  background: #323232;
+  box-shadow: 0 2px 5px rgba(0,0,0,.26);
+  border-radius: 2px;
+  color: $white;
+  z-index: 5;
+
+  &__content-wrapper {
+    display: flex;
+  }
+
+  &__content {
+    margin: 14px 24px;
+    display: inline-block;
+  }
+
+  &__action {
+    margin: 14px 24px;
+    display: inline-block;
+    align-self: flex-end;
+    color: #CBD93E;
+    cursor: pointer;
+  }
+}
