@@ -14,13 +14,15 @@ import { FrChipComponent } from './chip/chip.component';
 import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
 import { FrSwitchComponent } from './switch/switch.component';
 import { FrDialogComponent } from './dialog/dialog.component';
+import { FrToasterComponent } from './toaster/toaster.component';
 
 @NgModule({
   declarations: [
     FrChipComponent,
     FrKpiTableComponent,
     FrSwitchComponent,
-    FrDialogComponent
+    FrDialogComponent,
+    FrToasterComponent
   ],
   imports: [
     FormsModule,
@@ -43,7 +45,8 @@ import { FrDialogComponent } from './dialog/dialog.component';
     FrRippleModule,
     FrSideNavModule,
     FrSwitchComponent,
-    FrDialogComponent
+    FrDialogComponent,
+    FrToasterComponent
   ]
 })
 export class FrancetteModule { }

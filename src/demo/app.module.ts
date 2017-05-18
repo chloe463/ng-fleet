@@ -13,6 +13,7 @@ import { TabsDemoComponent } from './tabs-demo.component';
 import { KpiTableDemoComponent } from './kpi-table-demo.component';
 import { SwitchDemoComponent } from './switch-demo.component';
 import { DialogDemoComponent } from './dialog-demo.component';
+import { ToasterDemoComponent } from './toaster-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
 
 import { FrancetteModule } from '../app/francette.module';
@@ -27,6 +28,7 @@ const routeConfig: Routes = [
   { path: 'buttons', component: ButtonsDemoComponent },
   { path: 'switch', component: SwitchDemoComponent },
   { path: 'tabs', component: TabsDemoComponent },
+  { path: 'toaster', component: ToasterDemoComponent },
   { path: 'kpi-table', component: KpiTableDemoComponent }
 ];
 
@@ -41,7 +43,8 @@ const routeConfig: Routes = [
     TabsDemoComponent,
     KpiTableDemoComponent,
     DevelopAreaComponent,
-    DialogDemoComponent
+    DialogDemoComponent,
+    ToasterDemoComponent
   ],
   imports: [
     BrowserModule,
