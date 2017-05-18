@@ -21,7 +21,7 @@
     }
   },
   "files": [
-    "./app/index.ts"
+    "../pre-builds/app/index.ts"
   ],
   "exclude": [
     "test.ts",

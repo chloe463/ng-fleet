@@ -10,10 +10,11 @@ const glob             = require('glob');
 const fs               = require('fs');
 const del              = require('del');
 
-const PROJECT_ROOT = path.join(__dirname);
-const SOURCE_ROOT  = path.join(__dirname, 'src');
-const BUILDS_ROOT  = path.join(__dirname, 'builds');
-const BUNDLES_ROOT = path.join(__dirname, 'builds/bundles');
+const PROJECT_ROOT    = path.join(__dirname);
+const SOURCE_ROOT     = path.join(__dirname, 'src');
+const PRE_BUILDS_ROOT = path.join(__dirname, 'pre-builds');
+const BUILDS_ROOT     = path.join(__dirname, 'builds');
+const BUNDLES_ROOT    = path.join(__dirname, 'builds/bundles');
 
 function promiseify(fn) {
   return function() {
@@ -33,7 +34,7 @@ function promiseify(fn) {
 const readFile = promiseify(fs.readFile);
 
 function replaceTemplate(content, filePath) {
-  const templatePath    = filePath.replace(/builds/, 'src/app').replace(/\.js$/, '.html');
+  const templatePath    = filePath.replace(/pre-builds\/app/, 'src/app').replace(/\.ts$/, '.html');
   if (!fs.existsSync(templatePath)) {
     return content.replace(/templateUrl: \'.*html\'/, 'template: ``');
   }
@@ -62,8 +63,20 @@ function replaceStyle(content, filePath) {
   });
 }
 
+gulp.task('pre-build:js', () => {
+  return gulp.src([
+    SOURCE_ROOT + '/app/**.ts',
+    SOURCE_ROOT + '/app/**/*.ts',
+    '!' + SOURCE_ROOT + '/app/**.spec.ts',
+    '!' + SOURCE_ROOT + '/app/**/*.spec.ts'
+  ], {
+    base: 'src'
+  })
+  .pipe(gulp.dest(PRE_BUILDS_ROOT));
+});
+
 gulp.task('build:inline-resource', () => {
-  const files = glob(BUILDS_ROOT + '/**/**.js', (err, files) => {
+  const files = glob(PRE_BUILDS_ROOT + '/**/**.ts', (err, files) => {
     files.map((filePath) => {
       readFile(filePath, 'utf-8').then((content) => {
         content = replaceTemplate(content, filePath);
