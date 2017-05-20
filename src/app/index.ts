@@ -29,6 +29,11 @@ export {
   FrNavbarLogoComponent,
   FrNavbarModule
 } from './navbar/index';
+export {
+ FrProgressBarComponent,
+ FrProgressSpinnerComponent,
+ FrProgressModule
+} from './progress/index'
 export { FrRippleDirective } from './ripple/ripple.directive';
 export { FrRippleModule } from './ripple/ripple.module';
 export {
