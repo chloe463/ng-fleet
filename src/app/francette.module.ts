@@ -9,6 +9,7 @@ import { FrNavbarModule } from './navbar/navbar.module';
 import { FrTabsModule } from './tabs/tabs.module';
 import { FrRippleModule } from './ripple/ripple.module';
 import { FrSideNavModule } from './side-nav/side-nav.module';
+import { FrProgressModule } from './progress/progress.module';
 
 import { FrChipComponent } from './chip/chip.component';
 import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
@@ -33,7 +34,8 @@ import { FrToasterComponent } from './toaster/toaster.component';
     FrNavbarModule,
     FrTabsModule,
     FrRippleModule,
-    FrSideNavModule
+    FrSideNavModule,
+    FrProgressModule
   ],
   exports: [
     FrChipComponent,
@@ -44,6 +46,7 @@ import { FrToasterComponent } from './toaster/toaster.component';
     FrTabsModule,
     FrRippleModule,
     FrSideNavModule,
+    FrProgressModule,
     FrSwitchComponent,
     FrDialogComponent,
     FrToasterComponent

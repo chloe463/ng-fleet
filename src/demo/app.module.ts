@@ -14,6 +14,7 @@ import { KpiTableDemoComponent } from './kpi-table-demo.component';
 import { SwitchDemoComponent } from './switch-demo.component';
 import { DialogDemoComponent } from './dialog-demo.component';
 import { ToasterDemoComponent } from './toaster-demo.component';
+import { ProgressDemoComponent } from './progress-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
 
 import { FrancetteModule } from '../app/francette.module';
@@ -26,6 +27,7 @@ const routeConfig: Routes = [
   { path: 'chips', component: ChipsDemoComponent },
   { path: 'forms', component: FormsDemoComponent },
   { path: 'buttons', component: ButtonsDemoComponent },
+  { path: 'progress', component: ProgressDemoComponent },
   { path: 'switch', component: SwitchDemoComponent },
   { path: 'tabs', component: TabsDemoComponent },
   { path: 'toaster', component: ToasterDemoComponent },
@@ -44,7 +46,8 @@ const routeConfig: Routes = [
     KpiTableDemoComponent,
     DevelopAreaComponent,
     DialogDemoComponent,
-    ToasterDemoComponent
+    ToasterDemoComponent,
+    ProgressDemoComponent
   ],
   imports: [
     BrowserModule,
