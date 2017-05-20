@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
     </div>
   `
 })
-export class FrBarComponent implements OnInit {
+export class FrProgressBarComponent implements OnInit {
 
   constructor() { }
 

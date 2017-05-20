@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FrSpinnerComponent } from './spinner/spinner.component';
-import { FrBarComponent } from './bar/bar.component';
+import { FrProgressSpinnerComponent } from './spinner/spinner.component';
+import { FrProgressBarComponent } from './bar/bar.component';
 
 @NgModule({
   declarations: [
-    FrSpinnerComponent,
-    FrBarComponent
+    FrProgressSpinnerComponent,
+    FrProgressBarComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    FrSpinnerComponent,
-    FrBarComponent
+    FrProgressSpinnerComponent,
+    FrProgressBarComponent
   ]
 })
 export class FrProgressModule { }

@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'fr-spinner',
+  selector: 'fr-progress-spinner',
   template: `
 <span class="fr-spinner">
   <svg viewBox="-120 -120 240 240" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +14,7 @@ import {
 </span>
   `
 })
-export class FrSpinnerComponent implements OnInit {
+export class FrProgressSpinnerComponent implements OnInit {
 
   constructor() { }
 
