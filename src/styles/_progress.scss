@@ -1,0 +1,72 @@
+.fr-spinner {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+
+  & > svg {
+    animation: spin 1.3s linear infinite;
+  }
+  &__arc {
+    stroke-dashoffset: 1000;
+    stroke-dasharray: 1000;
+    animation: expansion 3s linear infinite;
+    stroke-width: 12%;
+    stroke: $yellow;
+  }
+}
+@keyframes spin {
+  from { transform: rotate(0);      }
+  to   { transform: rotate(360deg); }
+}
+@keyframes expansion {
+  0%   { stroke-dashoffset: 450; }
+  50%  { stroke-dashoffset: 980; }
+  100% { stroke-dashoffset: 450; }
+}
+
+.fr-progress-bar {
+  position: relative;
+  display: block;
+  height: 5px;
+  width: 100%;
+  overflow: hidden;
+
+  &__background {
+    position: absolute;
+    display: block;
+    height: 5px;
+    width: 100%;
+    background: $light-gray;
+  }
+
+  &__first-bar {
+    display: inline-block;
+    position: absolute;
+    height: 5px;
+    width: 50%;
+    background: $blue;
+    transform: translateX(-100%);
+    animation: slide 3s linear infinite;
+  }
+
+  &__second-bar {
+    display: inline-block;
+    position: absolute;
+    height: 5px;
+    width: 35%;
+    background: $blue;
+    animation: slide2 3s linear infinite;
+    animation-delay: 1s;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(500%);  }
+}
+@keyframes slide2 {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(300%);  }
+}
