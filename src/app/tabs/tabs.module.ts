@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FrTabsComponent } from './tabs.component';
-import { FrTabComponent } from './tab.component';
+import { FrTabsComponent } from './tabs/tabs.component';
+import { FrTabComponent } from './tab/tab.component';
 import { FrRippleModule } from '../ripple/ripple.module';
 
 @NgModule({
