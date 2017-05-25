@@ -8,8 +8,8 @@ import { FrFormGroupComponent } from './form-group/form-group.component';
 import { FrInputTextComponent } from './input-text/input-text.component';
 import { FrInputDirective, FrInputTextContainerComponent } from './input-text-container/input-text-container.component';
 import { FrOptionComponent } from './select/option.component';
-import { FrRadioGroupComponent } from './radio/radio-group.component';
-import { FrRadioComponent } from './radio/radio.component';
+import { FrRadioGroupComponent } from './radio/radio-group/radio-group.component';
+import { FrRadioComponent } from './radio/radio/radio.component';
 import { FrSelectComponent } from './select/select.component';
 import { FrTimePickerComponent } from './time-picker/time-picker.component';
 
