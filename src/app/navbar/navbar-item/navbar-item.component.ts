@@ -6,7 +6,7 @@ import {
   QueryList
 } from '@angular/core';
 
-import { FrNavbarMenuComponent } from './navbar-menu.component';
+import { FrNavbarMenuComponent } from '../navbar-menu/navbar-menu.component';
 
 @Component({
   selector: 'fr-navbar-item',

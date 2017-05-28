@@ -8,7 +8,7 @@ import {
   QueryList,
   forwardRef
 } from '@angular/core';
-import { FrRadioComponent } from './radio.component';
+import { FrRadioComponent } from '../radio/radio.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => {};

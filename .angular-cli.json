@@ -19,7 +19,6 @@
       "mobile": false,
       "styles": [
         "styles.scss",
-        "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/normalize.css/normalize.css"
       ],
       "scripts": [],

@@ -12,10 +12,10 @@ import {
   PathLocationStrategy,
   HashLocationStrategy
 } from '@angular/common';
-import { FrNavbarLogoComponent } from './navbar-logo.component';
-import { FrNavbarItemComponent } from './navbar-item.component';
+import { FrNavbarLogoComponent } from '../navbar-logo/navbar-logo.component';
+import { FrNavbarItemComponent } from '../navbar-item/navbar-item.component';
 
-import { FrSideNavComponent } from '../side-nav/side-nav/side-nav.component';
+import { FrSideNavComponent } from '../../side-nav/side-nav/side-nav.component';
 
 @Component({
   selector: 'fr-navbar',

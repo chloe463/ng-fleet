@@ -7,7 +7,7 @@ import {
   QueryList,
   Input
 } from '@angular/core';
-import {FrTabComponent} from './tab.component';
+import { FrTabComponent } from '../tab/tab.component';
 
 @Component({
   selector: 'fr-tabs',
