@@ -29,3 +29,6 @@ $GULP minify:css
 
 # Build themed css
 $GULP build:css:themes
+
+# Copy package.json
+cp ./src/package.json ./builds/package.json
