@@ -56,6 +56,11 @@
     border-bottom: 1px solid $gray;
     border-radius: 0;
     cursor: pointer;
+
+    &--disabled {
+      color: $gray;
+      border-bottom: 1px dotted $gray;
+    }
   }
 
   &__toggle-button {
