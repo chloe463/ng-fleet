@@ -60,6 +60,7 @@
     &--disabled {
       color: $gray;
       border-bottom: 1px dotted $gray;
+      cursor: default;
     }
   }
 
@@ -74,6 +75,9 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    &--disabled {
+      cursor: default;
+    }
   }
 
   &__day {

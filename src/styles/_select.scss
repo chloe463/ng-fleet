@@ -3,9 +3,9 @@
 
   &--disabled {
     background: #EAEAEA;
-    cursor: no-drop;
+    cursor: default;
     & .fr-select__text {
-      cursor: no-drop;
+      cursor: default;
     }
   }
 

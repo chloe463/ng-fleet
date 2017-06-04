@@ -7,6 +7,9 @@
     display: block;
     margin: 20px 0;
   }
+  &--disabled {
+    cursor: default;
+  }
 
   &__square {
     display: inline-block;
@@ -35,6 +38,7 @@
     }
     &--disabled {
       border: 2px solid $gray;
+      cursor: default;
     }
   }
   &-ripple {
@@ -70,6 +74,7 @@
   &-label-text {
     &--disabled {
       color: $gray;
+      cursor: default;
     }
   }
 }

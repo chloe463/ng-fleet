@@ -21,6 +21,7 @@
     }
     &--disabled {
       border: 2px solid $gray;
+      cursor: default;
     }
   }
 
@@ -70,6 +71,9 @@
       display: block;
       margin: 20px 0;
     }
+    &--disabled {
+      cursor: default;
+    }
     &-text {
       display: inline-block;
       padding-left: 8px;
@@ -77,6 +81,7 @@
 
       &--disabled {
         color: $gray;
+        cursor: default;
       }
     }
   }

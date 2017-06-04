@@ -5,7 +5,8 @@
       [class.fr-timepicker__input-text--disabled]="disabled"
       [value]="value|date: 'hh:mm a'" disabled>
     <span class="fr-timepicker__toggle-button"
-          [class.fr-timepicker__toggle-button--on]="clockVisibility">
+          [class.fr-timepicker__toggle-button--on]="clockVisibility"
+          [class.fr-timepicker__toggle-button--disabled]="disabled">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <ellipse style="stroke-width: 2; fill: rgb(255, 255, 255); stroke: rgba(0, 0, 0, 0.541176);" cx="12.5" cy="12.5" rx="9.5" ry="9.5"/>
         <path d="M 12 6.369 Z" style="stroke: black; fill: none;"/>

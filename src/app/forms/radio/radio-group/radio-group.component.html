@@ -1,4 +1,6 @@
-<label *ngFor="let radio of _radios; let i = index" class="fr-radio-label">
+<label *ngFor="let radio of _radios; let i = index"
+  class="fr-radio-label"
+  [class.fr-radio-label--disabled]="disabled">
   <div class="fr-radio-container">
     <span class="fr-radio-outer-circle"
       [class.fr-radio-outer-circle--checked]="radio.value === value"

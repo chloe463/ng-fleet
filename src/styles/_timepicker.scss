@@ -30,6 +30,9 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    &--disabled {
+      cursor: default;
+    }
   }
 
   &__body {
