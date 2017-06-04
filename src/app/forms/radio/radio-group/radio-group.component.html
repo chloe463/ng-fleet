@@ -8,8 +8,7 @@
          name="{{name}}"
          class="fr-radio__input"
          [value]="radio.value"
-         [(ngModel)]="value"
-         (ngModelChange)="turnOnRipple(i)">
+         (click)="select(radio.value, i)">
   <div class="fr-radio-label-text">
     {{radio.label}}
   </div>

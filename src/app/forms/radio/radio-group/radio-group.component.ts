@@ -77,10 +77,12 @@ export class FrRadioGroupComponent implements OnInit, AfterContentInit, ControlV
 
   _onChange() {}
 
-  public turnOnRipple(index: number): void {
+  public select(value: any, index: number): void {
+    this.value = value;
     this.isRippleOn[index] = true;
     setTimeout(() => {
       this.isRippleOn[index] = false;
     }, 1000);
   }
+
 }
