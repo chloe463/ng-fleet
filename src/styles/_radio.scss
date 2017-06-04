@@ -19,6 +19,9 @@
     &--checked {
       border-color: $magenta;
     }
+    &--disabled {
+      border: 2px solid $gray;
+    }
   }
 
   &-inner-circle {
@@ -71,6 +74,10 @@
       display: inline-block;
       padding-left: 8px;
       padding-right: 8px;
+
+      &--disabled {
+        color: $gray;
+      }
     }
   }
 

@@ -1,6 +1,8 @@
 <label *ngFor="let radio of _radios; let i = index" class="fr-radio-label">
   <div class="fr-radio-container">
-    <span class="fr-radio-outer-circle" [class.fr-radio-outer-circle--checked]="radio.value === value"></span>
+    <span class="fr-radio-outer-circle"
+      [class.fr-radio-outer-circle--checked]="radio.value === value"
+      [class.fr-radio-outer-circle--disabled]="disabled"></span>
     <span class="fr-radio-inner-circle" [class.fr-radio-inner-circle--checked]="radio.value === value"></span>
     <span class="fr-radio-ripple" [class.fr-radio-ripple--on]="isRippleOn[i]"></span>
   </div>
@@ -8,8 +10,9 @@
          name="{{name}}"
          class="fr-radio__input"
          [value]="radio.value"
-         (click)="select(radio.value, i)">
-  <div class="fr-radio-label-text">
+         (click)="select(radio.value, i)"
+         [disabled]="disabled">
+  <div class="fr-radio-label-text" [class.fr-radio-label-text--disabled]="disabled">
     {{radio.label}}
   </div>
 </label>
