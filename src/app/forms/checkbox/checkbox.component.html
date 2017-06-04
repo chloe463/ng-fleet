@@ -1,5 +1,7 @@
 <label class="fr-checkbox">
-  <span class="fr-checkbox__square" [class.fr-checkbox__square--checked]="value">
+  <span class="fr-checkbox__square"
+    [class.fr-checkbox__square--checked]="value"
+    [class.fr-checkbox__square--disabled]="disabled">
     <svg class="fr-checkbox-checkmark"
       [class.fr-checkbox-checkmark--on]="value"
       viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -10,8 +12,9 @@
   <input #input type="checkbox"
          name="{{name}}"
          class="fr-checkbox__input"
-         (click)="onClick()">
-  <span class="fr-checkbox-label-text">
+         (click)="onClick()"
+         [disabled]="disabled">
+  <span class="fr-checkbox-label-text" [class.fr-checkbox-label-text--disabled]="disabled">
     <ng-content></ng-content>
   </span>
 </label>

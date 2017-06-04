@@ -33,6 +33,9 @@
       background: $magenta;
       border: 2px solid $magenta;
     }
+    &--disabled {
+      border: 2px solid $gray;
+    }
   }
   &-ripple {
     position: absolute;
@@ -62,6 +65,11 @@
     }
     &--on > &-path {
       stroke: $white;
+    }
+  }
+  &-label-text {
+    &--disabled {
+      color: $gray;
     }
   }
 }
