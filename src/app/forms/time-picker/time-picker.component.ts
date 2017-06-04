@@ -65,6 +65,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
+  private _isDisabled: boolean = false;
 
   public clockVisibility: string;
   public pickTarget: string = HOURS;
@@ -99,7 +100,16 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     this._onTouchedCallback = fn;
   }
 
-  setDisableState(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
+    this._isDisabled = isDisabled;
+  }
+
+  get disabled() {
+    return this._isDisabled;
+  }
+
+  set disabled(isDisabled) {
+    this._isDisabled = isDisabled;
   }
 
   ngOnInit() {
@@ -132,6 +142,9 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   public toggleTimePickerVisibility(): void {
+    if (this.disabled) {
+      return;
+    }
     this._oldValue = new Date(this._innerValue.getTime());
     this.clockVisibility = (this.clockVisibility === HIDDEN) ? SHOW : HIDDEN;
   }

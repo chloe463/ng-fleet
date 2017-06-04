@@ -1,6 +1,9 @@
 <div class="fr-timepicker">
   <div class="fr-timepicker__input" (click)="toggleTimePickerVisibility()">
-    <input type="text" name={{name}} class="fr-timepicker__input-text" [value]="value|date: 'hh:mm a'" disabled>
+    <input type="text" name={{name}}
+      class="fr-timepicker__input-text"
+      [class.fr-timepicker__input-text--disabled]="disabled"
+      [value]="value|date: 'hh:mm a'" disabled>
     <span class="fr-timepicker__toggle-button"
           [class.fr-timepicker__toggle-button--on]="clockVisibility">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
