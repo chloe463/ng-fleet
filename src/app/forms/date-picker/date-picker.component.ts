@@ -94,6 +94,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
+    this.calendarVisibility = HIDDEN;
     this._isDisabled = isDisabled;
   }
 

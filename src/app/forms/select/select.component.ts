@@ -108,6 +108,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
+    this.optionsVisibility = 'hidden';
     this.onBlur();
     this._isDisabled = isDisabled;
   }

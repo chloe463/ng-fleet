@@ -101,6 +101,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   setDisabledState(isDisabled: boolean): void {
+    this.clockVisibility = HIDDEN;
     this._isDisabled = isDisabled;
   }
 
