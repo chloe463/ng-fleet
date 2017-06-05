@@ -9,6 +9,12 @@
   }
   &--disabled {
     cursor: default;
+    & > .fr-checkbox__square {
+      border: 2px solid $gray;
+    }
+    & > .fr-checkbox__square--checked {
+      background: $gray;
+    }
   }
 
   &__square {
@@ -26,19 +32,10 @@
     background: transparent;
     transition-property: background;
     transition-duration: 0.3s;
-    &:after {
-      content: "\f00c";
-      color: transparent;
-      font-family: "FontAwesome";
-    }
     &--checked {
       color: $white;
       background: $magenta;
       border: 2px solid $magenta;
-    }
-    &--disabled {
-      border: 2px solid $gray;
-      cursor: default;
     }
   }
   &-ripple {
