@@ -2,10 +2,10 @@
   position: relative;
 
   &--disabled {
-    background: #EAEAEA;
     cursor: default;
     & .fr-select__text {
       cursor: default;
+      border-bottom: 1px dotted $gray;
     }
   }
 
