@@ -5,7 +5,9 @@
     <span class="fr-radio-outer-circle"
       [class.fr-radio-outer-circle--checked]="radio.value === value"
       [class.fr-radio-outer-circle--disabled]="disabled"></span>
-    <span class="fr-radio-inner-circle" [class.fr-radio-inner-circle--checked]="radio.value === value"></span>
+    <span class="fr-radio-inner-circle"
+      [class.fr-radio-inner-circle--checked]="radio.value === value"
+      [class.fr-radio-inner-circle--disabled]="disabled"></span>
     <span class="fr-radio-ripple" [class.fr-radio-ripple--on]="isRippleOn[i]"></span>
   </div>
   <input type="radio"

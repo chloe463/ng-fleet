@@ -42,6 +42,9 @@
       background: $magenta;
       transform: none;
     }
+    &--disabled {
+      background: $gray;
+    }
   }
 
   &-ripple {
