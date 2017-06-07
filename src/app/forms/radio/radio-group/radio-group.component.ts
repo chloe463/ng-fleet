@@ -34,6 +34,7 @@ export class FrRadioGroupComponent implements OnInit, AfterContentInit, ControlV
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
 
+  private _isDiabled: boolean = false;
   public isRippleOn: {[key: number]: boolean} = {};
 
   constructor() { }
@@ -72,15 +73,26 @@ export class FrRadioGroupComponent implements OnInit, AfterContentInit, ControlV
     this._onTouchedCallback = fn;
   }
 
-  setDisableState(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
+    this._isDiabled = isDisabled;
+  }
+
+  set disabled(isDisabled: boolean) {
+    this._isDiabled = isDisabled;
+  }
+
+  get disabled() {
+    return this._isDiabled;
   }
 
   _onChange() {}
 
-  public turnOnRipple(index: number): void {
+  public select(value: any, index: number): void {
+    this.value = value;
     this.isRippleOn[index] = true;
     setTimeout(() => {
       this.isRippleOn[index] = false;
     }, 1000);
   }
+
 }

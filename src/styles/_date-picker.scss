@@ -56,6 +56,12 @@
     border-bottom: 1px solid $gray;
     border-radius: 0;
     cursor: pointer;
+
+    &--disabled {
+      color: $gray;
+      border-bottom: 1px dotted $gray;
+      cursor: default;
+    }
   }
 
   &__toggle-button {
@@ -69,6 +75,9 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    &--disabled {
+      cursor: default;
+    }
   }
 
   &__day {

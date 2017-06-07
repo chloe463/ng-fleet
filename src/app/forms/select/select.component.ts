@@ -85,12 +85,18 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     if (obj !== this._innerValue) {
       this._innerValue = obj;
     }
+    let found = false;
     this._options.forEach((option) => {
       if (option.value === obj) {
         this.label = option.label;
         this.onBlur();
+        found = true;
       }
     });
+    if (!found) {
+      this.label = '';
+      this.labelState = 'placeholder';
+    }
   }
 
   registerOnChange(fn: any): void {
@@ -101,11 +107,16 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     this._onTouchedCallback = fn;
   }
 
-  setDisableState(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
+    this.optionsVisibility = 'hidden';
+    this.onBlur();
     this._isDisabled = isDisabled;
   }
 
   public toggleOptionsVisiblity(): void {
+    if (this.disabled) {
+      return;
+    }
     this.optionsVisibility = (this.optionsVisibility === 'show') ? 'hidden': 'show';
     this.onFocus();
   }
@@ -135,6 +146,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
 
   public onBlur() {
     if (this.value === null || this.value === undefined || this.value === '') {
+      this.label = '';
       this.labelState = 'placeholder';
       return;
     }

@@ -57,6 +57,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
+  private _isDisabled: boolean = false;
 
   public calendarVisibility: string;
   public target: Date;
@@ -92,7 +93,17 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
     this._onTouchedCallback = fn;
   }
 
-  setDisableState(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
+    this.calendarVisibility = HIDDEN;
+    this._isDisabled = isDisabled;
+  }
+
+  get disabled() {
+    return this._isDisabled;
+  }
+
+  set disabled(isDisabled) {
+    this._isDisabled = isDisabled;
   }
 
 
@@ -140,6 +151,9 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   public toggleCalendarVisibility(): void {
+    if (this.disabled) {
+      return;
+    }
     this._oldValue = new Date(this._innerValue.getTime());
     // this.calendarVisibility = !this.calendarVisibility;
     this.calendarVisibility = (this.calendarVisibility === HIDDEN) ? SHOW : HIDDEN;

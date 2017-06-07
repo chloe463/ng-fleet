@@ -1,15 +1,23 @@
 .fr-select {
   position: relative;
 
+  &--disabled {
+    cursor: default;
+    & .fr-select__text {
+      cursor: default;
+      border-bottom: 1px dotted $gray;
+    }
+  }
+
   &__label {
     position: absolute;
-    z-index: -1;
     top: 5px;
     left: 0;
     color: $light-gray;
     transition-property: all;
     transition-duration: 200ms;
     transition-timing-function: ease-out;
+    pointer-events: none;
 
     &--placeholder {
       top: 5px;
@@ -50,7 +58,7 @@
     display: inline-block;
     width: 100%;
     line-height: 32px;
-    min-height: 30px;
+    height: 32px;
     font-size: 12pt;
     border: none;
     border-bottom: 1px solid $gray;
@@ -58,6 +66,7 @@
     transition-property: border-bottom;
     transition-duration: 0.5s;
     cursor: pointer;
+    vertical-align: middle;
   }
 
   &__list {
