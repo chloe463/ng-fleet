@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
+import { FrButtonModule } from './button/button.module';
 import { FrFormsModule } from './forms/forms.module';
 import { FrDataTableModule } from './data-table/data-table.module';
 import { FrNavbarModule } from './navbar/navbar.module';
@@ -29,6 +30,7 @@ import { FrToasterComponent } from './toaster/toaster.component';
     FormsModule,
     CommonModule,
     RouterModule,
+    FrButtonModule,
     FrDataTableModule,
     FrFormsModule,
     FrNavbarModule,
@@ -41,6 +43,7 @@ import { FrToasterComponent } from './toaster/toaster.component';
     FrChipComponent,
     FrKpiTableComponent,
     FrDataTableModule,
+    FrButtonModule,
     FrFormsModule,
     FrNavbarModule,
     FrTabsModule,
