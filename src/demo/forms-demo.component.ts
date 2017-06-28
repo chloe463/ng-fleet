@@ -27,10 +27,12 @@ import { Component } from '@angular/core';
           <td style="width:25%;text-align:right;padding-right:15px">radio</td>
           <td>
             <fr-form-group label="radio">
-              <fr-radio-group name="testRadio" [(ngModel)]="form.radio">
-                <fr-radio value="1" label="radio1"></fr-radio>
-                <fr-radio value="2" label="radio2"></fr-radio>
-                <fr-radio *ngFor="let selectValue of selectValues" [value]="selectValue" label="{{selectValue.value}}"></fr-radio>
+              <fr-radio-group name="testRadio" [(ngModel)]="form.radio" (change)="onRadioChange($event)">
+                <fr-radio value="1">radio1</fr-radio>
+                <fr-radio value="2">radio2</fr-radio>
+                <fr-radio *ngFor="let selectValue of selectValues" [value]="selectValue">
+                {{selectValue.value}}
+                </fr-radio>
               </fr-radio-group>
             </fr-form-group>
           </td>
@@ -131,6 +133,10 @@ export class FormsDemoComponent {
   public onSubmit(e) {
     console.log(e);
     return false;
+  }
+
+  public onRadioChange(event: Event): void {
+    console.log(event);
   }
 
 }

@@ -20,8 +20,10 @@ import { DevelopAreaComponent } from './develop-area.component';
 import { FrancetteModule } from '../app/francette.module';
 
 const routeConfig: Routes = [
-  { path: '', component: DevelopAreaComponent },
-  { path: 'develop', component: DevelopAreaComponent },
+  // { path: '', component: DevelopAreaComponent },
+  // { path: 'develop', component: DevelopAreaComponent },
+  { path: '', component: FormsDemoComponent },
+  { path: 'develop', component: FormsDemoComponent },
   { path: 'data-table', component: DataTableDemoComponent },
   { path: 'dialog', component: DialogDemoComponent },
   { path: 'chips', component: ChipsDemoComponent },

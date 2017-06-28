@@ -1,1 +1,22 @@
-<ng-content></ng-content>
+<label class="fr-radio-label"
+  [class.fr-radio-label--disabled]="disabled">
+  <div class="fr-radio-container">
+    <span class="fr-radio-outer-circle"
+      [class.fr-radio-outer-circle--checked]="checked"
+      [class.fr-radio-outer-circle--disabled]="disabled"></span>
+    <span class="fr-radio-inner-circle"
+      [class.fr-radio-inner-circle--checked]="checked"
+      [class.fr-radio-inner-circle--disabled]="disabled"></span>
+    <span class="fr-radio-ripple" [class.fr-radio-ripple--on]="isRippleOn"></span>
+  </div>
+  <input type="radio"
+         name="{{name}}"
+         class="fr-radio__input"
+         [value]="value"
+         (click)="onInputClick($event)"
+         (change)="onInputChange($event)"
+         [disabled]="disabled">
+  <div class="fr-radio-label-text" [class.fr-radio-label-text--disabled]="disabled">
+    <ng-content></ng-content>
+  </div>
+</label>
