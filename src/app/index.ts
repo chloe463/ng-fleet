@@ -15,7 +15,7 @@ export {
   FrInputTextComponent,
   FrInputDirective,
   FrInputTextContainerComponent,
-  FrRadioGroupComponent,
+  FrRadioGroupDirective,
   FrOptionComponent,
   FrSelectComponent,
   FrTimePickerComponent,
