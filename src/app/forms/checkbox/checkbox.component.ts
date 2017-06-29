@@ -3,12 +3,19 @@ import {
   Directive,
   OnInit,
   Input,
+  Output,
+  EventEmitter,
   ContentChildren,
   QueryList,
   forwardRef
 } from '@angular/core';
 import { DefaultValueAccessor } from '@angular/forms';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+export class FrCheckboxChange {
+  source: FrCheckboxComponent;
+  value: any;
+}
 
 const noop = () => {};
 
@@ -28,6 +35,8 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
   @Input() label: string;
   @Input() name: string;
 
+  @Output() change: EventEmitter<FrCheckboxChange> = new EventEmitter<FrCheckboxChange>();
+
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
@@ -41,7 +50,18 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
     this.value = false;
   }
 
-  public onClick() {
+  private emitChangeEvent(): void {
+    const event = new FrCheckboxChange();
+    event.source = this;
+    event.value  = this.value;
+    this.change.emit(event);
+  }
+
+  public onchange(event: Event) {
+    event.stopPropagation();
+  }
+
+  public onClick(event: Event) {
     if (this.disabled) {
       return;
     }
@@ -50,6 +70,9 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
     setTimeout(() => {
       this.isRippleOn = false;
     }, 1000);
+
+    event.stopPropagation();
+    this.emitChangeEvent();
   }
 
   get value(): any {

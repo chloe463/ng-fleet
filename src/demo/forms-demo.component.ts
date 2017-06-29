@@ -41,7 +41,7 @@ import { Component } from '@angular/core';
           <td style="width:25%;text-align:right;padding-right:15px">checkbox</td>
           <td>
             <fr-form-group label="checkbox">
-              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1">checkbox1</fr-checkbox>
+              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1" (change)="onCheckboxChange($event)">checkbox1</fr-checkbox>
               <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[1]" name="checkbox2">checkbox2</fr-checkbox>
               <fr-checkbox label="checkbox1" name="checkbox3" ngModel>checkbox3</fr-checkbox>
               <fr-checkbox label="checkbox1" name="checkbox4" ngModel>checkbox4</fr-checkbox>
@@ -136,6 +136,10 @@ export class FormsDemoComponent {
   }
 
   public onRadioChange(event: Event): void {
+    console.log(event);
+  }
+
+  public onCheckboxChange(event: Event): void {
     console.log(event);
   }
 
