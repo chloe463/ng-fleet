@@ -2,6 +2,8 @@ import {
   Component,
   OnInit,
   Input,
+  Output,
+  EventEmitter,
   ContentChildren,
   QueryList,
   forwardRef,
@@ -22,6 +24,11 @@ interface IFrDropDownOption {
   label: string | number;
 }
 
+export class FrSelectChange {
+  source: FrSelectComponent;
+  value: any;
+}
+
 const noop = () => {};
 
 export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
@@ -39,6 +46,8 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @Input() name: string;
   @Input() placeholder: string | number;
   @Input() browserNative: boolean;
+
+  @Output() change: EventEmitter<FrSelectChange> = new EventEmitter<FrSelectChange>();
 
   @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent> = new QueryList<FrOptionComponent>();
 
@@ -113,6 +122,13 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     this._isDisabled = isDisabled;
   }
 
+  private emitChange(): void {
+    const event = new FrSelectChange();
+    event.source = this;
+    event.value  = this.value;
+    this.change.emit(event);
+  }
+
   public toggleOptionsVisiblity(): void {
     if (this.disabled) {
       return;
@@ -126,6 +142,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     this.label             = option.label;
     this.optionsVisibility = 'hidden';
     this.labelState        = 'label';
+    this.emitChange();
   }
 
   public isSelected(value) {

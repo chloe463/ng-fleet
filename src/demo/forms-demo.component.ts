@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">select</td>
           <td>
-            <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select" [browserNative]="false">
+            <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select" [browserNative]="false" (change)="onSelectChange($event)">
               <fr-option *ngFor="let option of options; let i = index; trackBy index" [value]="option.value" label="{{option.label}}"></fr-option>
               <fr-option value="123" label="label123"></fr-option>
               <fr-option value="987" label="label987"></fr-option>
@@ -53,7 +53,7 @@ import { Component } from '@angular/core';
           <td style="width:25%;text-align:right;padding-right:15px">date picker</td>
           <td>
             <fr-form-group label="date">
-              <fr-date-picker name="calendar" [(ngModel)]="form.date"></fr-date-picker>
+              <fr-date-picker name="calendar" [(ngModel)]="form.date" (change)="onDatePickerChange($event)"></fr-date-picker>
             </fr-form-group>
           </td>
         </tr>
@@ -61,7 +61,7 @@ import { Component } from '@angular/core';
           <td style="width:25%;text-align:right;padding-right:15px">time picker</td>
           <td>
             <fr-form-group label="time">
-              <fr-time-picker name="time" [(ngModel)]="form.date"></fr-time-picker>
+              <fr-time-picker name="time" [(ngModel)]="form.date" (change)="onTimePickerChange($event)"></fr-time-picker>
             </fr-form-group>
           </td>
         </tr>
@@ -135,11 +135,23 @@ export class FormsDemoComponent {
     return false;
   }
 
+  public onSelectChange(event: Event): void {
+    console.log(event);
+  }
+
   public onRadioChange(event: Event): void {
     console.log(event);
   }
 
   public onCheckboxChange(event: Event): void {
+    console.log(event);
+  }
+
+  public onDatePickerChange(event: Event): void {
+    console.log(event);
+  }
+
+  public onTimePickerChange(event: Event): void {
     console.log(event);
   }
 

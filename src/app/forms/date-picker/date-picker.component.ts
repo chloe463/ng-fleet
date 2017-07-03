@@ -1,6 +1,8 @@
 import {
   Component,
   Input,
+  Output,
+  EventEmitter,
   OnInit,
   QueryList,
   forwardRef,
@@ -13,6 +15,11 @@ import {
   animate
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+export class FrDatePickerChange {
+  source: FrDatePickerComponent;
+  value: any;
+}
 
 const noop = () => {};
 
@@ -53,6 +60,8 @@ export const DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
 
   @Input() name: string;
+
+  @Output() change: EventEmitter<FrDatePickerChange> = new EventEmitter<FrDatePickerChange>();
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
@@ -185,6 +194,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
       return;
     }
     this.value = d;
+    this.emitChange();
     if (d.getMonth() !== this.target.getMonth()) {
       this.target = d;
       this._resetCalendar(d);
@@ -227,4 +237,10 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
     }
   }
 
+  private emitChange(): void {
+    const event = new FrDatePickerChange();
+    event.source = this;
+    event.value  = this.value;
+    this.change.emit(event);
+  }
 }
