@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
       <fr-data-table-columns [columns]="columns"></fr-data-table-columns>
       <fr-data-table-rows [rows]="rows"></fr-data-table-rows>
       <fr-data-table-footer
-        [paginationInfo]="{ totalRows: 100, rowsPerPageValues: [10, 30, 50], page: 1 }"
+        [paginationInfo]="{ totalRows: 100, rowsPerPageValues: [10, 30, 50], page: 1, rowsPerPage: 30 }"
         (paginationAction)="paginationAction($event)"></fr-data-table-footer>
     </fr-data-table>
   `

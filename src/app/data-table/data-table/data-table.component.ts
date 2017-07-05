@@ -86,7 +86,7 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
       });
     });
     this.paginationInfo = this.footerComponent.paginationInfo;
-    this.rowsPerPage = this.rows.length;
+    this.rowsPerPage    = this.paginationInfo.rowsPerPage;
   }
 
   public checkAll(): void {

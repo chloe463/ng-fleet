@@ -197,5 +197,11 @@
     &-value {
       padding: 0;
     }
+
+    &-image {
+      display: block;
+      margin: auto;
+      max-width: 50%;
+    }
   }
 }

@@ -10,6 +10,7 @@ export interface IFrPaginationInfo {
   totalRows: number;
   page: number;
   rowsPerPageValues: Array<number>;
+  rowsPerPage: number;
 }
 
 @Component({
