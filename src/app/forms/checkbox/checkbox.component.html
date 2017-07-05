@@ -18,7 +18,8 @@
   <input #input type="checkbox"
          name="{{name}}"
          class="fr-checkbox__input"
-         (click)="onClick()"
+         (click)="onClick($event)"
+         (change)="onchange($event)"
          [disabled]="disabled">
   <span class="fr-checkbox-label-text" [class.fr-checkbox-label-text--disabled]="disabled">
     <ng-content></ng-content>

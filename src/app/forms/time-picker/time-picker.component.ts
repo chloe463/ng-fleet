@@ -3,6 +3,8 @@ import {
   OnInit,
   AfterViewInit,
   Input,
+  Output,
+  EventEmitter,
   forwardRef,
   ElementRef,
   HostListener,
@@ -14,6 +16,11 @@ import {
   animate
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+export class FrTimePickerChange {
+  source: FrTimePickerComponent;
+  value: any;
+}
 
 const noop = () => {};
 
@@ -56,6 +63,8 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
   @Input() name: string;
+
+  @Output() change: EventEmitter<FrTimePickerChange> = new EventEmitter<FrTimePickerChange>();
 
   @ViewChild('clock') clock: ElementRef;
 
@@ -124,6 +133,13 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     this.putDialsRightPosition();
   }
 
+  private emitChange(): void {
+    const event  = new FrTimePickerChange();
+    event.source = this;
+    event.value  = this.value;
+    this.change.emit(event);
+  }
+
   public setDials(type: string = HOURS): void {
     this.dials = DIALS[type];
   }
@@ -161,6 +177,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     const newDateObj = new Date(this._innerValue.getTime());
     newDateObj.setHours((this._innerValue.getHours() + 12) % 24);
     this.value = newDateObj;
+    this.emitChange();
   }
 
   public setHours(h: number): void {
@@ -184,6 +201,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     } else if (this.pickTarget === MINUTES) {
       this.setMinute(dial);
     }
+    this.emitChange();
   }
 
   public isPickedTime(dial: number): boolean {

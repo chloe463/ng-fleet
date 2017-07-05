@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">select</td>
           <td>
-            <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select" [browserNative]="false">
+            <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select" [browserNative]="false" (change)="onSelectChange($event)">
               <fr-option *ngFor="let option of options; let i = index; trackBy index" [value]="option.value" label="{{option.label}}"></fr-option>
               <fr-option value="123" label="label123"></fr-option>
               <fr-option value="987" label="label987"></fr-option>
@@ -41,7 +41,7 @@ import { Component } from '@angular/core';
           <td style="width:25%;text-align:right;padding-right:15px">checkbox</td>
           <td>
             <fr-form-group label="checkbox">
-              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1">checkbox1</fr-checkbox>
+              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1" (change)="onCheckboxChange($event)">checkbox1</fr-checkbox>
               <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[1]" name="checkbox2">checkbox2</fr-checkbox>
               <fr-checkbox label="checkbox1" name="checkbox3" ngModel>checkbox3</fr-checkbox>
               <fr-checkbox label="checkbox1" name="checkbox4" ngModel>checkbox4</fr-checkbox>
@@ -53,7 +53,7 @@ import { Component } from '@angular/core';
           <td style="width:25%;text-align:right;padding-right:15px">date picker</td>
           <td>
             <fr-form-group label="date">
-              <fr-date-picker name="calendar" [(ngModel)]="form.date"></fr-date-picker>
+              <fr-date-picker name="calendar" [(ngModel)]="form.date" (change)="onDatePickerChange($event)"></fr-date-picker>
             </fr-form-group>
           </td>
         </tr>
@@ -61,7 +61,7 @@ import { Component } from '@angular/core';
           <td style="width:25%;text-align:right;padding-right:15px">time picker</td>
           <td>
             <fr-form-group label="time">
-              <fr-time-picker name="time" [(ngModel)]="form.date"></fr-time-picker>
+              <fr-time-picker name="time" [(ngModel)]="form.date" (change)="onTimePickerChange($event)"></fr-time-picker>
             </fr-form-group>
           </td>
         </tr>
@@ -135,7 +135,23 @@ export class FormsDemoComponent {
     return false;
   }
 
+  public onSelectChange(event: Event): void {
+    console.log(event);
+  }
+
   public onRadioChange(event: Event): void {
+    console.log(event);
+  }
+
+  public onCheckboxChange(event: Event): void {
+    console.log(event);
+  }
+
+  public onDatePickerChange(event: Event): void {
+    console.log(event);
+  }
+
+  public onTimePickerChange(event: Event): void {
     console.log(event);
   }
 
