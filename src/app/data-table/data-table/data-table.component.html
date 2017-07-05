@@ -81,7 +81,8 @@
            [class.fr-data-table__tbody-cell--first]="i === 0"
            [class.fr-data-table__tbody-cell--string]="columns[i].type === 'string'"
            [class.fr-data-table__tbody-cell--number]="columns[i].type === 'number'">
-          <span class="fr-data-table__tbody-value">{{row[column.key]}}</span>
+          <span class="fr-data-table__tbody-value" *ngIf="columns[i].type !== 'image'">{{row[column.key]}}</span>
+          <img class="fr-data-table__tbody-image" [src]="row[column.key]" *ngIf="columns[i].type === 'image'"/>
         </td>
       </tr>
     </tbody>
