@@ -7,7 +7,14 @@ export {
   FrDataTableComponent,
   FrDataTableModule
 } from './data-table/index';
-export { FrDialogComponent } from './dialog/dialog.component';
+// export { FrDialogComponent } from './dialog/dialog.component';
+export {
+  FrDialogComponent,
+  FrDialogService,
+  FrDialogContext,
+  FrDialogEntryComponent,
+  FrDialogmodule
+} from './dialog/index';
 export {
   FrCheckboxComponent,
   FrDatePickerComponent,
