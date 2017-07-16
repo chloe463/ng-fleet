@@ -9,6 +9,7 @@ import {
   trigger
 } from '@angular/core';
 import { FrDialogService, FrDialogContext } from './../app/dialog/dialog.service';
+import { Observer } from 'rxjs/Observer';
 
 @Component({
     selector: 'dialog-demo',
@@ -50,12 +51,12 @@ export class DialogDemoComponent implements OnInit {
   }
 
   public toggleDialogWithService(): void {
-    const dialogSize = { width: 300, height: 300 };
-    this.dialogService.open<any>(DialogDummyComponent, dialogSize).then((v) => {
-      console.log(v);
-    }).catch((v) => {
-      console.log(v);
-    });
+    const dialogObserver: Observer<any> = {
+      next:     val    => console.log('onNext: ', val),
+      error:    reason => console.log('onError:', reason),
+      complete: ()     => console.log('onComplete')
+    };
+    this.dialogService.open<any>(DialogDummyComponent).subscribe(dialogObserver);
   }
 
   public dialogAction(event): void {
@@ -101,14 +102,14 @@ export class DialogDemoComponent implements OnInit {
   `
 })
 export class DialogDummyComponent {
-  constructor (private dialogContext: FrDialogContext) {}
+  constructor (private dialogContext: FrDialogContext<any>) {}
 
   public text: string = '';
 
-  ok(): void {
-    this.dialogContext.resolve({ message: 'ok', text: this.text });
+  ok(value): void {
+    this.dialogContext.next({ message: 'ok', text: this.text });
   }
   ng(): void {
-    this.dialogContext.reject('ng');
+    this.dialogContext.error({ message: 'ng', text: this.text });
   }
 }

@@ -5,27 +5,29 @@ import {
   ReflectiveInjector,
   ComponentRef
 } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
-export class FrDialogContext {
+export class FrDialogContext<T> implements Observer<T> {
 
   constructor(
-    private _resolve: Function,
-    private _reject: Function
+    private _onNext: Function,
+    private _onError: Function,
+    private _onComplete: Function
   ) { }
 
-  public resolve(val?: any): void {
-    this._resolve(val);
+  public next(val?: any): void {
+    this._onNext(val);
   }
 
-  public reject(reason?: any): void {
-    this._reject(reason);
+  public error(reason?: any): void {
+    this._onError(reason);
   }
-}
 
-export interface IFrDialogSize {
-  width: number;
-  height: number;
+  public complete(): void {
+    this._onComplete();
+  }
 }
 
 @Injectable()
@@ -33,14 +35,6 @@ export class FrDialogService {
   public vcr: ViewContainerRef;
   private componentRef: ComponentRef<any>;
   public count = 0;
-
-  private _size: IFrDialogSize = { width: 640, height: 320 };
-  get size() {
-    return this._size;
-  }
-  set size(size) {
-    this._size = size;
-  }
 
   constructor(private cfr: ComponentFactoryResolver) {}
 
@@ -52,29 +46,35 @@ export class FrDialogService {
     this.vcr = vcr;
   }
 
-  public open<T>(component, size?: IFrDialogSize): Promise<T> {
-    if (size) {
-      this.size = size;
-    }
-    return new Promise<T>((resolve, reject) => {
+  public open<T>(component): Observable<T> {
+    return new Observable<T>((observer: Observer<T>) => {
       const componentFactory = this.cfr.resolveComponentFactory(component);
 
-      const _resolve = (value: T) => {
+      const _onNext = (value: T) => {
         if (this.componentRef) {
-          resolve(value);
+          observer.next(value);
+          observer.complete();
+          observer.closed = true;
           this.close();
         }
-      };
-
-      const _reject = (reason?: any) => {
+      }
+      const _onError = (reason?: any) => {
         if (this.componentRef) {
-          reject(reason);
+          observer.error(reason);
+          observer.complete();
+          observer.closed = true;
           this.close();
         }
-      };
-
+      }
+      const  _onComplete = (): void => {
+        if (this.componentRef) {
+          observer.complete();
+          observer.closed = true;
+          this.close();
+        }
+      }
       const bindings = ReflectiveInjector.resolve([
-        { provide: FrDialogContext, useValue: new FrDialogContext(_resolve, _reject) }
+        { provide: FrDialogContext, useValue: new FrDialogContext<T>(_onNext, _onError, _onComplete) }
       ]);
       const contextInjector = this.vcr.parentInjector;
       const injector        = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);
@@ -87,9 +87,12 @@ export class FrDialogService {
 
   public close(): void {
     if (this.componentRef) {
-      this.componentRef.destroy();
-      this.componentRef = undefined;
       this.count--;
+      // Delay for dialog leaving animation
+      setTimeout(() => {
+        this.componentRef.destroy();
+        this.componentRef = undefined;
+      }, 500);
     }
   }
 }
