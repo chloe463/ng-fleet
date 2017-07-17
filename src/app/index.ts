@@ -13,7 +13,7 @@ export {
   FrDialogService,
   FrDialogContext,
   FrDialogEntryComponent,
-  FrDialogmodule
+  FrDialogModule
 } from './dialog/index';
 export {
   FrCheckboxComponent,
