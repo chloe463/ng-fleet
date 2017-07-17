@@ -48,11 +48,11 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
     trigger('clockVisibility', [
       state(HIDDEN, style({
         opacity: 0,
-        transform: 'scaleY(0)'
+        transform: 'translateY(-5%)',
+        'pointer-events': 'none'
       })),
       state(SHOW, style({
-        opacity: 1,
-        transform: 'scaleY(1)'
+        opacity: 1
       })),
       transition('* => *', [
         animate('.3s ease')

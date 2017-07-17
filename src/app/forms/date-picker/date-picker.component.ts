@@ -45,11 +45,11 @@ export const DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
     trigger('calendarVisibility', [
       state(HIDDEN, style({
         opacity: 0,
-        transform: 'scaleY(0)'
+        transform: 'translateY(-5%)',
+        'pointer-events': 'none'
       })),
       state(SHOW, style({
-        opacity: 1,
-        transform: 'scaleY(1)'
+        opacity: 1
       })),
       transition('* => *', [
         animate('.2s ease-in')
