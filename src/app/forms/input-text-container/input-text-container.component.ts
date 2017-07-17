@@ -42,6 +42,7 @@ export class FrInputDirective implements OnInit, OnDestroy {
 
   public labelState: string;
   public valueLength: number = 0;
+  public maxLength: number = -1;
 
   @Input()
   get placeholder() {
@@ -67,6 +68,7 @@ export class FrInputDirective implements OnInit, OnDestroy {
     } else {
       this.labelState = (this._el.nativeElement.value) ? LABEL : PLACEHOLDER;
     }
+    this.maxLength = this._el.nativeElement.maxLength;
   }
 
   ngOnDestroy() {
@@ -105,17 +107,13 @@ export class FrInputDirective implements OnInit, OnDestroy {
 
 @Component({
   selector: 'fr-input-text-container',
-  templateUrl: './input-text-container.component.html',
-  host: {
-    '[class.fr-input-text__label--focused]': '_input.focus'
-  }
+  templateUrl: './input-text-container.component.html'
 })
 export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
   @ContentChild(FrInputDirective) _input: FrInputDirective;
 
-  @Input() maxLength: number;
-
+  public maxLength: number;
   public labelState = 'placeholder';
   public placeholder: string = '';
   public modelLength: number = 0;
@@ -133,6 +131,7 @@ export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
       throw "Child component input[frInput] is required!";
     }
     this.placeholder = this._input.placeholder;
+    this.maxLength   = this._input.maxLength;
   }
 
 }
