@@ -16,9 +16,14 @@ import {
   state,
   style,
   transition,
-  animate
+  animate,
+  Optional
 } from '@angular/core';
 import { NgModel, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+export const LABEL          = 'label';
+export const LABEL_ON_FOCUS = 'labelOnFocus';
+export const PLACEHOLDER    = 'placeholder';
 
 @Directive({
   selector: 'input[frInput], textarea[frInput]',
@@ -48,14 +53,20 @@ export class FrInputDirective implements OnInit, OnDestroy {
     }
   }
 
-  constructor(public ngModel: NgModel) {
-  }
+  constructor(
+    @Optional() public ngModel: NgModel,
+    private _el: ElementRef
+  ) { }
 
   ngOnInit() {
-    this.labelState = (this.ngModel.model) ? 'label' : 'placeholder';
-    this._ngModelSubscribtion = this.ngModel.valueChanges.subscribe((v) => {
-      this._updateLabelState(v);
-    });
+    if (this.ngModel) {
+      this.labelState = (this.ngModel.model) ? LABEL : PLACEHOLDER;
+      this._ngModelSubscribtion = this.ngModel.valueChanges.subscribe((v) => {
+        this._updateLabelState(v);
+      });
+    } else {
+      this.labelState = (this._el.nativeElement.value) ? LABEL : PLACEHOLDER;
+    }
   }
 
   ngOnDestroy() {
@@ -63,24 +74,31 @@ export class FrInputDirective implements OnInit, OnDestroy {
   }
 
   private _updateLabelState(v: any) {
-    if (this.labelState === 'labelOnFocus') {
-      this.labelState  = v ? 'labelOnFocus' : 'placeholder';
+    if (this.labelState === LABEL_ON_FOCUS) {
+      this.labelState  = v ? LABEL_ON_FOCUS : PLACEHOLDER;
     } else {
-      this.labelState  = v ? 'label' : 'placeholder';
+      this.labelState  = v ? LABEL : PLACEHOLDER;
     }
     this.valueLength = v ? v.length : 0;
   }
 
   public onFocus() {
-    this.labelState = 'labelOnFocus';
+    this.labelState = LABEL_ON_FOCUS;
   }
 
   public onBlur() {
-    if (!this.ngModel.model) {
-      this.labelState = 'placeholder';
-      return;
+    if (this.ngModel) {
+      if (!this.ngModel.viewModel) {
+        this.labelState = PLACEHOLDER;
+        return;
+      }
+    } else {
+      if (!this._el.nativeElement.value) {
+        this.labelState = PLACEHOLDER;
+        return;
+      }
     }
-    this.labelState = 'label';
+    this.labelState = LABEL;
   }
 
 }
