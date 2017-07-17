@@ -68,8 +68,8 @@ import { Component } from '@angular/core';
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">text area</td>
           <td>
-            <fr-input-text-container maxLength="10">
-              <textarea frInput placeholder="TextArea" name="textarea" [(ngModel)]="form.textarea"></textarea>
+            <fr-input-text-container>
+              <textarea frInput placeholder="TextArea" name="textarea" maxLength="10" [(ngModel)]="form.textarea"></textarea>
             </fr-input-text-container>
           </td>
         </tr>
