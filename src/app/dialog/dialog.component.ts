@@ -21,6 +21,7 @@ export interface IFrDialogActionKey {
 @Component({
   selector: 'fr-dialog',
   templateUrl: './dialog.component.html',
+  exportAs: 'frDialog',
   animations: [
     trigger('dialogState', [
       state('hidden', style({
@@ -101,5 +102,12 @@ export class FrDialogComponent implements OnInit, OnChanges {
     if (event.key === 'Escape' && event.code === "Escape") {
       this.dismiss();
     }
+  }
+
+  public open(): void {
+    this.show = true;
+  }
+  public close(): void {
+    this.show = false;
   }
 }

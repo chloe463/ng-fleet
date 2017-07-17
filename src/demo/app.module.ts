@@ -12,7 +12,7 @@ import { ButtonsDemoComponent } from './buttons-demo.component';
 import { TabsDemoComponent } from './tabs-demo.component';
 import { KpiTableDemoComponent } from './kpi-table-demo.component';
 import { SwitchDemoComponent } from './switch-demo.component';
-import { DialogDemoComponent } from './dialog-demo.component';
+import { DialogDemoComponent, DialogDummyComponent } from './dialog-demo.component';
 import { ToasterDemoComponent } from './toaster-demo.component';
 import { ProgressDemoComponent } from './progress-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
@@ -49,7 +49,8 @@ const routeConfig: Routes = [
     DevelopAreaComponent,
     DialogDemoComponent,
     ToasterDemoComponent,
-    ProgressDemoComponent
+    ProgressDemoComponent,
+    DialogDummyComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +61,7 @@ const routeConfig: Routes = [
   ],
   exports: [],
   providers: [],
+  entryComponents: [ DialogDummyComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

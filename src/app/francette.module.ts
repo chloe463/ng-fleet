@@ -17,6 +17,7 @@ import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
 import { FrSwitchComponent } from './switch/switch.component';
 import { FrDialogComponent } from './dialog/dialog.component';
 import { FrToasterComponent } from './toaster/toaster.component';
+import { FrDialogModule } from './dialog/dialog.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FrToasterComponent } from './toaster/toaster.component';
     FrTabsModule,
     FrRippleModule,
     FrSideNavModule,
-    FrProgressModule
+    FrProgressModule,
+    FrDialogModule
   ],
   exports: [
     FrChipComponent,
@@ -52,7 +54,8 @@ import { FrToasterComponent } from './toaster/toaster.component';
     FrProgressModule,
     FrSwitchComponent,
     FrDialogComponent,
-    FrToasterComponent
+    FrToasterComponent,
+    FrDialogModule
   ]
 })
 export class FrancetteModule { }
