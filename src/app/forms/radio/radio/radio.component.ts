@@ -55,12 +55,13 @@ export class FrRadioGroupDirective implements ControlValueAccessor {
     if (obj !== this._innerValue) {
       this._innerValue = obj;
       this._onChangeCallback(obj);
+      this.selectOneByValue(obj);
     }
   }
 
   writeValue(obj: any): void {
     if (obj !== this._innerValue) {
-      this._innerValue = obj;
+      this.value = obj;
     }
   }
 
@@ -91,7 +92,7 @@ export class FrRadioGroupDirective implements ControlValueAccessor {
     this.change.emit(event);
   }
 
-  public selectOne(selectedRadio: FrRadioComponent): void {
+  public selectOneByRadioComponent(selectedRadio: FrRadioComponent): void {
     this._selectedRadio = selectedRadio;
     this._radios.forEach((radio, index) => {
       if (radio !== selectedRadio) {
@@ -100,6 +101,11 @@ export class FrRadioGroupDirective implements ControlValueAccessor {
     });
   }
 
+  public selectOneByValue(value: any): void {
+    this._radios.forEach((radio, index) => {
+      radio.checked = (radio.value === value);
+    });
+  }
 }
 
 @Component({
@@ -151,7 +157,7 @@ export class FrRadioComponent implements OnInit {
     if (this.radioGroup) {
       this.radioGroup.value = this.value;
       this.radioGroup._onChangeCallback(this.value);
-      this.radioGroup.selectOne(this);
+      this.radioGroup.selectOneByRadioComponent(this);
       this.radioGroup.emitChangeEvent();
     }
   }
