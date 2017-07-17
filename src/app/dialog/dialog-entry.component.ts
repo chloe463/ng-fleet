@@ -28,22 +28,28 @@ export class FrDialogInnerDirective {
 @Component({
   selector: 'fr-dialog-entry',
   template: `
-<div class="fr-dialog" [hidden]="!isShow()">
-  <div class="fr-dialog__body" [ngStyle]="getStyle()" [@dialogState]="dialogState" fr-dialog-inner>
+<div class="fr-dialog">
+  <div class="fr-dialog__wrapper">
+    <div class="fr-dialog__body" [@dialogState]="dialogState" fr-dialog-inner></div>
+    <div class="fr-dialog__backdrop" [hidden]="!isShow()" (click)="dialog.close()"></div>
   </div>
-  <div class="fr-dialog__backdrop" (click)="dialog.close()"></div>
 </div>
   `,
   animations: [
     trigger('dialogState', [
-      state('void', style({ opacity: 0, transform: 'scale(.9)' })),
-      transition(':enter', [
-        style({ opacity: 1, transform: 'scale(.9)' }),
-        animate('300ms ease-out')
+      state('void', style({
+        opacity: 0,
+        transform: 'translateY(15%) scale(.95)'
+      })),
+      state('active', style({ opacity: 1, transform: 'scale(1)' })),
+      transition('void => active', [
+        animate('300ms ease-out'),
       ]),
-      transition(':leave', [
-        style({ opacity: 1, transform: 'scale(.9)' }),
-        animate('300ms ease-out')
+      transition('active => void', [
+        animate('300ms ease-out', style({
+          opacity: 0,
+          transform: 'translateY(15%) scale(1)'
+        }))
       ])
     ])
   ]
@@ -70,21 +76,11 @@ export class FrDialogEntryComponent implements AfterViewInit {
     return this.dialog.isShow();
   }
 
-  public getStyle() {
-    const windowWidth   = window.innerWidth;
-    const windowHeight  = window.innerHeight;
-    const contentWidth  = this.dialog.size.width;
-    const contentHeight = this.dialog.size.height;
-
-    const top  = window.pageYOffset + ((windowHeight / 2) - (contentHeight / 2)) + 'px';
-    const left = window.pageXOffset + ((windowWidth/ 2) - (contentWidth / 2)) + 'px';
-
-    return {
-      top,
-      left,
-      width: contentWidth + 'px',
-      height: contentHeight + 'px'
-    };
+  @HostListener('window:mousedown', ['$event'])
+  public dismissOnClick(event: Event): void {
+    if (!this.inner.vcr.element.nativeElement.contains(event.target)) {
+      this.dialog.close();
+    }
   }
 
   @HostListener('window:keydown', ['$event'])

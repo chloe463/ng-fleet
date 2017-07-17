@@ -62,27 +62,11 @@ export class FrDialogComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    console.warn('fr-dialog is is deprecated. Use FrDialogService instead.');
   }
 
   ngOnChanges() {
     this.dialogState = this.show ? 'shown' : 'hidden';
-  }
-
-  public getStyle() {
-    const windowWidth   = window.innerWidth;
-    const windowHeight  = window.innerHeight;
-    const contentWidth  = this.size.width;
-    const contentHeight = this.size.height;
-
-    const top  = window.pageYOffset + ((windowHeight / 2) - (contentHeight / 2)) + 'px';
-    const left = window.pageXOffset + ((windowWidth/ 2) - (contentWidth / 2)) + 'px';
-
-    return {
-      top,
-      left,
-      width: contentWidth + 'px',
-      height: contentHeight + 'px'
-    };
   }
 
   public emit(actionValue): void {
