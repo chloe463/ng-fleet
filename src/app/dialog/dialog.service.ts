@@ -14,7 +14,8 @@ export class FrDialogContext<T> implements Observer<T> {
   constructor(
     private _onNext: Function,
     private _onError: Function,
-    private _onComplete: Function
+    private _onComplete: Function,
+    public  params?: any
   ) { }
 
   public next(val?: any): void {
@@ -46,7 +47,7 @@ export class FrDialogService {
     this.vcr = vcr;
   }
 
-  public open<T>(component): Observable<T> {
+  public open<T>(component, extraParams?: any): Observable<T> {
     return new Observable<T>((observer: Observer<T>) => {
       const componentFactory = this.cfr.resolveComponentFactory(component);
 
@@ -74,7 +75,7 @@ export class FrDialogService {
         }
       }
       const bindings = ReflectiveInjector.resolve([
-        { provide: FrDialogContext, useValue: new FrDialogContext<T>(_onNext, _onError, _onComplete) }
+        { provide: FrDialogContext, useValue: new FrDialogContext<T>(_onNext, _onError, _onComplete, extraParams) }
       ]);
       const contextInjector = this.vcr.parentInjector;
       const injector        = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);

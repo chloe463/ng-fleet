@@ -56,7 +56,8 @@ export class DialogDemoComponent implements OnInit {
       error:    reason => console.log('onError:', reason),
       complete: ()     => console.log('onComplete')
     };
-    this.dialogService.open<any>(DialogDummyComponent).subscribe(dialogObserver);
+    const extraParams = { title: "Hi! I'm a dialog!" };
+    this.dialogService.open<any>(DialogDummyComponent, extraParams).subscribe(dialogObserver);
   }
 
   public dialogAction(event): void {
@@ -88,7 +89,7 @@ export class DialogDemoComponent implements OnInit {
   `],
   template: `
   <div class="dummy-component">
-    <div class="header">Hi! I am a dialog!</div>
+    <div class="header">{{title}}</div>
     <div class="content">
       <fr-input-text-container>
         <input frInput placeholder="name" type="text" [(ngModel)]="text">
@@ -101,10 +102,15 @@ export class DialogDemoComponent implements OnInit {
   </div>
   `
 })
-export class DialogDummyComponent {
+export class DialogDummyComponent implements OnInit{
   constructor (private dialogContext: FrDialogContext<any>) {}
 
   public text: string = '';
+  public title: string = '';
+
+  ngOnInit() {
+    this.title = this.dialogContext.params.title;
+  }
 
   ok(): void {
     this.dialogContext.next({ message: 'ok', text: this.text });
