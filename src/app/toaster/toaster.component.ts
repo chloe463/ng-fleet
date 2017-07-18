@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   OnChanges,
+  SimpleChanges,
   Input,
   Output,
   EventEmitter,
@@ -62,7 +63,7 @@ export class FrToasterComponent implements OnInit, OnChanges {
     };
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     this.toastState = this.show ? 'shown' : 'hidden';
     if (this.show) {
       setTimeout(() => {

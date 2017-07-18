@@ -106,7 +106,7 @@ export class DialogDummyComponent {
 
   public text: string = '';
 
-  ok(value): void {
+  ok(): void {
     this.dialogContext.next({ message: 'ok', text: this.text });
   }
   ng(): void {

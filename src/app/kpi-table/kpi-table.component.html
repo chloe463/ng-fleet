@@ -1,6 +1,6 @@
 <table class="fr-kpi-table">
   <colgroup></colgroup>
-  <colgroup *ngFor="let date of data.dateList; let i = index; trackBy:index"
+  <colgroup *ngFor="let date of data.dateList; let i = index"
     class="fr-kpi-table_column"
     [class.fr-kpi-table__column--sunday]="isSunday(date)"
     [class.fr-kpi-table__column--saturday]="isSaturday(date)"
@@ -8,15 +8,15 @@
   <thead class="fr-kpi-table__head">
     <tr>
       <th class="fr-kpi-table__head kpi-table__row-name"></th>
-      <th class="fr-kpi-table__head" *ngFor="let date of data.dateList; let i = index; trackBy:index">
+      <th class="fr-kpi-table__head" *ngFor="let date of data.dateList; let i = index">
         {{objectDate2MonthDate(date)}}
       </th>
     </tr>
   </thead>
   <tbody class="fr-kpi-table__body">
-    <tr *ngFor="let row of data.kpi; let i = index; trackBy:index">
+    <tr *ngFor="let row of data.kpi; let i = index">
       <td class="fr-kpi-table__value kpi-table__row-name">{{row.name}}</td>
-      <td *ngFor="let value of row.values; let j = index; trackBy:index" class="fr-kpi-table__value">{{value}}</td>
+      <td *ngFor="let value of row.values; let j = index" class="fr-kpi-table__value">{{value}}</td>
     </tr>
   </tbody>
 </table>

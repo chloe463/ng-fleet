@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   OnChanges,
+  SimpleChanges,
   Input,
   Output,
   HostListener,
@@ -65,7 +66,7 @@ export class FrDialogComponent implements OnInit, OnChanges {
     console.warn('fr-dialog is is deprecated. Use FrDialogService instead.');
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     this.dialogState = this.show ? 'shown' : 'hidden';
   }
 
