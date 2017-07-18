@@ -45,7 +45,7 @@
       </a>
       <span class="fr-data-table__other-actions">
         <ul class="fr-data-table__other-action-list" [@actionListState]="actionListState">
-          <li *ngFor="let action of headerComponent.otherActionKeys; let i = index; trackBy index" class="fr-data-table__other-action-item" (click)="otherAction(action.key)">
+          <li *ngFor="let action of headerComponent.otherActionKeys; let i = index" class="fr-data-table__other-action-item" (click)="otherAction(action.key)">
             {{action.label}}
           </li>
         </ul>
@@ -53,7 +53,7 @@
     </span>
   </div>
   <table class="fr-data-table">
-    <colgroup *ngFor="let column of columns; trackBy: index"
+    <colgroup *ngFor="let column of columns"
          class="fr-data-table__column">
     </colgroup>
     <thead class="fr-data-table__thead">
@@ -61,7 +61,7 @@
         <td class="fr-data-table__thead-checkbox" [hidden]="!selectable">
           <fr-checkbox [(ngModel)]="checkAllFlag" (change)="checkAll()"></fr-checkbox>
         </td>
-        <th *ngFor="let column of columns; let i = index; trackBy: index"
+        <th *ngFor="let column of columns; let i = index"
           class="fr-data-table__thead-column"
           [class.fr-data-table__thead-column--first]="i === 0"
           [class.fr-data-table__thead-column--string]="column.type === 'string'"
@@ -71,12 +71,12 @@
       </tr>
     </thead>
     <tbody class="fr-data-table__tbody">
-      <tr *ngFor="let row of rows; let i = index; trackBy: index"
+      <tr *ngFor="let row of rows; let i = index"
            class="fr-data-table__tbody-row">
         <td class="fr-data-table__tbody-checkbox" [hidden]="!selectable">
           <fr-checkbox [(ngModel)]="checkedRowIndices[i]"></fr-checkbox>
         </td>
-        <td *ngFor="let column of columns; let i = index; trackBy: index"
+        <td *ngFor="let column of columns; let i = index"
            class="fr-data-table__tbody-cell"
            [class.fr-data-table__tbody-cell--first]="i === 0"
            [class.fr-data-table__tbody-cell--string]="columns[i].type === 'string'"
@@ -95,7 +95,7 @@
       Rows per page :
     </span>
     <span class="fr-data-table__footer-select" [hidden]="!paginationInfo.rowsPerPageValues">
-      <fr-select [(ngModel)]="rowsPerPage" (ngModelChange)="paginationAction('changeRowsValue', rowsPerPage.value)">
+      <fr-select [(ngModel)]="rowsPerPage" (ngModelChange)="paginationAction('changeRowsValue')">
         <fr-option *ngFor="let option of paginationInfo.rowsPerPageValues" [value]="option" [label]="option"></fr-option>
       </fr-select>
     </span>

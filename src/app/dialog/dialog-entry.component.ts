@@ -55,7 +55,7 @@ export class FrDialogInnerDirective {
   ]
 })
 export class FrDialogEntryComponent implements AfterViewInit {
-  @ViewChild(FrDialogInnerDirective) private inner: FrDialogInnerDirective;
+  @ViewChild(FrDialogInnerDirective) public inner: FrDialogInnerDirective;
 
   private _dialogState: string = 'void';
 
@@ -66,7 +66,7 @@ export class FrDialogEntryComponent implements AfterViewInit {
     this._dialogState = newState;
   }
 
-  constructor (private dialog: FrDialogService) {}
+  constructor (public dialog: FrDialogService) {}
 
   ngAfterViewInit() {
     this.dialog.vcr = this.inner.vcr;

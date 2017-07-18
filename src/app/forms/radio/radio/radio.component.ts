@@ -117,6 +117,7 @@ export class FrRadioComponent implements OnInit {
   @Input() value: string;
   @Input() checked: boolean;
   @Input() name: string;
+  @Input() disabled: boolean;
 
   @Output() change: EventEmitter<FrRadioChange> = new EventEmitter<FrRadioChange>();
 
@@ -130,6 +131,7 @@ export class FrRadioComponent implements OnInit {
   ngOnInit() {
     if (this.radioGroup) {
       this.name = this.radioGroup.name;
+      this.disabled = this.radioGroup.disabled;
     }
   }
 

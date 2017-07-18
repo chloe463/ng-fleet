@@ -124,7 +124,7 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
     this.actionListState = 'hidden';
   }
 
-  public paginationAction(action: string, value) {
+  public paginationAction(action: string) {
     this.footerComponent.invokePaginationAction({
       action, rowsPerPage: this.rowsPerPage
     });

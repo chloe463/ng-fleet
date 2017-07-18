@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
           <td style="width:25%;text-align:right;padding-right:15px">select</td>
           <td>
             <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select" [browserNative]="false" (change)="onSelectChange($event)">
-              <fr-option *ngFor="let option of options; let i = index; trackBy index" [value]="option.value" label="{{option.label}}"></fr-option>
+              <fr-option *ngFor="let option of options; let i = index" [value]="option.value" label="{{option.label}}"></fr-option>
               <fr-option value="123" label="label123"></fr-option>
               <fr-option value="987" label="label987"></fr-option>
             </fr-select>
@@ -102,7 +102,7 @@ export class FormsDemoComponent {
     {key: 2, value: 'val2'},
   ];
   selectDisabled = true;
-  form: {[key: string]: any} = {
+  form: any = {
     text: '',
     select: '',
     radio: '',

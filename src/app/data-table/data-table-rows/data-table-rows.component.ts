@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   OnChanges,
+  SimpleChanges,
   Input,
   Output
 } from '@angular/core';
@@ -30,7 +31,7 @@ export class FrDataTableRowsComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  ngOnChanges () {
+  ngOnChanges (changes: SimpleChanges) {
     this._listener();
   }
 
