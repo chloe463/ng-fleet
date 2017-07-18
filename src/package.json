@@ -1,12 +1,16 @@
 {
   "name": "francette",
-  "version": "0.1.0",
+  "version": "0.3.1",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {},
   "main": "./bundles/francette.js",
   "module": "./index.js",
   "typings": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chloe463/francette"
+  },
   "peerDependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
@@ -17,8 +21,7 @@
     "normalize.css": "^5.0.0",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.7.2",
-    "normalize.css": "^5.0.0"
+    "zone.js": "^0.7.2"
   },
   "devDependencies": {
     "@angular/cli": "^1.0.0",
