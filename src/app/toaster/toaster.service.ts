@@ -16,9 +16,9 @@ export class FrToasterContext<T> implements Observer<T> {
     private _onNext: Function,
     private _onError: Function,
     private _onComplete: Function,
-    public text,
-    public action,
-    public timeout,
+    public text: string,
+    public action: string,
+    public timeout: number,
     public params?: any
   ) {}
 
@@ -50,7 +50,7 @@ export class FrToasterService {
     this.vcr = vcr;
   }
 
-  public open<T>(text, action, timeout, extraParams?: any): Observable<T> {
+  public open<T>(text: string, action: string, timeout: number, extraParams?: any): Observable<T> {
     return new Observable<T>((observer: Observer<T>) => {
       const component = FrToasterContentComponent;
       const componentFactory = this.cfr.resolveComponentFactory(component);
