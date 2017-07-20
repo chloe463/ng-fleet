@@ -94,6 +94,7 @@ export class FrRadioGroupDirective implements ControlValueAccessor {
 
   public selectOneByRadioComponent(selectedRadio: FrRadioComponent): void {
     this._selectedRadio = selectedRadio;
+    if (!this._radios) { return; }
     this._radios.forEach((radio, index) => {
       if (radio !== selectedRadio) {
         radio.checked = false;
@@ -102,6 +103,7 @@ export class FrRadioGroupDirective implements ControlValueAccessor {
   }
 
   public selectOneByValue(value: any): void {
+    if (!this._radios) { return; }
     this._radios.forEach((radio, index) => {
       radio.checked = (radio.value === value);
     });
