@@ -128,6 +128,8 @@ gulp.task('build:rollup', () => {
     '@angular/forms': 'ng.forms',
     '@angular/common': 'ng.common',
     '@angular/router': 'ng.router',
+    'rxjs/Observable': 'rxjs_Observable',
+    'rxjs/Observer': 'rxjs_Observer'
   };
 
   const rollupOptions = {
