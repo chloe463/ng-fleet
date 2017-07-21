@@ -56,4 +56,12 @@ export {
   FrTabsModule
 } from './tabs/index';
 export { FrToasterComponent } from './toaster/toaster.component';
+export {
+  FrToasterModule,
+  FrToasterService,
+  FrToasterContext,
+  FrToasterInnerDirective,
+  FrToasterEntryComponent,
+  FrToasterContentComponent
+} from './toaster/index';
 export { FrancetteModule } from './francette.module';

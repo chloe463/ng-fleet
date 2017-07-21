@@ -40,7 +40,7 @@ export class FrToasterService {
   public vcr: ViewContainerRef;
   public count = 0;
 
-  constructor(private cfr: ComponentFactoryResolver) {}
+  constructor(public cfr: ComponentFactoryResolver) {}
 
   public isShow(): boolean {
     return this.count > 0;
