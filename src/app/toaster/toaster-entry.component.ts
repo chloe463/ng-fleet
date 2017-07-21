@@ -105,13 +105,13 @@ export class FrToasterEntryComponent implements AfterViewInit {
     ])
   ]
 })
-export class FrToasterContentComponent<T> implements OnInit {
+export class FrToasterContentComponent implements OnInit {
   public text: string = '';
   public action: string = '';
   public timeout: number = 500;
   public closed: boolean = false;
   public toasterState = 'void';
-  constructor (@Inject(forwardRef(() => FrToasterContext)) private _context: FrToasterContext<T>) {
+  constructor (@Inject(forwardRef(() => FrToasterContext)) private _context: FrToasterContext<string|number>) {
     this.text    = this._context.text;
     this.action  = this._context.action;
     this.timeout = this._context.timeout;
