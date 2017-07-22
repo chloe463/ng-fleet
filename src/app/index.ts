@@ -64,4 +64,12 @@ export {
   FrToasterEntryComponent,
   FrToasterContentComponent
 } from './toaster/index';
+export {
+  FrNotificationService,
+  FrNotificationContext,
+  FrNotificationInnerDirective,
+  FrNotificationEntryComponent,
+  FrNotificationContentComponent,
+  FrNotificationModule
+} from './notification/index';
 export { FrancetteModule } from './francette.module';
