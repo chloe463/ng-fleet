@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { FrToasterService } from './../app/toaster/toaster.service';
-import { FrNotificationService, FrNotificationParam, FrNotificationType } from './../app/notification/notification.service';
+import { FrNotificationService } from './../app/notification/notification.service'
+import { FrNotificationParam, FrNotificationType } from './../app/notification/notification.types';
 
 @Component({
   selector: 'toaster-demo',

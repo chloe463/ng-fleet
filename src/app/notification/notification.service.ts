@@ -6,16 +6,9 @@ import {
   ComponentRef
 } from '@angular/core';
 import { FrNotificationContentComponent } from './notification-entry.component';
+import { FrNotificationType, FrNotificationParam } from './notification.types';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-
-export type FrNotificationType = 'primary' | 'info' | 'warning' | 'danger' | 'default';
-export type FrNotificationParam = {
-  text: string;
-  type?: FrNotificationType;
-  timeout: number;
-  extraParams?: any;
-};
 
 @Injectable()
 export class FrNotificationContext<T> implements Observer<T> {
