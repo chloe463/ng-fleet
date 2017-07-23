@@ -68,11 +68,12 @@ export class FrNotificationEntryComponent implements AfterViewInit {
 <div class="fr-notification"
   [ngClass]="notificationType"
   (@notificationState.done)="dismiss($event)"
-  [@notificationState]="notificationState">
+  [@notificationState]="notificationState"
+  (click)="next($event)">
   <div class="fr-notification__text">
     {{text}}
   </div>
-  <span class="fr-notification__close-btn" (click)="close()">
+  <span class="fr-notification__close-btn" (click)="close($event)">
     &times;
   </span>
 </div>
@@ -88,6 +89,7 @@ export class FrNotificationEntryComponent implements AfterViewInit {
     color: #FFFFFF;
     box-shadow: 0 2px 10px rgba(0,0,0,.26);
     opacity: .98;
+    cursor: pointer;
   }
   .fr-notification__text {
     margin: 14px 24px;
@@ -146,12 +148,12 @@ export class FrNotificationContentComponent implements OnInit {
     this.notificationType = 'fr-notification--' + this._context.type;
   }
 
-  public emitAction(): void {
-    this.closed = true;
+  public next(event: MouseEvent): void {
     this._context.next();
   }
 
-  public close(): void {
+  public close(event: MouseEvent): void {
+    event.stopPropagation();
     this.notificationState = 'void';
   }
 
