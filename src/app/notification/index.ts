@@ -1,6 +1,8 @@
 export {
   FrNotificationService,
-  FrNotificationContext
+  FrNotificationContext,
+  FrNotificationParam,
+  FrNotificationType
 } from './notification.service';
 export {
   FrNotificationInnerDirective,

@@ -7,7 +7,6 @@ export {
   FrDataTableComponent,
   FrDataTableModule
 } from './data-table/index';
-// export { FrDialogComponent } from './dialog/dialog.component';
 export {
   FrDialogComponent,
   FrDialogService,
@@ -67,6 +66,8 @@ export {
 export {
   FrNotificationService,
   FrNotificationContext,
+  FrNotificationType,
+  FrNotificationParam,
   FrNotificationInnerDirective,
   FrNotificationEntryComponent,
   FrNotificationContentComponent,
