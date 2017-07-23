@@ -7,7 +7,6 @@ export {
   FrDataTableComponent,
   FrDataTableModule
 } from './data-table/index';
-// export { FrDialogComponent } from './dialog/dialog.component';
 export {
   FrDialogComponent,
   FrDialogService,
@@ -64,4 +63,14 @@ export {
   FrToasterEntryComponent,
   FrToasterContentComponent
 } from './toaster/index';
+export {
+  FrNotificationService,
+  FrNotificationContext,
+  FrNotificationType,
+  FrNotificationParam,
+  FrNotificationInnerDirective,
+  FrNotificationEntryComponent,
+  FrNotificationContentComponent,
+  FrNotificationModule
+} from './notification/index';
 export { FrancetteModule } from './francette.module';

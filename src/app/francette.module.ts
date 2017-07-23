@@ -12,6 +12,7 @@ import { FrRippleModule } from './ripple/ripple.module';
 import { FrSideNavModule } from './side-nav/side-nav.module';
 import { FrProgressModule } from './progress/progress.module';
 import { FrToasterModule } from './toaster/toaster.module';
+import { FrNotificationModule } from './notification/notification.module';
 
 import { FrChipComponent } from './chip/chip.component';
 import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
@@ -41,7 +42,8 @@ import { FrDialogModule } from './dialog/dialog.module';
     FrSideNavModule,
     FrProgressModule,
     FrDialogModule,
-    FrToasterModule
+    FrToasterModule,
+    FrNotificationModule
   ],
   exports: [
     FrChipComponent,
@@ -58,7 +60,8 @@ import { FrDialogModule } from './dialog/dialog.module';
     FrDialogComponent,
     FrToasterComponent,
     FrDialogModule,
-    FrToasterModule
+    FrToasterModule,
+    FrNotificationModule
   ]
 })
 export class FrancetteModule { }
