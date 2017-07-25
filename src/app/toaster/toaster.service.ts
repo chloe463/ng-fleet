@@ -1,3 +1,4 @@
+import { $$ } from 'protractor';
 import {
   Injectable,
   ViewContainerRef,
@@ -9,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
 import { FrToasterContentComponent } from './toaster-entry.component';
+import { FrToasterParam } from './toaster.types';
 
 @Injectable()
 export class FrToasterContext<T> implements Observer<T> {
@@ -16,11 +18,21 @@ export class FrToasterContext<T> implements Observer<T> {
     private _onNext: Function,
     private _onError: Function,
     private _onComplete: Function,
-    public text: string,
-    public action: string,
-    public timeout: number,
-    public params?: any
+    public toasterParam: FrToasterParam
   ) {}
+
+  get text(): string {
+    return this.toasterParam.text;
+  }
+  get action(): string {
+    return this.toasterParam.action;
+  }
+  get timeout(): number {
+    return this.toasterParam.timeout;
+  }
+  get params(): any {
+    return this.toasterParam.params;
+  }
 
   public next(value?: T) {
     this._onNext(value);
@@ -50,15 +62,15 @@ export class FrToasterService {
     this.vcr = vcr;
   }
 
-  public open<T>(text: string, action: string, timeout: number, extraParams?: any): Observable<T> {
+  public open<T>(toasterParam: FrToasterParam): Observable<T> {
     return new Observable<T>((observer: Observer<T>) => {
       const component = FrToasterContentComponent;
       const componentFactory = this.cfr.resolveComponentFactory(component);
 
       const _onNext = (value: T) => {
         if (componentRef) {
-          observer.next(value);
-          observer.complete();
+          observer.next && observer.next(value);
+          observer.complete && observer.complete();
           observer.closed = true;
           this.count--;
           componentRef.destroy();
@@ -66,8 +78,8 @@ export class FrToasterService {
       };
       const _onError = (reason?: any) => {
         if (componentRef) {
-          observer.error(reason);
-          observer.complete();
+          observer.error && observer.error(reason);
+          observer.complete && observer.complete();
           observer.closed = true;
           this.count--;
           componentRef.destroy();
@@ -75,14 +87,14 @@ export class FrToasterService {
       }
       const _onComplete = (): void => {
         if (componentRef) {
-          observer.complete();
+          observer.complete && observer.complete();
           observer.closed = true;
           this.count--;
           componentRef.destroy();
         }
       }
       const bindings = ReflectiveInjector.resolve([
-        { provide: FrToasterContext, useValue: new FrToasterContext(_onNext, _onError, _onComplete, text, action, timeout, extraParams) }
+        { provide: FrToasterContext, useValue: new FrToasterContext(_onNext, _onError, _onComplete, toasterParam) }
       ]);
       const contextInjector = this.vcr.parentInjector;
       const injector        = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);
