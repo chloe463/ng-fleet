@@ -34,13 +34,12 @@ export class FrDialogContext<T> implements Observer<T> {
 @Injectable()
 export class FrDialogService {
   public vcr: ViewContainerRef;
-  private componentRef: ComponentRef<any>;
-  public count = 0;
+  public dialogStack: Array<ComponentRef<any>> = [];
 
   constructor(private cfr: ComponentFactoryResolver) {}
 
   public isShow(): boolean {
-    return this.count > 0;
+    return this.dialogStack.length > 0;
   }
 
   public set(vcr: ViewContainerRef) {
@@ -52,26 +51,26 @@ export class FrDialogService {
       const componentFactory = this.cfr.resolveComponentFactory(component);
 
       const _onNext = (value: T) => {
-        if (this.componentRef) {
-          observer.next(value);
-          observer.complete();
+        if (componentRef) {
+          observer.next && observer.next(value);
+          observer.complete && observer.complete();
           observer.closed = true;
-          this.close();
+          this.close(componentRef);
         }
       }
       const _onError = (reason?: any) => {
-        if (this.componentRef) {
-          observer.error(reason);
-          observer.complete();
+        if (componentRef) {
+          observer.error && observer.error(reason);
+          observer.complete && observer.complete();
           observer.closed = true;
-          this.close();
+          this.close(componentRef);
         }
       }
       const  _onComplete = (): void => {
-        if (this.componentRef) {
-          observer.complete();
+        if (componentRef) {
+          observer.complete && observer.complete();
           observer.closed = true;
-          this.close();
+          this.close(componentRef);
         }
       }
       const bindings = ReflectiveInjector.resolve([
@@ -80,20 +79,28 @@ export class FrDialogService {
       const contextInjector = this.vcr.parentInjector;
       const injector        = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);
 
-      this.componentRef = this.vcr.createComponent(componentFactory, this.vcr.length, injector);
-      this.vcr.element.nativeElement.appendChild(this.componentRef.location.nativeElement);
-      this.count++;
+      const componentRef = this.vcr.createComponent(componentFactory, this.vcr.length, injector);
+      this.vcr.element.nativeElement.appendChild(componentRef.location.nativeElement);
+      this.dialogStack.push(componentRef);
     });
   }
 
-  public close(): void {
-    if (this.componentRef) {
-      this.count--;
-      // Delay for dialog leaving animation
-      setTimeout(() => {
-        this.componentRef.destroy();
-        this.componentRef = undefined;
-      }, 500);
+  public close(componentRef?: ComponentRef<any>): void {
+    // If no componentRef is given, close the foremost dialog.
+    if (!componentRef) {
+      componentRef = this.dialogStack.pop();
     }
+    // Remove specified componentRef from stack
+    else {
+      this.dialogStack = this.dialogStack.filter((dialogRef) => {
+        return dialogRef !== componentRef;
+      });
+    }
+
+    // Delay for dialog leaving animation
+    setTimeout(() => {
+      componentRef.destroy();
+      componentRef = undefined;
+    }, 500);
   }
 }

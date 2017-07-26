@@ -61,7 +61,8 @@ export {
   FrToasterContext,
   FrToasterInnerDirective,
   FrToasterEntryComponent,
-  FrToasterContentComponent
+  FrToasterContentComponent,
+  FrToasterParam
 } from './toaster/index';
 export {
   FrNotificationService,
