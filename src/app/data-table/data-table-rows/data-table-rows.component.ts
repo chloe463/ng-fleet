@@ -1,41 +1,27 @@
-import {
-  Component,
-  OnInit,
-  OnChanges,
-  SimpleChanges,
-  Input,
-  Output
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Component({
   selector: 'fr-data-table-rows',
   templateUrl: './data-table-rows.component.html'
 })
-export class FrDataTableRowsComponent implements OnInit, OnChanges {
+export class FrDataTableRowsComponent {
 
-  private _rows;
-
-  private _listener: () => void = () => {};
+  private _rows: Array<any> = [];
+  private _rows$: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
 
   @Input()
   set rows(rows: Array<any>) {
     this._rows = rows;
+    this._rows$.next(rows);
   }
 
   get rows(): Array<any> {
     return this._rows;
   }
 
-  constructor() { }
-
-  ngOnInit() {
+  get rows$(): ReplaySubject<Array<any>> {
+    return this._rows$;
   }
 
-  ngOnChanges (changes: SimpleChanges) {
-    this._listener();
-  }
-
-  public subscribe(fn: () => void): void {
-    this._listener = fn;
-  }
 }

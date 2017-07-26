@@ -1,15 +1,10 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter
 } from '@angular/core';
-
-export interface IFrUpdateAction {
-  action: string;
-  rows: Array<any>;
-}
+import { FrDataTableEvent } from '../data-table/data-table.component';
 
 export interface IFrOtherAction {
   key: string;
@@ -20,10 +15,10 @@ export interface IFrOtherAction {
   selector: 'fr-data-table-header',
   templateUrl: './data-table-header.component.html'
 })
-export class FrDataTableHeaderComponent implements OnInit {
+export class FrDataTableHeaderComponent {
 
-  @Output() updateAction = new EventEmitter();
-  @Output() otherAction  = new EventEmitter();
+  @Output() updateAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
+  @Output() otherAction:  EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
   private _title: string;
   private _otherActionKeys: Array<IFrOtherAction> = [];
@@ -46,16 +41,11 @@ export class FrDataTableHeaderComponent implements OnInit {
     return this._otherActionKeys;
   }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  public invokeUpdateAction(event: IFrUpdateAction) {
+  public invokeUpdateAction(event: FrDataTableEvent) {
     this.updateAction.emit(event);
   }
 
-  public invokeOtherAction(event: IFrUpdateAction) {
+  public invokeOtherAction(event: FrDataTableEvent) {
     this.otherAction.emit(event);
   }
 

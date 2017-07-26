@@ -1,5 +1,5 @@
 <div class="fr-data-table__wrapper">
-  <div class="fr-data-table__header">
+  <div class="fr-data-table__header" *ngIf="headerComponent">
     <span class="fr-data-table__header-title">
       {{title}}
     </span>
@@ -56,7 +56,7 @@
     <colgroup *ngFor="let column of columns"
          class="fr-data-table__column">
     </colgroup>
-    <thead class="fr-data-table__thead">
+    <thead class="fr-data-table__thead" *ngIf="columnsComponent">
       <tr class="fr-data-table__thead-row">
         <td class="fr-data-table__thead-checkbox" [hidden]="!selectable">
           <fr-checkbox [(ngModel)]="checkAllFlag" (change)="checkAll()"></fr-checkbox>
@@ -70,7 +70,7 @@
         </th>
       </tr>
     </thead>
-    <tbody class="fr-data-table__tbody">
+    <tbody class="fr-data-table__tbody" *ngIf="rowsComponent">
       <tr *ngFor="let row of rows; let i = index"
            class="fr-data-table__tbody-row">
         <td class="fr-data-table__tbody-checkbox" [hidden]="!selectable">
@@ -87,7 +87,7 @@
       </tr>
     </tbody>
   </table>
-  <div class="fr-data-table__footer">
+  <div class="fr-data-table__footer" *ngIf="footerComponent">
     <span class="fr-data-table__footer-rows-info" [hidden]="!paginationInfo.page">
       Page: {{paginationInfo.page}}
     </span>

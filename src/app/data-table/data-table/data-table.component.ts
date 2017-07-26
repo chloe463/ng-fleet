@@ -23,6 +23,15 @@ import { FrDataTableHeaderComponent } from '../data-table-header/data-table-head
 import { FrDataTableRowsComponent } from '../data-table-rows/data-table-rows.component';
 import { FrDataTableFooterComponent } from '../data-table-footer/data-table-footer.component';
 
+export class FrDataTableEvent {
+  constructor(
+    public action: string,
+    public row: Array<any>,
+    public rowsPerPage: number
+  ) {}
+}
+
+
 @Component({
   selector: 'fr-data-table',
   templateUrl: './data-table.component.html',
@@ -42,7 +51,7 @@ import { FrDataTableFooterComponent } from '../data-table-footer/data-table-foot
     ])
   ]
 })
-export class FrDataTableComponent implements OnInit, AfterContentInit {
+export class FrDataTableComponent implements AfterContentInit {
 
   @Input() selectable: boolean;
 
@@ -65,28 +74,26 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
 
   public actionListState: string = 'hidden';
 
-  constructor() {
-  }
-
-  ngOnInit() {
-    this.checkedRowIndices = {};
-  }
-
   ngAfterContentInit() {
-    this.title   = this.headerComponent.title;
-    this.columns = this.columnsComponent.columns;
-    this.rows    = this.rowsComponent.rows;
-    this.rows.forEach((row, index) => {
+    this.title = this.headerComponent.title;
+    if (this.columnsComponent) {
+      this.columnsComponent.columns$.subscribe(newColumns => this.columns = newColumns);
+    }
+    if (this.rowsComponent) {
+      this.rowsComponent.rows$.subscribe(newRows => this._updateRows(newRows));
+    }
+    if (this.footerComponent) {
+      this.paginationInfo = this.footerComponent.paginationInfo;
+      this.rowsPerPage    = this.paginationInfo.rowsPerPage;
+    }
+  }
+
+  private _updateRows(newRows: Array<any>): void {
+    this.rows = newRows;
+    this.checkedRowIndices = {};
+    newRows.forEach((row, index) => {
       this.checkedRowIndices[index] = false;
     });
-    this.rowsComponent.subscribe(() => {
-      this.rows = this.rowsComponent.rows;
-      this.rows.forEach((row, index) => {
-        this.checkedRowIndices[index] = false;
-      });
-    });
-    this.paginationInfo = this.footerComponent.paginationInfo;
-    this.rowsPerPage    = this.paginationInfo.rowsPerPage;
   }
 
   public checkAll(): void {
@@ -105,29 +112,29 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
     return count;
   }
 
-  public updateRowAction(updateAction: string, changeListState = false) {
-    const checkedRows = this.rows.filter((row: any, index: number) => {
+  private _extraceCheckedRows(): Array<any> {
+    return this.rows.filter((row: any, index: number) => {
       return this.checkedRowIndices[index] === true;
-    });
-    this.headerComponent.invokeUpdateAction({
-      action: updateAction, rows: checkedRows
     });
   }
 
+  public updateRowAction(updateAction: string, changeListState = false) {
+    const checkedRows = this._extraceCheckedRows();
+    const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage);
+    this.headerComponent.invokeUpdateAction(event);
+  }
+
   public otherAction(key: string) {
-    const checkedRows = this.rows.filter((row: any, index: number) => {
-      return this.checkedRowIndices[index] === true;
-    });
-    this.headerComponent.invokeOtherAction({
-      action: key, rows: checkedRows
-    });
+    const checkedRows = this._extraceCheckedRows();
+    const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage);
+    this.headerComponent.invokeOtherAction(event);
     this.actionListState = 'hidden';
   }
 
   public paginationAction(action: string) {
-    this.footerComponent.invokePaginationAction({
-      action, rowsPerPage: this.rowsPerPage
-    });
+    const checkedRows = this._extraceCheckedRows();
+    const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage);
+    this.footerComponent.invokePaginationAction(event);
   }
 
   public toggleOtherActionList(): void {
