@@ -78,14 +78,14 @@ export class FrDialogEntryComponent implements AfterViewInit {
 
   @HostListener('window:mousedown', ['$event'])
   public dismissOnClick(event: Event): void {
-    if (!this.inner.vcr.element.nativeElement.contains(event.target)) {
+    if (this.dialog.isShow() && !this.inner.vcr.element.nativeElement.contains(event.target)) {
       this.dialog.close();
     }
   }
 
   @HostListener('window:keydown', ['$event'])
   public dismissOnEscape(event): void {
-    if (event.key === 'Escape' && event.code === "Escape") {
+    if (this.dialog.isShow() && event.key === 'Escape' && event.code === "Escape") {
       this.dialog.close();
     }
   }

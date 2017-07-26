@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { FrToasterService } from './../app/toaster/toaster.service';
+import { FrToasterParam } from './../app/toaster/toaster.types';
 import { FrNotificationService } from './../app/notification/notification.service'
 import { FrNotificationParam, FrNotificationType } from './../app/notification/notification.types';
 
@@ -42,7 +43,12 @@ export class ToasterDemoComponent {
   }
 
   public toggleToasterWithService(): void {
-    this.toasterService.open<any>('test', 'undo', 2000).subscribe(
+    const toasterParam: FrToasterParam = {
+      text: 'test',
+      action: 'undo',
+      timeout: 2000
+    };
+    this.toasterService.open<any>(toasterParam).subscribe(
       (v) => {
         console.log(v);
       },

@@ -5,6 +5,7 @@ export {
   FrDataTableHeaderComponent,
   FrDataTableRowsComponent,
   FrDataTableComponent,
+  FrDataTableEvent,
   FrDataTableModule
 } from './data-table/index';
 export {
@@ -61,7 +62,8 @@ export {
   FrToasterContext,
   FrToasterInnerDirective,
   FrToasterEntryComponent,
-  FrToasterContentComponent
+  FrToasterContentComponent,
+  FrToasterParam
 } from './toaster/index';
 export {
   FrNotificationService,

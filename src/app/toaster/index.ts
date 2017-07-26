@@ -8,3 +8,4 @@ export {
   FrToasterEntryComponent,
   FrToasterContentComponent
 } from './toaster-entry.component';
+export { FrToasterParam } from './toaster.types';
