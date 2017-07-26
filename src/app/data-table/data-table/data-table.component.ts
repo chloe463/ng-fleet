@@ -70,10 +70,16 @@ export class FrDataTableComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.title = this.headerComponent.title;
-    this.columnsComponent.columns$.subscribe(newColumns => this.columns = newColumns);
-    this.rowsComponent.rows$.subscribe(newRows => this._updateRows(newRows));
-    this.paginationInfo = this.footerComponent.paginationInfo;
-    this.rowsPerPage    = this.paginationInfo.rowsPerPage;
+    if (this.columnsComponent) {
+      this.columnsComponent.columns$.subscribe(newColumns => this.columns = newColumns);
+    }
+    if (this.rowsComponent) {
+      this.rowsComponent.rows$.subscribe(newRows => this._updateRows(newRows));
+    }
+    if (this.footerComponent) {
+      this.paginationInfo = this.footerComponent.paginationInfo;
+      this.rowsPerPage    = this.paginationInfo.rowsPerPage;
+    }
   }
 
   private _updateRows(newRows: Array<any>): void {
