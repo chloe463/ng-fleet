@@ -42,7 +42,7 @@ import { FrDataTableFooterComponent } from '../data-table-footer/data-table-foot
     ])
   ]
 })
-export class FrDataTableComponent implements OnInit, AfterContentInit {
+export class FrDataTableComponent implements AfterContentInit {
 
   @Input() selectable: boolean;
 
@@ -68,25 +68,20 @@ export class FrDataTableComponent implements OnInit, AfterContentInit {
   constructor() {
   }
 
-  ngOnInit() {
-    this.checkedRowIndices = {};
-  }
-
   ngAfterContentInit() {
-    this.title   = this.headerComponent.title;
-    this.columns = this.columnsComponent.columns;
-    this.rows    = this.rowsComponent.rows;
-    this.rows.forEach((row, index) => {
-      this.checkedRowIndices[index] = false;
-    });
-    this.rowsComponent.subscribe(() => {
-      this.rows = this.rowsComponent.rows;
-      this.rows.forEach((row, index) => {
-        this.checkedRowIndices[index] = false;
-      });
-    });
+    this.title = this.headerComponent.title;
+    this.columnsComponent.columns$.subscribe(newColumns => this.columns = newColumns);
+    this.rowsComponent.rows$.subscribe(newRows => this._updateRows(newRows));
     this.paginationInfo = this.footerComponent.paginationInfo;
     this.rowsPerPage    = this.paginationInfo.rowsPerPage;
+  }
+
+  private _updateRows(newRows: Array<any>): void {
+    this.rows = newRows;
+    this.checkedRowIndices = {};
+    newRows.forEach((row, index) => {
+      this.checkedRowIndices[index] = false;
+    });
   }
 
   public checkAll(): void {

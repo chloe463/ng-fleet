@@ -129,7 +129,8 @@ gulp.task('build:rollup', () => {
     '@angular/common': 'ng.common',
     '@angular/router': 'ng.router',
     'rxjs/Observable': 'rxjs_Observable',
-    'rxjs/Observer': 'rxjs_Observer'
+    'rxjs/Observer': 'rxjs_Observer',
+    'rxjs/ReplaySubject': 'rxjs_ReplaySubject'
   };
 
   const rollupOptions = {
