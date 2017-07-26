@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter
@@ -16,7 +15,7 @@ export interface IFrOtherAction {
   selector: 'fr-data-table-header',
   templateUrl: './data-table-header.component.html'
 })
-export class FrDataTableHeaderComponent implements OnInit {
+export class FrDataTableHeaderComponent {
 
   @Output() updateAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
   @Output() otherAction:  EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
@@ -40,11 +39,6 @@ export class FrDataTableHeaderComponent implements OnInit {
 
   get otherActionKeys(): Array<IFrOtherAction> {
     return this._otherActionKeys;
-  }
-
-  constructor() { }
-
-  ngOnInit() {
   }
 
   public invokeUpdateAction(event: FrDataTableEvent) {

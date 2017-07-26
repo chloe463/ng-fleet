@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter
@@ -18,7 +17,7 @@ export interface IFrPaginationInfo {
   selector: 'fr-data-table-footer',
   templateUrl: './data-table-footer.component.html'
 })
-export class FrDataTableFooterComponent implements OnInit {
+export class FrDataTableFooterComponent {
 
   @Output() paginationAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
@@ -31,11 +30,6 @@ export class FrDataTableFooterComponent implements OnInit {
 
   get paginationInfo(): IFrPaginationInfo {
     return this._paginationInfo;
-  }
-
-  constructor() { }
-
-  ngOnInit() {
   }
 
   public invokePaginationAction(event: FrDataTableEvent) {
