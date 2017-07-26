@@ -23,6 +23,15 @@ import { FrDataTableHeaderComponent } from '../data-table-header/data-table-head
 import { FrDataTableRowsComponent } from '../data-table-rows/data-table-rows.component';
 import { FrDataTableFooterComponent } from '../data-table-footer/data-table-footer.component';
 
+export class FrDataTableEvent {
+  constructor(
+    public action: string,
+    public row: Array<any>,
+    public rowsPerPage: number
+  ) {}
+}
+
+
 @Component({
   selector: 'fr-data-table',
   templateUrl: './data-table.component.html',
@@ -106,29 +115,29 @@ export class FrDataTableComponent implements AfterContentInit {
     return count;
   }
 
-  public updateRowAction(updateAction: string, changeListState = false) {
-    const checkedRows = this.rows.filter((row: any, index: number) => {
+  private _extraceCheckedRows(): Array<any> {
+    return this.rows.filter((row: any, index: number) => {
       return this.checkedRowIndices[index] === true;
-    });
-    this.headerComponent.invokeUpdateAction({
-      action: updateAction, rows: checkedRows
     });
   }
 
+  public updateRowAction(updateAction: string, changeListState = false) {
+    const checkedRows = this._extraceCheckedRows();
+    const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage);
+    this.headerComponent.invokeUpdateAction(event);
+  }
+
   public otherAction(key: string) {
-    const checkedRows = this.rows.filter((row: any, index: number) => {
-      return this.checkedRowIndices[index] === true;
-    });
-    this.headerComponent.invokeOtherAction({
-      action: key, rows: checkedRows
-    });
+    const checkedRows = this._extraceCheckedRows();
+    const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage);
+    this.headerComponent.invokeOtherAction(event);
     this.actionListState = 'hidden';
   }
 
   public paginationAction(action: string) {
-    this.footerComponent.invokePaginationAction({
-      action, rowsPerPage: this.rowsPerPage
-    });
+    const checkedRows = this._extraceCheckedRows();
+    const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage);
+    this.footerComponent.invokePaginationAction(event);
   }
 
   public toggleOtherActionList(): void {

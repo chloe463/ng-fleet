@@ -5,11 +5,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-
-export interface IFrUpdateAction {
-  action: string;
-  rows: Array<any>;
-}
+import { FrDataTableEvent } from '../data-table/data-table.component';
 
 export interface IFrOtherAction {
   key: string;
@@ -22,8 +18,8 @@ export interface IFrOtherAction {
 })
 export class FrDataTableHeaderComponent implements OnInit {
 
-  @Output() updateAction = new EventEmitter();
-  @Output() otherAction  = new EventEmitter();
+  @Output() updateAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
+  @Output() otherAction:  EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
   private _title: string;
   private _otherActionKeys: Array<IFrOtherAction> = [];
@@ -51,11 +47,11 @@ export class FrDataTableHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  public invokeUpdateAction(event: IFrUpdateAction) {
+  public invokeUpdateAction(event: FrDataTableEvent) {
     this.updateAction.emit(event);
   }
 
-  public invokeOtherAction(event: IFrUpdateAction) {
+  public invokeOtherAction(event: FrDataTableEvent) {
     this.otherAction.emit(event);
   }
 

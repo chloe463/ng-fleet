@@ -5,6 +5,7 @@ export {
   FrDataTableHeaderComponent,
   FrDataTableRowsComponent,
   FrDataTableComponent,
+  FrDataTableEvent,
   FrDataTableModule
 } from './data-table/index';
 export {
