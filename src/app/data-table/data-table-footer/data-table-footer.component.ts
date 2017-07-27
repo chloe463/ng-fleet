@@ -32,7 +32,7 @@ export class FrDataTableFooterComponent {
     return this._paginationInfo;
   }
 
-  public invokePaginationAction(event: FrDataTableEvent) {
+  public invokePaginationAction(event: FrDataTableEvent): void {
     this.paginationAction.emit(event);
   }
 

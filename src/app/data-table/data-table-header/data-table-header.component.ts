@@ -41,11 +41,11 @@ export class FrDataTableHeaderComponent {
     return this._otherActionKeys;
   }
 
-  public invokeUpdateAction(event: FrDataTableEvent) {
+  public invokeUpdateAction(event: FrDataTableEvent): void {
     this.updateAction.emit(event);
   }
 
-  public invokeOtherAction(event: FrDataTableEvent) {
+  public invokeOtherAction(event: FrDataTableEvent): void {
     this.otherAction.emit(event);
   }
 

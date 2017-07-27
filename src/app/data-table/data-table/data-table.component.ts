@@ -119,20 +119,20 @@ export class FrDataTableComponent implements AfterContentInit {
     });
   }
 
-  public updateRowAction(updateAction: string, changeListState = false) {
+  public updateRowAction(updateAction: string, changeListState = false): void {
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     this.headerComponent.invokeUpdateAction(event);
   }
 
-  public otherAction(key: string) {
+  public otherAction(key: string): void {
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     this.headerComponent.invokeOtherAction(event);
     this.actionListState = 'hidden';
   }
 
-  public paginationAction(action: string) {
+  public paginationAction(action: string): void {
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     this.footerComponent.invokePaginationAction(event);
@@ -143,14 +143,14 @@ export class FrDataTableComponent implements AfterContentInit {
   }
 
   @HostListener('document:click', ['$event'])
-  public hideActionListOnClick(event) {
+  public hideActionListOnClick(event): void {
     if (!this.dots.nativeElement.contains(event.target)) {
       this.actionListState = 'hidden';
     }
   }
 
   @HostListener('window:keydown', ['$event'])
-  public hideActionListOnEscape(event) {
+  public hideActionListOnEscape(event): void {
     if (event.code === 'Escape' && event.key === 'Escape') {
       this.actionListState = 'hidden';
     }
