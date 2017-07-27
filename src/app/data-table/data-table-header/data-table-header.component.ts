@@ -1,5 +1,5 @@
 import {
-  Component,
+  Directive,
   Input,
   Output,
   EventEmitter
@@ -11,9 +11,8 @@ export interface IFrOtherAction {
   label: string;
 }
 
-@Component({
-  selector: 'fr-data-table-header',
-  templateUrl: './data-table-header.component.html'
+@Directive({
+  selector: 'fr-data-table-header'
 })
 export class FrDataTableHeaderComponent {
 
