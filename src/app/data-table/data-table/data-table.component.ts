@@ -27,7 +27,8 @@ export class FrDataTableEvent {
   constructor(
     public action: string,
     public row: Array<any>,
-    public rowsPerPage: number
+    public rowsPerPage: number,
+    public page: number
   ) {}
 }
 
@@ -120,20 +121,20 @@ export class FrDataTableComponent implements AfterContentInit {
 
   public updateRowAction(updateAction: string, changeListState = false) {
     const checkedRows = this._extraceCheckedRows();
-    const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage);
+    const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     this.headerComponent.invokeUpdateAction(event);
   }
 
   public otherAction(key: string) {
     const checkedRows = this._extraceCheckedRows();
-    const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage);
+    const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     this.headerComponent.invokeOtherAction(event);
     this.actionListState = 'hidden';
   }
 
   public paginationAction(action: string) {
     const checkedRows = this._extraceCheckedRows();
-    const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage);
+    const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     this.footerComponent.invokePaginationAction(event);
   }
 
