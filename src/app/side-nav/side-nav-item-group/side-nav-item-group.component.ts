@@ -1,25 +1,19 @@
 import {
-  Component,
-  OnInit,
+  Directive,
   Input,
   ContentChildren,
   QueryList
 } from '@angular/core';
-import { FrSideNavItemComponent } from '../side-nav-item/side-nav-item.component';
+import { FrSideNavItemDirective } from '../side-nav-item/side-nav-item.component';
 
-@Component({
-  selector: 'fr-side-nav-item-group',
-  template: ''
+@Directive({
+  selector: 'fr-side-nav-item-group'
 })
-export class FrSideNavItemGroupComponent implements OnInit {
+export class FrSideNavItemGroupDirective {
 
   @Input() title: string;
+  @Input() collapsible: boolean = false;
 
-  @ContentChildren(FrSideNavItemComponent) items: QueryList<FrSideNavItemComponent>;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @ContentChildren(FrSideNavItemDirective) items: QueryList<FrSideNavItemDirective>;
 
 }

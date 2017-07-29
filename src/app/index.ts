@@ -45,8 +45,8 @@ export { FrRippleDirective } from './ripple/ripple.directive';
 export { FrRippleModule } from './ripple/ripple.module';
 export {
   FrSideNavComponent,
-  FrSideNavItemGroupComponent,
-  FrSideNavItemComponent,
+  FrSideNavItemGroupDirective,
+  FrSideNavItemDirective,
   FrSideNavModule
 } from './side-nav/index';
 export { FrSwitchComponent } from './switch/switch.component';
