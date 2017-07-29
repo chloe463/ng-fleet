@@ -14,6 +14,7 @@ import { FrSideNavItemComponent } from '../side-nav-item/side-nav-item.component
 export class FrSideNavItemGroupComponent implements OnInit {
 
   @Input() title: string;
+  @Input() collapsible: boolean = false;
 
   @ContentChildren(FrSideNavItemComponent) items: QueryList<FrSideNavItemComponent>;
 
