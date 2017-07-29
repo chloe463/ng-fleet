@@ -19,7 +19,7 @@ import { FrSideNavItemComponent } from '../side-nav-item/side-nav-item.component
   selector: 'fr-side-nav',
   templateUrl: './side-nav.component.html',
   animations: [
-    trigger('barState', [
+    trigger('navState', [
       state('inactive', style({
         transform: 'translate3d(-100%,0,0)'
       })),
@@ -30,7 +30,7 @@ import { FrSideNavItemComponent } from '../side-nav-item/side-nav-item.component
         animate('500ms cubic-bezier(0.35, 0.25, 0, 1)')
       ])
     ]),
-    trigger('curtainState', [
+    trigger('backdropState', [
       state('inactive', style({
         display: 'none',
         opacity: 0
@@ -49,8 +49,8 @@ export class FrSideNavComponent implements OnInit {
 
   @ContentChildren(FrSideNavItemGroupComponent) itemGroups: QueryList<FrSideNavItemGroupComponent>;
 
-  public barState     = 'inactive';
-  public curtainState = 'inactive';
+  public navState      = 'inactive';
+  public backdropState = 'inactive';
 
   constructor() { }
 
@@ -61,8 +61,8 @@ export class FrSideNavComponent implements OnInit {
 
   public toggleVisibility(): void {
     this.sideBarVisibility = !this.sideBarVisibility;
-    this.barState          = (this.barState === 'inactive') ? 'active' : 'inactive';
-    this.curtainState      = (this.curtainState === 'inactive') ? 'active' : 'inactive';
+    this.navState          = (this.navState === 'inactive') ? 'active' : 'inactive';
+    this.backdropState     = (this.backdropState === 'inactive') ? 'active' : 'inactive';
   }
 
 }

@@ -1,5 +1,5 @@
 <div class="fr-side-nav">
-  <div class="fr-side-nav__menu" [@barState]="barState">
+  <div class="fr-side-nav__menu" [@navState]="navState">
     <div class="fr-side-nav__menu-group"
       *ngFor="let group of itemGroups; let i = index">
       <div class="fr-side-nav__menu-title">{{group.title}}</div>
@@ -14,5 +14,5 @@
       </ul>
     </div>
   </div>
-  <div class="fr-side-nav__curtain" (click)="toggleVisibility()" [@curtainState]="curtainState"></div>
+  <div class="fr-side-nav__backdrop" (click)="toggleVisibility()" [@backdropState]="backdropState"></div>
 </div>
