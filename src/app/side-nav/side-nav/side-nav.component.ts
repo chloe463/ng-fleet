@@ -13,8 +13,8 @@ import {
   HostListener
 } from '@angular/core';
 
-import { FrSideNavItemGroupComponent } from '../side-nav-item-group/side-nav-item-group.component';
-import { FrSideNavItemComponent } from '../side-nav-item/side-nav-item.component';
+import { FrSideNavItemGroupDirective } from '../side-nav-item-group/side-nav-item-group.component';
+import { FrSideNavItemDirective } from '../side-nav-item/side-nav-item.component';
 
 @Component({
   selector: 'fr-side-nav',
@@ -61,7 +61,7 @@ import { FrSideNavItemComponent } from '../side-nav-item/side-nav-item.component
 })
 export class FrSideNavComponent implements AfterContentInit {
 
-  @ContentChildren(FrSideNavItemGroupComponent) itemGroups: QueryList<FrSideNavItemGroupComponent>;
+  @ContentChildren(FrSideNavItemGroupDirective) itemGroups: QueryList<FrSideNavItemGroupDirective>;
 
   public navState      = 'inactive';
   public backdropState = 'inactive';
@@ -71,7 +71,7 @@ export class FrSideNavComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.menuState.length = this.itemGroups.length;
-    this.itemGroups.forEach((itemGroup: FrSideNavItemGroupComponent, index: number) => {
+    this.itemGroups.forEach((itemGroup: FrSideNavItemGroupDirective, index: number) => {
       this.menuState[index] = itemGroup.collapsible ? 'close' : 'open';
     });
   }
