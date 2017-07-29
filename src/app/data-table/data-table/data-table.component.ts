@@ -149,20 +149,35 @@ export class FrDataTableComponent implements AfterContentInit {
   public updateRowAction(updateAction: string, changeListState = false): void {
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage, this.paginationInfo.page);
-    this.headerComponent.invokeUpdateAction(event);
+    // TODO: Delete headerComponent.invokeUpdateAction in v0.7.0
+    if (this.dataTableAction) {
+      this.dataTableAction.emit(event);
+    } else {
+      this.headerComponent.invokeUpdateAction(event);
+    }
   }
 
   public otherAction(key: string): void {
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage, this.paginationInfo.page);
-    this.headerComponent.invokeOtherAction(event);
     this.actionListState = 'hidden';
+    if (this.dataTableAction) {
+      this.dataTableAction.emit(event);
+    } else {
+      // TODO: Delete headerComponent.invokeUpdateAction in v0.7.0
+      this.headerComponent.invokeUpdateAction(event);
+    }
   }
 
   public paginationAction(action: string): void {
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
-    this.footerComponent.invokePaginationAction(event);
+    if (this.dataTableAction) {
+      this.dataTableAction.emit(event);
+    } else {
+      // TODO: Delete footerComponent.invokePaginationAction in v0.7.0
+      this.footerComponent.invokePaginationAction(event);
+    }
   }
 
   public toggleOtherActionList(): void {
