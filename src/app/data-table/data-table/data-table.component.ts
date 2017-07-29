@@ -18,7 +18,7 @@ import {
   animate
 } from '@angular/core';
 
-import { FrDataTableColumnsComponent } from '../data-table-columns/data-table-columns.component';
+import { FrDataTableColumnsComponent, IFrDataTableColumn } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableHeaderComponent } from '../data-table-header/data-table-header.component';
 import { FrDataTableRowsComponent } from '../data-table-rows/data-table-rows.component';
 import { FrDataTableFooterComponent } from '../data-table-footer/data-table-footer.component';
@@ -28,7 +28,8 @@ export class FrDataTableEvent {
     public action: string,
     public row: Array<any>,
     public rowsPerPage: number,
-    public page: number
+    public page: number,
+    public extraParam?: any
   ) {}
 }
 
@@ -54,7 +55,10 @@ export class FrDataTableEvent {
 })
 export class FrDataTableComponent implements AfterContentInit {
 
-  @Input() selectable: boolean;
+  @Input() selectable: boolean = false;
+  @Input() sortable: boolean = false;
+
+  @Output() dataTableAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
   @ViewChild('dots') dots: ElementRef;
 
@@ -66,6 +70,7 @@ export class FrDataTableComponent implements AfterContentInit {
   public title: string       = '';
   public columns: Array<any> = [];
   public rows: Array<any>    = [];
+  public sortState = { column: null, order: 'asc' };
 
   public rowsPerPage: number;
   public paginationInfo;
@@ -117,6 +122,28 @@ export class FrDataTableComponent implements AfterContentInit {
     return this.rows.filter((row: any, index: number) => {
       return this.checkedRowIndices[index] === true;
     });
+  }
+
+  public emitSortAction(targetColumn: any): void {
+    if (!this.sortable) {
+      return;
+    }
+    if (this.sortState.column === targetColumn) {
+      this.sortState.order = (this.sortState.order === 'asc') ? 'desc' : 'asc';
+    } else {
+      this.sortState.order = 'asc';
+    }
+    this.sortState.column = targetColumn;
+    const event = new FrDataTableEvent(
+      'sort',
+      this._extraceCheckedRows(),
+      this.rowsPerPage,
+      this.paginationInfo.page,
+      {
+        sortParams: { targetColumn, order: this.sortState.order }
+      }
+    );
+    this.dataTableAction.emit(event);
   }
 
   public updateRowAction(updateAction: string, changeListState = false): void {
