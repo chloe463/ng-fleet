@@ -38,7 +38,7 @@ export class FrNotificationInnerDirective {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 200;
+    z-index: 1050;
   }
   [fr-notification-inner] {
     display: flex;
