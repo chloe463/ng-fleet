@@ -1,21 +1,11 @@
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
-@Component({
-  selector: 'fr-navbar-menu',
-  templateUrl: './navbar-menu.component.html'
+@Directive({
+  selector: 'fr-navbar-menu'
 })
-export class FrNavbarMenuComponent implements OnInit {
+export class FrNavbarMenuDirective {
 
   @Input() link: string;
   @Input() title: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
