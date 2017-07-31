@@ -42,6 +42,7 @@
         [hidden]="changing"
         *ngFor="let dial of dials"
         (click)="setTime(dial)">{{dial}}</span>
+      <span id="clock-hand" class="fr-timepicker__clock-hand"></span>
     </div>
     <div class="fr-timepicker__body-footer">
       <button type="button" class="fr-btn fr-btn-flat fr-timepicker__button--secondary" (click)="cancel()">CANCEL</button>
