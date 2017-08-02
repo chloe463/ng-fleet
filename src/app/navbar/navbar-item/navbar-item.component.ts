@@ -1,20 +1,25 @@
-import {
-  Directive,
-  Input,
-  ContentChildren,
-  QueryList
-} from '@angular/core';
+import { Component } from '@angular/core';
 
-import { FrNavbarMenuDirective } from '../navbar-menu/navbar-menu.component';
-
-@Directive({
-  selector: 'fr-navbar-item'
+@Component({
+  selector: 'fr-navbar-item',
+  template: `
+  <li class="fr-navbar__item">
+    <span class="fr-navbar__label">
+      <ng-content></ng-content>
+    </span>
+  </li>
+  `
 })
-export class FrNavbarItemDirective {
+export class FrNavbarItemComponent { }
 
-  @ContentChildren(FrNavbarMenuDirective) menus: QueryList<FrNavbarMenuDirective>;
-
-  @Input() title: string;
-  @Input() link: string;
-
-}
+@Component({
+  selector: 'fr-navbar-right-item',
+  template: `
+  <li class="fr-navbar__item">
+    <span class="fr-navbar__label">
+      <ng-content></ng-content>
+    </span>
+  </li>
+  `
+})
+export class FrNavbarRightItemComponent { }

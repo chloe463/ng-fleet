@@ -1,6 +1,10 @@
 .fr-navbar {
   width: 100%;
 
+  &__space {
+    flex-grow: 1;
+  }
+
   &__menu-icon {
     display: inline-block;
     width: 24px;
@@ -50,6 +54,11 @@
     padding: 12px 6px;
     text-align: center;
 
+    & a {
+      color: $white;
+      text-decoration: none;
+    }
+
     &--active {
       color: $white;
       &:hover {
@@ -64,6 +73,10 @@
     &:hover .fr-navbar__label {
       background: lighten($blue, 15%);
     }
+  }
+
+  &__on-right-first {
+    margin-left: auto;
   }
 
   &__label {

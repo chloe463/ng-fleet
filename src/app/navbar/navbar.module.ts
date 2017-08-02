@@ -5,16 +5,19 @@ import { RouterModule } from '@angular/router';
 import { FrSideNavModule } from '../side-nav/side-nav.module';
 
 import { FrNavbarComponent } from './navbar/navbar.component';
-import { FrNavbarItemDirective } from './navbar-item/navbar-item.component';
+import { FrNavbarItemComponent, FrNavbarRightItemComponent } from './navbar-item/navbar-item.component';
 import { FrNavbarLogoDirective } from './navbar-logo/navbar-logo.component';
-import { FrNavbarMenuDirective } from './navbar-menu/navbar-menu.component';
+import { FrNavbarMenuComponent } from './navbar-menu/navbar-menu.component';
+import { FrNavbarMenuItemComponent } from './navbar-menu-item/navbar-menu-item.component';
 
 @NgModule({
   declarations: [
     FrNavbarComponent,
-    FrNavbarItemDirective,
+    FrNavbarItemComponent,
+    FrNavbarRightItemComponent,
     FrNavbarLogoDirective,
-    FrNavbarMenuDirective
+    FrNavbarMenuComponent,
+    FrNavbarMenuItemComponent
   ],
   imports: [
     CommonModule,
@@ -23,9 +26,11 @@ import { FrNavbarMenuDirective } from './navbar-menu/navbar-menu.component';
   ],
   exports: [
     FrNavbarComponent,
-    FrNavbarItemDirective,
+    FrNavbarItemComponent,
+    FrNavbarRightItemComponent,
     FrNavbarLogoDirective,
-    FrNavbarMenuDirective
+    FrNavbarMenuComponent,
+    FrNavbarMenuItemComponent,
   ]
 })
 export class FrNavbarModule { }
