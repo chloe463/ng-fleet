@@ -3,6 +3,7 @@
   <div class="fr-radio-container">
     <span class="fr-radio-outer-circle"
       [class.fr-radio-outer-circle--checked]="checked"
+      [class.fr-radio-outer-circle--focused]="isFocused"
       [class.fr-radio-outer-circle--disabled]="disabled"></span>
     <span class="fr-radio-inner-circle"
       [class.fr-radio-inner-circle--checked]="checked"
@@ -15,6 +16,8 @@
          [value]="value"
          (click)="onInputClick($event)"
          (change)="onInputChange($event)"
+         (focus)="onFocus($event)"
+         (blur)="onBlur($event)"
          [disabled]="disabled">
   <div class="fr-radio-label-text" [class.fr-radio-label-text--disabled]="disabled">
     <ng-content></ng-content>

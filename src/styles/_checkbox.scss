@@ -51,6 +51,9 @@
       // background: $magenta;
       border: 2px solid $magenta;
     }
+    &--focused {
+      border-color: $yellow;
+    }
   }
   &__background {
     display: inline-flex;
@@ -86,7 +89,11 @@
     }
   }
   &__input {
-    display: none;
+    // display: none;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
   &-checkmark {
     width: 100%;

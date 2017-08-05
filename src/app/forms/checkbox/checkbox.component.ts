@@ -43,11 +43,13 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
   private _isDisabled: boolean = false;
 
   public isRippleOn = false;
+  public isFocused: boolean;
 
   constructor() { }
 
   ngOnInit() {
     this.value = false;
+    this.isFocused = false;
   }
 
   private emitChangeEvent(): void {
@@ -73,6 +75,14 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
     event.stopPropagation();
     this.emitChangeEvent();
+  }
+
+  public onFocus(event: Event): void {
+    this.isFocused = true;
+  }
+
+  public onBlur(event: Event): void {
+    this.isFocused = false;
   }
 
   get value(): any {

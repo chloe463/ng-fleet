@@ -2,6 +2,7 @@
   <span class="fr-checkbox-box-container">
     <span class="fr-checkbox__square"
       [class.fr-checkbox__square--checked]="value"
+      [class.fr-checkbox__square--focused]="isFocused"
       [class.fr-checkbox__square--disabled]="disabled">
     </span>
     <span class="fr-checkbox__background"
@@ -20,6 +21,8 @@
          class="fr-checkbox__input"
          (click)="onClick($event)"
          (change)="onchange($event)"
+         (focus)="onFocus($event)"
+         (blur)="onBlur($event)"
          [disabled]="disabled">
   <span class="fr-checkbox-label-text" [class.fr-checkbox-label-text--disabled]="disabled">
     <ng-content></ng-content>
