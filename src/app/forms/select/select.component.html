@@ -1,5 +1,8 @@
 <div class="fr-select"
-  [class.fr-select--disabled]="disabled">
+  tabindex="0"
+  [class.fr-select--disabled]="disabled"
+  (focus)="onFocus($event)"
+  (blur)="onBlur($event)">
   <label class="fr-select__label"
     [class.fr-select__label--placeholder]="labelState === 'placeholder'"
     [class.fr-select__label--label]="labelState === 'label'"
@@ -20,7 +23,7 @@
     <ul class="fr-select__list"
       [class.fr-select__list--hidden]="optionsVisibility === 'hidden'"
       [class.fr-select__list--show]="optionsVisibility === 'show'">
-      <li *ngFor="let option of _options; trackBy: $index"
+      <li *ngFor="let option of _options"
         class="fr-select__item"
         [class.fr-select__item--selected]="isSelected(option.value)"
         (click)="select(option)">

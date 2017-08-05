@@ -59,6 +59,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   public optionsVisibility: string = 'hidden';
   public label: string | number;
   public labelState: string = 'placeholder';
+  public isFocused: boolean = false;
 
   constructor(private el: ElementRef) { }
 
@@ -157,11 +158,29 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  public onFocus() {
-    this.labelState = 'labelOnFocus';
+  @HostListener('document:keydown', ['$event'])
+  selectOnKeyDown(event: KeyboardEvent): void {
+    if (!this.isFocused) {
+      return;
+    }
+    if (event.key === 'ArrowUp') {
+      console.log(event);
+    } else if (event.key === 'ArrowDown') {
+      console.log(event);
+    }
   }
 
-  public onBlur() {
+  public onFocus(event?: Event) {
+    this.labelState = 'labelOnFocus';
+    this.isFocused = true;
+    if (this.optionsVisibility === 'hidden') {
+      this.optionsVisibility = 'show';
+    }
+  }
+
+  public onBlur(event?: Event) {
+    this.isFocused = false;
+    this.optionsVisibility = 'hidden';
     if (this.value === null || this.value === undefined || this.value === '') {
       this.label = '';
       this.labelState = 'placeholder';

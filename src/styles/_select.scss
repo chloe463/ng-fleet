@@ -1,6 +1,17 @@
 .fr-select {
   position: relative;
 
+  &:focus {
+    outline: none;
+    // border-bottom: 1px solid $yellow;
+    & .fr-select-browser__pulldown {
+      border-bottom: 1px solid $yellow;
+    }
+    & .fr-select__text {
+      border-bottom: 1px solid $yellow;
+    }
+  }
+
   &--disabled {
     cursor: default;
     & .fr-select__text {
