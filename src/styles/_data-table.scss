@@ -3,6 +3,12 @@
   display: inline-block;
 }
 
+.fr-data-table--stripe {
+  & .fr-data-table__tbody-row:nth-child(odd) {
+    background: #EFEFEF;
+  }
+}
+
 .fr-data-table__header {
   font-size: 20px;
   padding: 12px 14px 12px 24px;
