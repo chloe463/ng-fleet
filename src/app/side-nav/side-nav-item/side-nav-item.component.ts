@@ -1,21 +1,11 @@
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
+import { Directive, OnInit, Input } from '@angular/core';
 
-@Component({
-  selector: 'fr-side-nav-item',
-  template: ''
+@Directive({
+  selector: 'fr-side-nav-item'
 })
-export class FrSideNavItemComponent implements OnInit {
+export class FrSideNavItemDirective {
 
   @Input() label: string;
   @Input() link: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

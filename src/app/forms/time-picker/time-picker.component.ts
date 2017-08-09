@@ -131,6 +131,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
 
   ngAfterViewInit() {
     this.putDialsRightPosition();
+    this.putHandRightPosition(this._innerValue.getHours());
   }
 
   private emitChange(): void {
@@ -145,7 +146,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   public putDialsRightPosition(): void {
-    const dials  = this.clock.nativeElement.children;
+    const dials  = this.clock.nativeElement.getElementsByClassName('fr-timepicker__clock-dial');
     const radian = (30 * Math.PI / 180.0);
     const radius = 125;
 
@@ -156,6 +157,17 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
       dial.style.top  = y + 'px';
       dial.style.left = x + 'px';
     }
+  }
+
+  public putHandRightPosition(dial): void {
+    const hand = document.getElementById('clock-hand');
+    let deg  = 0;
+    if (this.pickTarget === HOURS) {
+      deg = (dial % 12) * 30;
+    } else {
+      deg = ((dial / 5) % 12) * 30;
+    }
+    hand.style.transform = 'rotate(' + deg + 'deg)';
   }
 
   public toggleTimePickerVisibility(): void {
@@ -201,6 +213,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     } else if (this.pickTarget === MINUTES) {
       this.setMinute(dial);
     }
+    this.putHandRightPosition(dial);
     this.emitChange();
   }
 

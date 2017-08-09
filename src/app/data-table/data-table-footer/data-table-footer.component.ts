@@ -1,5 +1,5 @@
 import {
-  Component,
+  Directive,
   Input,
   Output,
   EventEmitter
@@ -13,9 +13,8 @@ export interface IFrPaginationInfo {
   rowsPerPage: number;
 }
 
-@Component({
-  selector: 'fr-data-table-footer',
-  templateUrl: './data-table-footer.component.html'
+@Directive({
+  selector: 'fr-data-table-footer'
 })
 export class FrDataTableFooterComponent {
 
@@ -32,7 +31,12 @@ export class FrDataTableFooterComponent {
     return this._paginationInfo;
   }
 
-  public invokePaginationAction(event: FrDataTableEvent) {
+  /**
+   * @deprecated
+   * TODO: Remove in v0.7.0
+   */
+  public invokePaginationAction(event: FrDataTableEvent): void {
+    console.warn('@Output() paginationAction of fr-data-table-footer is deprecated. Use @Output() dataTableAction of fr-data-table instead');
     this.paginationAction.emit(event);
   }
 

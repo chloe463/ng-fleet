@@ -1,5 +1,5 @@
 import {
-  Component,
+  Directive,
   Input,
   Output,
   EventEmitter
@@ -11,9 +11,8 @@ export interface IFrOtherAction {
   label: string;
 }
 
-@Component({
-  selector: 'fr-data-table-header',
-  templateUrl: './data-table-header.component.html'
+@Directive({
+  selector: 'fr-data-table-header'
 })
 export class FrDataTableHeaderComponent {
 
@@ -41,11 +40,21 @@ export class FrDataTableHeaderComponent {
     return this._otherActionKeys;
   }
 
-  public invokeUpdateAction(event: FrDataTableEvent) {
+  /**
+   * @deprecated
+   * TODO: Remove in v0.7.0
+   */
+  public invokeUpdateAction(event: FrDataTableEvent): void {
+    console.warn('(updateAction) of fr-data-table-header is deprecated. Use (dataTableAction) of fr-data-table instead');
     this.updateAction.emit(event);
   }
 
-  public invokeOtherAction(event: FrDataTableEvent) {
+  /**
+   * @deprecated
+   * TODO: Remove in v0.7.0
+   */
+  public invokeOtherAction(event: FrDataTableEvent): void {
+    console.warn('(otherAction) of fr-data-table-header is deprecated. Use (dataTableAction) of fr-data-table instead');
     this.otherAction.emit(event);
   }
 

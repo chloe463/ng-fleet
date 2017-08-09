@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
-@Component({
-  selector: 'fr-data-table-rows',
-  templateUrl: './data-table-rows.component.html'
+@Directive({
+  selector: 'fr-data-table-rows'
 })
 export class FrDataTableRowsComponent {
 

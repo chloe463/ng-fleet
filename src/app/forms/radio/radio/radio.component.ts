@@ -125,6 +125,7 @@ export class FrRadioComponent implements OnInit {
 
   private radioGroup: FrRadioGroupDirective;
   public isRippleOn: boolean;
+  public isFocused: boolean;
 
   constructor(@Optional() radioGroup: FrRadioGroupDirective) {
     this.radioGroup = radioGroup;
@@ -135,6 +136,7 @@ export class FrRadioComponent implements OnInit {
       this.name = this.radioGroup.name;
       this.disabled = this.radioGroup.disabled;
     }
+    this.isFocused = false;
   }
 
   private _eventChangeEvent(): void {
@@ -164,5 +166,13 @@ export class FrRadioComponent implements OnInit {
       this.radioGroup.selectOneByRadioComponent(this);
       this.radioGroup.emitChangeEvent();
     }
+  }
+
+  public onFocus(event: Event): void {
+    this.isFocused = true;
+  }
+
+  public onBlur(event: Event): void {
+    this.isFocused = false;
   }
 }
