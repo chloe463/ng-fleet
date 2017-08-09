@@ -87,18 +87,18 @@
       </tr>
     </thead>
     <tbody class="fr-data-table__tbody" *ngIf="rowsComponent">
-      <tr *ngFor="let row of rows; let i = index"
+      <tr *ngFor="let row of rows; let ri = index"
            class="fr-data-table__tbody-row">
         <td class="fr-data-table__tbody-checkbox" [hidden]="!selectable">
-          <fr-checkbox [(ngModel)]="checkedRowIndices[i]"></fr-checkbox>
+          <fr-checkbox [(ngModel)]="checkedRowIndices[ri]"></fr-checkbox>
         </td>
-        <td *ngFor="let column of columns; let i = index"
+        <td *ngFor="let column of columns; let ci = index"
            class="fr-data-table__tbody-cell"
-           [class.fr-data-table__tbody-cell--first]="i === 0"
-           [class.fr-data-table__tbody-cell--string]="columns[i].type === 'string'"
-           [class.fr-data-table__tbody-cell--number]="columns[i].type === 'number'">
-          <span class="fr-data-table__tbody-value" *ngIf="columns[i].type !== 'image'">{{row[column.key]}}</span>
-          <img class="fr-data-table__tbody-image" [src]="row[column.key]" *ngIf="columns[i].type === 'image'"/>
+           [class.fr-data-table__tbody-cell--first]="ci === 0"
+           [class.fr-data-table__tbody-cell--string]="columns[ci].type === 'string'"
+           [class.fr-data-table__tbody-cell--number]="columns[ci].type === 'number'">
+          <span class="fr-data-table__tbody-value" *ngIf="columns[ci].type !== 'image'">{{row[column.key]}}</span>
+          <img class="fr-data-table__tbody-image" [src]="row[column.key]" *ngIf="columns[ci].type === 'image'"/>
         </td>
       </tr>
     </tbody>
