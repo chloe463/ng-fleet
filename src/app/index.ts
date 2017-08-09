@@ -32,8 +32,10 @@ export { FrKpiTableComponent } from './kpi-table/index';
 export {
   FrNavbarComponent,
   FrNavbarItemComponent,
+  FrNavbarRightItemComponent,
   FrNavbarMenuComponent,
-  FrNavbarLogoComponent,
+  FrNavbarMenuItemComponent,
+  FrNavbarLogoDirective,
   FrNavbarModule
 } from './navbar/index';
 export {
