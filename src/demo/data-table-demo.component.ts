@@ -12,7 +12,7 @@ import { FrDataTableEvent } from '../app/data-table/data-table/data-table.compon
       (dataTableAction)="dataTableAction($event)">
 
       <!-- Header component which contains title and action buttons -->
-      <fr-data-table-header [title]="dataTableInfo.title" [otherActionKeys]="dataTableInfo.actionKeys"></fr-data-table-header>
+      <fr-data-table-header [title]="dataTableInfo.title" [actionKeys]="dataTableInfo.actionKeys"></fr-data-table-header>
 
       <!-- Define columns -->
       <fr-data-table-columns [columns]="dataTableInfo.columns"></fr-data-table-columns>
