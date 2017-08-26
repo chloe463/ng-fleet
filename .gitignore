@@ -5,6 +5,7 @@
 /tmp
 /aot
 /builds
+/pre-builds
 
 # dependencies
 /node_modules
