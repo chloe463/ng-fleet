@@ -11,7 +11,11 @@ rm -rf builds
 # Copy ts files src to pre-builds
 $GULP pre-build:js
 
+# Transpile scss to css
+$GULP pre-build:css
+
 # Replace all `templateUrl: '/path/to/template-file'` to `template: 'template content'`
+# and `styleUrls: ['/path/to/style']` to `styles: [ style content ]`
 $GULP build:inline-resource
 
 # Transpile
