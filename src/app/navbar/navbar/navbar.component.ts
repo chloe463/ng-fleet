@@ -13,7 +13,7 @@ import {
   HashLocationStrategy
 } from '@angular/common';
 import { FrNavbarLogoDirective } from '../navbar-logo/navbar-logo.component';
-import { FrNavbarItemComponent } from '../navbar-item/navbar-item.component';
+import { FrNavbarItemDirective } from '../navbar-item/navbar-item.component';
 
 import { FrSideNavComponent } from '../../side-nav/side-nav/side-nav.component';
 
@@ -25,7 +25,7 @@ import { FrSideNavComponent } from '../../side-nav/side-nav/side-nav.component';
 export class FrNavbarComponent implements OnInit {
 
   @ContentChildren(FrNavbarLogoDirective) logos: QueryList<FrNavbarLogoDirective>;
-  @ContentChildren(FrNavbarItemComponent) items: QueryList<FrNavbarItemComponent>;
+  @ContentChildren(FrNavbarItemDirective) items: QueryList<FrNavbarItemDirective>;
   @ContentChild(FrSideNavComponent) sideNav: FrSideNavComponent;
 
   @Input() withSideBar: boolean;
