@@ -15,6 +15,7 @@ import {
 
 import { FrSideNavItemGroupDirective } from '../side-nav-item-group/side-nav-item-group.component';
 import { FrSideNavItemDirective } from '../side-nav-item/side-nav-item.component';
+import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
 
 @Component({
   selector: 'fr-side-nav',
