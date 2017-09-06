@@ -1,14 +1,17 @@
 import { Directive, Input } from '@angular/core';
+import { IFrNavbarNode } from '../navbar/navbar.model';
 
 @Directive({
   selector: 'fr-navbar-logo'
 })
 export class FrNavbarLogoDirective {
+  @Input() logo: IFrNavbarNode;
 
-  @Input() link: string;
-  @Input() title: string;
+  get title(): string {
+    return this.logo.title;
+  }
 
-  constructor() {
-    console.warn('fr-navbar-logo is deprecated. It will removed in v0.7.0');
+  get url(): string {
+    return this.logo.url;
   }
 }

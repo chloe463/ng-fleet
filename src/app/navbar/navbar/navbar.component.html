@@ -8,37 +8,18 @@
       </svg>
     </li>
     <li *ngFor="let logo of logos" class="fr-navbar__logo">
-      <a class="fr-navbar__label" [routerLink]="logo.link">{{logo.title}}</a>
+      <a class="fr-navbar__label" [routerLink]="logo.url">{{logo.title}}</a>
     </li>
-    <ng-content select="fr-navbar-item,fr-navbar-menu"></ng-content>
-
-    <div class="fr-navbar__space"></div>
-
-    <ng-content select="fr-navbar-right-item"></ng-content>
-
-    <!--
-    <li *ngFor="let item of filterNavItem(items); let i = index"
+    <li *ngFor="let item of items; let i = index"
       class="fr-navbar__item"
       routerLinkActive="fr-navbar__item--active">
-      <a class="fr-navbar__label" [routerLink]="item.link">{{item.title}}</a>
-      <ul class="fr-navbar__menu">
-        <li *ngFor="let menu of item.menus" class="fr-navbar__menu-item">
-          <a class="fr-navbar__label" [routerLink]="menu.link">{{menu.title}}</a>
+      <a class="fr-navbar__label" [routerLink]="item.url">{{item.title}}</a>
+      <ul class="fr-navbar__menu" *ngIf="item.children">
+        <li *ngFor="let child of item.children" class="fr-navbar__menu-item">
+          <a class="fr-navbar__label" [routerLink]="child.url">{{child.title}}</a>
         </li>
       </ul>
     </li>
-    <li *ngFor="let item of filterRightNavItem(items); let i = index"
-      class="fr-navbar__item"
-      [class.fr-navbar__on-right-first]="i === 0"
-      routerLinkActive="fr-navbar__item--active">
-      <a class="fr-navbar__label" [routerLink]="item.link">{{item.title}}</a>
-      <ul class="fr-navbar__menu">
-        <li *ngFor="let menu of item.menus" class="fr-navbar__menu-item">
-          <a class="fr-navbar__label" [routerLink]="menu.link">{{menu.title}}</a>
-        </li>
-      </ul>
-    </li>
-    -->
   </ul>
   <ng-content select="fr-side-nav"></ng-content>
 </nav>

@@ -1,30 +1,9 @@
 <fr-navbar>
-  <fr-navbar-item>
-    <a routerLink="/" routerLinkActive="fr-navbar__item--active">Francette</a>
-  </fr-navbar-item>
-  <fr-navbar-item>
-    <a routerLink="buttons" routerLinkActive="fr-navbar__item--active">Buttons</a>
-  </fr-navbar-item>
-  <fr-navbar-menu title="nav-menu-1">
-    <fr-navbar-menu-item>
-      <a routerLink="buttons">buttons</a>
-    </fr-navbar-menu-item>
-    <fr-navbar-menu-item>menu-item2</fr-navbar-menu-item>
-    <fr-navbar-menu-item>menu-item3</fr-navbar-menu-item>
-  </fr-navbar-menu>
-  <fr-navbar-right-item>onRight</fr-navbar-right-item>
+  <fr-navbar-logo [logo]="{title: 'Francette'}"></fr-navbar-logo>
+  <fr-navbar-item *ngFor="let node of navbarNodes" [node]="node"></fr-navbar-item>
   <fr-side-nav>
-    <fr-side-nav-item-group title="components" collapsible="true">
-      <fr-side-nav-item label="buttons" link="buttons"></fr-side-nav-item>
-      <fr-side-nav-item label="chips" link="chips"></fr-side-nav-item>
-      <fr-side-nav-item label="data-table" link="data-table"></fr-side-nav-item>
-      <fr-side-nav-item label="dialog" link="dialog"></fr-side-nav-item>
-      <fr-side-nav-item label="forms" link="forms"></fr-side-nav-item>
-      <fr-side-nav-item label="progress" link="progress"></fr-side-nav-item>
-      <fr-side-nav-item label="switch" link="switch"></fr-side-nav-item>
-      <fr-side-nav-item label="tabs" link="tabs"></fr-side-nav-item>
-      <fr-side-nav-item label="toaster" link="toaster"></fr-side-nav-item>
-      <fr-side-nav-item label="kpi-table" link="kpi-table"></fr-side-nav-item>
+    <fr-side-nav-item-group *ngFor="let group of sideNavNodeGroups" [group]="group">
+      <fr-side-nav-item *ngFor="let node of group.nodes" [node]="node"></fr-side-nav-item>
     </fr-side-nav-item-group>
   </fr-side-nav>
 </fr-navbar>
