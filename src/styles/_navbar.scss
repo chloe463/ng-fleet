@@ -27,8 +27,6 @@
     list-style: none;
     display: flex;
     justify-content: flex-start;
-    border-top: 1px solid $gray;
-    border-bottom: 1px solid $gray;
     position: fixed;
     top: 0;
     left: 0;
@@ -46,9 +44,11 @@
 
   &__item {
     height: 27px;
+    min-width: 72px;
     margin: 0;
     padding: 12px 6px;
     text-align: center;
+    cursor: pointer;
 
     &--active {
       color: $white;
@@ -56,13 +56,21 @@
       }
     }
 
+    &:hover {
+      background: lighten($blue, 15%);
+    }
+
     &:hover .fr-navbar__menu {
       visibility: visible;
-      top: 38px;
+      top: 48px;
       opacity: 1;
     }
     &:hover .fr-navbar__label {
+      background: $white;
+    }
+    &:hover .fr-navbar__child-label {
       background: lighten($blue, 15%);
+      color: $blue;
     }
   }
 
@@ -81,13 +89,28 @@
     }
   }
 
+  &__child-label {
+    font-size: 15px;
+    padding: 6px 16px;
+    vertical-align: middle;
+    border-radius: 2px;
+    background: transparent;
+    color: $white;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      background: lighten($blue, 15%);
+    }
+  }
+
   &__menu {
     position: absolute;
-    top: 28px;
+    top: 36px;
     list-style: none;
     line-height: 20px;
     min-width: 180px;
-    background: lighten($blue, 15%);
+    background: $white;
     color: $black;
     padding: 0;
     visibility: hidden;
@@ -100,8 +123,10 @@
     transition-timing-function: ease;
 
     &-item {
-      line-height: 36px;
+      line-height: 40px;
       border-bottom: 1px solid $light-gray;
+      background: lighten($blue, 15%);
+      color: $white;
 
       &:hover {
         background: lighten($blue, 20%);
