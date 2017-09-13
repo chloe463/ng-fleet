@@ -50,7 +50,11 @@
 }
 
 .fr-btn--primary {
-  @include custom_button($blue, $white, lighten($blue, 5%));
+  @include custom_button($primary, $white, $primary-light);
+}
+
+.fr-btn--secondary {
+  @include custom_button($secondary, $white, $secondary-light);
 }
 
 .fr-btn--info {
@@ -97,7 +101,11 @@
 }
 
 .fr-btn-skeleton--primary {
-  @include skeleton($blue, $blue, lighten($blue, 5%), $white);
+  @include skeleton($primary, $primary, $primary-light, $white);
+}
+
+.fr-btn-skeleton--secondary {
+  @include skeleton($secondary, $secondary, $secondary-light, $white);
 }
 
 .fr-btn-skeleton--info {
@@ -175,7 +183,11 @@
 }
 
 .fr-btn-fab--primary {
-  @include custom_fab_button($blue, $white, lighten($blue, 5%));
+  @include custom_fab_button($primary, $white, $primary-light);
+}
+
+.fr-btn-fab--secondary {
+  @include custom_fab_button($secondary, $white, $secondary-light);
 }
 
 .fr-btn-fab--default {
