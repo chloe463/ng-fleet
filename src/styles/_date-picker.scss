@@ -13,7 +13,7 @@
 
     &-header {
       line-height: 25px;
-      background: $blue;
+      background: $primary;
       color: $white;
 
       &-year {
@@ -105,8 +105,8 @@
     transition-timing-function: linear;
 
     &--today {
-      color: $magenta;
-      border: 1px solid $magenta;
+      color: $secondary;
+      border: 1px solid $secondary;
     }
 
     &--sunday {
@@ -117,7 +117,7 @@
 
     &--selected {
       color: $white;
-      background: $magenta;
+      background: $secondary;
       border-radius: 50%;
     }
 
@@ -127,7 +127,7 @@
 
     &:hover {
       color: $white;
-      background: lighten($magenta, 20%);
+      background: lighten($secondary, 20%);
       border-radius: 50%;
     }
   }
@@ -138,11 +138,11 @@
   }
 
   &__button--primary, &__button--secondary {
-    color: $blue;
+    color: $primary;
   }
 
   &__ok-button {
-    color: $magenta;
+    color: $secondary;
   }
 }
 

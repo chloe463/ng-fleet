@@ -10,18 +10,18 @@
     border-radius: 2px;
     cursor: pointer;
     rect {
-      fill: white;
+      fill: $text-on-primary;
     }
     &:hover {
-      background: lighten($blue, 15%);
+      background: $primary-light;
     }
   }
 
   &__items {
-    background: $blue;
+    background: $primary;
     padding-left: 0;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
-    color: $white;
+    color: $text-on-primary;
     margin-top: 0;
     margin-bottom: 0px;
     list-style: none;
@@ -51,13 +51,13 @@
     cursor: pointer;
 
     &--active {
-      color: $white;
+      color: $text-on-primary;
       &:hover {
       }
     }
 
     &:hover {
-      background: lighten($blue, 15%);
+      background: $primary-light;
     }
 
     &:hover .fr-navbar__menu {
@@ -66,11 +66,11 @@
       opacity: 1;
     }
     &:hover .fr-navbar__label {
-      background: $white;
+      background: $text-on-primary;
     }
     &:hover .fr-navbar__child-label {
-      background: lighten($blue, 15%);
-      color: $blue;
+      background: $primary-light;
+      color: $primary;
     }
   }
 
@@ -80,12 +80,12 @@
     vertical-align: middle;
     border-radius: 2px;
     background: transparent;
-    color: $white;
+    color: $text-on-primary;
     cursor: pointer;
     text-decoration: none;
 
     &:hover {
-      background: lighten($blue, 15%);
+      background: $primary-light;
     }
   }
 
@@ -95,12 +95,12 @@
     vertical-align: middle;
     border-radius: 2px;
     background: transparent;
-    color: $white;
+    color: $text-on-primary;
     cursor: pointer;
     text-decoration: none;
 
     &:hover {
-      background: lighten($blue, 15%);
+      background: $primary-light;
     }
   }
 
@@ -110,7 +110,7 @@
     list-style: none;
     line-height: 20px;
     min-width: 180px;
-    background: $white;
+    background: $text-on-primary;
     color: $black;
     padding: 0;
     visibility: hidden;
@@ -125,15 +125,15 @@
     &-item {
       line-height: 40px;
       border-bottom: 1px solid $light-gray;
-      background: lighten($blue, 15%);
-      color: $white;
+      background: $primary-light;
+      color: $text-on-primary;
 
       &:hover {
-        background: lighten($blue, 20%);
+        background: $primary-light;
       }
 
       &:hover .fr-navbar__label {
-        background: lighten($blue, 20%);
+        background: $primary-light;
       }
 
       &:last-child {

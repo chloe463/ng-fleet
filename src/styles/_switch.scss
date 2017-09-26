@@ -20,7 +20,7 @@
     }
 
     &--on {
-      background: lighten($blue, 20%);
+      background: $secondary-dark;
     }
   }
 
@@ -44,7 +44,8 @@
     }
 
     &--on {
-      background: $blue;
+      // background: $blue;
+      background: $secondary-light;
       left: 18px;
     }
   }
