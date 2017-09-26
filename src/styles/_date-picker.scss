@@ -13,7 +13,7 @@
 
     &-header {
       line-height: 25px;
-      background: $blue;
+      background: $primary;
       color: $white;
 
       &-year {
@@ -138,7 +138,7 @@
   }
 
   &__button--primary, &__button--secondary {
-    color: $blue;
+    color: $primary;
   }
 
   &__ok-button {
