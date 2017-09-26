@@ -6,9 +6,10 @@ import {
 } from '@angular/core';
 import { FrDataTableEvent } from '../data-table/data-table.component';
 
-export interface IFrOtherAction {
+export type FrDataTableActionKey = {
   key: string;
   label: string;
+  extraParams?: any;
 }
 
 @Directive({
@@ -20,7 +21,7 @@ export class FrDataTableHeaderComponent {
   @Output() otherAction:  EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
   private _title: string;
-  private _otherActionKeys: Array<IFrOtherAction> = [];
+  private _otherActionKeys: Array<FrDataTableActionKey> = [];
 
   @Input()
   set title(title) {
@@ -33,11 +34,25 @@ export class FrDataTableHeaderComponent {
 
   @Input()
   set otherActionKeys(otherActionKeys) {
+    console.warn('[otherActionKeys] of fr-data-table-header is deprecated. Use [actionKeys] instead.');
     this._otherActionKeys = otherActionKeys;
   }
 
-  get otherActionKeys(): Array<IFrOtherAction> {
+  get otherActionKeys(): Array<FrDataTableActionKey> {
     return this._otherActionKeys;
+  }
+
+  private _actionKeys: Array<FrDataTableActionKey> = [];
+  @Input()
+  set actionKeys(actionKeys: Array<FrDataTableActionKey>) {
+    this._actionKeys = actionKeys;
+  }
+
+  get actionKeys(): Array<FrDataTableActionKey> {
+    if (this._otherActionKeys.length) {
+      return this._otherActionKeys;
+    }
+    return this._actionKeys;
   }
 
   /**
