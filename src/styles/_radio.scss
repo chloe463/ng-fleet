@@ -17,14 +17,14 @@
     transition-duration: 0.3s;
     transition-timing-function: ease;
     &--checked {
-      border-color: $magenta;
+      border-color: $secondary;
     }
     &--disabled {
       border: 2px solid $gray;
       cursor: default;
     }
     &--focused {
-      border-color: $yellow;
+      border-color: $secondary-light;
     }
   }
 
@@ -42,7 +42,7 @@
     transition-timing-function: ease;
     transform: scale(0);
     &--checked {
-      background: $magenta;
+      background: $secondary;
       transform: none;
     }
     &--disabled {
@@ -63,7 +63,7 @@
     transition-duration: 0.2s;
     transition-timing-function: ease;
     &--on {
-      background: lighten($magenta, 30%);
+      background: $secondary-light;
       transform: none;
       opacity: 0.3;
     }

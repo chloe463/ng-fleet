@@ -115,15 +115,15 @@
     traisition-timing-function: linear;
 
     &:hover {
-      background: lighten($magenta, 15%);
+      background: $secondary-light;
       color: $white;
     }
 
     &--picked {
-      background: $magenta;
+      background: $secondary;
       color: $white;
       &:hover {
-        background: $magenta;
+        background: $secondary;
         color: $white;
       }
     }
