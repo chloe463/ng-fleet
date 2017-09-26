@@ -46,7 +46,7 @@
     z-index: 100;
 
     &-header {
-      background: $blue;
+      background: $primary;
       height: 80px;
       display: flex;
       justify-content: center;
@@ -61,7 +61,7 @@
 
   &__meridian {
     margin: 0 5px;
-    color: lighten($blue, 30%);
+    color: $primary-light;
     cursor: pointer;
 
     &--selected {
@@ -74,14 +74,14 @@
     color: $white;
 
     &-hours {
-      color: lighten($blue, 30%);
+      color: $primary-light;
       cursor: pointer;
       &--picking {
         color: $white;
       }
     }
     &-minutes {
-      color: lighten($blue, 30%);
+      color: $primary-light;
       cursor: pointer;
       &--picking {
         color: $white;
@@ -112,18 +112,18 @@
     cursor: pointer;
     transition-property: background;
     transition-duration: 0.3s;
-    traisition-timing-function: linear;
+    transition-timing-function: linear;
 
     &:hover {
-      background: lighten($magenta, 15%);
+      background: $secondary-light;
       color: $white;
     }
 
     &--picked {
-      background: $magenta;
+      background: $secondary;
       color: $white;
       &:hover {
-        background: $magenta;
+        background: $secondary;
         color: $white;
       }
     }
@@ -170,7 +170,7 @@
   }
 
   &__button--primary, &__button--secondary {
-    color: $blue;
+    color: $primary;
   }
 }
 

@@ -1,27 +1,28 @@
 import {
-  Component,
-  OnInit,
+  Directive,
   Input,
   ContentChildren,
   QueryList
 } from '@angular/core';
 
-import { FrNavbarMenuComponent } from '../navbar-menu/navbar-menu.component';
+import { IFrNavbarNode } from '../navbar/navbar.model';
+import { FrNavbarMenuDirective } from '../navbar-menu/navbar-menu.component';
 
-@Component({
-  selector: 'fr-navbar-item',
-  template: `<ng-content></ng-content>`
+@Directive({
+  selector: 'fr-navbar-item'
 })
-export class FrNavbarItemComponent implements OnInit {
+export class FrNavbarItemDirective {
+  @Input() node: IFrNavbarNode;
 
-  @ContentChildren(FrNavbarMenuComponent) menus: QueryList<FrNavbarMenuComponent>;
-
-  @Input() title: string;
-  @Input() link: string;
-
-  constructor() { }
-
-  ngOnInit() {
+  get title(): string {
+    return this.node.title;
   }
 
+  get url(): string {
+    return this.node.url;
+  }
+
+  get children(): Array<IFrNavbarNode> {
+    return this.node.children;
+  }
 }

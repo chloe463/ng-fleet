@@ -18,9 +18,9 @@
     }
 
     &--active {
-      border-bottom: 2px solid $red;
+      border-bottom: 2px solid $secondary;
       .fr-tabs__link {
-        color: $blue;
+        color: $primary;
       }
     }
   }

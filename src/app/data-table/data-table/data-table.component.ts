@@ -1,5 +1,6 @@
 import {
   Component,
+  Directive,
   OnInit,
   AfterContentInit,
   ElementRef,
@@ -31,6 +32,15 @@ export class FrDataTableEvent {
     public page: number,
     public extraParam?: any
   ) {}
+}
+
+@Directive({
+  selector: 'fr-data-table[fr-data-table-stripe]',
+  host: {
+    class: 'fr-data-table--stripe'
+  }
+})
+export class FrDataTableStripeDirective {
 }
 
 

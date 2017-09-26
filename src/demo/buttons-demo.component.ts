@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     <h2>Buttons</h2>
     <button frRipple class="fr-btn">button</button>
     <button frRipple class="fr-btn--primary" frRipple>primary</button>
+    <button frRipple class="fr-btn--secondary" frRipple>secondary</button>
     <button frRipple class="fr-btn--info">info</button>
     <button frRipple class="fr-btn--warning">warning</button>
     <button frRipple class="fr-btn--danger">danger</button>
@@ -14,6 +15,7 @@ import { Component } from '@angular/core';
     <div></div>
     <button frRipple class="fr-btn-fab">&nbsp;</button>
     <button frRipple class="fr-btn-fab--primary">+</button>
+    <button frRipple class="fr-btn-fab--secondary">+</button>
     <button frRipple class="fr-btn-fab--info">+</button>
     <button frRipple class="fr-btn-fab--warning">-</button>
     <button frRipple class="fr-btn-fab--danger">-</button>
@@ -22,6 +24,7 @@ import { Component } from '@angular/core';
     <div></div>
     <button frRipple class="fr-btn-skeleton">skeleton</button>
     <button frRipple class="fr-btn-skeleton--primary">primary</button>
+    <button frRipple class="fr-btn-skeleton--secondary">secondary</button>
     <button frRipple class="fr-btn-skeleton--info">info</button>
     <button frRipple class="fr-btn-skeleton--warning">warning</button>
     <button frRipple class="fr-btn-skeleton--danger">danger</button>

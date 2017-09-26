@@ -111,10 +111,10 @@ export class FrNotificationEntryComponent implements AfterViewInit {
     color: #FFFFFF;
   }
   .fr-notification--default { background: #EAEAEA; color: #434343; }
-  .fr-notification--primary { background: #7986CB; }
-  .fr-notification--info { background: #80CBC4; }
-  .fr-notification--warning { background: #FFCC80; color: #434343; }
-  .fr-notification--danger { background: #EF5350; }
+  .fr-notification--primary { background: #352838; }
+  .fr-notification--info { background: #78BB5C; }
+  .fr-notification--warning { background: #F1B224; color: #434343; }
+  .fr-notification--danger { background: #D04B63; }
   `],
   animations: [
     trigger('notificationState', [

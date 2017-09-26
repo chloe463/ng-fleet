@@ -2,14 +2,33 @@
 
 ## Usage
 
-```html
+```ts
+@Component({
+  selector: 'navbar-demo',
+  template: `
 <fr-navbar>
-  <fr-navbar-logo link="" title="Francette"></fr-navbar-logo>
-  <fr-navbar-item link="" title="nav"></fr-navbar-item>
-  <fr-navbar-item link="" title="nav-menu">
-    <fr-navbar-menu link="" title="nav-menu-1"></fr-navbar-menu>
-    <fr-navbar-menu link="" title="nav-menu-2"></fr-navbar-menu>
-    <fr-navbar-menu link="" title="nav-menu-3"></fr-navbar-menu>
-  </fr-navbar-item>
+  <fr-navbar-logo [logo]="{title: 'Francette', url: '/top'}"></fr-navbar-logo>
+  <fr-navbar-item *ngFor="let node of navbarNodes" [node]="node"></fr-navbar-item>
 </fr-navbar>
+  `
+})
+export class NavbarDemoComponent {
+  navbarLogo: IFrNavbarNode = {
+    title: 'Francette',
+    url: '/top'
+  };
+
+  navbarNodes: Array<IFrNavbarNode> = [
+    { url: '', title: 'item1' },
+    {
+      url: '',
+      title: 'item2',
+      children: [
+        { url: '', title: 'child1' },
+        { url: '', title: 'child2' },
+        { url: '', title: 'child3' },
+      ]
+    }
+  ];
+}
 ```
