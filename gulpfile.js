@@ -47,10 +47,11 @@ function replaceStyle(content, filePath) {
     const urls = eval(styleUrls);
 
     const styles = urls.map((url) => {
-      const dir       = path.dirname(filePath).replace(/builds/, 'src/app');
-      const stylePath = path.join(dir, url);
-      if (!fs.exists(stylePath)) {
-        return ``;
+      const dir       = path.dirname(filePath);
+      const stylePath = path.join(dir, url).replace(/\.scss/, '.css');
+      if (!fs.statSync(stylePath)) {
+        console.warn(stylePath + ' : no such file!!!');
+        return ``
       }
       const styleContent = fs.readFileSync(stylePath, 'utf-8');
       const shortened    = styleContent
@@ -73,6 +74,17 @@ gulp.task('pre-build:js', () => {
     base: 'src'
   })
   .pipe(gulp.dest(PRE_BUILDS_ROOT));
+});
+
+gulp.task('pre-build:css', () => {
+  return gulp.src([
+    SOURCE_ROOT + '/app/**.scss',
+    SOURCE_ROOT + '/app/**/*.scss',
+    '!' + SOURCE_ROOT + '/styles/**.scss'
+  ], { base: 'src' })
+  .pipe(gulpSass())
+  .pipe(autoPrefixer())
+  .pipe(gulp.dest('./pre-builds'));
 });
 
 gulp.task('build:inline-resource', () => {
