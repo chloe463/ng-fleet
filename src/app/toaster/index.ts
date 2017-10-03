@@ -1,11 +1,9 @@
 export { FrToasterModule } from './toaster.module';
 export {
   FrToasterService,
-  FrToasterContext
-} from './toaster.service';
-export {
+  FrToasterContext,
   FrToasterInnerDirective,
   FrToasterEntryComponent,
   FrToasterContentComponent
-} from './toaster-entry.component';
+} from './toaster.service';
 export { FrToasterParam } from './toaster.types';

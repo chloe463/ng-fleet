@@ -1,14 +1,12 @@
 export {
   FrNotificationService,
-  FrNotificationContext
+  FrNotificationContext,
+  FrNotificationInnerDirective,
+  FrNotificationEntryComponent,
+  FrNotificationContentComponent
 } from './notification.service';
 export {
   FrNotificationParam,
   FrNotificationType
 } from './notification.types';
-export {
-  FrNotificationInnerDirective,
-  FrNotificationEntryComponent,
-  FrNotificationContentComponent
-} from './notification-entry.component';
 export { FrNotificationModule } from './notification.module';
