@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FrNotificationService, FrNotificationContext } from './notification.service';
 import {
+  FrNotificationService,
+  FrNotificationContext,
   FrNotificationEntryComponent,
   FrNotificationInnerDirective,
   FrNotificationContentComponent
-} from './notification-entry.component';
+} from './notification.service';
 
 @NgModule({
   declarations: [

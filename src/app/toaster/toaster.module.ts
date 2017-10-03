@@ -1,8 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { FrToasterService, FrToasterContext } from './toaster.service';
-import { FrToasterInnerDirective, FrToasterEntryComponent, FrToasterContentComponent } from './toaster-entry.component';
+import {
+  FrToasterService,
+  FrToasterContext,
+  FrToasterInnerDirective,
+  FrToasterEntryComponent,
+  FrToasterContentComponent
+} from './toaster.service';
 
 @NgModule({
   declarations: [
