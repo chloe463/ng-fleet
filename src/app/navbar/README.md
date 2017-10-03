@@ -3,32 +3,25 @@
 ## Usage
 
 ```ts
+import { IFrNavbarNode } from 'francette';
+
 @Component({
   selector: 'navbar-demo',
   template: `
 <fr-navbar>
-  <fr-navbar-logo [logo]="{title: 'Francette', url: '/top'}"></fr-navbar-logo>
+  <fr-navbar-logo [logo]="{title: 'Francette'}"></fr-navbar-logo>
   <fr-navbar-item *ngFor="let node of navbarNodes" [node]="node"></fr-navbar-item>
 </fr-navbar>
   `
 })
 export class NavbarDemoComponent {
-  navbarLogo: IFrNavbarNode = {
-    title: 'Francette',
-    url: '/top'
-  };
-
-  navbarNodes: Array<IFrNavbarNode> = [
-    { url: '', title: 'item1' },
-    {
-      url: '',
-      title: 'item2',
-      children: [
-        { url: '', title: 'child1' },
-        { url: '', title: 'child2' },
-        { url: '', title: 'child3' },
-      ]
-    }
+  public navbarNodes: Array<IFrNavbarNode> = [
+    { url: '', title: 'nav' },
+    { url: '', title: 'menu', children: [
+      { url: '', title: 'child1' },
+      { url: '', title: 'child2' },
+      { url: '', title: 'child3' },
+    ] }
   ];
 }
 ```

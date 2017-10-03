@@ -3,26 +3,33 @@
 ## Usage
 
 ```ts
+import { FrToasterService, FrToasterParam } from 'francette';
+
 @Component({
   selector: 'toaster-demo',
   template: `
-  <button class="fr-btn fr-btn--primary" frRipple (click)="toggleToaster()">toggle toaster</button>
-  <fr-toaster [(show)]="toastShow" [actionKey]="actionKey" (action)="toasterAction($event)">
-    Toaster Content
-  </fr-toaster>
-  `
+  <button class="fr-btn fr-btn--primary" frRipple (click)="popupToaster()">POPUP TOASTER</button>
+  <!-- Entry point to put toaster component -->
+  <fr-toaster-entry></fr-toaster-entry>
+  `,
+  providers: [ FrToasterService ]
 })
 export class ToasterDemoComponent {
-  public toastShow = false;
-  public actionKey = 'UNDO';
 
-  public toggleToaster(): void {
-    this.toastShow = !this.toastShow;
+  constructor(private toasterService: FrToasterService) {}
+
+  public popupToaster(): void {
+    const toasterParam: FrToasterParam = {
+      text: 'test',
+      action: 'undo',
+      timeout: 2000
+    };
+    this.toasterService.open<any>(toasterParam).subscribe(
+      (value) => { /* onNext */ },
+      (reason) => { /* onError */ },
+      () => { /* onComplete */ }
+    );
   }
 
-  public toasterAction(event): void {
-    console.log(event);
-  }
 }
-
 ```

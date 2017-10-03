@@ -27,6 +27,7 @@ export class DialogDemoComponent {
   }
 }
 
+// You must put this component to `entryComponents` of NgModule
 @Component({
   selector: 'dialog-dummy-component',
   template: `Template within the dialog goes here`,
