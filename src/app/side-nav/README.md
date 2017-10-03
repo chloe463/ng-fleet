@@ -2,21 +2,45 @@
 
 ## Usage
 
-```html
-<fr-navbar>
-  <fr-side-nav>
-    <fr-side-nav-item-group title="components">
-      <fr-side-nav-item label="buttons" link="buttons"></fr-side-nav-item>
-      <fr-side-nav-item label="chips" link="chips"></fr-side-nav-item>
-      <fr-side-nav-item label="data-table" link="data-table"></fr-side-nav-item>
-      <fr-side-nav-item label="dialog" link="dialog"></fr-side-nav-item>
-      <fr-side-nav-item label="forms" link="forms"></fr-side-nav-item>
-      <fr-side-nav-item label="progress" link="progress"></fr-side-nav-item>
-      <fr-side-nav-item label="switch" link="switch"></fr-side-nav-item>
-      <fr-side-nav-item label="tabs" link="tabs"></fr-side-nav-item>
-      <fr-side-nav-item label="toaster" link="toaster"></fr-side-nav-item>
-      <fr-side-nav-item label="kpi-table" link="kpi-table"></fr-side-nav-item>
-    </fr-side-nav-item-group>
-  </fr-side-nav>
-</fr-navbar>
+```typescript
+import { IFrSideNavNodeGroup, IFrNavbarNode } from 'francette';
+
+@Component({
+  selector: `side-navbar-demo`,
+  template: `
+  <fr-navbar>
+    <fr-side-nav>
+      <fr-side-nav-item-group *ngFor="let group of sideNavNodeGroups" [group]="group">
+        <fr-side-nav-item *ngFor="let node of group.nodes" [node]="node"></fr-side-nav-item>
+      </fr-side-nav-item-group>
+    </fr-side-nav>
+  </fr-navbar>
+  `
+})
+export class SideNavDemoComponent {
+
+  public sideNavNodeGroups: Array<IFrSideNavNodeGroup> = [
+    {
+      title: 'Components',
+      collapsible: true,
+      nodes: this.sideNavbarNodes
+    },
+    {
+      title: 'Group1',
+      collapsible: false,
+      nodes: [
+        { url: 'item1-1', title: 'item1-1' },
+        { url: 'item1-2', title: 'item1-2' },
+      ]
+    },
+    {
+      title: 'Group2',
+      collapsible: true,
+      nodes: [
+        { url: 'item2-1', title: 'item2-1' },
+        { url: 'item2-2', title: 'item2-2' },
+      ]
+    }
+  ];
+}
 ```
