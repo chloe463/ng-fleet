@@ -6,7 +6,8 @@ Simple components and style sheets for Angular 2.x.
 
 This library provides...
 
-* [Chips](https://github.com/chloe463/francette/tree/master/src/app/chip)
+* [Buttons](https://github.com/chloe463/francette/tree/master/src/app/button/README.md)
+* [Chips](https://github.com/chloe463/francette/tree/master/src/app/chip/README.md)
 * [Data table](https://github.com/chloe463/francette/tree/master/src/app/data-table/README.md)
 * [Dialog](https://github.com/chloe463/francette/tree/master/src/app/dialog/README.md)
 * [Forms](https://github.com/chloe463/francette/tree/master/src/app/forms/README.md)
@@ -17,9 +18,10 @@ This library provides...
   * Radio
   * Select
   * Time Picker
-* [Navbar](https://github.com/chloe463/francette/tree/master/app/navbar/README.md)
-* [Progress](https://github.com/chloe463/francette/tree/master/app/progress/README.md)
-* [Ripple](https://github.com/chloe463/francette/tree/master/app/ripple/README.md)
-* [Sidenav](https://github.com/chloe463/francette/tree/master/app/side-nav/README.md)
-* [Tabs](https://github.com/chloe463/francette/tree/master/app/tabs/README.md)
-* [Toaster](https://github.com/chloe463/francette/tree/master/app/toaster/README.md)
+* [Navbar](https://github.com/chloe463/francette/tree/master/src/app/navbar/README.md)
+* [Notification](https://github.com/chloe463/francette/tree/master/src/app/notification/README.md)
+* [Progress bar/spinner](https://github.com/chloe463/francette/tree/master/src/app/progress/README.md)
+* [Ripple Effect](https://github.com/chloe463/francette/tree/master/src/app/ripple/README.md)
+* [Sidenav](https://github.com/chloe463/francette/tree/master/src/app/side-nav/README.md)
+* [Tabs](https://github.com/chloe463/francette/tree/master/src/app/tabs/README.md)
+* [Toaster](https://github.com/chloe463/francette/tree/master/src/app/toaster/README.md)
