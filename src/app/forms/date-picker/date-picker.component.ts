@@ -7,13 +7,15 @@ import {
   QueryList,
   forwardRef,
   HostListener,
-  ElementRef,
+  ElementRef
+} from '@angular/core';
+import {
   trigger,
   state,
   style,
   transition,
   animate
-} from '@angular/core';
+} from '@angular/animations';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export class FrDatePickerChange {

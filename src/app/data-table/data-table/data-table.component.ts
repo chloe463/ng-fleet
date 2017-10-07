@@ -11,13 +11,15 @@ import {
   ContentChildren,
   ViewChild,
   QueryList,
-  HostListener,
+  HostListener
+} from '@angular/core';
+import {
   trigger,
   state,
   style,
   transition,
   animate
-} from '@angular/core';
+} from '@angular/animations';
 
 import { FrDataTableColumnsComponent, IFrDataTableColumn } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableHeaderComponent } from '../data-table-header/data-table-header.component';

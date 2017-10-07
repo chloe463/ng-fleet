@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -30,6 +32,7 @@ import { FrDialogModule } from './dialog/dialog.module';
     FrToasterComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     FormsModule,
     CommonModule,
     RouterModule,
