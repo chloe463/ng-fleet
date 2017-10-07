@@ -12,13 +12,15 @@ import {
   forwardRef,
   ElementRef,
   HostListener,
+  Optional
+} from '@angular/core';
+import {
   trigger,
   state,
   style,
   transition,
-  animate,
-  Optional
-} from '@angular/core';
+  animate
+} from '@angular/animations';
 import { NgModel, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export const LABEL          = 'label';

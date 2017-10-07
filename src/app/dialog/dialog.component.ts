@@ -6,13 +6,15 @@ import {
   Input,
   Output,
   HostListener,
-  EventEmitter,
+  EventEmitter
+} from '@angular/core';
+import {
   animate,
   trigger,
   style,
   state,
   transition
-} from '@angular/core';
+} from '@angular/animations';
 
 export interface IFrDialogActionKey {
   label: string;

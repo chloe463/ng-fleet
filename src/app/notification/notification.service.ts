@@ -10,16 +10,18 @@ import {
   OnInit,
   OnChanges,
   AfterViewInit,
-  animate,
-  trigger,
-  style,
-  state,
-  transition,
   AnimationTransitionEvent,
   HostListener,
   ReflectiveInjector,
   ComponentRef
 } from '@angular/core';
+import {
+  animate,
+  trigger,
+  style,
+  state,
+  transition
+} from '@angular/animations';
 import { FrNotificationType, FrNotificationParam } from './notification.types';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';

@@ -6,13 +6,15 @@ import {
   Input,
   Output,
   EventEmitter,
+  ViewChild
+} from '@angular/core';
+import {
   animate,
   trigger,
   state,
   style,
-  transition,
-  ViewChild
-} from '@angular/core';
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'fr-toaster',

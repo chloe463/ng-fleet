@@ -5,13 +5,15 @@ import {
   Input,
   ContentChildren,
   QueryList,
+  HostListener
+} from '@angular/core';
+import {
   trigger,
   state,
   style,
   transition,
   animate,
-  HostListener
-} from '@angular/core';
+} from '@angular/animations';
 
 import { FrSideNavItemGroupDirective } from '../side-nav-item-group/side-nav-item-group.component';
 import { FrSideNavItemDirective } from '../side-nav-item/side-nav-item.component';
