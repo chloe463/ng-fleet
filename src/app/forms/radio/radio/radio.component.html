@@ -8,7 +8,7 @@
     <span class="fr-radio-inner-circle"
       [class.fr-radio-inner-circle--checked]="checked"
       [class.fr-radio-inner-circle--disabled]="disabled"></span>
-    <span class="fr-radio-ripple" [class.fr-radio-ripple--on]="isRippleOn"></span>
+    <span [class.fr-radio-ripple]="isRippleOn"></span>
   </div>
   <input type="radio"
          name="{{name}}"
