@@ -93,7 +93,10 @@ export class FrDataTableComponent implements AfterContentInit {
   public actionListState: string = 'hidden';
 
   ngAfterContentInit() {
-    this.title = this.headerComponent.title;
+    // this.title = this.headerComponent.title;
+    if (this.headerComponent) {
+      this.title = this.headerComponent.title;
+    }
     if (this.columnsComponent) {
       this.columnsComponent.columns$.subscribe(newColumns => this.columns = newColumns);
     }
