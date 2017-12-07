@@ -12,6 +12,7 @@ import {
   Optional
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { timer } from 'rxjs/Observable/timer';
 
 export class FrRadioChange {
   public source: FrRadioComponent | null;
@@ -156,9 +157,9 @@ export class FrRadioComponent implements OnInit {
     this._eventChangeEvent();
 
     this.isRippleOn = true;
-    setTimeout(() => {
+    timer(1000).subscribe(() => {
       this.isRippleOn = false;
-    }, 1000);
+    })
 
     if (this.radioGroup) {
       this.radioGroup.value = this.value;

@@ -15,6 +15,7 @@ import {
   style,
   transition
 } from '@angular/animations';
+import { timer } from 'rxjs/Observable/timer';
 
 @Component({
   selector: 'fr-toaster',
@@ -68,10 +69,10 @@ export class FrToasterComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.toastState = this.show ? 'shown' : 'hidden';
     if (this.show) {
-      setTimeout(() => {
+      timer(5000).subscribe(() => {
         this.toastState = 'hidden';
         this.show       = false;
-      }, 5000);
+      });
     }
   }
 

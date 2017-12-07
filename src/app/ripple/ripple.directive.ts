@@ -4,6 +4,7 @@ import {
   HostListener,
   Input
 } from '@angular/core';
+import { timer } from 'rxjs/Observable/timer';
 
 @Directive({
   selector: '[frRipple]',
@@ -46,9 +47,9 @@ export class FrRippleDirective {
     ripple.classList.add('fr-ripple-effect');
     element.appendChild(ripple);
 
-    window.setTimeout(() => {
+    timer(1300).subscribe(() => {
       element.removeChild(ripple);
-    }, 1300);
+    });
   }
 
 }

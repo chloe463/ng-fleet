@@ -25,6 +25,7 @@ import {
 import { FrNotificationType, FrNotificationParam } from './notification.types';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { timer } from 'rxjs/Observable/timer';
 
 @Injectable()
 export class FrNotificationContext<T> implements Observer<T> {
@@ -270,10 +271,10 @@ export class FrNotificationContentComponent implements OnInit {
     this.notificationState = 'active';
 
     // This is for animation
-    setTimeout(() => {
+    timer(this.timeout - 500).subscribe(() => {
       if (!this.closed) {
         this.notificationState = 'void';
       }
-    }, this.timeout - 500);
+    });
   }
 }
