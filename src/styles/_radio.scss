@@ -58,15 +58,9 @@
     height: 40px;
     border-radius: 50%;
     opacity: 0.3;
+    background: $secondary-light;
     transform: scale(0);
-    transition-property: background, transform;
-    transition-duration: 0.2s;
-    transition-timing-function: ease;
-    &--on {
-      background: $secondary-light;
-      transform: none;
-      opacity: 0.3;
-    }
+    animation: radio-ripple 0.8s ease-out;
   }
 
   &-label {
@@ -101,3 +95,20 @@
   }
 }
 
+@keyframes radio-ripple {
+  from {
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  90% {
+    transform: scale(1);
+    opacity: 0.05;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
