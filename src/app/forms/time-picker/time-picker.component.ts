@@ -18,6 +18,7 @@ import {
   animate
 } from '@angular/animations';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { timer } from 'rxjs/Observable/timer';
 
 export class FrTimePickerChange {
   source: FrTimePickerComponent;
@@ -238,10 +239,10 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     this.pickTarget = pickTarget;
     this.setDials(this.pickTarget);
     // wait for dials rendering
-    setTimeout(() => {
+    timer(50).subscribe(() => {
       this.putDialsRightPosition();
       this.changing = false;
-    }, 50);
+    })
   }
 
   public cancel(): void {
