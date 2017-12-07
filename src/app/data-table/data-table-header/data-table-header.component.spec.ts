@@ -4,36 +4,28 @@ import { Component } from '@angular/core';
 import { FrDataTableHeaderComponent } from './data-table-header.component';
 
 describe('FrDataTableHeaderComponent', () => {
-  let component: SampleFrDataTableHeaderComponent;
-  let fixture: ComponentFixture<SampleFrDataTableHeaderComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FrDataTableHeaderComponent, SampleFrDataTableHeaderComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SampleFrDataTableHeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should create an instance', () => {
+    let directive = new FrDataTableHeaderComponent();
+    expect(directive).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have \'title\'', () => {
+    let directive = new FrDataTableHeaderComponent();
+    directive.title = 'TITLE';
+    expect(directive.title).toBeDefined();
+    expect(directive.title).toEqual('TITLE');
   });
 
-  it ('should have property \'title\'', () => {
-    fixture = TestBed.createComponent(SampleFrDataTableHeaderComponent);
-    component = fixture.componentInstance;
-    expect(component.title).toBe('some-title');
+  it('should have \'actionKeys\'', () => {
+    let directive = new FrDataTableHeaderComponent();
+    directive.actionKeys = [
+      { key: 'action1', label: 'ACTION1' },
+      { key: 'action2', label: 'ACTION2' }
+    ];
+    expect(directive.actionKeys).toBeDefined();
+    expect(directive.actionKeys).toEqual([
+      { key: 'action1', label: 'ACTION1' },
+      { key: 'action2', label: 'ACTION2' }
+    ]);
   });
 });
-
-@Component({
-  template: '<fr-data-table-header [title]="title"></fr-data-table-header>'
-})
-class SampleFrDataTableHeaderComponent {
-  title = 'some-title';
-}

@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { FrRippleDirective } from '../../ripple/ripple.directive';
 
 import { FrTabsComponent } from './tabs.component';
 
@@ -11,7 +12,7 @@ describe('FrTabsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrTabsComponent ]
+      declarations: [ FrTabsComponent, FrRippleDirective ]
     })
     .compileComponents();
   }));

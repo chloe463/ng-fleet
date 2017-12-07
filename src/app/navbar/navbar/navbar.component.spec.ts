@@ -2,6 +2,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { FrNavbarComponent } from './navbar.component';
 
@@ -11,7 +13,8 @@ describe('FrNavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrNavbarComponent ]
+      declarations: [ FrNavbarComponent ],
+      imports: [CommonModule, RouterModule]
     })
     .compileComponents();
   }));

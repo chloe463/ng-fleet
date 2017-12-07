@@ -1,41 +1,47 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { FormModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { FrDataTableComponent } from './data-table.component';
 import { FrDataTableColumnsComponent } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableFooterComponent } from '../data-table-footer/data-table-footer.component';
 import { FrDataTableHeaderComponent } from '../data-table-header/data-table-header.component';
 import { FrDataTableRowsComponent } from '../data-table-rows/data-table-rows.component';
+import { FrFormsModule } from './../../forms/forms.module';
 
 describe('FrDataTableComponent', () => {
-  // let component: FrDataTableComponent;
-  // let fixture: ComponentFixture<FrDataTableComponent>;
+  let component: FrDataTableComponent;
+  let fixture: ComponentFixture<FrDataTableComponent>;
+  // let component: SampleFrDataTableComponent;
+  // let fixture: ComponentFixture<SampleFrDataTableComponent>;
 
-  // beforeEach(async(() => {
-  //   TestBed.configureTestingModule({
-  //     declarations: [
-  //       FrDataTableComponent,
-  //       FrDataTableColumnsComponent,
-  //       FrDataTableFooterComponent,
-  //       FrDataTableHeaderComponent,
-  //       FrDataTableRowsComponent,
-  //       SampleFrDataTableComponent
-  //     ],
-  //     imports: [ FormModule ]
-  //   })
-  //   .compileComponents();
-  // }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        FrDataTableComponent,
+        FrDataTableColumnsComponent,
+        FrDataTableFooterComponent,
+        FrDataTableHeaderComponent,
+        FrDataTableRowsComponent,
+        SampleFrDataTableComponent
+      ],
+      imports: [ FormsModule, FrFormsModule ]
+    })
+    .compileComponents();
+  }));
 
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(FrDataTableComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(FrDataTableComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  // it('should create', () => {
-  //   console.log(component);
-  //   expect(component).toBeTruthy();
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  // it('should checkAll rows flags', () => {
+  //   expect(component.checkedRowIndices).toBeDefined();
   // });
 });
 
