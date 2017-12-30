@@ -160,17 +160,18 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  @HostListener('document:keydown', ['$event'])
-  selectOnKeyDown(event: KeyboardEvent): void {
-    if (!this.isFocused) {
-      return;
-    }
-    if (event.key === 'ArrowUp') {
-      console.log(event);
-    } else if (event.key === 'ArrowDown') {
-      console.log(event);
-    }
-  }
+  // TODO: Make it possible to select value with arrow keys
+  // @HostListener('document:keydown', ['$event'])
+  // selectOnKeyDown(event: KeyboardEvent): void {
+  //   if (!this.isFocused) {
+  //     return;
+  //   }
+  //   if (event.key === 'ArrowUp') {
+  //     console.log(event);
+  //   } else if (event.key === 'ArrowDown') {
+  //     console.log(event);
+  //   }
+  // }
 
   public onFocus(event?: Event) {
     this.labelState = 'labelOnFocus';
