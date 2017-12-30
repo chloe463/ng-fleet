@@ -1,3 +1,19 @@
+export {
+  FrButtonDirective,
+  FrPrimaryButtonDirective,
+  FrInfoButtonDirective,
+  FrWarningButtonDirective,
+  FrDangerButtonDirective,
+  FrDisabledButtonDirective,
+  FrSkeletonButtonDirective,
+  FrSkeletonPrimaryButtonDirective,
+  FrSkeletonInfoButtonDirective,
+  FrSkeletonWarningButtonDirective,
+  FrSkeletonDangerButtonDirective,
+  FrSkeletonDisabledButtonDirective,
+  FrFlatButtonDirective,
+  FrButtonModule
+} from './button/index';
 export { FrChipComponent } from './chip/chip.component';
 export {
   FrDataTableColumnsComponent,
