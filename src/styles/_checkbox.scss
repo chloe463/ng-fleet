@@ -96,9 +96,15 @@
     &-path {
       stroke-width: 2.3px;
       stroke: transparent;
+      stroke-dasharray: 0;
+      stroke-dashoffset: -31;
+      transition-property: stroke-dashoffset;
+      transition-duration: 0.3s;
     }
     &--on > &-path {
       stroke: $white;
+      stroke-dasharray: 31;
+      stroke-dashoffset: 0;
     }
   }
   &-label-text {
