@@ -37,6 +37,20 @@
       "config": "./protractor.conf.js"
     }
   },
+  "lint": [
+    {
+      "project": "src/tsconfig.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
   "test": {
     "karma": {
       "config": "./karma.conf.js"
