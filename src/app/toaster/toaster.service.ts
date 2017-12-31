@@ -25,7 +25,6 @@ import { timer } from 'rxjs/Observable/timer';
 
 import { FrToasterParam } from './toaster.types';
 
-@Injectable()
 export class FrToasterContext<T> implements Observer<T> {
   constructor(
     private _onNext: Function,
