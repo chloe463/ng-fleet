@@ -15,7 +15,7 @@ import {
   style,
   transition
 } from '@angular/animations';
-import { timer } from 'rxjs/Observable/timer';
+import { timer } from 'rxjs/observable/timer';
 
 @Component({
   selector: 'fr-toaster',
