@@ -145,7 +145,7 @@ gulp.task('build:rollup', () => {
     'rxjs/Observable': 'rxjs_Observable',
     'rxjs/Observer': 'rxjs_Observer',
     'rxjs/ReplaySubject': 'rxjs_ReplaySubject',
-    'rxjs/Observable/timer': 'rxjs_Observable_timer'
+    'rxjs/observable/timer': 'rxjs_Observable_timer'
   };
 
   const rollupOptions = {
