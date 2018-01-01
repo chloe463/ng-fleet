@@ -25,7 +25,7 @@ import {
 import { FrNotificationType, FrNotificationParam } from './notification.types';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { timer } from 'rxjs/Observable/timer';
+import { timer } from 'rxjs/observable/timer';
 
 export class FrNotificationContext<T> implements Observer<T> {
   constructor(

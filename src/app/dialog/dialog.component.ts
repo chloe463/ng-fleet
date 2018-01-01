@@ -15,7 +15,7 @@ import {
   state,
   transition
 } from '@angular/animations';
-import { timer } from 'rxjs/Observable/timer';
+import { timer } from 'rxjs/observable/timer';
 
 export interface IFrDialogActionKey {
   label: string;

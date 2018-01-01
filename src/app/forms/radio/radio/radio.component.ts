@@ -12,7 +12,7 @@ import {
   Optional
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { timer } from 'rxjs/Observable/timer';
+import { timer } from 'rxjs/observable/timer';
 
 export class FrRadioChange {
   public source: FrRadioComponent | null;
