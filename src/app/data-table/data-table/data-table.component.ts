@@ -164,11 +164,8 @@ export class FrDataTableComponent implements AfterContentInit {
   public updateRowAction(updateAction: string, changeListState = false): void {
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage, this.paginationInfo.page);
-    // TODO: Delete headerComponent.invokeUpdateAction in v0.7.0
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
-    } else {
-      this.headerComponent.invokeUpdateAction(event);
     }
   }
 
@@ -178,9 +175,6 @@ export class FrDataTableComponent implements AfterContentInit {
     this.actionListState = 'hidden';
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
-    } else {
-      // TODO: Delete headerComponent.invokeUpdateAction in v0.7.0
-      this.headerComponent.invokeUpdateAction(event);
     }
   }
 
@@ -189,9 +183,6 @@ export class FrDataTableComponent implements AfterContentInit {
     const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
-    } else {
-      // TODO: Delete footerComponent.invokePaginationAction in v0.7.0
-      this.footerComponent.invokePaginationAction(event);
     }
   }
 
