@@ -15,6 +15,7 @@
             <path d="M -10.5 -25.86 L -7 -21 L -14 -21 L -10.5 -25.86 Z" transform="matrix(-1, 0, 0, -1, 0, 0)" style="fill: rgba(0, 0, 0, 0.560784);" bx:shape="triangle -14 -25.86 7 4.86 0.5 0 1@8bac0b8a"/>
             </g>
           </svg>
+          <span [class.fr-data-table__btn-ripple]="ripples.edit"></span>
         </span>
       </a>
       <a class="fr-data-table__header-btn" (click)="updateRowAction('delete')">
@@ -31,6 +32,7 @@
             <rect x="8.211" width="1" height="13" rx="0.337" ry="0.337" style="fill: rgb(255, 255, 255);" y="2.242"/>
             </g>
           </svg>
+          <span [class.fr-data-table__btn-ripple]="ripples.delete"></span>
         </span>
       </a>
       <a class="fr-data-table__header-btn" (click)="toggleOtherActionList()" [hidden]="!headerComponent.actionKeys.length" #dots>
@@ -41,6 +43,7 @@
             <ellipse cx="12" cy="12" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
             <ellipse cx="12" cy="19" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
           </svg>
+          <span [class.fr-data-table__btn-ripple]="ripples.dots"></span>
         </span>
       </a>
       <span class="fr-data-table__other-actions">

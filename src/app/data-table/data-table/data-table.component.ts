@@ -20,6 +20,7 @@ import {
   transition,
   animate
 } from '@angular/animations';
+import { timer } from 'rxjs/observable/timer';
 
 import { FrDataTableColumnsComponent, IFrDataTableColumn } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableHeaderComponent } from '../data-table-header/data-table-header.component';
@@ -91,6 +92,8 @@ export class FrDataTableComponent implements AfterContentInit {
   public checkAllFlag: boolean;
 
   public actionListState: string = 'hidden';
+
+  public ripples = { edit: false, delete: false, dots: false };
 
   ngAfterContentInit() {
     // this.title = this.headerComponent.title;
@@ -164,6 +167,7 @@ export class FrDataTableComponent implements AfterContentInit {
   public updateRowAction(updateAction: string, changeListState = false): void {
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage, this.paginationInfo.page);
+    this.activateRippleEffect(updateAction);
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
     }
@@ -187,7 +191,15 @@ export class FrDataTableComponent implements AfterContentInit {
   }
 
   public toggleOtherActionList(): void {
+    this.activateRippleEffect('dots');
     this.actionListState = (this.actionListState === 'hidden') ? 'show': 'hidden';
+  }
+
+  private activateRippleEffect(key: string): void {
+    this.ripples[key] = true;
+    timer(800).subscribe(() => {
+      this.ripples[key] = false;
+    });
   }
 
   @HostListener('document:click', ['$event'])
