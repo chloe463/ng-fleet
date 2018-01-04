@@ -65,6 +65,7 @@
 }
 
 .fr-data-table__icon {
+  position: relative;
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -245,5 +246,39 @@
       margin: auto;
       max-width: 50%;
     }
+  }
+}
+
+.fr-data-table__btn-ripple {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: #CCCCCC;
+  border-radius: 50%;
+  top: -14px;
+  right: -14px;
+  bottom: -14px;
+  left: -14px;
+  opacity: 0.3;
+  transform: scale(0.2);
+  animation: button-ripple 0.8s ease-out;
+}
+
+@keyframes button-ripple {
+  from {
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  90% {
+    transform: scale(1);
+    opacity: 0.05;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
   }
 }

@@ -20,6 +20,7 @@ import {
   transition,
   animate
 } from '@angular/animations';
+import { timer } from 'rxjs/observable/timer';
 
 import { FrDataTableColumnsComponent, IFrDataTableColumn } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableHeaderComponent } from '../data-table-header/data-table-header.component';
@@ -91,6 +92,8 @@ export class FrDataTableComponent implements AfterContentInit {
   public checkAllFlag: boolean;
 
   public actionListState: string = 'hidden';
+
+  public ripples = { edit: false, delete: false, dots: false };
 
   ngAfterContentInit() {
     // this.title = this.headerComponent.title;
@@ -164,11 +167,9 @@ export class FrDataTableComponent implements AfterContentInit {
   public updateRowAction(updateAction: string, changeListState = false): void {
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage, this.paginationInfo.page);
-    // TODO: Delete headerComponent.invokeUpdateAction in v0.7.0
+    this.activateRippleEffect(updateAction);
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
-    } else {
-      this.headerComponent.invokeUpdateAction(event);
     }
   }
 
@@ -178,9 +179,6 @@ export class FrDataTableComponent implements AfterContentInit {
     this.actionListState = 'hidden';
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
-    } else {
-      // TODO: Delete headerComponent.invokeUpdateAction in v0.7.0
-      this.headerComponent.invokeUpdateAction(event);
     }
   }
 
@@ -189,14 +187,19 @@ export class FrDataTableComponent implements AfterContentInit {
     const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
-    } else {
-      // TODO: Delete footerComponent.invokePaginationAction in v0.7.0
-      this.footerComponent.invokePaginationAction(event);
     }
   }
 
   public toggleOtherActionList(): void {
+    this.activateRippleEffect('dots');
     this.actionListState = (this.actionListState === 'hidden') ? 'show': 'hidden';
+  }
+
+  private activateRippleEffect(key: string): void {
+    this.ripples[key] = true;
+    timer(800).subscribe(() => {
+      this.ripples[key] = false;
+    });
   }
 
   @HostListener('document:click', ['$event'])
