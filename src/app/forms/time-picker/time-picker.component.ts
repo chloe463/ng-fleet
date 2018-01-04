@@ -162,7 +162,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     }
   }
 
-  public putHandRightPosition(dial): void {
+  public putHandRightPosition(dial: number): void {
     const hand = document.getElementById('clock-hand');
     let deg  = 0;
     if (this.pickTarget === HOURS) {
@@ -238,9 +238,14 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     this.changing   = true;
     this.pickTarget = pickTarget;
     this.setDials(this.pickTarget);
+
     // wait for dials rendering
     timer(50).subscribe(() => {
       this.putDialsRightPosition();
+      const targetDial = (pickTarget === HOURS)
+        ? this.value.getHours()
+        : this.value.getMinutes() - (this.value.getMinutes() % 5);
+      this.putHandRightPosition(targetDial);
       this.changing = false;
     })
   }
