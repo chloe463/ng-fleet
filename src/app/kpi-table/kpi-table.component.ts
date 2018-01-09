@@ -40,18 +40,18 @@ export class FrKpiTableComponent implements OnInit {
     if (!objectDate.toString().match(/^[0-9]{8}$/)) {
       throw new Error('objectDate MUST be ^[0-9]{8}$');
     }
-    let year  = objectDate.toString().substr(0, 4),
-      month = objectDate.toString().substr(4, 2),
-      date  = objectDate.toString().substr(6, 2);
-    return new Date(parseInt(year, 10), parseInt(month, 10) - 1, parseInt(date, 10));
+    const year  = parseInt(objectDate.toString().substr(0, 4), 10);
+    const month = parseInt(objectDate.toString().substr(4, 2), 10);
+    const date  = parseInt(objectDate.toString().substr(6, 2), 10);
+    return new Date(year, month - 1, date);
   }
 
   public objectDate2MonthDate(objectDate: number): string {
     if (!objectDate.toString().match(/[0-9]{8}/)) {
       throw new Error('objectDate MUST be ^[0-9]{8}$');
     }
-    let month = objectDate.toString().substr(4, 2),
-      date  = objectDate.toString().substr(6, 2);
+    const month = objectDate.toString().substr(4, 2);
+    const date  = objectDate.toString().substr(6, 2);
     return month + '/' + date;
   }
 }
