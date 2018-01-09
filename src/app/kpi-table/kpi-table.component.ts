@@ -10,6 +10,9 @@ export interface IKpiData {
   kpi: Array<IKpiRow>;
 }
 
+const SUNDAY   = 0;
+const SATURDAY = 6;
+
 @Component({
   selector: 'fr-kpi-table',
   templateUrl: './kpi-table.component.html'
@@ -25,12 +28,12 @@ export class FrKpiTableComponent implements OnInit {
 
   public isSunday(date: number): boolean {
     const d = this.int2DateObj(date);
-    return d.getDay() === 0;
+    return d.getDay() === SUNDAY;
   }
 
   public isSaturday(date: number): boolean {
     const d = this.int2DateObj(date);
-    return d.getDay() === 6;
+    return d.getDay() === SATURDAY;
   }
 
   private int2DateObj(objectDate: number): Date {
