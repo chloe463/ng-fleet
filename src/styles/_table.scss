@@ -30,11 +30,11 @@
 
   &__column {
     &--sunday {
-      background: #FFCFCF;
+      background: #FFE4E4;
     }
 
     &--saturday {
-      background: #BEE2FB;
+      background: #DFF2FF;
     }
 
     &--holiday {
@@ -44,9 +44,9 @@
 
   &__head {
     padding: 5px;
-    border: 1px solid $base1;
+    border: 1px solid $gray;
     font-size: 10pt;
-    background: #36A097;
+    background: $primary-light;
     color: $white;
     font-weight: 100;
   }
@@ -62,7 +62,7 @@
     padding: 3px;
     width: 60px;
     text-align: center;
-    border: 1px solid $base1;
+    border: 1px solid $gray;
     font-size: 10pt;
   }
 }
