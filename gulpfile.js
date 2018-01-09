@@ -14,7 +14,7 @@ const PROJECT_ROOT    = path.join(__dirname);
 const SOURCE_ROOT     = path.join(__dirname, 'src');
 const PRE_BUILDS_ROOT = path.join(__dirname, 'pre-builds');
 const BUILDS_ROOT     = path.join(__dirname, 'builds');
-const BUNDLES_ROOT    = path.join(__dirname, 'builds/bundles');
+const BUNDLES_ROOT    = path.join(__dirname, 'builds/francette/bundles');
 
 function promiseify(fn) {
   return function() {
@@ -128,7 +128,7 @@ gulp.task('build:css:themes', () => {
     .pipe(gulpSass()).on('error', gulpSass.logError)
     .pipe(autoPrefixer())
     .pipe(gulpCleanCss())
-    .pipe(gulp.dest('builds/bundles'));
+    .pipe(gulp.dest(BUNDLES_ROOT));
 });
 
 // bundle js files
