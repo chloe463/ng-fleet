@@ -37,8 +37,8 @@ export class FrKpiTableComponent implements OnInit {
   }
 
   private int2DateObj(objectDate: number): Date {
-    if (!objectDate.toString().match(/[0-9]{8}/)) {
-      throw 'objectDate MUST be [0-9]{8}';
+    if (!objectDate.toString().match(/^[0-9]{8}$/)) {
+      throw new Error('objectDate MUST be ^[0-9]{8}$');
     }
     let year  = objectDate.toString().substr(0, 4),
       month = objectDate.toString().substr(4, 2),
@@ -48,7 +48,7 @@ export class FrKpiTableComponent implements OnInit {
 
   public objectDate2MonthDate(objectDate: number): string {
     if (!objectDate.toString().match(/[0-9]{8}/)) {
-      throw 'objectDate MUST be [0-9]{8}';
+      throw new Error('objectDate MUST be ^[0-9]{8}$');
     }
     let month = objectDate.toString().substr(4, 2),
       date  = objectDate.toString().substr(6, 2);
