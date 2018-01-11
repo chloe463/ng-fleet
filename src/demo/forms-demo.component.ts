@@ -2,19 +2,30 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'forms-demo',
+  styles: [`
+    table {
+      width: 80%;
+      margin: 24px auto;
+    }
+    tr {
+      height: 70px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+  `],
   template: `
     <form (ngSubmit)="onSubmit(formValue.value)" #formValue="ngForm">
-      <table style="width:80%;margin:15px auto">
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">input-text-container</td>
+      <table>
+        <tr>
           <td>
             <fr-input-text-container>
               <input frInput type="text" name="text" placeholder="text" [(ngModel)]="form.text">
             </fr-input-text-container>
           </td>
         </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">select</td>
+        <tr>
           <td>
             <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select"
               [browserNative]="false"
@@ -25,8 +36,7 @@ import { Component } from '@angular/core';
             </fr-select>
           </td>
         </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">radio</td>
+        <tr>
           <td>
             <fr-form-group label="radio">
               <fr-radio-group name="testRadio" [(ngModel)]="form.radio" (change)="onRadioChange($event)">
@@ -39,8 +49,7 @@ import { Component } from '@angular/core';
             </fr-form-group>
           </td>
         </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">checkbox</td>
+        <tr>
           <td>
             <fr-form-group label="checkbox">
               <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1"
@@ -53,44 +62,34 @@ import { Component } from '@angular/core';
             </fr-form-group>
           </td>
         </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">switch</td>
+        <tr>
           <td>
             <fr-form-group label="switch">
               <fr-switch name="switch" [(ngModel)]="form.switch" [labels]="{ on: 'On', off: 'Off' }"></fr-switch>
             </fr-form-group>
           </td>
         </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">date picker</td>
+        <tr>
           <td>
-            <fr-form-group label="date">
+            <fr-form-group label="date-time">
               <fr-date-picker name="calendar" [(ngModel)]="form.date" (change)="onDatePickerChange($event)"></fr-date-picker>
-            </fr-form-group>
-          </td>
-        </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">time picker</td>
-          <td>
-            <fr-form-group label="time">
               <fr-time-picker name="time" [(ngModel)]="form.date" (change)="onTimePickerChange($event)"></fr-time-picker>
             </fr-form-group>
           </td>
         </tr>
-        <tr style="height:50px">
-          <td style="width:25%;text-align:right;padding-right:15px">text area</td>
+        <tr>
           <td>
             <fr-input-text-container>
               <textarea frInput placeholder="TextArea" name="textarea" maxLength="10" [(ngModel)]="form.textarea"></textarea>
             </fr-input-text-container>
           </td>
         </tr>
-        <tr style="height:50px">
+        <tr>
           <td>
-            <button class="fr-btn-skeleton--primary" (click)="submit()" style="margin: auto 50%" frRipple>submit</button>
-          </td>
-          <td>
-            <button class="fr-btn-skeleton--danger" (click)="reset()" style="margin: auto 50%" [frRipple]="'#EAEAEA'">reset</button>
+            <div class="buttons">
+              <button class="fr-btn-skeleton--primary" (click)="submit()" frRipple>submit</button>
+              <button class="fr-btn-skeleton--danger" (click)="reset()" [frRipple]="'#EAEAEA'">reset</button>
+            </div>
           </td>
         </tr>
       </table>
