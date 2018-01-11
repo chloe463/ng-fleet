@@ -11,20 +11,20 @@
     &--placeholder {
       top: 5px;
       left: 0;
-      color: #CCCCCC;
+      color: rgba(0,0,0,.54);
     }
 
     &--label {
-      top: -10px;
+      top: -1em;
       left: 0;
-      color: #CCCCCC;
+      color: rgba(0,0,0,.54);
       font-size: 12px;
     }
 
     &--label-on-focus {
-      top: -10px;
+      top: -1em;
       left: 0;
-      color: $secondary-light;
+      color: rgba(0,0,0,.54);
       font-size: 12px;
     }
   }
@@ -36,7 +36,7 @@
     font-size: 12pt;
     background: transparent;
     border: none;
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid rgba(0,0,0,.54);
     border-radius: 0;
     padding: 0;
     text-indent: 0;
