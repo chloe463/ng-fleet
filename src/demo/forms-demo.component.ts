@@ -137,6 +137,7 @@ export class FormsDemoComponent {
       select: '',
       radio: '',
       checkbox: {},
+      switch: false,
       date: new Date(),
       time: new Date()
     };
