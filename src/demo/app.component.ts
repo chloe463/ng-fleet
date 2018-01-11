@@ -22,7 +22,6 @@ export class AppComponent {
     { url: "dialog", title: "dialog" },
     { url: "forms", title: "forms" },
     { url: "progress", title: "progress" },
-    { url: "switch", title: "switch" },
     { url: "tabs", title: "tabs" },
     { url: "toaster", title: "toaster" },
     { url: "kpi-table", title: "kpi-table" }
