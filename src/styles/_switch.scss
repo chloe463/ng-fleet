@@ -1,6 +1,10 @@
 .fr-switch {
   position: relative;
 
+  &__label {
+    cursor: pointer;
+  }
+
   &__input {
     display: none;
   }
