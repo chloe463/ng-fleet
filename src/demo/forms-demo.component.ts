@@ -16,7 +16,9 @@ import { Component } from '@angular/core';
         <tr style="height:50px">
           <td style="width:25%;text-align:right;padding-right:15px">select</td>
           <td>
-            <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select" [browserNative]="false" (change)="onSelectChange($event)">
+            <fr-select [(ngModel)]="form.select" name="sampleSelect" placeholder="select"
+              [browserNative]="false"
+              (change)="onSelectChange($event)">
               <fr-option *ngFor="let option of options; let i = index" [value]="option.value" label="{{option.label}}"></fr-option>
               <fr-option value="123" label="label123"></fr-option>
               <fr-option value="987" label="label987"></fr-option>
@@ -41,11 +43,21 @@ import { Component } from '@angular/core';
           <td style="width:25%;text-align:right;padding-right:15px">checkbox</td>
           <td>
             <fr-form-group label="checkbox">
-              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1" (change)="onCheckboxChange($event)">checkbox1</fr-checkbox>
+              <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[0]" name="checkbox1"
+                (change)="onCheckboxChange($event)">checkbox1</fr-checkbox>
               <fr-checkbox label="checkbox1" [(ngModel)]="form.checkbox[1]" name="checkbox2">checkbox2</fr-checkbox>
               <fr-checkbox label="checkbox1" name="checkbox3" ngModel>checkbox3</fr-checkbox>
               <fr-checkbox label="checkbox1" name="checkbox4" ngModel>checkbox4</fr-checkbox>
-              <fr-checkbox *ngFor="let chk of chks; let i = index" name="{{chk.name}}" [(ngModel)]="form.checkbox[i+2]">{{chk.label}}</fr-checkbox>
+              <fr-checkbox *ngFor="let chk of chks; let i = index" name="{{chk.name}}"
+                [(ngModel)]="form.checkbox[i+2]">{{chk.label}}</fr-checkbox>
+            </fr-form-group>
+          </td>
+        </tr>
+        <tr style="height:50px">
+          <td style="width:25%;text-align:right;padding-right:15px">switch</td>
+          <td>
+            <fr-form-group label="switch">
+              <fr-switch name="switch" [(ngModel)]="form.switch" [labels]="{ on: 'On', off: 'Off' }"></fr-switch>
             </fr-form-group>
           </td>
         </tr>
@@ -107,6 +119,7 @@ export class FormsDemoComponent {
     select: '',
     radio: '',
     checkbox: {},
+    switch: false,
     date: new Date(),
     time: new Date()
   };
