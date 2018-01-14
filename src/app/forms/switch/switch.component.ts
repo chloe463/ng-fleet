@@ -5,6 +5,14 @@ import {
   forwardRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+  keyframes
+} from '@angular/animations';
 
 export interface IFrSwitchLabels {
   on: string;
@@ -22,7 +30,31 @@ export const SWITCH_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-switch',
   templateUrl: './switch.component.html',
-  providers: [SWITCH_CONTROL_VALUE_ACCESSOR]
+  providers: [SWITCH_CONTROL_VALUE_ACCESSOR],
+  animations: [
+    trigger('rippleState', [
+      state('on', style({})),
+      state('off', style({})),
+      transition('off => on', [
+        style({ background: '#ff7d90' }),
+        animate(800, keyframes([
+          style({ opacity: 1, transform: 'scale(0)', offset: 0 }),
+          style({ opacity: 0.2, transform: 'scale(1)', offset: 0.4 }),
+          style({ opacity: 0.05, transform: 'scale(1)', offset: 0.9 }),
+          style({ opacity: 0, transform: 'scale(1)', offset: 1 })
+        ]))
+      ]),
+      transition('on => off', [
+        style({ background: 'rgba(0,0,0,.26)' }),
+        animate(800, keyframes([
+          style({ opacity: 1, transform: 'scale(0)', offset: 0 }),
+          style({ opacity: 0.2, transform: 'scale(1)', offset: 0.4 }),
+          style({ opacity: 0.05, transform: 'scale(1)', offset: 0.9 }),
+          style({ opacity: 0, transform: 'scale(1)', offset: 1 })
+        ]))
+      ]),
+    ])
+  ]
 })
 export class FrSwitchComponent implements OnInit, ControlValueAccessor {
 
@@ -33,6 +65,7 @@ export class FrSwitchComponent implements OnInit, ControlValueAccessor {
   private _onTouchedCallback: (_: any) => void = noop;
 
   public labelText: string;
+  public ripple = 'off';
 
   constructor() { }
 
@@ -72,6 +105,7 @@ export class FrSwitchComponent implements OnInit, ControlValueAccessor {
 
   public toggle(): void {
     this.value = !this.value;
+    this.ripple = this.value ? 'on' : 'off';
   }
 
   public changeLabel(): void {
