@@ -42,6 +42,7 @@ export {
   FrRadioGroupDirective,
   FrOptionComponent,
   FrSelectComponent,
+  FrSwitchComponent,
   FrTimePickerComponent,
   FrFormsModule
 } from './forms/index';
@@ -66,7 +67,6 @@ export {
   FrSideNavItemDirective,
   FrSideNavModule
 } from './side-nav/index';
-export { FrSwitchComponent } from './switch/switch.component';
 export {
   FrTabsComponent,
   FrTabComponent,

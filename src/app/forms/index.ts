@@ -9,5 +9,6 @@ export {
 } from './input-text-container/input-text-container.component';
 export { FrOptionComponent } from './select/option.component';
 export { FrSelectComponent } from './select/select.component';
+export { FrSwitchComponent } from './switch/switch.component';
 export { FrTimePickerComponent } from './time-picker/time-picker.component';
 export { FrFormsModule } from './forms.module';
