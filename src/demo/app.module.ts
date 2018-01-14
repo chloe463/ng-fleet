@@ -21,7 +21,7 @@ import { FrancetteModule } from '../app/francette.module';
 const routeConfig: Routes = [
   // { path: '', component: DevelopAreaComponent },
   // { path: 'develop', component: DevelopAreaComponent },
-  { path: '', component: FormsDemoComponent },
+  { path: '', component: ButtonsDemoComponent },
   { path: 'develop', component: FormsDemoComponent },
   { path: 'data-table', component: DataTableDemoComponent },
   { path: 'dialog', component: DialogDemoComponent },

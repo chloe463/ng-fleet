@@ -88,7 +88,7 @@ import { Component } from '@angular/core';
           <td>
             <div class="buttons">
               <button class="fr-btn-skeleton--primary" (click)="submit()" frRipple>submit</button>
-              <button class="fr-btn-skeleton--danger" (click)="reset()" [frRipple]="'#EAEAEA'">reset</button>
+              <button class="fr-btn-skeleton--danger" (click)="reset()" frRipple>reset</button>
             </div>
           </td>
         </tr>
