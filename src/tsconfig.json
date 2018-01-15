@@ -18,8 +18,7 @@
   "exclude": [
     "test.ts",
     "app/*.spec.ts",
-    "app/**/**.spec.ts",
-    "app/**/**/**.spec.ts",
+    "app/**/*.spec.ts",
     "assets/*.ts"
   ]
 }
