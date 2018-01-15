@@ -6,7 +6,9 @@
           [class.fr-switch__bar--on]="value === true"></span>
     <span class="fr-switch__btn"
           [class.fr-switch__btn--off]="value === false"
-          [class.fr-switch__btn--on]="value === true"></span>
+          [class.fr-switch__btn--on]="value === true">
+      <span class="fr-switch__ripple" [@rippleState]="ripple"></span>
+    </span>
     <span class="fr-switch__label-text">{{labelText}}</span>
   </label>
 </div>

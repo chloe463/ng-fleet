@@ -1,0 +1,154 @@
+@import '../../styles/themes/japanesque';
+.fr-navbar {
+  display: block;
+  width: 100%;
+  height: 54px;
+  background: $primary;
+
+  &__space {
+    flex-grow: 1;
+  }
+
+  &__menu-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 7px;
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    rect {
+      fill: white;
+    }
+    &:hover {
+      background: lighten($blue, 15%);
+    }
+  }
+
+  &__items {
+    // background: $blue;
+    background: $primary;
+    padding-left: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    color: $text-on-primary;
+    margin-top: 0;
+    margin-bottom: 0px;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    // border-top: 1px solid $gray;
+    // border-bottom: 1px solid $gray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 800;
+  }
+
+  &__logo {
+    height: 27px;
+    margin: 0;
+    padding: 12px 12px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__item {
+    height: 27px;
+    margin: 0;
+    padding: 12px 6px;
+    text-align: center;
+    color: $text-on-primary;
+
+    & a {
+      color: $white;
+      text-decoration: none;
+    }
+
+    &--active {
+      // color: $white;
+      color: $text-on-primary;
+      &:hover {
+      }
+    }
+
+    &:hover .fr-navbar__menu {
+      visibility: visible;
+      top: 38px;
+      opacity: 1;
+    }
+    &:hover .fr-navbar__label {
+      // background: lighten($blue, 15%);
+      background: $primary-light;
+    }
+  }
+
+  &__on-right-first {
+    margin-left: auto;
+  }
+
+  &__label {
+    font-size: 15px;
+    padding: 8px 16px;
+    vertical-align: middle;
+    border-radius: 2px;
+    background: transparent;
+    color: $white;
+    cursor: pointer;
+    text-decoration: none;
+
+    & > * {
+      color: $text-on-primary;
+      text-decoration: none;
+    }
+
+    & a {
+      text-decoration: none;
+    }
+
+    &:hover {
+      // background: lighten($blue, 15%);
+      background: $primary-light;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 28px;
+    list-style: none;
+    line-height: 20px;
+    min-width: 180px;
+    // background: lighten($blue, 15%);
+    background: $primary-light;
+    // color: $black;
+    color: $primary-dark;
+    padding: 0;
+    visibility: hidden;
+    z-index: 801;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    opacity: 0;
+
+    transition-duration: .2s;
+    transition-property: all;
+    transition-timing-function: ease;
+
+    &-item {
+      line-height: 36px;
+      border-bottom: 1px solid $light-gray;
+
+      &:hover {
+        // background: lighten($blue, 20%);
+        background: $primary-light;
+      }
+
+      &:hover .fr-navbar__label {
+        // background: lighten($blue, 20%);
+        background: $primary-light;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

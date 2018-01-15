@@ -5,51 +5,41 @@ import { FrDataTableFooterComponent } from './data-table-footer.component';
 import { FrSelectComponent, FrOptionComponent } from '../../forms/index';
 
 describe('FrDataTableFooterComponent', () => {
-  let component: SampleFrDataTableFooterComponent;
-  let fixture: ComponentFixture<SampleFrDataTableFooterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         FrSelectComponent,
         FrOptionComponent,
-        FrDataTableFooterComponent,
-        SampleFrDataTableFooterComponent
+        FrDataTableFooterComponent
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SampleFrDataTableFooterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    let directive = new FrDataTableFooterComponent();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    let directive = new FrDataTableFooterComponent();
+    expect(directive).toBeTruthy();
   });
 
-  it('should have property \'paginationInfo\'', () => {
-    fixture = TestBed.createComponent(SampleFrDataTableFooterComponent);
-    component = fixture.componentInstance;
-    expect(component.paginationInfo).toEqual({
+  it('should have \'paginationInfo\'', () => {
+    let directive = new FrDataTableFooterComponent();
+    directive.paginationInfo = {
       totalRows: 100,
       rowsPerPageValues: [10, 30, 50],
+      rowsPerPage: 10,
+      page: 1
+    };
+    expect(directive.paginationInfo).toEqual({
+      totalRows: 100,
+      rowsPerPageValues: [10, 30, 50],
+      rowsPerPage: 10,
       page: 1
     });
   });
-});
 
-@Component({
-  template: `
-<fr-data-table-footer [paginationInfo]="paginationInfo"></fr-data-table-footer>
-`
-})
-class SampleFrDataTableFooterComponent {
-  paginationInfo = {
-    totalRows: 100,
-    rowsPerPageValues: [10, 30, 50],
-    page: 1
-  };
-}
+});

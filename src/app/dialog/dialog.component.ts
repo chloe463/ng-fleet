@@ -6,13 +6,16 @@ import {
   Input,
   Output,
   HostListener,
-  EventEmitter,
+  EventEmitter
+} from '@angular/core';
+import {
   animate,
   trigger,
   style,
   state,
   transition
-} from '@angular/core';
+} from '@angular/animations';
+import { timer } from 'rxjs/observable/timer';
 
 export interface IFrDialogActionKey {
   label: string;
@@ -77,9 +80,9 @@ export class FrDialogComponent implements OnInit, OnChanges {
 
   public dismiss(): void {
     this.dialogState = 'hidden';
-    setTimeout(() => {
+    timer(300).subscribe(() => {
       this.show = false;
-    }, 300);
+    })
   }
 
   @HostListener('window:keydown', ['$event'])

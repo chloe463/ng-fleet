@@ -25,4 +25,17 @@ describe('FrChipComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit event', () => {
+    component.dismiss.subscribe((value) => {
+      expect(value).toBeUndefined();
+    })
+    component.disappear();
+  });
+
+  it('should toggle flag', () => {
+    expect(component.on).toBeFalsy();
+    component.toggleOn();
+    expect(component.on).toBeTruthy();
+  });
 });

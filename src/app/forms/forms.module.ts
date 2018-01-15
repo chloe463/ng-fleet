@@ -9,6 +9,7 @@ import { FrInputTextComponent } from './input-text/input-text.component';
 import { FrInputDirective, FrInputTextContainerComponent } from './input-text-container/input-text-container.component';
 import { FrOptionComponent } from './select/option.component';
 import { FrRadioGroupDirective, FrRadioComponent } from './radio/radio/radio.component';
+import { FrSwitchComponent } from './switch/switch.component';
 import { FrSelectComponent } from './select/select.component';
 import { FrTimePickerComponent } from './time-picker/time-picker.component';
 
@@ -24,6 +25,7 @@ import { FrTimePickerComponent } from './time-picker/time-picker.component';
     FrRadioComponent,
     FrRadioGroupDirective,
     FrSelectComponent,
+    FrSwitchComponent,
     FrTimePickerComponent
   ],
   imports: [
@@ -41,6 +43,7 @@ import { FrTimePickerComponent } from './time-picker/time-picker.component';
     FrRadioComponent,
     FrRadioGroupDirective,
     FrSelectComponent,
+    FrSwitchComponent,
     FrTimePickerComponent
   ]
 })

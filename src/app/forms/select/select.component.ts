@@ -8,13 +8,15 @@ import {
   QueryList,
   forwardRef,
   ElementRef,
-  HostListener,
+  HostListener
+} from '@angular/core';
+import {
   trigger,
   state,
   style,
   transition,
   animate
-} from '@angular/core';
+} from '@angular/animations';
 import { NgModel } from '@angular/forms';
 import { FrOptionComponent } from './option.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -158,17 +160,18 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  @HostListener('document:keydown', ['$event'])
-  selectOnKeyDown(event: KeyboardEvent): void {
-    if (!this.isFocused) {
-      return;
-    }
-    if (event.key === 'ArrowUp') {
-      console.log(event);
-    } else if (event.key === 'ArrowDown') {
-      console.log(event);
-    }
-  }
+  // TODO: Make it possible to select value with arrow keys
+  // @HostListener('document:keydown', ['$event'])
+  // selectOnKeyDown(event: KeyboardEvent): void {
+  //   if (!this.isFocused) {
+  //     return;
+  //   }
+  //   if (event.key === 'ArrowUp') {
+  //     console.log(event);
+  //   } else if (event.key === 'ArrowDown') {
+  //     console.log(event);
+  //   }
+  // }
 
   public onFocus(event?: Event) {
     this.labelState = 'labelOnFocus';

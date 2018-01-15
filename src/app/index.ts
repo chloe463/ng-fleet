@@ -1,3 +1,19 @@
+export {
+  FrButtonDirective,
+  FrPrimaryButtonDirective,
+  FrInfoButtonDirective,
+  FrWarningButtonDirective,
+  FrDangerButtonDirective,
+  FrDisabledButtonDirective,
+  FrSkeletonButtonDirective,
+  FrSkeletonPrimaryButtonDirective,
+  FrSkeletonInfoButtonDirective,
+  FrSkeletonWarningButtonDirective,
+  FrSkeletonDangerButtonDirective,
+  FrSkeletonDisabledButtonDirective,
+  FrFlatButtonDirective,
+  FrButtonModule
+} from './button/index';
 export { FrChipComponent } from './chip/chip.component';
 export {
   FrDataTableColumnsComponent,
@@ -26,6 +42,7 @@ export {
   FrRadioGroupDirective,
   FrOptionComponent,
   FrSelectComponent,
+  FrSwitchComponent,
   FrTimePickerComponent,
   FrFormsModule
 } from './forms/index';
@@ -50,7 +67,6 @@ export {
   FrSideNavItemDirective,
   FrSideNavModule
 } from './side-nav/index';
-export { FrSwitchComponent } from './switch/switch.component';
 export {
   FrTabsComponent,
   FrTabComponent,

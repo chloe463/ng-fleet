@@ -11,7 +11,6 @@ import { FormsDemoComponent } from './forms-demo.component';
 import { ButtonsDemoComponent } from './buttons-demo.component';
 import { TabsDemoComponent } from './tabs-demo.component';
 import { KpiTableDemoComponent } from './kpi-table-demo.component';
-import { SwitchDemoComponent } from './switch-demo.component';
 import { DialogDemoComponent, DialogDummyComponent } from './dialog-demo.component';
 import { ToasterDemoComponent } from './toaster-demo.component';
 import { ProgressDemoComponent } from './progress-demo.component';
@@ -22,7 +21,7 @@ import { FrancetteModule } from '../app/francette.module';
 const routeConfig: Routes = [
   // { path: '', component: DevelopAreaComponent },
   // { path: 'develop', component: DevelopAreaComponent },
-  { path: '', component: FormsDemoComponent },
+  { path: '', component: ButtonsDemoComponent },
   { path: 'develop', component: FormsDemoComponent },
   { path: 'data-table', component: DataTableDemoComponent },
   { path: 'dialog', component: DialogDemoComponent },
@@ -30,7 +29,6 @@ const routeConfig: Routes = [
   { path: 'forms', component: FormsDemoComponent },
   { path: 'buttons', component: ButtonsDemoComponent },
   { path: 'progress', component: ProgressDemoComponent },
-  { path: 'switch', component: SwitchDemoComponent },
   { path: 'tabs', component: TabsDemoComponent },
   { path: 'toaster', component: ToasterDemoComponent },
   { path: 'kpi-table', component: KpiTableDemoComponent }
@@ -43,7 +41,6 @@ const routeConfig: Routes = [
     ChipsDemoComponent,
     FormsDemoComponent,
     ButtonsDemoComponent,
-    SwitchDemoComponent,
     TabsDemoComponent,
     KpiTableDemoComponent,
     DevelopAreaComponent,

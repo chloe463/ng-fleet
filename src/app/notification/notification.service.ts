@@ -10,21 +10,23 @@ import {
   OnInit,
   OnChanges,
   AfterViewInit,
-  animate,
-  trigger,
-  style,
-  state,
-  transition,
   AnimationTransitionEvent,
   HostListener,
   ReflectiveInjector,
   ComponentRef
 } from '@angular/core';
+import {
+  animate,
+  trigger,
+  style,
+  state,
+  transition
+} from '@angular/animations';
 import { FrNotificationType, FrNotificationParam } from './notification.types';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { timer } from 'rxjs/observable/timer';
 
-@Injectable()
 export class FrNotificationContext<T> implements Observer<T> {
   constructor(
     private _onNext: Function,
@@ -268,10 +270,10 @@ export class FrNotificationContentComponent implements OnInit {
     this.notificationState = 'active';
 
     // This is for animation
-    setTimeout(() => {
+    timer(this.timeout - 500).subscribe(() => {
       if (!this.closed) {
         this.notificationState = 'void';
       }
-    }, this.timeout - 500);
+    });
   }
 }

@@ -1,25 +1,26 @@
 import {
   Directive,
   ElementRef,
+  HostBinding,
   HostListener,
   Input
 } from '@angular/core';
+import { timer } from 'rxjs/observable/timer';
 
 @Directive({
-  selector: '[frRipple]',
-  host: {
-    '[class.fr-ripple]': 'true'
-  }
+  selector: '[frRipple]'
 })
 export class FrRippleDirective {
 
-  @Input('frRipple') rippleColor: string;
+  @Input() rippleColor: string;
+
+  @HostBinding('class.fr-ripple') private ripple = true;
 
   constructor(private _el: ElementRef) {
   }
 
   @HostListener('click', ['$event'])
-  public onClick(event) {
+  public onClick(event: MouseEvent) {
     let element = this._el.nativeElement;
 
     let offsetLeft = element.offsetLeft;
@@ -46,9 +47,9 @@ export class FrRippleDirective {
     ripple.classList.add('fr-ripple-effect');
     element.appendChild(ripple);
 
-    window.setTimeout(() => {
+    timer(1300).subscribe(() => {
       element.removeChild(ripple);
-    }, 1300);
+    });
   }
 
 }

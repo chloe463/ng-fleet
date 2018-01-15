@@ -31,11 +31,11 @@ import { Component } from '@angular/core';
     <button frRipple class="fr-btn-skeleton--default">default</button>
     <button frRipple class="fr-btn-skeleton--disabled" disabled>disabled</button>
     <div></div>
-    <button class="fr-btn-flat" [frRipple]="'#CCC'">flat</button>
+    <button class="fr-btn-flat" frRipple="'#CCC'">flat</button>
     <div style="margin:15px">
       <span style="margin:15px">
         <button class="fr-btn fr-btn-skeleton" frRipple>default</button>
-        <button class="fr-btn--primary" [frRipple]="'white'">primary</button>
+        <button class="fr-btn--primary" frRipple>primary</button>
       </span>
     </div>
   `

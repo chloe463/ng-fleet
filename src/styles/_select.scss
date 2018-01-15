@@ -24,7 +24,7 @@
     position: absolute;
     top: 5px;
     left: 0;
-    color: $light-gray;
+    color: rgba(0,0,0,.54);
     transition-property: all;
     transition-duration: 200ms;
     transition-timing-function: ease-out;
@@ -33,13 +33,13 @@
     &--placeholder {
       top: 5px;
       left: 0;
-      color: #CCCCCC;
+      color: rgba(0,0,0,.54);
     }
 
     &--label {
       top: -10px;
       left: 0;
-      color: #CCCCCC;
+      color: rgba(0,0,0,.54);
       font-size: 12px;
     }
 
@@ -58,7 +58,7 @@
     height: 2em;
     border-radius: 0;
     border: none;
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid rgba(0,0,0,.54);
     background: transparent;
     padding: 5px 10px 5px 0;
     cursor: pointer;
@@ -72,7 +72,7 @@
     height: 32px;
     font-size: 12pt;
     border: none;
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid rgba(0,0,0,.54);
     border-radius: 0;
     transition-property: border-bottom;
     transition-duration: 0.5s;

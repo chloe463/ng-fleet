@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -16,7 +18,6 @@ import { FrNotificationModule } from './notification/notification.module';
 
 import { FrChipComponent } from './chip/chip.component';
 import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
-import { FrSwitchComponent } from './switch/switch.component';
 import { FrDialogComponent } from './dialog/dialog.component';
 import { FrToasterComponent } from './toaster/toaster.component';
 import { FrDialogModule } from './dialog/dialog.module';
@@ -25,11 +26,11 @@ import { FrDialogModule } from './dialog/dialog.module';
   declarations: [
     FrChipComponent,
     FrKpiTableComponent,
-    FrSwitchComponent,
     FrDialogComponent,
     FrToasterComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     FormsModule,
     CommonModule,
     RouterModule,
@@ -56,7 +57,6 @@ import { FrDialogModule } from './dialog/dialog.module';
     FrRippleModule,
     FrSideNavModule,
     FrProgressModule,
-    FrSwitchComponent,
     FrDialogComponent,
     FrToasterComponent,
     FrDialogModule,

@@ -31,13 +31,4 @@ export class FrDataTableFooterComponent {
     return this._paginationInfo;
   }
 
-  /**
-   * @deprecated
-   * TODO: Remove in v0.7.0
-   */
-  public invokePaginationAction(event: FrDataTableEvent): void {
-    console.warn('@Output() paginationAction of fr-data-table-footer is deprecated. Use @Output() dataTableAction of fr-data-table instead');
-    this.paginationAction.emit(event);
-  }
-
 }

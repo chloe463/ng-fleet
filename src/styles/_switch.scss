@@ -1,22 +1,31 @@
 .fr-switch {
   position: relative;
 
+  &__label {
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+  }
+
   &__input {
     display: none;
   }
 
   &__bar {
     display: inline-block;
+    margin-right: 8px;
     width: 40px;
-    height: 15px;
+    height: 16px;
     border-radius: 10px;
 
     transition-property: background;
     transition-duration: 0.2s;
     transition-timing-function: ease;
+    transition-delay: 0.1s;
 
     &--off {
-      background: $light-gray;
+      background: rgba(0,0,0,.54);
     }
 
     &--on {
@@ -27,15 +36,15 @@
   &__btn {
     display: inline-block;
     position: absolute;
-    top: -5px;
-    width: 24px;
-    height: 24px;
+    top: -3px;
+    width: 22px;
+    height: 22px;
     border-radius: 100%;
     background: $white;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
 
     transition-property: background, left;
-    transition-duration: 0.5s, 0.2s;
+    transition-duration: 0.4s, 0.16s;
     transition-timing-function: ease;
 
     &--off {
@@ -48,6 +57,20 @@
       background: $secondary-light;
       left: 18px;
     }
+  }
+
+  &__ripple {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    background: $secondary-light;
+    opacity: .3;
+    border-radius: 50%;
+    transform: scale(0);
+    z-index: -1;
   }
 
 }

@@ -21,10 +21,10 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { timer } from 'rxjs/observable/timer';
 
 import { FrToasterParam } from './toaster.types';
 
-@Injectable()
 export class FrToasterContext<T> implements Observer<T> {
   constructor(
     private _onNext: Function,
@@ -227,17 +227,16 @@ export class FrToasterContentComponent implements OnInit {
     this.toasterState = 'active';
 
     // This is for animation
-    setTimeout(() => {
+    timer(this.timeout - 300).subscribe(() => {
       if (!this.closed) {
         this.toasterState = 'void';
       }
-    }, this.timeout - 300);
-
+    });
     // Close toaster after `timeout` milliseconds
-    setTimeout(() => {
+    timer(this.timeout).subscribe(() => {
       if (!this.closed) {
         this._context.complete();
       }
-    }, this.timeout);
+    });
   }
 }
