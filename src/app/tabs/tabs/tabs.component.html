@@ -1,6 +1,10 @@
 <div>
   <ul class="fr-tabs">
-    <li *ngFor="let tab of _tabs; let i = index" class="fr-tabs__title" [class.fr-tabs__title--active]="tab.selected" (click)="select(tab)" frRipple>
+    <li *ngFor="let tab of _tabs; let i = index"
+      frRipple [rippleColor]="'#EAEAEA'"
+      class="fr-tabs__title"
+      [class.fr-tabs__title--active]="tab.selected"
+      (click)="select(tab)">
       <label class="fr-tabs__link">{{tab.title}}</label>
     </li>
   </ul>
