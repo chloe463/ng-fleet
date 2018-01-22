@@ -1,5 +1,6 @@
 <div class="fr-input-file">
-  <div class="fr-input-file__drop-area"
+  <div *ngIf="dropArea"
+    class="fr-input-file__drop-area"
     [class.fr-input-file__drop-area--on]="fileOnArea">
     <span class="fr-input-file__drop-area-message">Drop Files Here</span>
   </div>

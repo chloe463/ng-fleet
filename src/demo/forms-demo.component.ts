@@ -24,6 +24,7 @@ import { Component } from '@angular/core';
               [name]="'file'"
               [multiple]="true"
               [accept]="'image/*,video/*'"
+              [dropArea]="true"
               (change)="onFileChange($event)"
               [(ngModel)]="form.file"></fr-input-file>
           </td>

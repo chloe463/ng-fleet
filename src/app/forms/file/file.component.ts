@@ -40,6 +40,7 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
   @Input() name = '';
   @Input() accept = '';
   @Input() multiple = false;
+  @Input() dropArea = true;
 
   @Output() change: EventEmitter<FrInputFileChange> = new EventEmitter<FrInputFileChange>();
 
