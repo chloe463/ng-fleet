@@ -12,6 +12,7 @@ import { FrRadioGroupDirective, FrRadioComponent } from './radio/radio/radio.com
 import { FrSwitchComponent } from './switch/switch.component';
 import { FrSelectComponent } from './select/select.component';
 import { FrTimePickerComponent } from './time-picker/time-picker.component';
+import { FrInputFileComponent } from './file/file.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FrTimePickerComponent } from './time-picker/time-picker.component';
     FrRadioGroupDirective,
     FrSelectComponent,
     FrSwitchComponent,
-    FrTimePickerComponent
+    FrTimePickerComponent,
+    FrInputFileComponent
   ],
   imports: [
     FormsModule,
@@ -44,7 +46,8 @@ import { FrTimePickerComponent } from './time-picker/time-picker.component';
     FrRadioGroupDirective,
     FrSelectComponent,
     FrSwitchComponent,
-    FrTimePickerComponent
+    FrTimePickerComponent,
+    FrInputFileComponent
   ]
 })
 export class FrFormsModule { }
