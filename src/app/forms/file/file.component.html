@@ -1,16 +1,18 @@
 <div class="fr-input-file">
-  <div *ngIf="dropArea"
+  <div *ngIf="needDropArea()"
     class="fr-input-file__drop-area"
-    [class.fr-input-file__drop-area--on]="fileOnArea">
+    [class.fr-input-file__drop-area--on]="fileOnArea"
+    [class.fr-input-file__drop-area--disabled]="disabled">
     <span class="fr-input-file__drop-area-message">Drop Files Here</span>
   </div>
-  <label class="fr-input-file__label">
+  <label class="fr-input-file__label" [class.fr-input-file__label--disabled]="disabled">
     Choose file
     <input #input type="file"
       name="{{name}}"
       class="fr-input-file__input"
       accept="{{accept}}"
-      (change)="onChange($event)">
+      (change)="onChange($event)"
+      [disabled]="disabled">
   </label>
   <table class="fr-input-file__list" *ngIf="files.length">
     <thead class="fr-input-file__list-header">

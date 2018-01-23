@@ -107,6 +107,10 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
     return this._isDisabled;
   }
 
+  public needDropArea(): boolean {
+    return this.disabled === false && this.dropArea === true;
+  }
+
   public emitChange(): void {
     const event = new FrInputFileChange();
     event.source = this;
@@ -172,7 +176,7 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
   @HostListener('dragenter', ['$event'])
   public onDragEnter(event: DragEvent) {
     this.preventDefaults(event);
-    this.fileOnArea = true;
+    this.fileOnArea = !this.disabled ? true : false;
   }
 
   @HostListener('dragover', ['$event'])
@@ -190,6 +194,10 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
   public onDrop(event: DragEvent) {
     event.preventDefault();
     event.stopPropagation();
+    if (this.disabled) {
+      alert('It is disabled');
+      return;
+    }
     this.updateValue(event.dataTransfer.files);
     // this.value      = event.dataTransfer.files;
     this.fileOnArea = false;
