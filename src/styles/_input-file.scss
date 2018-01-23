@@ -80,6 +80,10 @@
     font-weight: 100;
     border-bottom: 1px solid rgba(0,0,0,.26);
     color: rgba(0,0,0,.54);
+
+    &--right {
+      text-align: right;
+    }
   }
 
   &__item {
@@ -87,5 +91,9 @@
     text-align: left;
     border-bottom: 1px solid rgba(0,0,0,.26);
     color: rgba(0,0,0,.54);
+
+    &--right {
+      text-align: right;
+    }
   }
 }
