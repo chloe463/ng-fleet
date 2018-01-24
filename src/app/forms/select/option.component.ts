@@ -1,22 +1,13 @@
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'fr-option',
   template: ``
 })
-export class FrOptionComponent implements OnInit {
+export class FrOptionComponent {
 
-  @Input() value: string;
+  @Input() value: any;
   @Input() label: string;
-  @Input() selected: boolean = false;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Input() selected = false;
 
 }

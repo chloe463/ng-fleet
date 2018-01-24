@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  AfterContentInit,
   Input,
   Output,
   EventEmitter,
@@ -21,11 +22,6 @@ import { NgModel } from '@angular/forms';
 import { FrOptionComponent } from './option.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-interface IFrDropDownOption {
-  value: any;
-  label: string | number;
-}
-
 export class FrSelectChange {
   source: FrSelectComponent;
   value: any;
@@ -44,29 +40,40 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './select.component.html',
   providers: [SELECT_CONTROL_VALUE_ACCESSOR]
 })
-export class FrSelectComponent implements OnInit, ControlValueAccessor {
+export class FrSelectComponent implements OnInit, AfterContentInit, ControlValueAccessor {
   @Input() name: string;
-  @Input() placeholder: string | number;
+  @Input() placeholder: string;
   @Input() browserNative: boolean;
 
   @Output() change: EventEmitter<FrSelectChange> = new EventEmitter<FrSelectChange>();
 
-  @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent> = new QueryList<FrOptionComponent>();
+  @ContentChildren(FrOptionComponent) options: QueryList<FrOptionComponent> = new QueryList<FrOptionComponent>();
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
 
-  public optionsVisibility: string = 'hidden';
-  public label: string | number;
-  public labelState: string = 'placeholder';
-  public isFocused: boolean = false;
+  public optionsVisibility = 'hidden';
+  public label: string;
+  public labelState = 'placeholder';
+  public isFocused  = false;
 
   constructor(private el: ElementRef) { }
 
   ngOnInit() {
     this.optionsVisibility = 'hidden';
+  }
+
+  ngAfterContentInit() {
+    this.label      = '';
+    this.labelState = 'placeholder';
+    const selectedOption = this.options.find(option => {
+      return this.value === option.value;
+    });
+    if (!selectedOption) { return; }
+    this.label = selectedOption.label;
+    this.onBlur();
   }
 
   public onChange(value): void {
@@ -97,18 +104,15 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     if (obj !== this._innerValue) {
       this._innerValue = obj;
     }
-    let found = false;
-    this._options.forEach((option) => {
-      if (option.value === obj) {
-        this.label = option.label;
-        this.onBlur();
-        found = true;
-      }
+    this.label      = '';
+    this.labelState = 'placeholder';
+
+    const selectedOption = this.options.find(option => {
+      return option.value === obj;
     });
-    if (!found) {
-      this.label = '';
-      this.labelState = 'placeholder';
-    }
+    if (!selectedOption) { return; }
+    this.label = selectedOption.label;
+    this.onBlur();
   }
 
   registerOnChange(fn: any): void {
@@ -136,7 +140,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     if (this.disabled) {
       return;
     }
-    this.optionsVisibility = (this.optionsVisibility === 'show') ? 'hidden': 'show';
+    this.optionsVisibility = (this.optionsVisibility === 'show') ? 'hidden' : 'show';
     this.onFocus();
   }
 
