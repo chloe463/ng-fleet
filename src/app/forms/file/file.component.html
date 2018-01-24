@@ -2,7 +2,7 @@
   <div *ngIf="needDropArea()"
     class="fr-input-file__drop-area"
     [class.fr-input-file__drop-area--on]="fileOnArea"
-    [class.fr-input-file__drop-area--disabled]="disabled">
+    [class.fr-input-file__drop-area--disabled]="disabled" frRipple [rippleColor]="'rgba(0,0,0,.26)'">
     <span class="fr-input-file__drop-area-message">Drop Files Here</span>
   </div>
   <label class="fr-input-file__label" [class.fr-input-file__label--disabled]="disabled">

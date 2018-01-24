@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { FrRippleModule } from '../ripple/ripple.module';
 import { FrCheckboxComponent } from './checkbox/checkbox.component';
 import { FrDatePickerComponent } from './date-picker/date-picker.component';
 import { FrFormGroupComponent } from './form-group/form-group.component';
@@ -32,7 +33,8 @@ import { FrInputFileComponent } from './file/file.component';
   ],
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    FrRippleModule
   ],
   exports: [
     FrCheckboxComponent,

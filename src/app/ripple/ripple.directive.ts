@@ -20,6 +20,7 @@ export class FrRippleDirective {
   }
 
   @HostListener('click', ['$event'])
+  @HostListener('drop', ['$event'])
   public onClick(event: MouseEvent) {
     let element = this._el.nativeElement;
 
