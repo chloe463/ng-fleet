@@ -18,7 +18,6 @@ import { FrNotificationModule } from './notification/notification.module';
 
 import { FrChipComponent } from './chip/chip.component';
 import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
-import { FrDialogComponent } from './dialog/dialog.component';
 import { FrToasterComponent } from './toaster/toaster.component';
 import { FrDialogModule } from './dialog/dialog.module';
 
@@ -26,7 +25,6 @@ import { FrDialogModule } from './dialog/dialog.module';
   declarations: [
     FrChipComponent,
     FrKpiTableComponent,
-    FrDialogComponent,
     FrToasterComponent
   ],
   imports: [
@@ -57,7 +55,6 @@ import { FrDialogModule } from './dialog/dialog.module';
     FrRippleModule,
     FrSideNavModule,
     FrProgressModule,
-    FrDialogComponent,
     FrToasterComponent,
     FrDialogModule,
     FrToasterModule,

@@ -16,42 +16,17 @@ import { Observer } from 'rxjs/Observer';
     selector: 'dialog-demo',
     template: `
 <h1>Dialog</h1>
-<button class="fr-btn fr-btn--primary" frRipple (click)="d.open()">test</button>
-<button class="fr-btn fr-btn--primary" frRipple (click)="toggleDialog()">toggle dialog</button>
-<button class="fr-btn fr-btn--primary" frRipple (click)="toggleDialogWithService()">toggle dialog with service</button>
+<button class="fr-btn fr-btn--primary" frRipple (click)="showDialog()">dialog</button>
   <div style="display:block;width:100%;height:1080px"></div>
 <fr-dialog-entry></fr-dialog-entry>
-<fr-dialog
-  [(show)]="showDialog"
-  [size]="dialogSize"
-  [actionKeys]="actionKeys"
-  (action)="dialogAction($event)"
-  #d="frDialog">
-  <div style="margin: 15px">Dialog Content</div>
-</fr-dialog>
     `,
     providers: [ FrDialogService ]
 })
-export class DialogDemoComponent implements OnInit {
-
-  showDialog = false;
-  dialogSize = { width: 500, height: 300 };
-  actionKeys = [
-    { label: 'NG', value: 'ng' },
-    { label: 'OK', value: 'ok' }
-  ];
+export class DialogDemoComponent {
 
   constructor (private dialogService: FrDialogService) {}
 
-  ngOnInit() {
-    console.log(this);
-  }
-
-  public toggleDialog(): void {
-    this.showDialog = !this.showDialog;
-  }
-
-  public toggleDialogWithService(): void {
+  public showDialog(): void {
     const dialogObserver: Observer<any> = {
       next:     val    => console.log('onNext: ', val),
       error:    reason => console.log('onError:', reason),

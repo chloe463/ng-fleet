@@ -26,7 +26,6 @@ export {
   FrDataTableModule
 } from './data-table/index';
 export {
-  FrDialogComponent,
   FrDialogService,
   FrDialogContext,
   FrDialogEntryComponent,
