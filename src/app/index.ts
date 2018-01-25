@@ -71,7 +71,6 @@ export {
   FrTabComponent,
   FrTabsModule
 } from './tabs/index';
-export { FrToasterComponent } from './toaster/toaster.component';
 export {
   FrToasterModule,
   FrToasterService,
