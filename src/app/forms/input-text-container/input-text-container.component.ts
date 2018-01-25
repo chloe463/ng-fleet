@@ -137,10 +137,10 @@ export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     if (this.input === undefined) {
-      throw 'Child component input[frInput] is required!';
+      throw new Error('Child component input[frInput] is required!');
     }
     if ((this.input instanceof FrInputDirective) === false) {
-      throw 'Child component input[frInput] is required!';
+      throw new Error('Child component input[frInput] is required!');
     }
     this.placeholder = this.input.placeholder;
     this.maxLength   = this.input.maxLength;

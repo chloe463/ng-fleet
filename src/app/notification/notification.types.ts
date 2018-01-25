@@ -4,9 +4,9 @@
  * but if I do so, it does not working with ngc.
  */
 export type FrNotificationType = 'primary' | 'info' | 'warning' | 'danger' | 'default';
-export type FrNotificationParam = {
+export interface FrNotificationParam {
   text: string;
   type?: FrNotificationType;
   timeout: number;
   extraParams?: any;
-};
+}

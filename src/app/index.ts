@@ -49,22 +49,22 @@ export {
 export { FrKpiTableComponent } from './kpi-table/index';
 export {
   FrNavbarComponent,
-  FrNavbarItemDirective,
-  FrNavbarMenuDirective,
-  FrNavbarLogoDirective,
+  FrNavbarItemComponent,
+  FrNavbarMenuComponent,
+  FrNavbarLogoComponent,
   FrNavbarModule
 } from './navbar/index';
 export {
  FrProgressBarComponent,
  FrProgressSpinnerComponent,
  FrProgressModule
-} from './progress/index'
+} from './progress/index';
 export { FrRippleDirective } from './ripple/ripple.directive';
 export { FrRippleModule } from './ripple/ripple.module';
 export {
   FrSideNavComponent,
-  FrSideNavItemGroupDirective,
-  FrSideNavItemDirective,
+  FrSideNavItemGroupComponent,
+  FrSideNavItemComponent,
   FrSideNavModule
 } from './side-nav/index';
 export {

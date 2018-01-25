@@ -45,7 +45,7 @@ export class FrDirectiveComponent implements ControlValueAccessor {
   public _onChangeCallback: (_: any) => void = noop;
   public _onTouchedCallback: () => void = noop;
 
-  private _isDiabled: boolean = false;
+  private _isDiabled = false;
 
   constructor() { }
 
@@ -157,7 +157,7 @@ export class FrRadioComponent implements OnInit {
     this.isRippleOn = true;
     timer(1000).subscribe(() => {
       this.isRippleOn = false;
-    })
+    });
 
     if (this.radioGroup) {
       this.radioGroup.value = this.value;

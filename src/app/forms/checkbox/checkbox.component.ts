@@ -41,7 +41,7 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
 
   public isRippleOn = false;
   public isFocused: boolean;
@@ -72,7 +72,7 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
     this.isRippleOn = true;
     timer(1000).subscribe(() => {
       this.isRippleOn = false;
-    })
+    });
 
     event.stopPropagation();
     this.emitChangeEvent();

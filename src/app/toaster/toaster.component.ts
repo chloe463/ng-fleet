@@ -37,7 +37,7 @@ import { timer } from 'rxjs/observable/timer';
 export class FrToasterComponent implements OnInit, OnChanges {
 
   private _show = false;
-  public toastState: string = 'hidden';
+  public toastState = 'hidden';
 
   @Input() actionKey: string;
 

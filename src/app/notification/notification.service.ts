@@ -64,7 +64,7 @@ export class FrNotificationContext<T> implements Observer<T> {
 @Injectable()
 export class FrNotificationService {
   public vcr: ViewContainerRef;
-  public count: number = 0;
+  public count = 0;
 
   constructor(public cfr: ComponentFactoryResolver) { }
 
@@ -83,8 +83,8 @@ export class FrNotificationService {
 
       const _onNext = (value: T) => {
         if (componentRef) {
-          observer.next && observer.next(value);
-          observer.complete && observer.complete();
+          if (observer.next) { observer.next(value); }
+          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.count--;
           componentRef.destroy();
@@ -92,21 +92,21 @@ export class FrNotificationService {
       };
       const _onError = (reason?: any) => {
         if (componentRef) {
-          observer.error && observer.error(reason);
-          observer.complete && observer.complete();
+          if (observer.error) { observer.error(reason); }
+          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.count--;
           componentRef.destroy();
         }
-      }
+      };
       const _onComplete = (): void => {
         if (componentRef) {
-          observer && observer.complete();
+          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.count--;
           componentRef.destroy();
         }
-      }
+      };
       const bindings = ReflectiveInjector.resolve([
         { provide: FrNotificationContext, useValue: new FrNotificationContext(_onNext, _onError, _onComplete, notificationParam) }
       ]);
@@ -121,7 +121,7 @@ export class FrNotificationService {
 }
 
 @Directive({
-  selector: '[fr-notification-inner]'
+  selector: '[frNotificationInner]'
 })
 export class FrNotificationInnerDirective {
   constructor (public vcr: ViewContainerRef) { }
@@ -131,7 +131,7 @@ export class FrNotificationInnerDirective {
   selector: 'fr-notification-entry',
   template: `
 <div class="fr-notification-container">
-  <div fr-notification-inner></div>
+  <div frNotificationInner></div>
 </div>
   `,
   styles: [`
@@ -237,9 +237,9 @@ export class FrNotificationEntryComponent implements AfterViewInit {
   ]
 })
 export class FrNotificationContentComponent implements OnInit {
-  public text: string = '';
-  public timeout: number = 500;
-  public closed: boolean = false;
+  public text = '';
+  public timeout = 500;
+  public closed = false;
 
   public notificationState = 'void';
   public notificationType: any;

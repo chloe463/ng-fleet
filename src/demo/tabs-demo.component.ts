@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+/* tslint:disable component-selector */
 @Component({
   selector: 'tabs-demo',
   template: `

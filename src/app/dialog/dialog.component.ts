@@ -20,7 +20,7 @@ import { timer } from 'rxjs/observable/timer';
 export interface IFrDialogActionKey {
   label: string;
   value: any;
-};
+}
 
 @Component({
   selector: 'fr-dialog',
@@ -45,7 +45,7 @@ export interface IFrDialogActionKey {
 export class FrDialogComponent implements OnInit, OnChanges {
 
   private _show = false;
-  public dialogState: string = 'hidden';
+  public dialogState = 'hidden';
 
   @Input() actionKeys: Array<IFrDialogActionKey>;
   @Input() size: any;
@@ -82,12 +82,12 @@ export class FrDialogComponent implements OnInit, OnChanges {
     this.dialogState = 'hidden';
     timer(300).subscribe(() => {
       this.show = false;
-    })
+    });
   }
 
   @HostListener('window:keydown', ['$event'])
   public dismissOneEscape(event): void {
-    if (event.key === 'Escape' && event.code === "Escape") {
+    if (event.key === 'Escape' && event.code === 'Escape') {
       this.dismiss();
     }
   }

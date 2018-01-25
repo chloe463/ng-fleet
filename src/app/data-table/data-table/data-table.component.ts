@@ -67,8 +67,8 @@ export class FrDataTableStripeDirective {
 })
 export class FrDataTableComponent implements AfterContentInit {
 
-  @Input() selectable: boolean = false;
-  @Input() sortable: boolean = false;
+  @Input() selectable = false;
+  @Input() sortable = false;
 
   @Output() dataTableAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
@@ -79,7 +79,7 @@ export class FrDataTableComponent implements AfterContentInit {
   @ContentChild(FrDataTableRowsComponent) rowsComponent: FrDataTableRowsComponent;
   @ContentChild(FrDataTableFooterComponent) footerComponent: FrDataTableFooterComponent;
 
-  public title: string       = '';
+  public title = '';
   public columns: Array<any> = [];
   public rows: Array<any>    = [];
   public sortState = { column: null, order: 'asc' };
@@ -90,7 +90,7 @@ export class FrDataTableComponent implements AfterContentInit {
   public checkedRowIndices: any;
   public checkAllFlag: boolean;
 
-  public actionListState: string = 'hidden';
+  public actionListState = 'hidden';
 
   public ripples = { edit: false, delete: false, dots: false };
 
@@ -191,7 +191,7 @@ export class FrDataTableComponent implements AfterContentInit {
 
   public toggleOtherActionList(): void {
     this.activateRippleEffect('dots');
-    this.actionListState = (this.actionListState === 'hidden') ? 'show': 'hidden';
+    this.actionListState = (this.actionListState === 'hidden') ? 'show' : 'hidden';
   }
 
   private activateRippleEffect(key: string): void {

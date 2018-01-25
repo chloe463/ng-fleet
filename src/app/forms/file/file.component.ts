@@ -121,7 +121,7 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
   private setUnit(size: number): string {
     const units: string[] = ['KB', 'MB', 'GB', 'TB', 'PB'];
     let transformed: number = size;
-    let unit = 'B'
+    let unit = 'B';
     for (let i = 0; i < unit.length; ++i) {
       transformed = transformed / 1000;
       unit        = units[i] ? units[i] : 'PB';

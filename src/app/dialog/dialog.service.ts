@@ -52,27 +52,27 @@ export class FrDialogService {
 
       const _onNext = (value: T) => {
         if (componentRef) {
-          observer.next && observer.next(value);
-          observer.complete && observer.complete();
+          if (observer.next) { observer.next(value); }
+          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.close(componentRef);
         }
-      }
+      };
       const _onError = (reason?: any) => {
         if (componentRef) {
-          observer.error && observer.error(reason);
-          observer.complete && observer.complete();
+          if (observer.error) { observer.error(reason); }
+          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.close(componentRef);
         }
-      }
+      };
       const  _onComplete = (): void => {
         if (componentRef) {
-          observer.complete && observer.complete();
+          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.close(componentRef);
         }
-      }
+      };
       const bindings = ReflectiveInjector.resolve([
         { provide: FrDialogContext, useValue: new FrDialogContext<T>(_onNext, _onError, _onComplete, extraParams) }
       ]);
@@ -86,12 +86,11 @@ export class FrDialogService {
   }
 
   public close(componentRef?: ComponentRef<any>): void {
-    // If no componentRef is given, close the foremost dialog.
     if (!componentRef) {
+      // If no componentRef is given, close the foremost dialog.
       componentRef = this.dialogStack.pop();
-    }
-    // Remove specified componentRef from stack
-    else {
+    } else {
+      // Remove specified componentRef from stack
       this.dialogStack = this.dialogStack.filter((dialogRef) => {
         return dialogRef !== componentRef;
       });
@@ -101,6 +100,6 @@ export class FrDialogService {
     timer(500).subscribe(() => {
       componentRef.destroy();
       componentRef = undefined;
-    })
+    });
   }
 }

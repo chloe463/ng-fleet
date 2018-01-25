@@ -1,10 +1,11 @@
-import { Directive, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IFrNavbarNode } from '../navbar/navbar.model';
 
-@Directive({
-  selector: 'fr-navbar-logo'
+@Component({
+  selector: 'fr-navbar-logo',
+  template: ''
 })
-export class FrNavbarLogoDirective {
+export class FrNavbarLogoComponent {
   @Input() logo: IFrNavbarNode;
 
   get title(): string {

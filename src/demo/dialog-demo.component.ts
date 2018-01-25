@@ -11,6 +11,7 @@ import {
 import { FrDialogService, FrDialogContext } from './../app/dialog/dialog.service';
 import { Observer } from 'rxjs/Observer';
 
+/* tslint:disable component-selector */
 @Component({
     selector: 'dialog-demo',
     template: `
@@ -56,7 +57,7 @@ export class DialogDemoComponent implements OnInit {
       error:    reason => console.log('onError:', reason),
       complete: ()     => console.log('onComplete')
     };
-    const extraParams = { title: "Hi! I'm a dialog!" };
+    const extraParams = { title: 'Hi! I\'m a dialog!' };
     this.dialogService.open<any>(DialogDummyComponent, extraParams).subscribe(dialogObserver);
   }
 
@@ -102,11 +103,11 @@ export class DialogDemoComponent implements OnInit {
   </div>
   `
 })
-export class DialogDummyComponent implements OnInit{
+export class DialogDummyComponent implements OnInit {
   constructor (private dialogContext: FrDialogContext<any>) {}
 
-  public text: string = '';
-  public title: string = '';
+  public text = '';
+  public title = '';
 
   ngOnInit() {
     this.title = this.dialogContext.params.title;

@@ -22,7 +22,7 @@ export class FrRippleDirective {
   @HostListener('click', ['$event'])
   @HostListener('drop', ['$event'])
   public onClick(event: MouseEvent) {
-    let element = this._el.nativeElement;
+    const element = this._el.nativeElement;
 
     let offsetLeft = element.offsetLeft;
     let offsetTop  = element.offsetTop;

@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 
 import { FrToasterService } from './../app/toaster/toaster.service';
 import { FrToasterParam } from './../app/toaster/toaster.types';
-import { FrNotificationService } from './../app/notification/notification.service'
+import { FrNotificationService } from './../app/notification/notification.service';
 import { FrNotificationParam, FrNotificationType } from './../app/notification/notification.types';
 
+/* tslint:disable component-selector */
 @Component({
   selector: 'toaster-demo',
   template: `
@@ -61,7 +62,7 @@ export class ToasterDemoComponent {
 
   public popupNotification(type: FrNotificationType): void {
     const notificationParam: FrNotificationParam = {
-      text: "Hi! I'm a notification!",
+      text: 'Hi! I\'m a notification!',
       type: type,
       timeout: 3000,
       extraParams: { message: 'message' }
