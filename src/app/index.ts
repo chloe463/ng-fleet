@@ -39,7 +39,7 @@ export {
   FrInputTextComponent,
   FrInputDirective,
   FrInputTextContainerComponent,
-  FrRadioGroupDirective,
+  FrDirectiveComponent,
   FrOptionComponent,
   FrSelectComponent,
   FrSwitchComponent,
