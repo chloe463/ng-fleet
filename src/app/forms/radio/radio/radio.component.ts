@@ -150,10 +150,6 @@ export class FrRadioComponent implements OnInit {
 
   public onInputClick(event: Event): void {
     event.stopPropagation();
-  }
-
-  public onInputChange(event: Event): void {
-    event.stopPropagation();
     this.checked = true;
     this._eventChangeEvent();
 
@@ -168,6 +164,10 @@ export class FrRadioComponent implements OnInit {
       this.radioGroup.selectOneByRadioComponent(this);
       this.radioGroup.emitChangeEvent();
     }
+  }
+
+  public onInputChange(event: Event): void {
+    event.stopPropagation();
   }
 
   public onFocus(event: Event): void {
