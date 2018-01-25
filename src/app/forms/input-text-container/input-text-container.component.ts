@@ -113,7 +113,7 @@ export class FrInputDirective implements OnInit, OnDestroy {
 })
 export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
-  @ContentChild(FrInputDirective) _input: FrInputDirective;
+  @ContentChild(FrInputDirective) input: FrInputDirective;
 
   public maxLength: number;
   public labelState = 'placeholder';
@@ -126,14 +126,14 @@ export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    if (this._input === undefined) {
+    if (this.input === undefined) {
       throw 'Child component input[frInput] is required!';
     }
-    if ((this._input instanceof FrInputDirective) === false) {
+    if ((this.input instanceof FrInputDirective) === false) {
       throw 'Child component input[frInput] is required!';
     }
-    this.placeholder = this._input.placeholder;
-    this.maxLength   = this._input.maxLength;
+    this.placeholder = this.input.placeholder;
+    this.maxLength   = this.input.maxLength;
   }
 
 }
