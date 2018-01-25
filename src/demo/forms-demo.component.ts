@@ -20,6 +20,16 @@ import { Component } from '@angular/core';
       <table>
         <tr>
           <td>
+            <fr-input-file
+              [name]="'file'"
+              [multiple]="true"
+              [accept]="'image/*,video/*'"
+              [dropArea]="true"
+              (change)="onFileChange($event)"
+              [(ngModel)]="form.file"></fr-input-file>
+          </td>
+        <tr>
+          <td>
             <fr-input-text-container>
               <input frInput type="text" name="text" placeholder="text" [(ngModel)]="form.text">
             </fr-input-text-container>
@@ -114,6 +124,7 @@ export class FormsDemoComponent {
   ];
   selectDisabled = true;
   form: any = {
+    file: {},
     text: '',
     select: '',
     radio: '',
@@ -133,6 +144,7 @@ export class FormsDemoComponent {
 
   public reset() {
     this.form = {
+      file: {},
       text: '',
       select: '',
       radio: '',
@@ -146,6 +158,10 @@ export class FormsDemoComponent {
   public onSubmit(e) {
     console.log(e);
     return false;
+  }
+
+  public onFileChange(event): void {
+    console.log(event);
   }
 
   public onSelectChange(event: Event): void {

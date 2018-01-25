@@ -1,0 +1,33 @@
+<div class="fr-input-file">
+  <div *ngIf="needDropArea()"
+    class="fr-input-file__drop-area"
+    [class.fr-input-file__drop-area--on]="fileOnArea"
+    [class.fr-input-file__drop-area--disabled]="disabled" frRipple [rippleColor]="'rgba(0,0,0,.26)'">
+    <span class="fr-input-file__drop-area-message">Drop Files Here</span>
+  </div>
+  <label class="fr-input-file__label" [class.fr-input-file__label--disabled]="disabled">
+    Choose file
+    <input #input type="file"
+      name="{{name}}"
+      class="fr-input-file__input"
+      accept="{{accept}}"
+      (change)="onChange($event)"
+      [disabled]="disabled">
+  </label>
+  <table class="fr-input-file__list" *ngIf="files.length">
+    <thead class="fr-input-file__list-header">
+      <tr class="fr-input-file__list-row">
+        <th class="fr-input-file__list-column-name">Name</th>
+        <th class="fr-input-file__list-column-name">Type</th>
+        <th class="fr-input-file__list-column-name fr-input-file__list-column-name--right">Size</th>
+      </tr>
+    </thead>
+    <tbody class="fr-input-file__list-body">
+      <tr *ngFor="let file of files" class="fr-input-file__list-row">
+        <td class="fr-input-file__item">{{file.name}}</td>
+        <td class="fr-input-file__item">{{file.type}}</td>
+        <td class="fr-input-file__item fr-input-file__item--right">{{file.size}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

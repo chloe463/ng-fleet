@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { FrRippleModule } from '../ripple/ripple.module';
 import { FrCheckboxComponent } from './checkbox/checkbox.component';
 import { FrDatePickerComponent } from './date-picker/date-picker.component';
 import { FrFormGroupComponent } from './form-group/form-group.component';
@@ -12,6 +13,7 @@ import { FrRadioGroupDirective, FrRadioComponent } from './radio/radio/radio.com
 import { FrSwitchComponent } from './switch/switch.component';
 import { FrSelectComponent } from './select/select.component';
 import { FrTimePickerComponent } from './time-picker/time-picker.component';
+import { FrInputFileComponent } from './file/file.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import { FrTimePickerComponent } from './time-picker/time-picker.component';
     FrRadioGroupDirective,
     FrSelectComponent,
     FrSwitchComponent,
-    FrTimePickerComponent
+    FrTimePickerComponent,
+    FrInputFileComponent
   ],
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    FrRippleModule
   ],
   exports: [
     FrCheckboxComponent,
@@ -44,7 +48,8 @@ import { FrTimePickerComponent } from './time-picker/time-picker.component';
     FrRadioGroupDirective,
     FrSelectComponent,
     FrSwitchComponent,
-    FrTimePickerComponent
+    FrTimePickerComponent,
+    FrInputFileComponent
   ]
 })
 export class FrFormsModule { }
