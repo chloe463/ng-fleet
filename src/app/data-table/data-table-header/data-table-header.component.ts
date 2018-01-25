@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FrDataTableEvent } from '../data-table/data-table.component';
 
-export type FrDataTableActionKey = {
+export interface FrDataTableActionKey {
   key: string;
   label: string;
   extraParams?: any;

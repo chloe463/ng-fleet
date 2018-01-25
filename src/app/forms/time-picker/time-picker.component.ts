@@ -77,7 +77,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
 
   public clockVisibility: string;
   public pickTarget: string = HOURS;
@@ -247,7 +247,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
         : this.value.getMinutes() - (this.value.getMinutes() % 5);
       this.putHandRightPosition(targetDial);
       this.changing = false;
-    })
+    });
   }
 
   public cancel(): void {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+/* tslint:disable component-selector */
 @Component({
   selector: 'forms-demo',
   styles: [`

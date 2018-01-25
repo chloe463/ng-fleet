@@ -1,17 +1,18 @@
 import {
-  Directive,
+  Component,
   Input,
   ContentChildren,
   QueryList
 } from '@angular/core';
 
 import { IFrNavbarNode } from '../navbar/navbar.model';
-import { FrNavbarMenuDirective } from '../navbar-menu/navbar-menu.component';
+import { FrNavbarMenuComponent } from '../navbar-menu/navbar-menu.component';
 
-@Directive({
-  selector: 'fr-navbar-item'
+@Component({
+  selector: 'fr-navbar-item',
+  template: ''
 })
-export class FrNavbarItemDirective {
+export class FrNavbarItemComponent {
   @Input() node: IFrNavbarNode;
 
   get title(): string {

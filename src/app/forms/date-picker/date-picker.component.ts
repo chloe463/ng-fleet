@@ -68,7 +68,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
 
   public calendarVisibility: string;
   public target: Date;

@@ -1,9 +1,10 @@
-import { Directive, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-@Directive({
-  selector: 'fr-navbar-menu'
+@Component({
+  selector: 'fr-navbar-menu',
+  template: ''
 })
-export class FrNavbarMenuDirective {
+export class FrNavbarMenuComponent {
 
   @Input() link: string;
   @Input() title: string;

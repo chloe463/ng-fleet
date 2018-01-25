@@ -17,7 +17,7 @@ import {
 export interface IFrSwitchLabels {
   on: string;
   off: string;
-};
+}
 
 const noop = () => {};
 

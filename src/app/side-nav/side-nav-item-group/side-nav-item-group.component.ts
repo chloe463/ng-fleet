@@ -1,20 +1,21 @@
 import {
-  Directive,
+  Component,
   Input,
   ContentChildren,
   QueryList
 } from '@angular/core';
-import { FrSideNavItemDirective } from '../side-nav-item/side-nav-item.component';
+import { FrSideNavItemComponent } from '../side-nav-item/side-nav-item.component';
 import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
 
-@Directive({
-  selector: 'fr-side-nav-item-group'
+@Component({
+  selector: 'fr-side-nav-item-group',
+  template: ''
 })
-export class FrSideNavItemGroupDirective {
+export class FrSideNavItemGroupComponent {
 
   @Input() group: IFrSideNavNodeGroup;
 
-  @ContentChildren(FrSideNavItemDirective) items: QueryList<FrSideNavItemDirective>;
+  @ContentChildren(FrSideNavItemComponent) items: QueryList<FrSideNavItemComponent>;
 
   get title(): string {
     return this.group.title;

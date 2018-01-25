@@ -18,16 +18,12 @@ import { FrNotificationModule } from './notification/notification.module';
 
 import { FrChipComponent } from './chip/chip.component';
 import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
-import { FrDialogComponent } from './dialog/dialog.component';
-import { FrToasterComponent } from './toaster/toaster.component';
 import { FrDialogModule } from './dialog/dialog.module';
 
 @NgModule({
   declarations: [
     FrChipComponent,
-    FrKpiTableComponent,
-    FrDialogComponent,
-    FrToasterComponent
+    FrKpiTableComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -57,8 +53,6 @@ import { FrDialogModule } from './dialog/dialog.module';
     FrRippleModule,
     FrSideNavModule,
     FrProgressModule,
-    FrDialogComponent,
-    FrToasterComponent,
     FrDialogModule,
     FrToasterModule,
     FrNotificationModule

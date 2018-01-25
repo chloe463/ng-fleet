@@ -1,9 +1,10 @@
-import { Directive, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IFrNavbarNode } from '../../navbar/navbar/navbar.model';
 
-@Directive({
-  selector: 'fr-side-nav-item'
+@Component({
+  selector: 'fr-side-nav-item',
+  template: ''
 })
-export class FrSideNavItemDirective {
+export class FrSideNavItemComponent {
   @Input() node: IFrNavbarNode;
 }
