@@ -2,6 +2,7 @@
   list-style: none;
   border-bottom: 1px solid $light-gray;
   display: flex;
+  margin: 0;
   &__title {
     margin: 0;
     padding: 20px 24px 20px 24px;
@@ -29,5 +30,24 @@
     text-decoration: none;
     color: $base00;
     cursor: pointer;
+  }
+
+  &__content {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+.fr-tab {
+  flex-grow: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  &--active {
+    position: relative;
   }
 }

@@ -1,7 +1,8 @@
 import {
   Component,
   OnInit,
-  Input
+  Input,
+  HostBinding
 } from '@angular/core';
 import {
   trigger,
@@ -42,6 +43,8 @@ import {
 })
 export class FrTabComponent implements OnInit {
 
+  @HostBinding('class.fr-tab') true;
+
   @Input() title: string;
 
   private _selected: boolean;
@@ -54,6 +57,7 @@ export class FrTabComponent implements OnInit {
     this.state = 'left';
   }
 
+  @HostBinding('class.fr-tab--active')
   get selected(): boolean {
     return this._selected;
   }
