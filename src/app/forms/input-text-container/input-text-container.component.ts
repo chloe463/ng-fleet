@@ -12,6 +12,7 @@ import {
   forwardRef,
   ElementRef,
   HostListener,
+  HostBinding,
   Optional
 } from '@angular/core';
 import {
@@ -28,30 +29,27 @@ export const LABEL_ON_FOCUS = 'labelOnFocus';
 export const PLACEHOLDER    = 'placeholder';
 
 @Directive({
-  selector: 'input[frInput], textarea[frInput]',
-  host: {
-    '[class.fr-input-text__form]': 'true',
-    '[placeholder]': 'placeholder',
-    '(focus)': 'onFocus()',
-    '(blur)': 'onBlur()'
-  }
+  selector: 'input[frInput], textarea[frInput]'
 })
 export class FrInputDirective implements OnInit, OnDestroy {
 
+  @HostBinding('class.fr-input-text__form') true;
+
   private _ngModelSubscribtion;
 
-  private _placeholder: string = '';
+  private _placeholder = '';
 
   public labelState: string;
-  public valueLength: number = 0;
-  public maxLength: number = -1;
+  public valueLength = 0;
+  public maxLength   = -1;
 
+  @HostBinding('placeholder')
   @Input()
   get placeholder() {
     return this._placeholder;
   }
   set placeholder(s: string) {
-    if (s != this._placeholder) {
+    if (s !== this._placeholder) {
       this._placeholder = s;
     }
   }
@@ -86,10 +84,12 @@ export class FrInputDirective implements OnInit, OnDestroy {
     this.valueLength = v ? v.length : 0;
   }
 
+  @HostListener('focus')
   public onFocus() {
     this.labelState = LABEL_ON_FOCUS;
   }
 
+  @HostListener('blur')
   public onBlur() {
     if (this.ngModel) {
       if (!this.ngModel.viewModel) {
@@ -117,8 +117,8 @@ export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
   public maxLength: number;
   public labelState = 'placeholder';
-  public placeholder: string = '';
-  public modelLength: number = 0;
+  public placeholder = '';
+  public modelLength = 0;
 
   constructor() { }
 
@@ -127,10 +127,10 @@ export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     if (this._input === undefined) {
-      throw "Child component input[frInput] is required!";
+      throw 'Child component input[frInput] is required!';
     }
     if ((this._input instanceof FrInputDirective) === false) {
-      throw "Child component input[frInput] is required!";
+      throw 'Child component input[frInput] is required!';
     }
     this.placeholder = this._input.placeholder;
     this.maxLength   = this._input.maxLength;
