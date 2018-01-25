@@ -137,6 +137,7 @@ export class FrRadioComponent implements OnInit {
     if (this.radioGroup) {
       this.name = this.radioGroup.name;
       this.disabled = this.radioGroup.disabled;
+      this.checked = this.value === this.radioGroup.value;
     }
     this.isFocused = false;
   }
