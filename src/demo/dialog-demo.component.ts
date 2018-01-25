@@ -17,18 +17,23 @@ import { Observer } from 'rxjs/Observer';
     template: `
 <h1>Dialog</h1>
 <button class="fr-btn fr-btn--primary" frRipple (click)="showDialog()">dialog</button>
-  <div style="display:block;width:100%;height:1080px"></div>
+  <span>Result: {{result}}</span>
 <fr-dialog-entry></fr-dialog-entry>
     `,
     providers: [ FrDialogService ]
 })
 export class DialogDemoComponent {
 
+  result: string;
+
   constructor (private dialogService: FrDialogService) {}
 
   public showDialog(): void {
     const dialogObserver: Observer<any> = {
-      next:     val    => console.log('onNext: ', val),
+      next:     val    => {
+        this.result = JSON.stringify(val);
+        console.log('onNext: ', val);
+      },
       error:    reason => console.log('onError:', reason),
       complete: ()     => console.log('onComplete')
     };
