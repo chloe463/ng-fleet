@@ -23,6 +23,7 @@ import {
   animate
 } from '@angular/animations';
 import { NgModel, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
 
 export const LABEL          = 'label';
 export const LABEL_ON_FOCUS = 'labelOnFocus';
@@ -35,7 +36,7 @@ export class FrInputDirective implements OnInit, OnDestroy {
 
   @HostBinding('class.fr-input-text__form') true;
 
-  private _ngModelSubscribtion;
+  private _ngModelSubscribtion: Subscription;
 
   private _placeholder = '';
 
@@ -77,7 +78,9 @@ export class FrInputDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this._ngModelSubscribtion.unsubscribe();
+    if (this._ngModelSubscribtion) {
+      this._ngModelSubscribtion.unsubscribe();
+    }
   }
 
   private _updateLabelState(v: any) {
