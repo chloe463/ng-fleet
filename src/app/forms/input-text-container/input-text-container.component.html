@@ -6,10 +6,10 @@
     {{placeholder}}
   </label>
   <ng-content selector="input, textarea"></ng-content>
-  <span *ngIf="maxLength !== -1"
-    class="fr-input-text__count"
-    [class.fr-input-text__count--error]="input.valueLength > maxLength">{{input.valueLength}}/{{maxLength}}</span>
   <div class="fr-input-text__underline" [class.fr-input-text__underline--disabled]="input.disabled">
     <div class="fr-input-text__underline-ripple" [class.fr-input-text__underline-ripple--on]="input.focus"></div>
   </div>
+  <span *ngIf="maxLength !== -1"
+    class="fr-input-text__count"
+    [class.fr-input-text__count--error]="input.valueLength > maxLength">{{input.valueLength}}/{{maxLength}}</span>
 </div>
