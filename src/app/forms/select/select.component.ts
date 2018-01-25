@@ -29,6 +29,12 @@ export class FrSelectChange {
 
 const noop = () => {};
 
+const HIDDEN         = 'hidden';
+const VISIBLE        = 'visible';
+const PLACEHOLDER    = 'placeholder';
+const LABEL_ON_FOCUS = 'labelOnFocus';
+const LABEL          = 'label';
+
 export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => FrSelectComponent),
@@ -54,20 +60,20 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
 
-  public optionsVisibility = 'hidden';
+  public optionsVisibility = HIDDEN;
   public label: string;
-  public labelState = 'placeholder';
+  public labelState = PLACEHOLDER;
   public isFocused  = false;
 
   constructor(private el: ElementRef) { }
 
   ngOnInit() {
-    this.optionsVisibility = 'hidden';
+    this.optionsVisibility = HIDDEN;
   }
 
   ngAfterContentInit() {
     this.label      = '';
-    this.labelState = 'placeholder';
+    this.labelState = PLACEHOLDER;
     const selectedOption = this.options.find(option => {
       return this.value === option.value;
     });
@@ -78,7 +84,7 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
 
   public onChange(value): void {
     this.value      = value;
-    this.labelState = 'label';
+    this.labelState = LABEL;
   }
 
   get value(): any {
@@ -105,7 +111,7 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
       this._innerValue = obj;
     }
     this.label      = '';
-    this.labelState = 'placeholder';
+    this.labelState = PLACEHOLDER;
 
     const selectedOption = this.options.find(option => {
       return option.value === obj;
@@ -124,7 +130,7 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.optionsVisibility = 'hidden';
+    this.optionsVisibility = HIDDEN;
     this.onBlur();
     this._isDisabled = isDisabled;
   }
@@ -140,15 +146,19 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
     if (this.disabled) {
       return;
     }
-    this.optionsVisibility = (this.optionsVisibility === 'show') ? 'hidden' : 'show';
+    this.optionsVisibility = (this.optionsVisibility === VISIBLE) ? HIDDEN : VISIBLE;
     this.onFocus();
   }
 
-  public select(option) {
+  public select(option, event?: Event) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
     this.value             = option.value;
     this.label             = option.label;
-    this.optionsVisibility = 'hidden';
-    this.labelState        = 'label';
+    this.optionsVisibility = HIDDEN;
+    this.labelState        = LABEL;
     this.emitChange();
   }
 
@@ -159,7 +169,7 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
   @HostListener('document:click', ['$event'])
   disappear(event) {
     if (!this.el.nativeElement.contains(event.target)) {
-      this.optionsVisibility = 'hidden';
+      this.optionsVisibility = HIDDEN;
       this.onBlur();
     }
   }
@@ -178,22 +188,22 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
   // }
 
   public onFocus(event?: Event) {
-    this.labelState = 'labelOnFocus';
+    this.labelState = LABEL_ON_FOCUS;
     this.isFocused = true;
-    if (this.optionsVisibility === 'hidden') {
-      this.optionsVisibility = 'show';
+    if (this.optionsVisibility === HIDDEN) {
+      this.optionsVisibility = VISIBLE;
     }
   }
 
   public onBlur(event?: Event) {
     this.isFocused = false;
-    this.optionsVisibility = 'hidden';
+    this.optionsVisibility = HIDDEN;
     if (this.value === null || this.value === undefined || this.value === '') {
       this.label = '';
-      this.labelState = 'placeholder';
+      this.labelState = PLACEHOLDER;
       return;
     }
-    this.labelState        = 'label';
-    this.optionsVisibility = 'hidden';
+    this.labelState        = LABEL;
+    this.optionsVisibility = HIDDEN;
   }
 }

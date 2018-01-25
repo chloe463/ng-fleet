@@ -10,7 +10,7 @@
     {{placeholder}}
   </label>
   <div class="fr-select-browser" *ngIf="browserNative">
-    <select class="fr-select-browser__pulldown" name="{{name}}" [value]="value" (change)="select(input)" #input>
+    <select class="fr-select-browser__pulldown" name="{{name}}" [value]="value" (change)="select(input, $event)" #input>
       <option *ngFor="let option of options" [value]="option.value" class="form__select-option" selected="option.selected">
           {{option.label}}
         </option>
@@ -22,7 +22,7 @@
     </span>
     <ul class="fr-select__list"
       [class.fr-select__list--hidden]="optionsVisibility === 'hidden'"
-      [class.fr-select__list--show]="optionsVisibility === 'show'">
+      [class.fr-select__list--show]="optionsVisibility === 'visible'">
       <li *ngFor="let option of options"
         class="fr-select__item"
         [class.fr-select__item--selected]="isSelected(option.value)"
