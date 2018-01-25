@@ -1,5 +1,5 @@
 import {
-  Directive,
+  Component,
   Input,
   Output,
   EventEmitter
@@ -12,8 +12,9 @@ export type FrDataTableActionKey = {
   extraParams?: any;
 }
 
-@Directive({
-  selector: 'fr-data-table-header'
+@Component({
+  selector: 'fr-data-table-header',
+  template: ''
 })
 export class FrDataTableHeaderComponent {
 
