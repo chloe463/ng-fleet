@@ -11,6 +11,7 @@ import {
   ContentChildren,
   ViewChild,
   QueryList,
+  HostBinding,
   HostListener
 } from '@angular/core';
 import {
@@ -38,12 +39,10 @@ export class FrDataTableEvent {
 }
 
 @Directive({
-  selector: 'fr-data-table[fr-data-table-stripe]',
-  host: {
-    class: 'fr-data-table--stripe'
-  }
+  selector: 'fr-data-table[frDataTableStripe]'
 })
 export class FrDataTableStripeDirective {
+  @HostBinding('class.fr-data-table--stripe') true;
 }
 
 
