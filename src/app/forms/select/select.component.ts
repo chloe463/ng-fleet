@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  AfterContentInit,
   Input,
   Output,
   EventEmitter,
@@ -21,17 +22,18 @@ import { NgModel } from '@angular/forms';
 import { FrOptionComponent } from './option.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-interface IFrDropDownOption {
-  value: any;
-  label: string | number;
-}
-
 export class FrSelectChange {
   source: FrSelectComponent;
   value: any;
 }
 
 const noop = () => {};
+
+const HIDDEN         = 'hidden';
+const VISIBLE        = 'visible';
+const PLACEHOLDER    = 'placeholder';
+const LABEL_ON_FOCUS = 'labelOnFocus';
+const LABEL          = 'label';
 
 export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -44,34 +46,45 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './select.component.html',
   providers: [SELECT_CONTROL_VALUE_ACCESSOR]
 })
-export class FrSelectComponent implements OnInit, ControlValueAccessor {
+export class FrSelectComponent implements OnInit, AfterContentInit, ControlValueAccessor {
   @Input() name: string;
-  @Input() placeholder: string | number;
+  @Input() placeholder: string;
   @Input() browserNative: boolean;
 
   @Output() change: EventEmitter<FrSelectChange> = new EventEmitter<FrSelectChange>();
 
-  @ContentChildren(FrOptionComponent) _options: QueryList<FrOptionComponent> = new QueryList<FrOptionComponent>();
+  @ContentChildren(FrOptionComponent) options: QueryList<FrOptionComponent> = new QueryList<FrOptionComponent>();
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
 
-  public optionsVisibility: string = 'hidden';
-  public label: string | number;
-  public labelState: string = 'placeholder';
-  public isFocused: boolean = false;
+  public optionsVisibility = HIDDEN;
+  public label: string;
+  public labelState = PLACEHOLDER;
+  public isFocused  = false;
 
   constructor(private el: ElementRef) { }
 
   ngOnInit() {
-    this.optionsVisibility = 'hidden';
+    this.optionsVisibility = HIDDEN;
+  }
+
+  ngAfterContentInit() {
+    this.label      = '';
+    this.labelState = PLACEHOLDER;
+    const selectedOption = this.options.find(option => {
+      return this.value === option.value;
+    });
+    if (!selectedOption) { return; }
+    this.label = selectedOption.label;
+    this.onBlur();
   }
 
   public onChange(value): void {
     this.value      = value;
-    this.labelState = 'label';
+    this.labelState = LABEL;
   }
 
   get value(): any {
@@ -97,18 +110,15 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     if (obj !== this._innerValue) {
       this._innerValue = obj;
     }
-    let found = false;
-    this._options.forEach((option) => {
-      if (option.value === obj) {
-        this.label = option.label;
-        this.onBlur();
-        found = true;
-      }
+    this.label      = '';
+    this.labelState = PLACEHOLDER;
+
+    const selectedOption = this.options.find(option => {
+      return option.value === obj;
     });
-    if (!found) {
-      this.label = '';
-      this.labelState = 'placeholder';
-    }
+    if (!selectedOption) { return; }
+    this.label = selectedOption.label;
+    this.onBlur();
   }
 
   registerOnChange(fn: any): void {
@@ -120,7 +130,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.optionsVisibility = 'hidden';
+    this.optionsVisibility = HIDDEN;
     this.onBlur();
     this._isDisabled = isDisabled;
   }
@@ -136,15 +146,19 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
     if (this.disabled) {
       return;
     }
-    this.optionsVisibility = (this.optionsVisibility === 'show') ? 'hidden': 'show';
+    this.optionsVisibility = (this.optionsVisibility === VISIBLE) ? HIDDEN : VISIBLE;
     this.onFocus();
   }
 
-  public select(option) {
+  public select(option, event?: Event) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
     this.value             = option.value;
     this.label             = option.label;
-    this.optionsVisibility = 'hidden';
-    this.labelState        = 'label';
+    this.optionsVisibility = HIDDEN;
+    this.labelState        = LABEL;
     this.emitChange();
   }
 
@@ -155,7 +169,7 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   @HostListener('document:click', ['$event'])
   disappear(event) {
     if (!this.el.nativeElement.contains(event.target)) {
-      this.optionsVisibility = 'hidden';
+      this.optionsVisibility = HIDDEN;
       this.onBlur();
     }
   }
@@ -174,22 +188,22 @@ export class FrSelectComponent implements OnInit, ControlValueAccessor {
   // }
 
   public onFocus(event?: Event) {
-    this.labelState = 'labelOnFocus';
+    this.labelState = LABEL_ON_FOCUS;
     this.isFocused = true;
-    if (this.optionsVisibility === 'hidden') {
-      this.optionsVisibility = 'show';
+    if (this.optionsVisibility === HIDDEN) {
+      this.optionsVisibility = VISIBLE;
     }
   }
 
   public onBlur(event?: Event) {
     this.isFocused = false;
-    this.optionsVisibility = 'hidden';
+    this.optionsVisibility = HIDDEN;
     if (this.value === null || this.value === undefined || this.value === '') {
       this.label = '';
-      this.labelState = 'placeholder';
+      this.labelState = PLACEHOLDER;
       return;
     }
-    this.labelState        = 'label';
-    this.optionsVisibility = 'hidden';
+    this.labelState        = LABEL;
+    this.optionsVisibility = HIDDEN;
   }
 }

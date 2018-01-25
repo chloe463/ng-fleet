@@ -23,15 +23,16 @@ const noop = () => {};
 
 export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => FrRadioGroupDirective),
+  useExisting: forwardRef(() => FrDirectiveComponent),
   multi: true
 };
 
-@Directive({
+@Component({
   selector: 'fr-radio-group',
+  template: `<ng-content></ng-content>`,
   providers: [RADIO_GROUP_CONTROL_VALUE_ACCESSOR]
 })
-export class FrRadioGroupDirective implements ControlValueAccessor {
+export class FrDirectiveComponent implements ControlValueAccessor {
   @Input() name;
 
   @Output() change: EventEmitter<FrRadioChange> = new EventEmitter<FrRadioChange>();
@@ -124,11 +125,11 @@ export class FrRadioComponent implements OnInit {
 
   @Output() change: EventEmitter<FrRadioChange> = new EventEmitter<FrRadioChange>();
 
-  private radioGroup: FrRadioGroupDirective;
+  private radioGroup: FrDirectiveComponent;
   public isRippleOn: boolean;
   public isFocused: boolean;
 
-  constructor(@Optional() radioGroup: FrRadioGroupDirective) {
+  constructor(@Optional() radioGroup: FrDirectiveComponent) {
     this.radioGroup = radioGroup;
   }
 
@@ -136,6 +137,7 @@ export class FrRadioComponent implements OnInit {
     if (this.radioGroup) {
       this.name = this.radioGroup.name;
       this.disabled = this.radioGroup.disabled;
+      this.checked = this.value === this.radioGroup.value;
     }
     this.isFocused = false;
   }
@@ -148,10 +150,6 @@ export class FrRadioComponent implements OnInit {
   }
 
   public onInputClick(event: Event): void {
-    event.stopPropagation();
-  }
-
-  public onInputChange(event: Event): void {
     event.stopPropagation();
     this.checked = true;
     this._eventChangeEvent();
@@ -167,6 +165,10 @@ export class FrRadioComponent implements OnInit {
       this.radioGroup.selectOneByRadioComponent(this);
       this.radioGroup.emitChangeEvent();
     }
+  }
+
+  public onInputChange(event: Event): void {
+    event.stopPropagation();
   }
 
   public onFocus(event: Event): void {
