@@ -42,6 +42,7 @@ export class FrInputDirective implements OnInit, OnDestroy {
   public labelState: string;
   public valueLength = 0;
   public maxLength   = -1;
+  public focus = false;
 
   @HostBinding('placeholder')
   @Input()
@@ -52,6 +53,10 @@ export class FrInputDirective implements OnInit, OnDestroy {
     if (s !== this._placeholder) {
       this._placeholder = s;
     }
+  }
+
+  get disabled() {
+    return this._el.nativeElement.disabled;
   }
 
   constructor(
@@ -86,11 +91,13 @@ export class FrInputDirective implements OnInit, OnDestroy {
 
   @HostListener('focus')
   public onFocus() {
+    this.focus      = true;
     this.labelState = LABEL_ON_FOCUS;
   }
 
   @HostListener('blur')
   public onBlur() {
+    this.focus = false;
     if (this.ngModel) {
       if (!this.ngModel.viewModel) {
         this.labelState = PLACEHOLDER;
