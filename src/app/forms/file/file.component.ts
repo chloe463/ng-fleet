@@ -51,7 +51,7 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
 
-  private acceptRegex: RegExp;
+  public acceptRegexp: RegExp;
   public files: any[] = [];
   public fileOnArea = false;
 
@@ -59,13 +59,13 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.input.nativeElement.multiple = this.multiple;
-    this.acceptRegex = this.buildRegexp(this.accept);
+    this.acceptRegexp = this.buildRegexp(this.accept);
   }
 
-  private buildRegexp(accept: string): RegExp {
+  public buildRegexp(accept: string): RegExp {
     const replaced = accept.replace(/\*/g, '.*')
       .replace(/\+/g, '\\+')
-      .replace(/\//g, '\/')
+      .replace(/\//g, '\\\/')
       .replace(/,/g, '|');
     return new RegExp(replaced);
   }
@@ -118,11 +118,11 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
     this.change.emit(event);
   }
 
-  private setUnit(size: number): string {
+  public setUnit(size: number): string {
     const units: string[] = ['KB', 'MB', 'GB', 'TB', 'PB'];
     let transformed: number = size;
     let unit = 'B';
-    for (let i = 0; i < unit.length; ++i) {
+    for (let i = 0; i < units.length; ++i) {
       transformed = transformed / 1000;
       unit        = units[i] ? units[i] : 'PB';
       if (transformed < 1000) {
@@ -133,7 +133,7 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
   }
 
   private isFileTypeAcceptable(fileType): boolean {
-    return fileType.match(this.acceptRegex);
+    return fileType.match(this.acceptRegexp);
   }
 
   public updateValue(files) {
@@ -141,15 +141,13 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
       return;
     }
     if (!this.multiple && files.length > 1) {
-      alert('It does NOT accept multiple files');
-      return;
+      throw new Error('It does NOT accept multiple files');
     }
     this.files = [];
     const filteredFiles: File[] = [];
     Array.from(files).forEach((file: File): void => {
       if (!this.isFileTypeAcceptable(file['type'])) {
-        alert(`${file['type']} is NOT acceptable.\nPlease put ${this.accept} file(s).`);
-        return;
+        throw new Error(`${file['type']} is NOT acceptable.\nPlease put ${this.accept} file(s).`);
       }
       filteredFiles.push(file);
       this.files.push({
