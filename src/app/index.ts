@@ -14,7 +14,7 @@ export {
   FrFlatButtonDirective,
   FrButtonModule
 } from './button/index';
-export { FrChipComponent } from './chip/chip.component';
+export { FrChipModule } from './chip/index';
 export {
   FrDataTableColumnsComponent,
   FrDataTableFooterComponent,
@@ -45,7 +45,7 @@ export {
   FrTimePickerComponent,
   FrFormsModule
 } from './forms/index';
-export { FrKpiTableComponent } from './kpi-table/index';
+export { FrKpiTableModule } from './kpi-table/index';
 export {
   FrNavbarComponent,
   FrNavbarItemComponent,

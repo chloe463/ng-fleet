@@ -16,15 +16,11 @@ import { FrProgressModule } from './progress/progress.module';
 import { FrToasterModule } from './toaster/toaster.module';
 import { FrNotificationModule } from './notification/notification.module';
 
-import { FrChipComponent } from './chip/chip.component';
-import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
+import { FrChipModule } from './chip/chip.module';
+import { FrKpiTableModule } from './kpi-table/kpi-table.module';
 import { FrDialogModule } from './dialog/dialog.module';
 
 @NgModule({
-  declarations: [
-    FrChipComponent,
-    FrKpiTableComponent
-  ],
   imports: [
     BrowserAnimationsModule,
     FormsModule,
@@ -40,11 +36,11 @@ import { FrDialogModule } from './dialog/dialog.module';
     FrProgressModule,
     FrDialogModule,
     FrToasterModule,
-    FrNotificationModule
+    FrNotificationModule,
+    FrChipModule,
+    FrKpiTableModule
   ],
   exports: [
-    FrChipComponent,
-    FrKpiTableComponent,
     FrDataTableModule,
     FrButtonModule,
     FrFormsModule,
@@ -55,7 +51,9 @@ import { FrDialogModule } from './dialog/dialog.module';
     FrProgressModule,
     FrDialogModule,
     FrToasterModule,
-    FrNotificationModule
+    FrNotificationModule,
+    FrChipModule,
+    FrKpiTableModule
   ]
 })
 export class FrancetteModule { }
