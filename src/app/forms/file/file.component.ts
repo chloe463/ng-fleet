@@ -166,37 +166,38 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
     // this.value = event.target.files;
   }
 
-  private preventDefaults(event: DragEvent): void {
+  private preventDefaults(event: Event): void {
     event.preventDefault();
     event.stopPropagation();
   }
 
   @HostListener('dragenter', ['$event'])
-  public onDragEnter(event: DragEvent) {
+  public onDragEnter(event: Event) {
     this.preventDefaults(event);
     this.fileOnArea = !this.disabled ? true : false;
   }
 
   @HostListener('dragover', ['$event'])
-  public onDragOver(event: DragEvent) {
+  public onDragOver(event: Event) {
     this.preventDefaults(event);
   }
 
   @HostListener('dragleave', ['$event'])
-  public onDragLeave(event: DragEvent) {
+  public onDragLeave(event: Event) {
     this.preventDefaults(event);
     this.fileOnArea = false;
   }
 
   @HostListener('drop', ['$event'])
-  public onDrop(event: DragEvent) {
+  public onDrop(event: Event) {
     event.preventDefault();
     event.stopPropagation();
     if (this.disabled) {
       alert('It is disabled');
       return;
     }
-    this.updateValue(event.dataTransfer.files);
+    // NOTE: Typecast for Safari
+    this.updateValue((event as DragEvent).dataTransfer.files);
     // this.value      = event.dataTransfer.files;
     this.fileOnArea = false;
 
