@@ -1,61 +1,60 @@
+// Angular modules
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
+// Francette modules
 import { FrButtonModule } from './button/button.module';
-import { FrFormsModule } from './forms/forms.module';
+import { FrChipModule } from './chip/chip.module';
 import { FrDataTableModule } from './data-table/data-table.module';
+import { FrDialogModule } from './dialog/dialog.module';
+import { FrFormsModule } from './forms/forms.module';
+import { FrKpiTableModule } from './kpi-table/kpi-table.module';
 import { FrNavbarModule } from './navbar/navbar.module';
-import { FrTabsModule } from './tabs/tabs.module';
+import { FrNotificationModule } from './notification/notification.module';
+import { FrProgressModule } from './progress/progress.module';
 import { FrRippleModule } from './ripple/ripple.module';
 import { FrSideNavModule } from './side-nav/side-nav.module';
-import { FrProgressModule } from './progress/progress.module';
+import { FrTabsModule } from './tabs/tabs.module';
 import { FrToasterModule } from './toaster/toaster.module';
-import { FrNotificationModule } from './notification/notification.module';
-
-import { FrChipComponent } from './chip/chip.component';
-import { FrKpiTableComponent } from './kpi-table/kpi-table.component';
-import { FrDialogModule } from './dialog/dialog.module';
 
 @NgModule({
-  declarations: [
-    FrChipComponent,
-    FrKpiTableComponent
-  ],
   imports: [
     BrowserAnimationsModule,
-    FormsModule,
     CommonModule,
+    FormsModule,
     RouterModule,
+
     FrButtonModule,
+    FrChipModule,
     FrDataTableModule,
+    FrDialogModule,
     FrFormsModule,
+    FrKpiTableModule,
     FrNavbarModule,
-    FrTabsModule,
+    FrNotificationModule,
+    FrProgressModule,
     FrRippleModule,
     FrSideNavModule,
-    FrProgressModule,
-    FrDialogModule,
-    FrToasterModule,
-    FrNotificationModule
+    FrTabsModule,
+    FrToasterModule
   ],
   exports: [
-    FrChipComponent,
-    FrKpiTableComponent,
-    FrDataTableModule,
     FrButtonModule,
+    FrChipModule,
+    FrDataTableModule,
+    FrDialogModule,
     FrFormsModule,
+    FrKpiTableModule,
     FrNavbarModule,
-    FrTabsModule,
+    FrNotificationModule,
+    FrProgressModule,
     FrRippleModule,
     FrSideNavModule,
-    FrProgressModule,
-    FrDialogModule,
-    FrToasterModule,
-    FrNotificationModule
+    FrTabsModule,
+    FrToasterModule
   ]
 })
 export class FrancetteModule { }
