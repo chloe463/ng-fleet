@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { FrNavbarComponent } from './navbar.component';
+import { FrRippleModule } from '../../ripple/ripple.module';
 
 describe('FrNavbarComponent', () => {
   let component: FrNavbarComponent;
@@ -14,7 +15,7 @@ describe('FrNavbarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ FrNavbarComponent ],
-      imports: [CommonModule, RouterModule]
+      imports: [CommonModule, RouterModule, FrRippleModule]
     })
     .compileComponents();
   }));

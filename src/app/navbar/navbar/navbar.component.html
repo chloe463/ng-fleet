@@ -1,20 +1,26 @@
 <nav class="fr-navbar">
   <ul class="fr-navbar__items">
-    <li *ngIf="sideNav" class="fr-navbar__menu-icon" (click)="toggleSideNav()">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <rect x="3" y="4" width="18" height="3" style=""/>
-        <rect x="3" y="10" width="18" height="3" style=""/>
-        <rect x="3" y="16" width="18" height="3" style=""/>
-      </svg>
+    <li *ngIf="sideNav" class="fr-navbar__item">
+      <span class="fr-navbar__menu-icon" (click)="toggleSideNav()" frRipple [rippleColor]="'#CCCCCC'">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="4" width="18" height="3" style=""/>
+          <rect x="3" y="10" width="18" height="3" style=""/>
+          <rect x="3" y="16" width="18" height="3" style=""/>
+        </svg>
+      </span>
     </li>
-    <li *ngFor="let logo of logos" class="fr-navbar__logo" [routerLink]="logo.url">
-      {{logo.title}}
+    <li *ngFor="let logo of logos" class="fr-navbar__item" [routerLink]="logo.url">
+      <span class="fr-navbar__link-label fr-navbar__logo" frRipple [rippleColor]="'#CCCCCC'">
+        {{logo.title}}
+      </span>
     </li>
     <li *ngFor="let item of items; let i = index"
       class="fr-navbar__item"
       [routerLink]="item.url"
       routerLinkActive="fr-navbar__item--active">
-      {{item.title}}
+      <span class="fr-navbar__link-label" frRipple [rippleColor]="'#CCCCCC'">
+        {{item.title}}
+      </span>
       <ul class="fr-navbar__menu" *ngIf="item.children">
         <li *ngFor="let child of item.children" class="fr-navbar__menu-item" [routerLink]="child.url">
           {{child.title}}
