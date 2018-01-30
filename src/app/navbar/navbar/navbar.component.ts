@@ -6,12 +6,6 @@ import {
   ContentChild,
   QueryList
 } from '@angular/core';
-import {
-  Location,
-  LocationStrategy,
-  PathLocationStrategy,
-  HashLocationStrategy
-} from '@angular/common';
 import { FrNavbarLogoComponent } from '../navbar-logo/navbar-logo.component';
 import { FrNavbarItemComponent } from '../navbar-item/navbar-item.component';
 
@@ -19,8 +13,7 @@ import { FrSideNavComponent } from '../../side-nav/side-nav/side-nav.component';
 
 @Component({
   selector: 'fr-navbar',
-  templateUrl: './navbar.component.html',
-  providers: [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }]
+  templateUrl: './navbar.component.html'
 })
 export class FrNavbarComponent implements OnInit {
 
@@ -30,7 +23,7 @@ export class FrNavbarComponent implements OnInit {
 
   @Input() withSideBar: boolean;
 
-  constructor(private _location: Location) {
+  constructor() {
   }
 
   ngOnInit() {
