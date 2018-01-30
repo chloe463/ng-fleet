@@ -32,24 +32,20 @@
     left: 0;
     right: 0;
     z-index: 800;
+    height: 54px;
+    align-items: center;
   }
 
   &__logo {
-    height: 27px;
     margin: 0;
     padding: 12px 12px;
-    font-weight: bold;
     text-align: center;
     outline: none;
   }
 
   &__item {
-    height: 27px;
-    min-width: 72px;
     margin: 0;
-    padding: 12px 6px;
     text-align: center;
-    cursor: pointer;
     outline: none;
 
     &--active {
@@ -58,13 +54,9 @@
       }
     }
 
-    &:hover {
-      background: $primary-light;
-    }
-
     &:hover .fr-navbar__menu {
       visibility: visible;
-      top: 48px;
+      top: 40px;
       opacity: 1;
     }
     &:hover .fr-navbar__label {
@@ -73,6 +65,18 @@
     &:hover .fr-navbar__child-label {
       background: $primary-light;
       color: $primary;
+    }
+  }
+
+  &__link-label {
+    margin: 0;
+    padding: 10px 16px;
+    text-align: center;
+    outline: none;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover {
+      background: $primary-light;
     }
   }
 
@@ -127,7 +131,7 @@
     &-item {
       line-height: 40px;
       border-bottom: 1px solid $light-gray;
-      background: $primary-light;
+      background: $primary;
       color: $text-on-primary;
       outline: none;
 
