@@ -9,6 +9,8 @@ import { FrNavbarItemComponent } from './navbar-item/navbar-item.component';
 import { FrNavbarLogoComponent } from './navbar-logo/navbar-logo.component';
 import { FrNavbarMenuComponent } from './navbar-menu/navbar-menu.component';
 
+import { FrRippleModule } from '../ripple/ripple.module';
+
 @NgModule({
   declarations: [
     FrNavbarComponent,
@@ -19,7 +21,8 @@ import { FrNavbarMenuComponent } from './navbar-menu/navbar-menu.component';
   imports: [
     CommonModule,
     RouterModule,
-    FrSideNavModule
+    FrSideNavModule,
+    FrRippleModule
   ],
   exports: [
     FrNavbarComponent,
