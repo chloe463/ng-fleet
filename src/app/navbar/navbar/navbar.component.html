@@ -1,7 +1,7 @@
 <nav class="fr-navbar">
   <ul class="fr-navbar__items">
     <li *ngIf="sideNav" class="fr-navbar__item">
-      <span class="fr-navbar__menu-icon" (click)="toggleSideNav()" frRipple [rippleColor]="'#CCCCCC'">
+      <span class="fr-navbar__menu-icon" (click)="toggleSideNav()" frRipple [rippleColor]="'#100012'">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <rect x="3" y="4" width="18" height="3" style=""/>
           <rect x="3" y="10" width="18" height="3" style=""/>
@@ -10,7 +10,7 @@
       </span>
     </li>
     <li *ngFor="let logo of logos" class="fr-navbar__item" [routerLink]="logo.url">
-      <span class="fr-navbar__link-label fr-navbar__logo" frRipple [rippleColor]="'#CCCCCC'">
+      <span class="fr-navbar__link-label fr-navbar__logo" frRipple [rippleColor]="'#100012'">
         {{logo.title}}
       </span>
     </li>
@@ -18,7 +18,7 @@
       class="fr-navbar__item"
       [routerLink]="item.url"
       routerLinkActive="fr-navbar__item--active">
-      <span class="fr-navbar__link-label" frRipple [rippleColor]="'#CCCCCC'">
+      <span class="fr-navbar__link-label" frRipple [rippleColor]="'#100012'">
         {{item.title}}
       </span>
       <ul class="fr-navbar__menu" *ngIf="item.children">
