@@ -26,10 +26,10 @@ export class FrRippleDirective {
     const rippleHeight = Math.max(element.clientWidth, element.clientHeight);
     const rippleWidth  = Math.max(element.clientWidth, element.clientHeight);
 
-    const location = element.getBoundingClientRect();
+    const rect = element.getBoundingClientRect();
 
-    const top  = event.pageY - location.top  - window.pageYOffset - (rippleHeight / 2);
-    const left = event.pageX - location.left - window.pageXOffset - (rippleWidth / 2);
+    const top  = event.pageY - rect.top  - window.pageYOffset - (rippleHeight / 2);
+    const left = event.pageX - rect.left - window.pageXOffset - (rippleWidth / 2);
 
     const ripple = document.createElement('div');
     ripple.style.setProperty('background', this.rippleColor || 'white');
