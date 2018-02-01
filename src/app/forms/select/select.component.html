@@ -26,7 +26,7 @@
       <li *ngFor="let option of options"
         class="fr-select__item"
         [class.fr-select__item--selected]="isSelected(option.value)"
-        (click)="select(option)">
+        (click)="select(option)" frRipple [rippleColor]="'#EEEEEE'">
         {{option.label}}
       </li>
     </ul>
