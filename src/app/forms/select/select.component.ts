@@ -21,7 +21,6 @@ import {
 import { NgModel } from '@angular/forms';
 import { FrOptionComponent } from './option.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { timer } from 'rxjs/observable/timer';
 
 export class FrSelectChange {
   source: FrSelectComponent;
@@ -45,7 +44,30 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-select',
   templateUrl: './select.component.html',
-  providers: [SELECT_CONTROL_VALUE_ACCESSOR]
+  providers: [SELECT_CONTROL_VALUE_ACCESSOR],
+  animations: [
+    trigger('optionsState', [
+      state('visible', style({
+        opacity: 1,
+        transform: 'scaleY(1)'
+      })),
+      state('hidden', style({
+        opacity: 0,
+        transform: 'scaleY(0.86)',
+        'pointer-events': 'none',
+        'transform-origin': '0 3%'
+      })),
+      transition('hidden => visible', [
+        animate('200ms ease-out')
+      ]),
+      transition('visible => hidden', [
+        animate('200ms 300ms ease-out', style({
+          opacity: 0,
+          transform: 'scaleY(1)',
+        }))
+      ]),
+    ])
+  ]
 })
 export class FrSelectComponent implements OnInit, AfterContentInit, ControlValueAccessor {
   @Input() name: string;
@@ -158,12 +180,9 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
     }
     this.value             = option.value;
     this.label             = option.label;
+    this.optionsVisibility = HIDDEN;
     this.labelState        = LABEL;
     this.emitChange();
-
-    timer(300).subscribe(() => {
-      this.optionsVisibility = HIDDEN;
-    });
   }
 
   public isSelected(value) {

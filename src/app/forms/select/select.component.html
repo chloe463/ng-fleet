@@ -20,9 +20,7 @@
     <span class="fr-select__text" (click)="toggleOptionsVisiblity()">
       {{label}}
     </span>
-    <ul class="fr-select__list"
-      [class.fr-select__list--hidden]="optionsVisibility === 'hidden'"
-      [class.fr-select__list--show]="optionsVisibility === 'visible'">
+    <ul class="fr-select__list" [@optionsState]="optionsVisibility">
       <li *ngFor="let option of options"
         class="fr-select__item"
         [class.fr-select__item--selected]="isSelected(option.value)"
