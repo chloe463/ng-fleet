@@ -21,6 +21,7 @@ import {
 import { NgModel } from '@angular/forms';
 import { FrOptionComponent } from './option.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { timer } from 'rxjs/observable/timer';
 
 export class FrSelectChange {
   source: FrSelectComponent;
@@ -157,9 +158,12 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
     }
     this.value             = option.value;
     this.label             = option.label;
-    this.optionsVisibility = HIDDEN;
     this.labelState        = LABEL;
     this.emitChange();
+
+    timer(300).subscribe(() => {
+      this.optionsVisibility = HIDDEN;
+    });
   }
 
   public isSelected(value) {

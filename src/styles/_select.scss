@@ -85,9 +85,10 @@
     display: block;
     padding-left: 0;
     padding-right: 0;
-    top: 2px;
+    top: -20px;
+    left: -18px;
     z-index: 100;
-    width: 100%;
+    width: 105%;
     background: $white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26),
       -5px -1px 10px rgba(0, 0, 0, 0.1),
@@ -95,8 +96,9 @@
 
     max-height: 200px;
     overflow-y: scroll;
-    transform-origin: 0 0;
+    transform-origin: 0 10%;
     opacity: 0;
+    transform: scaleY(.8);
 
     transition-property: opacity, transform;
     transition-duration: 200ms;
