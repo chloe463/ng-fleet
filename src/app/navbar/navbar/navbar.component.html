@@ -22,7 +22,8 @@
         {{item.title}}
       </span>
       <ul class="fr-navbar__menu" *ngIf="item.children">
-        <li *ngFor="let child of item.children" class="fr-navbar__menu-item" [routerLink]="child.url">
+        <li *ngFor="let child of item.children" class="fr-navbar__menu-item" [routerLink]="child.url"
+          frRipple [rippleColor]="'#100012'">
           {{child.title}}
         </li>
       </ul>
