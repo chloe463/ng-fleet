@@ -96,22 +96,6 @@
 
     max-height: 200px;
     overflow-y: scroll;
-    transform-origin: 0 10%;
-    opacity: 0;
-    transform: scaleY(.8);
-
-    transition-property: opacity, transform;
-    transition-duration: 200ms;
-    transition-timing-function: ease-out;
-    &--hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    &--show {
-      opacity: 1;
-      transform: scaleY(1);
-    }
   }
 
   &__item {
@@ -121,11 +105,11 @@
     cursor: pointer;
 
     &:hover {
-      background: lighten($light-gray, 12%);
+      background: lighten($light-gray, 15%);
     }
 
     &--selected {
-      background: lighten($light-gray, 15%);
+      background: lighten($light-gray, 20%);
       color: $secondary;
     }
   }
