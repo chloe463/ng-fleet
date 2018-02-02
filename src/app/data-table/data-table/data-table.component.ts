@@ -53,14 +53,24 @@ export class FrDataTableStripeDirective {
     trigger('actionListState', [
       state('hidden', style({
         opacity: 0,
-        transform: 'scale(0)'
+        transform: 'scale(0.8)',
+        'pointer-events': 'none'
       })),
       state('show', style({
         opacity: 1,
         transform: 'scale(1)'
       })),
-      transition('* => *', [
+      transition('hidden => show', [
         animate('500ms cubic-bezier(0.35, 0.25, 0, 1)')
+      ]),
+      transition('show => hidden', [
+        animate(
+          '500ms 300ms cubic-bezier(0.35, 0.25, 0, 1)',
+          style({
+            opacity: 0,
+            top: '-20px'
+          })
+        )
       ])
     ])
   ]
