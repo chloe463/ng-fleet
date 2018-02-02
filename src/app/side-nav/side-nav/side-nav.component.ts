@@ -30,8 +30,11 @@ import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
       state('active', style({
         transform: 'translate3d(0,0,0)'
       })),
-      transition('inactive => active, active => inactive', [
+      transition('inactive => active', [
         animate('500ms cubic-bezier(0.35, 0.25, 0, 1)')
+      ]),
+      transition('active => inactive', [
+        animate('350ms 350ms cubic-bezier(0.35, 0.25, 0, 1)')
       ])
     ]),
     trigger('backdropState', [
@@ -43,8 +46,11 @@ import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
         display: 'block',
         opacity: 1
       })),
-      transition('inactive => active, active => inactive', [
+      transition('inactive => active', [
         animate('250ms cubic-bezier(0.35, 0.25, 0, 1)')
+      ]),
+      transition('active => inactive', [
+        animate('250ms 200ms cubic-bezier(0.35, 0.25, 0, 1)')
       ])
     ]),
     trigger('menuState', [
