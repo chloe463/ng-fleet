@@ -31,11 +31,18 @@ import { FrDataTableFooterComponent } from '../data-table-footer/data-table-foot
 export class FrDataTableEvent {
   constructor(
     public action: string,
-    public row: Array<any>,
+    public rows: Array<any>,
     public rowsPerPage: number,
     public page: number,
     public extraParam?: any
   ) {}
+
+  /**
+   * For backward compatibility
+   */
+  get row(): Array<any> {
+    return this.rows;
+  }
 }
 
 @Directive({
