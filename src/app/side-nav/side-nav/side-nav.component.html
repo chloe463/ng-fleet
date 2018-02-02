@@ -20,7 +20,7 @@
       </div>
       <ul class="fr-side-nav__menu-list" [@menuState]="menuState[i]">
         <li class="fr-side-nav__menu-item"
-          *ngFor="let item of group.items; let i = index">
+          *ngFor="let item of group.items; let i = index" frRipple [rippleColor]="'#CCCCCC'">
           <a class="fr-side-nav__menu-link"
             routerLinkActive="fr-side-nav__menu-link--active"
             [routerLink]="item.node.url"
