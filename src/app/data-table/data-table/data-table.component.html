@@ -48,7 +48,10 @@
       </a>
       <span class="fr-data-table__other-actions">
         <ul class="fr-data-table__other-action-list" [@actionListState]="actionListState">
-          <li *ngFor="let action of headerComponent.actionKeys; let i = index" class="fr-data-table__other-action-item" (click)="otherAction(action.key)">
+          <li *ngFor="let action of headerComponent.actionKeys; let i = index"
+            class="fr-data-table__other-action-item"
+            frRipple [rippleColor]="'#CCCCCC'"
+            (click)="otherAction(action.key)">
             {{action.label}}
           </li>
         </ul>

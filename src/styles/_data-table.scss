@@ -36,6 +36,7 @@
 
 .fr-data-table__other-actions {
   position: relative;
+  display: inline-block;
 }
 
 .fr-data-table__other-action-list {
@@ -43,7 +44,7 @@
   margin: 0;
   padding: 0;
   top: -15px;
-  right: -145px;
+  right: 10px;
   background: white;
   list-style: none;
   min-width: 160px;

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { FrFormsModule } from '../forms/forms.module';
+import { FrRippleModule } from '../ripple/ripple.module';
 
 import { FrCheckboxComponent } from '../forms/checkbox/checkbox.component';
 import { FrDataTableComponent, FrDataTableStripeDirective } from './data-table/data-table.component';
@@ -23,7 +24,8 @@ import { FrDataTableRowsComponent } from './data-table-rows/data-table-rows.comp
   imports: [
     CommonModule,
     FormsModule,
-    FrFormsModule
+    FrFormsModule,
+    FrRippleModule
   ],
   exports: [
     FrDataTableComponent,
