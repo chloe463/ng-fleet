@@ -6,6 +6,7 @@ import {
   OnInit,
   QueryList,
   forwardRef,
+  HostBinding,
   HostListener,
   ElementRef
 } from '@angular/core';
@@ -64,6 +65,8 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   @Input() name: string;
 
   @Output() change: EventEmitter<FrDatePickerChange> = new EventEmitter<FrDatePickerChange>();
+
+  @HostBinding('class.fr-date-picker-host') true;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;

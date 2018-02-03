@@ -7,6 +7,7 @@ import {
   EventEmitter,
   forwardRef,
   ElementRef,
+  HostBinding,
   HostListener,
   ViewChild
 } from '@angular/core';
@@ -70,6 +71,8 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   @Output() change: EventEmitter<FrTimePickerChange> = new EventEmitter<FrTimePickerChange>();
 
   @ViewChild('clock') clock: ElementRef;
+
+  @HostBinding('class.fr-timepicker-host') true;
 
   /**
    * For ControlValueAccessor
