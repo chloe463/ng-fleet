@@ -123,7 +123,7 @@ export class FrInputDirective implements OnInit, OnDestroy {
 })
 export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
-  @HostBinding('class.fr-input-text-container') true;
+  @HostBinding('class.fr-input-text-container-host') true;
 
   @ContentChild(FrInputDirective) input: FrInputDirective;
 

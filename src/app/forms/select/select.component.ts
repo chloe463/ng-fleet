@@ -79,7 +79,7 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
 
   @ContentChildren(FrOptionComponent) options: QueryList<FrOptionComponent> = new QueryList<FrOptionComponent>();
 
-  @HostBinding('class.fr-select-container') true;
+  @HostBinding('class.fr-select-host') true;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
