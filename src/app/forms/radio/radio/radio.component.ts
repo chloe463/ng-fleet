@@ -9,7 +9,8 @@ import {
   ContentChildren,
   QueryList,
   forwardRef,
-  Optional
+  Optional,
+  HostBinding
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { timer } from 'rxjs/observable/timer';
@@ -124,6 +125,8 @@ export class FrRadioComponent implements OnInit {
   @Input() disabled: boolean;
 
   @Output() change: EventEmitter<FrRadioChange> = new EventEmitter<FrRadioChange>();
+
+  @HostBinding('class.fr-radio') true;
 
   private radioGroup: FrRadioGroupComponent;
   public isRippleOn: boolean;
