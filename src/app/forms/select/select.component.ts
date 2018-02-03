@@ -9,6 +9,7 @@ import {
   QueryList,
   forwardRef,
   ElementRef,
+  HostBinding,
   HostListener
 } from '@angular/core';
 import {
@@ -77,6 +78,8 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
   @Output() change: EventEmitter<FrSelectChange> = new EventEmitter<FrSelectChange>();
 
   @ContentChildren(FrOptionComponent) options: QueryList<FrOptionComponent> = new QueryList<FrOptionComponent>();
+
+  @HostBinding('class.fr-select-container') true;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
