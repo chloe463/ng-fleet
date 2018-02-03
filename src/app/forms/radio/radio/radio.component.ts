@@ -126,7 +126,7 @@ export class FrRadioComponent implements OnInit {
 
   @Output() change: EventEmitter<FrRadioChange> = new EventEmitter<FrRadioChange>();
 
-  @HostBinding('class.fr-radio') true;
+  @HostBinding('class.fr-radio-host') true;
 
   private radioGroup: FrRadioGroupComponent;
   public isRippleOn: boolean;

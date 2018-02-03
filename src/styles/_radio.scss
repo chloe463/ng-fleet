@@ -1,5 +1,12 @@
-.fr-radio {
+.fr-radio-host {
   display: inline-block;
+  @media all and (max-width: 768px) {
+    display: flex;
+    margin: 20px 0;
+  }
+}
+
+.fr-radio {
   &-container {
     position: relative;
     display: inline-flex;
@@ -68,10 +75,6 @@
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    @media all and (max-width: 768px) {
-      display: block;
-      margin: 20px 0;
-    }
     &--disabled {
       cursor: default;
     }
