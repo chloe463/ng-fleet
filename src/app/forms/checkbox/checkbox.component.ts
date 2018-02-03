@@ -7,7 +7,8 @@ import {
   EventEmitter,
   ContentChildren,
   QueryList,
-  forwardRef
+  forwardRef,
+  HostBinding
 } from '@angular/core';
 import { DefaultValueAccessor } from '@angular/forms';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -37,6 +38,8 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
   @Input() name: string;
 
   @Output() change: EventEmitter<FrCheckboxChange> = new EventEmitter<FrCheckboxChange>();
+
+  @HostBinding('class.fr-checkbox-host') true;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
