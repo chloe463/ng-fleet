@@ -54,8 +54,11 @@ export const DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
       state(SHOW, style({
         opacity: 1
       })),
-      transition('* => *', [
-        animate('.2s ease-in')
+      transition(`${HIDDEN} => ${SHOW}`, [
+        animate('200ms ease-out')
+      ]),
+      transition(`${SHOW} => ${HIDDEN}`, [
+        animate('200ms 200ms ease-out')
       ])
     ])
   ]

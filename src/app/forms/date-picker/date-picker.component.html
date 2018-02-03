@@ -64,8 +64,14 @@
       </tbody>
     </table>
     <div class="fr-date-picker__body-footer">
-      <button type="button" class="fr-btn fr-btn-flat fr-date-picker__button--secondary" (click)="cancel()">CANCEL</button>
-      <button type="button" class="fr-btn fr-btn-flat fr-date-picker__button--primary" (click)="commit()">OK</button>
+      <button type="button"
+        class="fr-btn fr-btn-flat fr-date-picker__button--secondary"
+        frRipple
+        (click)="cancel()">CANCEL</button>
+      <button type="button"
+        class="fr-btn fr-btn-flat fr-date-picker__button--primary"
+        frRipple
+        (click)="commit()">OK</button>
     </div>
   </div>
 </div>

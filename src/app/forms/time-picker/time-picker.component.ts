@@ -58,8 +58,11 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
       state(SHOW, style({
         opacity: 1
       })),
-      transition('* => *', [
-        animate('.3s ease')
+      transition(`${HIDDEN} => ${SHOW}`, [
+        animate('200ms ease-out')
+      ]),
+      transition(`${SHOW} => ${HIDDEN}`, [
+        animate('200ms 200ms ease-out')
       ])
     ])
   ]
