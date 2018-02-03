@@ -123,6 +123,8 @@ export class FrInputDirective implements OnInit, OnDestroy {
 })
 export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
+  @HostBinding('class.fr-input-text-container') true;
+
   @ContentChild(FrInputDirective) input: FrInputDirective;
 
   public maxLength: number;
