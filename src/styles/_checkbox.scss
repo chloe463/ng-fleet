@@ -1,3 +1,8 @@
+input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
 .fr-checkbox-host {
   display: inline-flex;
   @media all and (max-width: 768px) {
