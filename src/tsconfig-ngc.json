@@ -34,6 +34,10 @@
   ],
   "angularCompilerOptions": {
     "genDir": "../aot",
-    "strictMetadataEmit": true
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "flatModuleOutFile": "francette.js",
+    "flatModuleId": "francette",
+    "annotateForClosureCompiler": true
   }
 }
