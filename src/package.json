@@ -1,12 +1,13 @@
 {
   "name": "francette",
-  "version": "0.8.0-beta.1",
+  "version": "0.8.0-beta.2",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {},
-  "main": "./bundles/francette.js",
-  "module": "./index.js",
-  "typings": "./index.d.ts",
+  "main": "./bundles/francette.umd.js",
+  "module": "./esm5/francette.js",
+  "es2015": "./esm2015/francette.js",
+  "typings": "./src/francette.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/chloe463/francette"
