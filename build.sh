@@ -23,7 +23,7 @@ build_css () {
   # Add prefixes
   $(npm bin)/postcss --use autoprefixer -o ${OUTPUT_FILE} ${OUTPUT_FILE}
 
-  ls builds/bundles || mkdir builds/bundles
+  ls builds/bundles || mkdir -p builds/bundles
   mv ${OUTPUT_FILE} builds/bundles/styles.css
 }
 
