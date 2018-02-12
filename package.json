@@ -57,5 +57,9 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chloe463/francette"
   }
 }
