@@ -1,5 +1,10 @@
+.fr-select-host {
+  display: block;
+}
+
 .fr-select {
   position: relative;
+  border-top: 12px solid transparent;
 
   &:focus {
     outline: none;
@@ -37,14 +42,14 @@
     }
 
     &--label {
-      top: -10px;
+      top: -12px;
       left: 0;
       color: rgba(0,0,0,.54);
       font-size: 12px;
     }
 
     &--label-on-focus {
-      top: -10px;
+      top: -12px;
       left: 0;
       color: $secondary-light;
       font-size: 12px;
@@ -116,7 +121,7 @@
 
   &:after {
     position: absolute;
-    top: 0;
+    top: 2px;
     right: 8px;
     bottom: 0;
     width: 0;

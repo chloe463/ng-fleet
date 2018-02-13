@@ -22,8 +22,14 @@ import {
   transition,
   animate
 } from '@angular/animations';
-import { NgModel, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  NgModel,
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  FormControl
+} from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/debounceTime';
 
 export const LABEL          = 'label';
 export const LABEL_ON_FOCUS = 'labelOnFocus';
@@ -33,6 +39,8 @@ export const PLACEHOLDER    = 'placeholder';
   selector: 'input[frInput], textarea[frInput]'
 })
 export class FrInputDirective implements OnInit, OnDestroy {
+
+  @Input() formControl: FormControl;
 
   @HostBinding('class.fr-input-text__form') true;
 
@@ -71,6 +79,11 @@ export class FrInputDirective implements OnInit, OnDestroy {
       this._ngModelSubscribtion = this.ngModel.valueChanges.subscribe((v) => {
         this._updateLabelState(v);
       });
+    } else if (this.formControl) {
+      this.labelState = PLACEHOLDER;
+      this.formControl.valueChanges
+        .debounceTime(100)
+        .subscribe(v => { this._updateLabelState(v); });
     } else {
       this.labelState = (this._el.nativeElement.value) ? LABEL : PLACEHOLDER;
     }
@@ -122,6 +135,8 @@ export class FrInputDirective implements OnInit, OnDestroy {
   templateUrl: './input-text-container.component.html'
 })
 export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
+
+  @HostBinding('class.fr-input-text-container-host') true;
 
   @ContentChild(FrInputDirective) input: FrInputDirective;
 

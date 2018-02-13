@@ -44,20 +44,33 @@ export class FormsDemoComponent {
   }
 
   public resetFormGroup() {
-    this.formGroup = this.fb.group({
-      file: [],
-      text: ['', Validators.required],
-      select: '',
-      radio: '',
-      checkboxes: new FormArray([
-        new FormControl(false),
-        new FormControl(false),
-        new FormControl(false),
-      ]),
-      switch: false,
-      date: new Date(),
-      textArea: ''
-    });
+    if (this.formGroup) {
+      this.formGroup.setValue({
+        file: [],
+        text: '',
+        select: '',
+        radio: 1,
+        checkboxes: [false, false, false],
+        switch: false,
+        date: new Date(),
+        textArea: ''
+      });
+    } else {
+      this.formGroup = this.fb.group({
+        file: [],
+        text: ['', Validators.required],
+        select: '',
+        radio: [],
+        checkboxes: new FormArray([
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false)
+        ]),
+        switch: false,
+        date: new Date(),
+        textArea: ''
+      });
+    }
   }
 
   public onSubmit() {

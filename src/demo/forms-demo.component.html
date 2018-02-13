@@ -12,7 +12,7 @@
       <tr>
         <td>
           <fr-input-text-container>
-            <input frInput type="text" placeholder="text" formControlName="text">
+            <input frInput type="text" placeholder="text" [formControl]="formGroup.controls['text']">
           </fr-input-text-container>
         </td>
       </tr>
@@ -40,7 +40,8 @@
         <td>
           <fr-form-group label="checkbox">
             <fr-checkbox *ngFor="let checkbox of formGroup.controls['checkboxes']['controls']; let i = index"
-              [formControl]="checkbox">
+              [formControl]="checkbox"
+              (change)="onCheckboxChange($event)">
               {{checkboxes[i]['name']}}
             </fr-checkbox>
           </fr-form-group>

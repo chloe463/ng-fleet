@@ -1,13 +1,17 @@
+.fr-checkbox-host {
+  display: inline-flex;
+  @media all and (max-width: 768px) {
+    display: flex;
+    margin: 20px 0;
+  }
+}
+
 .fr-checkbox {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
   position: relative;
-  @media all and (max-width: 768px) {
-    display: flex;
-    margin: 20px 0;
-  }
   &--disabled {
     cursor: default;
     & .fr-checkbox__square {
@@ -20,22 +24,13 @@
 
   &-box-container {
     display: inline-block;
-    height: 22px;
-    width: 22px;
-    margin-right: 8px;
     position: relative;
   }
 
   &__square {
     display: inline-block;
-    margin-right: 8px;
     width: 18px;
     height: 18px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     text-align: center;
     vertical-align: middle;
     font-size: 14px;
@@ -108,6 +103,7 @@
     }
   }
   &-label-text {
+    margin: 0 8px;
     &--disabled {
       color: $gray;
       cursor: default;

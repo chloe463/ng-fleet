@@ -7,6 +7,7 @@ import {
   EventEmitter,
   forwardRef,
   ElementRef,
+  HostBinding,
   HostListener,
   ViewChild
 } from '@angular/core';
@@ -57,8 +58,11 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
       state(SHOW, style({
         opacity: 1
       })),
-      transition('* => *', [
-        animate('.3s ease')
+      transition(`${HIDDEN} => ${SHOW}`, [
+        animate('200ms ease-out')
+      ]),
+      transition(`${SHOW} => ${HIDDEN}`, [
+        animate('200ms 200ms ease-out')
       ])
     ])
   ]
@@ -70,6 +74,8 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   @Output() change: EventEmitter<FrTimePickerChange> = new EventEmitter<FrTimePickerChange>();
 
   @ViewChild('clock') clock: ElementRef;
+
+  @HostBinding('class.fr-timepicker-host') true;
 
   /**
    * For ControlValueAccessor

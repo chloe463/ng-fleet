@@ -9,7 +9,8 @@ import {
   ContentChildren,
   QueryList,
   forwardRef,
-  Optional
+  Optional,
+  HostBinding
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { timer } from 'rxjs/observable/timer';
@@ -23,7 +24,7 @@ const noop = () => {};
 
 export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => FrDirectiveComponent),
+  useExisting: forwardRef(() => FrRadioGroupComponent),
   multi: true
 };
 
@@ -32,7 +33,7 @@ export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   template: `<ng-content></ng-content>`,
   providers: [RADIO_GROUP_CONTROL_VALUE_ACCESSOR]
 })
-export class FrDirectiveComponent implements ControlValueAccessor {
+export class FrRadioGroupComponent implements ControlValueAccessor {
   @Input() name;
 
   @Output() change: EventEmitter<FrRadioChange> = new EventEmitter<FrRadioChange>();
@@ -125,11 +126,13 @@ export class FrRadioComponent implements OnInit {
 
   @Output() change: EventEmitter<FrRadioChange> = new EventEmitter<FrRadioChange>();
 
-  private radioGroup: FrDirectiveComponent;
+  @HostBinding('class.fr-radio-host') true;
+
+  private radioGroup: FrRadioGroupComponent;
   public isRippleOn: boolean;
   public isFocused: boolean;
 
-  constructor(@Optional() radioGroup: FrDirectiveComponent) {
+  constructor(@Optional() radioGroup: FrRadioGroupComponent) {
     this.radioGroup = radioGroup;
   }
 

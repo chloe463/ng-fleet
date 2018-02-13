@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   Input,
-  forwardRef
+  forwardRef,
+  HostBinding
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
@@ -59,6 +60,8 @@ export const SWITCH_CONTROL_VALUE_ACCESSOR: any = {
 export class FrSwitchComponent implements OnInit, ControlValueAccessor {
 
   @Input() labels: IFrSwitchLabels;
+
+  @HostBinding('class.fr-switch-host') true;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;

@@ -45,8 +45,14 @@
       <span id="clock-hand" class="fr-timepicker__clock-hand"></span>
     </div>
     <div class="fr-timepicker__body-footer">
-      <button type="button" class="fr-btn fr-btn-flat fr-timepicker__button--secondary" (click)="cancel()">CANCEL</button>
-      <button type="button" class="fr-btn fr-btn-flat fr-timepicker__button--primary" (click)="commit()">OK</button>
+      <button type="button"
+        class="fr-btn fr-btn-flat fr-timepicker__button--secondary"
+        frRipple
+        (click)="cancel()">CANCEL</button>
+      <button type="button"
+        class="fr-btn fr-btn-flat fr-timepicker__button--primary"
+        frRipple
+        (click)="commit()">OK</button>
     </div>
   </div>
 </div>
