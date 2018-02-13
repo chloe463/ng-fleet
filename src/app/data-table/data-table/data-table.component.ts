@@ -31,11 +31,18 @@ import { FrDataTableFooterComponent } from '../data-table-footer/data-table-foot
 export class FrDataTableEvent {
   constructor(
     public action: string,
-    public row: Array<any>,
+    public rows: Array<any>,
     public rowsPerPage: number,
     public page: number,
     public extraParam?: any
   ) {}
+
+  /**
+   * For backward compatibility
+   */
+  get row(): Array<any> {
+    return this.rows;
+  }
 }
 
 @Directive({
@@ -72,6 +79,30 @@ export class FrDataTableStripeDirective {
           })
         )
       ])
+    ]),
+    trigger('rowsListState', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'scaleY(.86)',
+        'transform-origin': '5% 0',
+        'pointer-events': 'none'
+      })),
+      state('show', style({
+        opacity: 1,
+        transform: 'scaleY(1)',
+      })),
+      transition('hidden => show', [
+        animate('500ms cubic-bezier(0.35, 0.25, 0, 1)')
+      ]),
+      transition('show => hidden', [
+        animate(
+          '500ms 200ms cubic-bezier(0.35, 0.25, 0, 1)',
+          style({
+            opacity: 0,
+            top: '-15px'
+          })
+        )
+      ])
     ])
   ]
 })
@@ -83,6 +114,7 @@ export class FrDataTableComponent implements AfterContentInit {
   @Output() dataTableAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
   @ViewChild('dots') dots: ElementRef;
+  @ViewChild('pulldown') pulldown: ElementRef;
 
   @ContentChild(FrDataTableHeaderComponent) headerComponent: FrDataTableHeaderComponent;
   @ContentChild(FrDataTableColumnsComponent) columnsComponent: FrDataTableColumnsComponent;
@@ -101,8 +133,9 @@ export class FrDataTableComponent implements AfterContentInit {
   public checkAllFlag: boolean;
 
   public actionListState = 'hidden';
+  public rowsListState   = 'hidden';
 
-  public ripples = { edit: false, delete: false, dots: false };
+  public ripples = { edit: false, delete: false, dots: false, chevronLeft: false, chevronRight: false };
 
   ngAfterContentInit() {
     // this.title = this.headerComponent.title;
@@ -191,7 +224,12 @@ export class FrDataTableComponent implements AfterContentInit {
     }
   }
 
-  public paginationAction(action: string): void {
+  public paginationAction(action: string, rowsPerPage?): void {
+    const direction = action === 'showPreviousPage' ? 'chevronLeft' : 'chevronRight';
+    if (rowsPerPage) {
+      this.rowsPerPage = rowsPerPage;
+    }
+    this.activateRippleEffect(direction);
     const checkedRows = this._extraceCheckedRows();
     const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     if (this.dataTableAction) {
@@ -202,6 +240,10 @@ export class FrDataTableComponent implements AfterContentInit {
   public toggleOtherActionList(): void {
     this.activateRippleEffect('dots');
     this.actionListState = (this.actionListState === 'hidden') ? 'show' : 'hidden';
+  }
+
+  public toggleRowsList(): void {
+    this.rowsListState = (this.rowsListState === 'hidden') ? 'show' : 'hidden';
   }
 
   private activateRippleEffect(key: string): void {
@@ -216,12 +258,16 @@ export class FrDataTableComponent implements AfterContentInit {
     if (!this.dots.nativeElement.contains(event.target)) {
       this.actionListState = 'hidden';
     }
+    if (!this.pulldown.nativeElement.contains(event.target)) {
+      this.rowsListState   = 'hidden';
+    }
   }
 
   @HostListener('window:keydown', ['$event'])
   public hideActionListOnEscape(event): void {
     if (event.code === 'Escape' && event.key === 'Escape') {
       this.actionListState = 'hidden';
+      this.rowsListState   = 'hidden';
     }
   }
 
