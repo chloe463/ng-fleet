@@ -14,7 +14,7 @@ const PROJECT_ROOT    = path.join(__dirname);
 const SOURCE_ROOT     = path.join(__dirname, 'src');
 const PRE_BUILDS_ROOT = path.join(__dirname, 'pre-builds');
 const BUILDS_ROOT     = path.join(__dirname, 'builds');
-const BUNDLES_ROOT    = path.join(__dirname, 'builds/francette/bundles');
+const BUNDLES_ROOT    = path.join(__dirname, 'builds/bundles');
 
 function promiseify(fn) {
   return function() {
@@ -145,7 +145,8 @@ gulp.task('build:rollup', () => {
     'rxjs/Observable': 'rxjs_Observable',
     'rxjs/Observer': 'rxjs_Observer',
     'rxjs/ReplaySubject': 'rxjs_ReplaySubject',
-    'rxjs/observable/timer': 'rxjs_Observable_timer'
+    'rxjs/observable/timer': 'rxjs_Observable_timer',
+    'rxjs/add/operator/debounceTime': 'rxjs_debounce_time'
   };
 
   const rollupOptions = {
@@ -159,7 +160,7 @@ gulp.task('build:rollup', () => {
     format: 'umd',
     globals,
     banner: '',
-    dest: 'francette.js'
+    dest: 'francette.umd.js'
   };
 
   return gulp.src(TARGET_FILE)

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "es2015",
+    "target": "es2015",
+    "baseUrl": "../.packaging",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es6", "dom"],
+    "moduleResolution": "node",
+    "outDir": "../.packaging/esm2015",
+    "rootDir": "../.packaging",
+    "sourceMap": false
+  },
+  "files": ["../.packaging/index.ts"],
+  "angularCompilerOptions": {
+    "annotateForClosureCompiler": true,
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "flatModuleOutFile": "francette.js",
+    "flatModuleId": "francette"
+  }
+}

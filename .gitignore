@@ -6,6 +6,7 @@
 /aot
 /builds
 /pre-builds
+/.packaging
 
 # dependencies
 /node_modules
@@ -46,3 +47,4 @@ Thumbs.db
 *.back
 *.backup
 *.bak
+
