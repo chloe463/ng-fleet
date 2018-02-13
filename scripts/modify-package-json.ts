@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
+import { join, dirname } from 'path';
 
-const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
+const packageJson = JSON.parse(readFileSync(join(dirname(dirname(process.argv[1])), './package.json'), 'utf-8'));
 const modified = <any>Object.assign({}, packageJson, {
   dependencies: {},
   devDependencies: {},
