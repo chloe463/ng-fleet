@@ -3,6 +3,10 @@
 set -eux
 
 build_all () {
+  # Clean up previous build and working directory
+  rm -rf .packaging builds
+
+  # Build css and js
   build_css
   build_js
 }
@@ -64,8 +68,7 @@ case $1 in
   "js") build_js ;;
   "css") build_css ;;
   "all")
-    build_css
-    build_js
+    build_all
     ;;
   "*")
     echo "Usage) ./builds.sh {css|js|all}" ;;
