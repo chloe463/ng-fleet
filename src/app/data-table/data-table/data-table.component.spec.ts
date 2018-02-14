@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { FrRippleModule } from '../../ripple/ripple.module';
 import { FrDataTableComponent } from './data-table.component';
 import { FrDataTableColumnsComponent } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableFooterComponent } from '../data-table-footer/data-table-footer.component';
@@ -25,7 +26,7 @@ describe('FrDataTableComponent', () => {
         FrDataTableRowsComponent,
         SampleFrDataTableComponent
       ],
-      imports: [ FormsModule, FrFormsModule ]
+      imports: [ FormsModule, FrFormsModule, FrRippleModule ]
     })
     .compileComponents();
   }));
