@@ -3,6 +3,10 @@
 set -eux
 
 build_all () {
+  # Clean up previous build and working directory
+  rm -rf .packaging builds
+
+  # Build css and js
   build_css
   build_js
 }
@@ -13,6 +17,7 @@ build_css () {
 
   # Remove previous build file if it exists
   ls ${OUTPUT_FILE} && rm -f ${OUTPUT_FILE}
+  ls builds/styles && rm -rf builds/styles
 
   # Make working directory if it does not exist
   ls -la $(dirname ${OUTPUT_FILE}) || mkdir -p $(dirname ${OUTPUT_FILE})
@@ -23,13 +28,13 @@ build_css () {
   # Add prefixes
   $(npm bin)/postcss --use autoprefixer -o ${OUTPUT_FILE} ${OUTPUT_FILE}
 
-  ls builds/bundles || mkdir -p builds/bundles
-  mv ${OUTPUT_FILE} builds/bundles/styles.css
+  ls builds/styles || mkdir -p builds/styles
+  mv ${OUTPUT_FILE} builds/styles/francette.css
 }
 
 build_js () {
   # Remove previous builds and working directory
-  rm -rf builds .packaging
+  rm -rf builds/esm2015 builds/esm5 builds/src builds/bundles .packaging
 
   # Replace `templateUrl` -> `template`, `styleUrls` -> `styles`
   npm run build:inline
@@ -63,8 +68,7 @@ case $1 in
   "js") build_js ;;
   "css") build_css ;;
   "all")
-    build_css
-    build_js
+    build_all
     ;;
   "*")
     echo "Usage) ./builds.sh {css|js|all}" ;;
