@@ -25,7 +25,8 @@ import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
   animations: [
     trigger('navState', [
       state('inactive', style({
-        transform: 'translate3d(-100%,0,0)'
+        transform: 'translate3d(-100%,0,0)',
+        'box-shadow': 'none'
       })),
       state('active', style({
         transform: 'translate3d(0,0,0)'
