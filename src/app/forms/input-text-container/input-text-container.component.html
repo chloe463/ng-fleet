@@ -1,4 +1,4 @@
-<div class="fr-input-text">
+<div class="fr-input-text" [class.fr-input-text--has-count]="maxLength !== -1">
   <label class="fr-input-text__label"
     [class.fr-input-text__label--placeholder]="input.labelState === 'placeholder'"
     [class.fr-input-text__label--label]="input.labelState === 'label'"
