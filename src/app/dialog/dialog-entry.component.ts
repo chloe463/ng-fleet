@@ -9,13 +9,15 @@ import {
   ViewChild,
   OnChanges,
   AfterViewInit,
-  animate,
-  trigger,
-  style,
-  state,
-  transition,
   HostListener
 } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
 import { FrDialogService } from './dialog.service';
 
 @Directive({

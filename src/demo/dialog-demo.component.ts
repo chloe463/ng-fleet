@@ -1,13 +1,15 @@
 import {
   Component,
   OnInit,
-  OnDestroy,
+  OnDestroy
+} from '@angular/core';
+import {
   animate,
   state,
   style,
   transition,
   trigger
-} from '@angular/core';
+} from '@angular/animations';
 import { FrDialogService, FrDialogContext } from './../app/dialog/dialog.service';
 import { Observer } from 'rxjs/Observer';
 

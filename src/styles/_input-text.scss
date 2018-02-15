@@ -74,6 +74,14 @@
       animation: underline-ripple 0.3s ease-out;
     }
   }
+
+  &--has-count {
+    padding-bottom: 24px;
+  }
+}
+
+textarea.fr-input-text__form {
+  resize: vertical;
 }
 
 @keyframes underline-ripple {

@@ -10,15 +10,17 @@ import {
   OnInit,
   OnChanges,
   AfterViewInit,
-  animate,
-  trigger,
-  style,
-  state,
-  transition,
   HostListener,
   ReflectiveInjector,
   ComponentRef
 } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { timer } from 'rxjs/observable/timer';
