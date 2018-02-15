@@ -135,6 +135,7 @@
       background: $primary;
       color: $text-on-primary;
       outline: none;
+      cursor: pointer;
 
       &:hover {
         background: $primary-light;
