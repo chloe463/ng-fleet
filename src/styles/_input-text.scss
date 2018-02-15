@@ -76,6 +76,10 @@
   }
 }
 
+textarea.fr-input-text__form {
+  resize: vertical;
+}
+
 @keyframes underline-ripple {
   from {
     transform: scale(0.5);
