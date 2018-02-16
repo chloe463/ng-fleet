@@ -1,6 +1,13 @@
 # Francette
 
-Simple components and style sheets for Angular 2.x.
+Simple components and style sheets for Angular 2.0 or heigher.
+
+## Version Compatibility
+
+|Angular version|Francette Version|
+|:-|:-|
+|2.x|0.6 or lower|
+|4.x or higher|0.7 or heigher|
 
 ## OVERVIEW
 
