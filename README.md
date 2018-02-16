@@ -2,36 +2,24 @@
 
 Simple components and style sheets for Angular 2.0 or heigher.
 
-## Version Compatibility
+Please see [this directory](https://github.com/chloe463/francette/tree/master/src/demo) and learn how to use this.
 
-|Angular version|Francette Version|
-|:-|:-|
-|2.x|0.6 or lower|
-|4.x or higher|0.7 or heigher|
+## Modules
 
-## OVERVIEW
-
-This library provides...
-
-* Buttons
-* Chips
-* Data table
-* Dialog
-* Forms
-  * Checkbox
-  * Date Picker
-  * Form group
-  * Text
-  * Radio
-  * Select
-  * Time Picker
-* Navbar
-* Notification
-* Progress bar/spinner
-* Ripple Effect
-* Sidenav
-* Tabs
-* Toaster
+|Name|Module Name|Remark|
+|:-|:-|:-|
+|Buttons|`FrButtonModule`||
+|Chips|`FrChipModule`||
+|Data table|`FrDataTableModule`|Consists of `header`, `columns`, `rows` and `footer` components.|
+|Dialog|`FrDialogModule`||
+|Forms|`FrFormsModule`|Includes `checkbox`, `date-picker`, `input[type="file"]`, `input[type="text"]`, `radio`, `select`, `switch` and  `time-picker`|
+|Navbar|`FrNavbarModule`||
+|Notification|`FrNotificationModule`||
+|Progress bar/spinner|`FrProgressModule`||
+|Ripple Effect|`FrRippleModule`||
+|Sidenav|`FrSideNavModule`||
+|Tabs|`FrTabsModule`||
+|Toaster|`FrToasterModule`||
 
 ## Installation
 
@@ -81,3 +69,11 @@ import { FrFormsModule, FrTabsModule } from 'francette';
 })
 export class AppModule {}
 ```
+
+## Version Compatibility
+
+|Angular version|Francette Version|
+|:-|:-|
+|2.x|0.6 or lower|
+|4.x or higher|0.7 or heigher|
+
