@@ -6,18 +6,18 @@ Please see [this directory](https://github.com/chloe463/francette/tree/master/sr
 
 ## Modules
 
-|Name|Module Name|Remark|
+|Name|Modules|Notes|
 |:-|:-|:-|
 |Buttons|`FrButtonModule`||
 |Chips|`FrChipModule`||
 |Data table|`FrDataTableModule`|Consists of `header`, `columns`, `rows` and `footer` components.|
 |Dialog|`FrDialogModule`||
-|Forms|`FrFormsModule`|Includes `checkbox`, `date-picker`, `input[type="file"]`, `input[type="text"]`, `radio`, `select`, `switch` and  `time-picker`|
+|Forms|`FrFormsModule`|Includes `checkbox`, `date-picker`, `input[type="file"]`, `input[type="text"]`, `radio`, `select`, `switch` and  `time-picker`.|
 |Navbar|`FrNavbarModule`||
 |Notification|`FrNotificationModule`||
 |Progress bar/spinner|`FrProgressModule`||
 |Ripple Effect|`FrRippleModule`||
-|Sidenav|`FrSideNavModule`||
+|Sidenav|`FrSideNavModule`|It works with `FrNavbarModule`.|
 |Tabs|`FrTabsModule`||
 |Toaster|`FrToasterModule`||
 
@@ -31,7 +31,7 @@ $ npm install --save francette
 $ yarn add --save francette
 ```
 
-## Get started
+## Getting started
 
 Add `FrancetteModule` to your NgModule imports array.
 
