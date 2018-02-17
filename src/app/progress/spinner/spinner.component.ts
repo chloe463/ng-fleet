@@ -1,7 +1,8 @@
 import {
   Component,
   OnInit,
-  Input
+  Input,
+  HostBinding
 } from '@angular/core';
 
 @Component({
@@ -15,6 +16,8 @@ import {
   `
 })
 export class FrProgressSpinnerComponent implements OnInit {
+
+  @HostBinding('class.fr-progress-spinner-host') true;
 
   constructor() { }
 
