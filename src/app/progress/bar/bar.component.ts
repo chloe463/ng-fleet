@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'fr-progress-bar',
@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
   `
 })
 export class FrProgressBarComponent implements OnInit {
+
+  @HostBinding('class.fr-progress-bar-host') true;
 
   constructor() { }
 

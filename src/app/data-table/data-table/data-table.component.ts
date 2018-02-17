@@ -108,6 +108,8 @@ export class FrDataTableStripeDirective {
 })
 export class FrDataTableComponent implements AfterContentInit {
 
+  @HostBinding('class.fr-data-table-host') true;
+
   @Input() selectable = false;
   @Input() sortable = false;
 

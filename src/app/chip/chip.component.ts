@@ -3,7 +3,8 @@ import {
   OnInit,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  HostBinding
 } from '@angular/core';
 
 @Component({
@@ -11,6 +12,8 @@ import {
   templateUrl: './chip.component.html'
 })
 export class FrChipComponent implements OnInit {
+
+  @HostBinding('class.fr-chip-host') true;
 
   @Input() on = false;
 
