@@ -18,6 +18,7 @@ import { FrRippleModule } from './ripple/ripple.module';
 import { FrSideNavModule } from './side-nav/side-nav.module';
 import { FrTabsModule } from './tabs/tabs.module';
 import { FrToasterModule } from './toaster/toaster.module';
+import { FrTooltipModule } from './tooltip/tooltip.module';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { FrToasterModule } from './toaster/toaster.module';
     FrRippleModule,
     FrSideNavModule,
     FrTabsModule,
-    FrToasterModule
+    FrToasterModule,
+    FrTooltipModule
   ],
   exports: [
     FrButtonModule,
@@ -52,7 +54,8 @@ import { FrToasterModule } from './toaster/toaster.module';
     FrRippleModule,
     FrSideNavModule,
     FrTabsModule,
-    FrToasterModule
+    FrToasterModule,
+    FrTooltipModule
   ]
 })
 export class FrancetteModule { }
