@@ -2,47 +2,57 @@ import { Component } from '@angular/core';
 
 import { FrToasterService } from './../app/toaster/toaster.service';
 import { FrToasterParam } from './../app/toaster/toaster.types';
-import { FrNotificationService } from './../app/notification/notification.service'
+import { FrNotificationService } from './../app/notification/notification.service';
 import { FrNotificationParam, FrNotificationType } from './../app/notification/notification.types';
 
+/* tslint:disable component-selector */
 @Component({
   selector: 'toaster-demo',
+  styles: [`
+  .container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .level-selector {
+    display: block;
+    width: 360px;
+    margin: 5px;
+  }
+  `],
   template: `
-  <h1>Toaster Demo</h1>
-  <button class="fr-btn fr-btn--primary" frRipple (click)="toggleToaster()">toggle toaster</button>
-  <button class="fr-btn fr-btn--primary" frRipple (click)="toggleToasterWithService()">toggle toaster with service</button>
-  <hr>
-  <button class="fr-btn" frRipple (click)="popupNotification('default')">popup notification</button>
-  <button class="fr-btn fr-btn--primary" frRipple (click)="popupNotification('primary')">popup notification</button>
-  <button class="fr-btn fr-btn--info" frRipple (click)="popupNotification('info')">popup notification</button>
-  <button class="fr-btn fr-btn--warning" frRipple (click)="popupNotification('warning')">popup notification</button>
-  <button class="fr-btn fr-btn--danger" frRipple (click)="popupNotification('danger')">popup notification</button>
-  <fr-toaster [(show)]="toastShow" [actionKey]="actionKey" (action)="toasterAction($event)">
-    Toaster Content
-  </fr-toaster>
+  <h1>Toaster and Toaster Demo</h1>
+  <div class="container">
+    <div class="toaster-demo">
+      <button class="fr-btn fr-btn--primary" frRipple (click)="showToaster()">toaster</button>
+    </div>
+    <div class="notification-demo">
+      <fr-select
+        class="level-selector"
+        [placeholder]="'Notification Level'"
+        [browserNative]="false"
+        [(ngModel)]="notificationLevel">
+        <fr-option *ngFor="let level of levels"
+          [value]="level" [label]="level"></fr-option>
+      </fr-select>
+      <button class="fr-btn fr-btn--primary" (click)="showNotification()">Notification</button>
+    </div>
+  </div>
   <fr-toaster-entry></fr-toaster-entry>
   <fr-notification-entry></fr-notification-entry>
   `,
   providers: [ FrToasterService, FrNotificationService ]
 })
 export class ToasterDemoComponent {
-  public toastShow = false;
-  public actionKey = 'UNDO';
+
+  notificationLevel: FrNotificationType = 'default';
+  levels = ['default', 'primary', 'info', 'warning', 'danger'];
 
   constructor(
     public toasterService: FrToasterService,
     public notificationService: FrNotificationService
   ) {}
 
-  public toggleToaster(): void {
-    this.toastShow = !this.toastShow;
-  }
-
-  public toasterAction(event): void {
-    console.log(event);
-  }
-
-  public toggleToasterWithService(): void {
+  public showToaster(): void {
     const toasterParam: FrToasterParam = {
       text: 'test',
       action: 'undo',
@@ -59,9 +69,27 @@ export class ToasterDemoComponent {
     );
   }
 
+  public showNotification(): void {
+    const notificationParam: FrNotificationParam = {
+      text: 'Hi! I\'m a notification!',
+      type: this.notificationLevel,
+      timeout: 3000,
+      extraParams: { message: 'message' }
+    };
+    this.notificationService.open<any>(notificationParam).subscribe(
+      (v) => {
+        console.log(v);
+      },
+      (reason) => {},
+      () => {
+        console.log('onComplete');
+      }
+    );
+  }
+
   public popupNotification(type: FrNotificationType): void {
     const notificationParam: FrNotificationParam = {
-      text: "Hi! I'm a notification!",
+      text: 'Hi! I\'m a notification!',
       type: type,
       timeout: 3000,
       extraParams: { message: 'message' }

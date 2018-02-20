@@ -7,6 +7,7 @@ import {
   EventEmitter,
   forwardRef,
   ElementRef,
+  HostBinding,
   HostListener,
   ViewChild
 } from '@angular/core';
@@ -57,8 +58,11 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
       state(SHOW, style({
         opacity: 1
       })),
-      transition('* => *', [
-        animate('.3s ease')
+      transition(`${HIDDEN} => ${SHOW}`, [
+        animate('200ms ease-out')
+      ]),
+      transition(`${SHOW} => ${HIDDEN}`, [
+        animate('200ms 200ms ease-out')
       ])
     ])
   ]
@@ -71,13 +75,15 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
 
   @ViewChild('clock') clock: ElementRef;
 
+  @HostBinding('class.fr-timepicker-host') true;
+
   /**
    * For ControlValueAccessor
    */
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
 
   public clockVisibility: string;
   public pickTarget: string = HOURS;
@@ -247,7 +253,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
         : this.value.getMinutes() - (this.value.getMinutes() % 5);
       this.putHandRightPosition(targetDial);
       this.changing = false;
-    })
+    });
   }
 
   public cancel(): void {

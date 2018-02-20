@@ -1,12 +1,15 @@
-<div class="fr-input-text">
+<div class="fr-input-text" [class.fr-input-text--has-count]="maxLength !== -1">
   <label class="fr-input-text__label"
-    [class.fr-input-text__label--placeholder]="_input.labelState === 'placeholder'"
-    [class.fr-input-text__label--label]="_input.labelState === 'label'"
-    [class.fr-input-text__label--label-on-focus]="_input.labelState === 'labelOnFocus'">
+    [class.fr-input-text__label--placeholder]="input.labelState === 'placeholder'"
+    [class.fr-input-text__label--label]="input.labelState === 'label'"
+    [class.fr-input-text__label--label-on-focus]="input.labelState === 'labelOnFocus'">
     {{placeholder}}
   </label>
   <ng-content selector="input, textarea"></ng-content>
+  <div class="fr-input-text__underline" [class.fr-input-text__underline--disabled]="input.disabled">
+    <div class="fr-input-text__underline-ripple" [class.fr-input-text__underline-ripple--on]="input.focus"></div>
+  </div>
   <span *ngIf="maxLength !== -1"
     class="fr-input-text__count"
-    [class.fr-input-text__count--error]="_input.valueLength > maxLength">{{_input.valueLength}}/{{maxLength}}</span>
+    [class.fr-input-text__count--error]="input.valueLength > maxLength">{{input.valueLength}}/{{maxLength}}</span>
 </div>

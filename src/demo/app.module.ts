@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -21,7 +21,7 @@ import { FrancetteModule } from '../app/francette.module';
 const routeConfig: Routes = [
   // { path: '', component: DevelopAreaComponent },
   // { path: 'develop', component: DevelopAreaComponent },
-  { path: '', component: ButtonsDemoComponent },
+  { path: '', component: FormsDemoComponent, pathMatch: 'full' },
   { path: 'develop', component: FormsDemoComponent },
   { path: 'data-table', component: DataTableDemoComponent },
   { path: 'dialog', component: DialogDemoComponent },
@@ -31,7 +31,8 @@ const routeConfig: Routes = [
   { path: 'progress', component: ProgressDemoComponent },
   { path: 'tabs', component: TabsDemoComponent },
   { path: 'toaster', component: ToasterDemoComponent },
-  { path: 'kpi-table', component: KpiTableDemoComponent }
+  { path: 'kpi-table', component: KpiTableDemoComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -52,6 +53,7 @@ const routeConfig: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routeConfig),
     FrancetteModule

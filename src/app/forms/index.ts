@@ -1,4 +1,4 @@
-export { FrRadioGroupDirective, FrRadioComponent } from './radio/radio/radio.component';
+export { FrRadioGroupComponent, FrRadioComponent } from './radio/radio/radio.component';
 export { FrFormGroupComponent } from './form-group/form-group.component';
 export { FrCheckboxComponent } from './checkbox/checkbox.component';
 export { FrDatePickerComponent } from './date-picker/date-picker.component';

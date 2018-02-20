@@ -48,7 +48,10 @@
       </a>
       <span class="fr-data-table__other-actions">
         <ul class="fr-data-table__other-action-list" [@actionListState]="actionListState">
-          <li *ngFor="let action of headerComponent.actionKeys; let i = index" class="fr-data-table__other-action-item" (click)="otherAction(action.key)">
+          <li *ngFor="let action of headerComponent.actionKeys; let i = index"
+            class="fr-data-table__other-action-item"
+            frRipple [rippleColor]="'#CCCCCC'"
+            (click)="otherAction(action.key)">
             {{action.label}}
           </li>
         </ul>
@@ -113,10 +116,20 @@
     <span class="fr-data-table__footer-select-label" [hidden]="!paginationInfo.rowsPerPageValues">
       Rows per page :
     </span>
-    <span class="fr-data-table__footer-select" [hidden]="!paginationInfo.rowsPerPageValues">
-      <fr-select [(ngModel)]="rowsPerPage" (ngModelChange)="paginationAction('changeRowsValue')">
-        <fr-option *ngFor="let option of paginationInfo.rowsPerPageValues" [value]="option" [label]="option"></fr-option>
-      </fr-select>
+    <span class="fr-data-table__footer-select-wrapper" [hidden]="!paginationInfo.rowsPerPageValues" (click)="toggleRowsList()" #pulldown>
+      <span class="fr-data-table__footer-rows">
+        {{rowsPerPage}}
+      </span>
+      <ul class="fr-data-table__footer-select" [@rowsListState]="rowsListState">
+        <li *ngFor="let value of paginationInfo.rowsPerPageValues"
+          class="fr-data-table__footer-select-value"
+          [class.fr-data-table__footer-select-value--selected]="rowsPerPage === value"
+          frRipple [rippleColor]="'#CCCCCC'"
+          (click)="paginationAction('changeRowsValue', value)">
+          {{value}}
+        </li>
+      </ul>
+      <span class="fr-data-table__footer-select-arrow"></span>
     </span>
     <a class="fr-data-table__footer-left-arrow" (click)="paginationAction('showPreviousPage')">
       <!-- chevron left -->
@@ -125,6 +138,7 @@
           <path d="M 17.719 2.5 L 8 12.051 L 17.672 21.534" style="fill: none; stroke: rgba(0, 0, 0, 0.560784); stroke-width: 5;"/>
           <path d="M 24.407 18.581 C 24.407 18.581 24.407 18.581 24.407 18.581 Z" style="fill: none; stroke: black;"/>
         </svg>
+        <span [class.fr-data-table__btn-ripple]="ripples.chevronLeft"></span>
       </span>
     </a>
     <a class="fr-data-table__footer-right-arrow" (click)="paginationAction('showNextPage')">
@@ -134,6 +148,7 @@
           <path d="M 17.719 21.534 L 8 11.983 L 17.672 2.5" style="fill: none; stroke: rgba(0, 0, 0, 0.560784); stroke-width: 5;" transform="matrix(-1, 0, 0, -1, 25.719, 24.034)"/>
           <path d="M 24.407 18.581 C 24.407 18.581 24.407 18.581 24.407 18.581 Z" style="fill: none; stroke: black;"/>
         </svg>
+        <span [class.fr-data-table__btn-ripple]="ripples.chevronRight"></span>
       </span>
     </a>
   </div>

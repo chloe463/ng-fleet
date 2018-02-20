@@ -1,0 +1,99 @@
+.fr-input-file {
+  display: block;
+  &__drop-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    border: 1px dashed rgba(0,0,0,.54);
+
+    &--on {
+      border: 1px dashed $secondary;
+
+      & > .fr-input-file__drop-area-message {
+        color: $secondary;
+      }
+    }
+
+    &--disabled {
+      border: 1px dashed rgba(0,0,0,.26);
+      & > .fr-input-file__drop-area-message {
+        color: rgba(0,0,0,.26);
+      }
+      cursor: no-drop;
+    }
+  }
+  &__drop-area-message {
+    pointer-events: none;
+    color: rgba(0,0,0,.54);
+    background: transparent;
+    font-size: 20px;
+  }
+  &__label {
+    margin-top: 12px;
+    display:inline-block;
+    width: 128px;
+    height: 2em;
+    line-height: 2em;
+    background: $primary;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    color: $text-on-primary;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &:hover {
+      background: lighten($primary, 10);
+    }
+
+    &--disabled {
+      background: $gray;
+      cursor: no-drop;
+      &:hover {
+        background: $gray;
+      }
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__file-name {
+    margin-left: 8px;
+    display: inline-block;
+    min-width: 120px;
+    line-height: 2em;
+    border-bottom: 1px solid rgba(0,0,0,.54);
+  }
+
+  &__list {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &__list-column-name {
+    padding: 8px 0;
+    text-align: left;
+    font-size: 10pt;
+    font-weight: 100;
+    border-bottom: 1px solid rgba(0,0,0,.26);
+    color: rgba(0,0,0,.54);
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__item {
+    padding: 8px 0;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,.26);
+    color: rgba(0,0,0,.54);
+
+    &--right {
+      text-align: right;
+    }
+  }
+}

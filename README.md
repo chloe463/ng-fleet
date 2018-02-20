@@ -1,27 +1,79 @@
 # Francette
 
-Simple components and style sheets for Angular 2.x.
+Simple components and style sheets for Angular 2.0 or heigher.
 
-## OVERVIEW
+Please see [this directory](https://github.com/chloe463/francette/tree/master/src/demo) and learn how to use this.
 
-This library provides...
+## Modules
 
-* [Buttons](https://github.com/chloe463/francette/tree/master/src/app/button/README.md)
-* [Chips](https://github.com/chloe463/francette/tree/master/src/app/chip/README.md)
-* [Data table](https://github.com/chloe463/francette/tree/master/src/app/data-table/README.md)
-* [Dialog](https://github.com/chloe463/francette/tree/master/src/app/dialog/README.md)
-* [Forms](https://github.com/chloe463/francette/tree/master/src/app/forms/README.md)
-  * Checkbox
-  * Date Picker
-  * Form group
-  * Text
-  * Radio
-  * Select
-  * Time Picker
-* [Navbar](https://github.com/chloe463/francette/tree/master/src/app/navbar/README.md)
-* [Notification](https://github.com/chloe463/francette/tree/master/src/app/notification/README.md)
-* [Progress bar/spinner](https://github.com/chloe463/francette/tree/master/src/app/progress/README.md)
-* [Ripple Effect](https://github.com/chloe463/francette/tree/master/src/app/ripple/README.md)
-* [Sidenav](https://github.com/chloe463/francette/tree/master/src/app/side-nav/README.md)
-* [Tabs](https://github.com/chloe463/francette/tree/master/src/app/tabs/README.md)
-* [Toaster](https://github.com/chloe463/francette/tree/master/src/app/toaster/README.md)
+|Name|Modules|Notes|
+|:-|:-|:-|
+|Buttons|`FrButtonModule`||
+|Chips|`FrChipModule`||
+|Data table|`FrDataTableModule`|Consists of `header`, `columns`, `rows` and `footer` components.|
+|Dialog|`FrDialogModule`||
+|Forms|`FrFormsModule`|Includes `checkbox`, `date-picker`, `input[type="file"]`, `input[type="text"]`, `radio`, `select`, `switch` and  `time-picker`.|
+|Navbar|`FrNavbarModule`||
+|Notification|`FrNotificationModule`||
+|Progress bar/spinner|`FrProgressModule`||
+|Ripple Effect|`FrRippleModule`||
+|Sidenav|`FrSideNavModule`|It works with `FrNavbarModule`.|
+|Tabs|`FrTabsModule`||
+|Toaster|`FrToasterModule`||
+
+## Installation
+
+```
+$ npm install --save francette
+
+# or
+
+$ yarn add --save francette
+```
+
+## Getting started
+
+Add `FrancetteModule` to your NgModule imports array.
+
+```typescript
+import { NgModule } from '@angular/core';
+import { FrancetteModule } from 'francette';
+
+@NgModule({
+  declarations: [
+    /** Your components */
+  ],
+  imports: [
+    /** Some other modules */
+    FrancetteModule
+  ]
+})
+export class AppModule {}
+```
+
+If you don't need all the `FrancetteModule` but need some parts of the module, you can import partial modules, say `FrFormsModule` or `FrTabsModule`.
+
+```typescript
+import { NgModule } from '@angular/core';
+import { FrFormsModule, FrTabsModule } from 'francette';
+
+@NgModule({
+  declarations: [
+    /** Your components */
+  ],
+  imports: [
+    /** Some other modules */
+    FrFormsModule,
+    FrTabsModule
+  ]
+})
+export class AppModule {}
+```
+
+## Version Compatibility
+
+|Angular version|Francette Version|
+|:-|:-|
+|2.x|0.6 or lower|
+|4.x or higher|0.7 or heigher|
+

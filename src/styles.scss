@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+}
+button, input, select, textarea {
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
 @import './styles/themes/japanesque';
 @import './styles/alerts';
 @import './styles/buttons';
@@ -28,3 +38,4 @@
 @import './styles/dialog';
 @import './styles/toaster';
 @import './styles/progress';
+@import './styles/input-file';

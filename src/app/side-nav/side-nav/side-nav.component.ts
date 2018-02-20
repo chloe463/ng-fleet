@@ -15,8 +15,8 @@ import {
   animate,
 } from '@angular/animations';
 
-import { FrSideNavItemGroupDirective } from '../side-nav-item-group/side-nav-item-group.component';
-import { FrSideNavItemDirective } from '../side-nav-item/side-nav-item.component';
+import { FrSideNavItemGroupComponent } from '../side-nav-item-group/side-nav-item-group.component';
+import { FrSideNavItemComponent } from '../side-nav-item/side-nav-item.component';
 import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
 
 @Component({
@@ -25,13 +25,17 @@ import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
   animations: [
     trigger('navState', [
       state('inactive', style({
-        transform: 'translate3d(-100%,0,0)'
+        transform: 'translate3d(-100%,0,0)',
+        'box-shadow': 'none'
       })),
       state('active', style({
         transform: 'translate3d(0,0,0)'
       })),
-      transition('inactive => active, active => inactive', [
+      transition('inactive => active', [
         animate('500ms cubic-bezier(0.35, 0.25, 0, 1)')
+      ]),
+      transition('active => inactive', [
+        animate('350ms 350ms cubic-bezier(0.35, 0.25, 0, 1)')
       ])
     ]),
     trigger('backdropState', [
@@ -43,8 +47,11 @@ import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
         display: 'block',
         opacity: 1
       })),
-      transition('inactive => active, active => inactive', [
+      transition('inactive => active', [
         animate('250ms cubic-bezier(0.35, 0.25, 0, 1)')
+      ]),
+      transition('active => inactive', [
+        animate('250ms 200ms cubic-bezier(0.35, 0.25, 0, 1)')
       ])
     ]),
     trigger('menuState', [
@@ -64,7 +71,7 @@ import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
 })
 export class FrSideNavComponent implements AfterContentInit {
 
-  @ContentChildren(FrSideNavItemGroupDirective) itemGroups: QueryList<FrSideNavItemGroupDirective>;
+  @ContentChildren(FrSideNavItemGroupComponent) itemGroups: QueryList<FrSideNavItemGroupComponent>;
 
   public navState      = 'inactive';
   public backdropState = 'inactive';
@@ -74,7 +81,7 @@ export class FrSideNavComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.menuState.length = this.itemGroups.length;
-    this.itemGroups.forEach((itemGroup: FrSideNavItemGroupDirective, index: number) => {
+    this.itemGroups.forEach((itemGroup: FrSideNavItemGroupComponent, index: number) => {
       this.menuState[index] = itemGroup.collapsible ? 'close' : 'open';
     });
   }

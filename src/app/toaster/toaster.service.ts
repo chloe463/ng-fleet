@@ -10,15 +10,17 @@ import {
   OnInit,
   OnChanges,
   AfterViewInit,
-  animate,
-  trigger,
-  style,
-  state,
-  transition,
   HostListener,
   ReflectiveInjector,
   ComponentRef
 } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { timer } from 'rxjs/observable/timer';
@@ -81,8 +83,8 @@ export class FrToasterService {
 
       const _onNext = (value: T) => {
         if (componentRef) {
-          observer.next && observer.next(value);
-          observer.complete && observer.complete();
+          if (observer.next) { observer.next(value); }
+          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.count--;
           componentRef.destroy();
@@ -90,21 +92,21 @@ export class FrToasterService {
       };
       const _onError = (reason?: any) => {
         if (componentRef) {
-          observer.error && observer.error(reason);
-          observer.complete && observer.complete();
+          if (observer.error) { observer.error(reason); }
+          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.count--;
           componentRef.destroy();
         }
-      }
+      };
       const _onComplete = (): void => {
         if (componentRef) {
-          observer.complete && observer.complete();
+          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.count--;
           componentRef.destroy();
         }
-      }
+      };
       const bindings = ReflectiveInjector.resolve([
         { provide: FrToasterContext, useValue: new FrToasterContext(_onNext, _onError, _onComplete, toasterParam) }
       ]);
@@ -119,7 +121,7 @@ export class FrToasterService {
 }
 
 @Directive({
-  selector: '[fr-toaster-inner]'
+  selector: '[frToasterInner]'
 })
 export class FrToasterInnerDirective {
   constructor (public vcr: ViewContainerRef) { }
@@ -129,7 +131,7 @@ export class FrToasterInnerDirective {
   selector: 'fr-toaster-entry',
   template: `
 <div class="fr-toaster__container">
-  <div fr-toaster-inner></div>
+  <div frToasterInner></div>
 </div>
   `,
   styles: [`
@@ -150,7 +152,7 @@ export class FrToasterInnerDirective {
 export class FrToasterEntryComponent implements AfterViewInit {
   @ViewChild(FrToasterInnerDirective) public inner: FrToasterInnerDirective;
 
-  private _toasterState: string = 'void';
+  private _toasterState = 'void';
 
   get toasterState(): string {
     return this.toaster.isShow() ? 'active' : 'void';
@@ -207,10 +209,10 @@ export class FrToasterEntryComponent implements AfterViewInit {
   ]
 })
 export class FrToasterContentComponent implements OnInit {
-  public text: string = '';
-  public action: string = '';
-  public timeout: number = 500;
-  public closed: boolean = false;
+  public text = '';
+  public action = '';
+  public timeout = 500;
+  public closed = false;
   public toasterState = 'void';
   constructor (@Inject(forwardRef(() => FrToasterContext)) private _context: FrToasterContext<string|number>) {
     this.text    = this._context.text;

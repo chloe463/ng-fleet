@@ -3,11 +3,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FrNavbarLogoDirective } from './navbar-logo.component';
+import { FrNavbarLogoComponent } from './navbar-logo.component';
 
-describe('FrNavbarLogoDirective', () => {
+describe('FrNavbarLogoComponent', () => {
   it('should create an instance', () => {
-    let directive = new FrNavbarLogoDirective();
-    expect(directive).toBeTruthy();
+    let component = new FrNavbarLogoComponent();
+    expect(component).toBeTruthy();
   });
 });

@@ -14,7 +14,7 @@ export {
   FrFlatButtonDirective,
   FrButtonModule
 } from './button/index';
-export { FrChipComponent } from './chip/chip.component';
+export { FrChipModule } from './chip/index';
 export {
   FrDataTableColumnsComponent,
   FrDataTableFooterComponent,
@@ -26,7 +26,6 @@ export {
   FrDataTableModule
 } from './data-table/index';
 export {
-  FrDialogComponent,
   FrDialogService,
   FrDialogContext,
   FrDialogEntryComponent,
@@ -39,32 +38,32 @@ export {
   FrInputTextComponent,
   FrInputDirective,
   FrInputTextContainerComponent,
-  FrRadioGroupDirective,
+  FrRadioGroupComponent,
   FrOptionComponent,
   FrSelectComponent,
   FrSwitchComponent,
   FrTimePickerComponent,
   FrFormsModule
 } from './forms/index';
-export { FrKpiTableComponent } from './kpi-table/index';
+export { FrKpiTableModule } from './kpi-table/index';
 export {
   FrNavbarComponent,
-  FrNavbarItemDirective,
-  FrNavbarMenuDirective,
-  FrNavbarLogoDirective,
+  FrNavbarItemComponent,
+  FrNavbarMenuComponent,
+  FrNavbarLogoComponent,
   FrNavbarModule
 } from './navbar/index';
 export {
  FrProgressBarComponent,
  FrProgressSpinnerComponent,
  FrProgressModule
-} from './progress/index'
+} from './progress/index';
 export { FrRippleDirective } from './ripple/ripple.directive';
 export { FrRippleModule } from './ripple/ripple.module';
 export {
   FrSideNavComponent,
-  FrSideNavItemGroupDirective,
-  FrSideNavItemDirective,
+  FrSideNavItemGroupComponent,
+  FrSideNavItemComponent,
   FrSideNavModule
 } from './side-nav/index';
 export {
@@ -72,7 +71,6 @@ export {
   FrTabComponent,
   FrTabsModule
 } from './tabs/index';
-export { FrToasterComponent } from './toaster/toaster.component';
 export {
   FrToasterModule,
   FrToasterService,

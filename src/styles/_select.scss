@@ -1,5 +1,10 @@
+.fr-select-host {
+  display: block;
+}
+
 .fr-select {
   position: relative;
+  border-top: 12px solid transparent;
 
   &:focus {
     outline: none;
@@ -37,14 +42,14 @@
     }
 
     &--label {
-      top: -10px;
+      top: -12px;
       left: 0;
       color: rgba(0,0,0,.54);
       font-size: 12px;
     }
 
     &--label-on-focus {
-      top: -10px;
+      top: -12px;
       left: 0;
       color: $secondary-light;
       font-size: 12px;
@@ -85,29 +90,17 @@
     display: block;
     padding-left: 0;
     padding-right: 0;
-    top: 10px;
+    top: -20px;
+    left: -18px;
     z-index: 100;
-    width: 100%;
+    width: 105%;
     background: $white;
-    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26),
+      -5px -1px 10px rgba(0, 0, 0, 0.1),
+      5px -1px 10px rgba(0, 0, 0, 0.1);
 
     max-height: 200px;
     overflow-y: scroll;
-    transform-origin: 0 0;
-    opacity: 0;
-
-    transition-property: opacity, transform;
-    transition-duration: 200ms;
-    transition-timing-function: ease-out;
-    &--hidden {
-      opacity: 0;
-      transform: scaleY(0);
-    }
-
-    &--show {
-      opacity: 1;
-      transform: scaleY(1);
-    }
   }
 
   &__item {
@@ -117,18 +110,18 @@
     cursor: pointer;
 
     &:hover {
-      background: lighten($light-gray, 12%);
+      background: lighten($light-gray, 15%);
     }
 
     &--selected {
-      background: lighten($light-gray, 15%);
+      background: lighten($light-gray, 20%);
       color: $secondary;
     }
   }
 
   &:after {
     position: absolute;
-    top: 0;
+    top: 2px;
     right: 8px;
     bottom: 0;
     width: 0;

@@ -9,7 +9,8 @@ import {
   ContentChildren,
   QueryList,
   forwardRef,
-  Optional
+  Optional,
+  HostBinding
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { timer } from 'rxjs/observable/timer';
@@ -23,15 +24,16 @@ const noop = () => {};
 
 export const RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => FrRadioGroupDirective),
+  useExisting: forwardRef(() => FrRadioGroupComponent),
   multi: true
 };
 
-@Directive({
+@Component({
   selector: 'fr-radio-group',
+  template: `<ng-content></ng-content>`,
   providers: [RADIO_GROUP_CONTROL_VALUE_ACCESSOR]
 })
-export class FrRadioGroupDirective implements ControlValueAccessor {
+export class FrRadioGroupComponent implements ControlValueAccessor {
   @Input() name;
 
   @Output() change: EventEmitter<FrRadioChange> = new EventEmitter<FrRadioChange>();
@@ -44,7 +46,7 @@ export class FrRadioGroupDirective implements ControlValueAccessor {
   public _onChangeCallback: (_: any) => void = noop;
   public _onTouchedCallback: () => void = noop;
 
-  private _isDiabled: boolean = false;
+  private _isDiabled = false;
 
   constructor() { }
 
@@ -124,11 +126,13 @@ export class FrRadioComponent implements OnInit {
 
   @Output() change: EventEmitter<FrRadioChange> = new EventEmitter<FrRadioChange>();
 
-  private radioGroup: FrRadioGroupDirective;
+  @HostBinding('class.fr-radio-host') true;
+
+  private radioGroup: FrRadioGroupComponent;
   public isRippleOn: boolean;
   public isFocused: boolean;
 
-  constructor(@Optional() radioGroup: FrRadioGroupDirective) {
+  constructor(@Optional() radioGroup: FrRadioGroupComponent) {
     this.radioGroup = radioGroup;
   }
 
@@ -136,6 +140,7 @@ export class FrRadioComponent implements OnInit {
     if (this.radioGroup) {
       this.name = this.radioGroup.name;
       this.disabled = this.radioGroup.disabled;
+      this.checked = this.value === this.radioGroup.value;
     }
     this.isFocused = false;
   }
@@ -149,17 +154,13 @@ export class FrRadioComponent implements OnInit {
 
   public onInputClick(event: Event): void {
     event.stopPropagation();
-  }
-
-  public onInputChange(event: Event): void {
-    event.stopPropagation();
     this.checked = true;
     this._eventChangeEvent();
 
     this.isRippleOn = true;
     timer(1000).subscribe(() => {
       this.isRippleOn = false;
-    })
+    });
 
     if (this.radioGroup) {
       this.radioGroup.value = this.value;
@@ -167,6 +168,10 @@ export class FrRadioComponent implements OnInit {
       this.radioGroup.selectOneByRadioComponent(this);
       this.radioGroup.emitChangeEvent();
     }
+  }
+
+  public onInputChange(event: Event): void {
+    event.stopPropagation();
   }
 
   public onFocus(event: Event): void {

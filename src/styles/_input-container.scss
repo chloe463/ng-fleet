@@ -1,3 +1,6 @@
+.fr-input-text-container-host {
+  display: block;
+}
 .fr-input-text {
   & > input::placeholder {
     opacity: 0;
@@ -9,6 +12,7 @@
   &__count {
     position: absolute;
     right: 0;
+    bottom: 3px;
     font-size: 14px;
     color: $light-gray;
 

@@ -9,17 +9,19 @@ import {
   ViewChild,
   OnChanges,
   AfterViewInit,
-  animate,
-  trigger,
-  style,
-  state,
-  transition,
   HostListener
 } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
 import { FrDialogService } from './dialog.service';
 
 @Directive({
-  selector: '[fr-dialog-inner]'
+  selector: '[frDialogInner]'
 })
 export class FrDialogInnerDirective {
   constructor (public vcr: ViewContainerRef) { }
@@ -30,7 +32,7 @@ export class FrDialogInnerDirective {
   template: `
 <div class="fr-dialog">
   <div class="fr-dialog__wrapper">
-    <div class="fr-dialog__body" [@dialogState]="dialogState" fr-dialog-inner></div>
+    <div class="fr-dialog__body" [@dialogState]="dialogState" frDialogInner></div>
     <div class="fr-dialog__backdrop" [hidden]="!isShow()" (click)="dialog.close()"></div>
   </div>
 </div>
@@ -57,7 +59,7 @@ export class FrDialogInnerDirective {
 export class FrDialogEntryComponent implements AfterViewInit {
   @ViewChild(FrDialogInnerDirective) public inner: FrDialogInnerDirective;
 
-  private _dialogState: string = 'void';
+  private _dialogState = 'void';
 
   get dialogState(): string {
     return this.dialog.isShow() ? 'active' : 'void';
@@ -85,7 +87,7 @@ export class FrDialogEntryComponent implements AfterViewInit {
 
   @HostListener('window:keydown', ['$event'])
   public dismissOnEscape(event): void {
-    if (this.dialog.isShow() && event.key === 'Escape' && event.code === "Escape") {
+    if (this.dialog.isShow() && event.key === 'Escape' && event.code === 'Escape') {
       this.dialog.close();
     }
   }

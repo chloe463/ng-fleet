@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 export interface IFrDataTableColumn {
@@ -7,8 +7,9 @@ export interface IFrDataTableColumn {
   type: string;
 }
 
-@Directive({
-  selector: 'fr-data-table-columns'
+@Component({
+  selector: 'fr-data-table-columns',
+  template: ''
 })
 export class FrDataTableColumnsComponent {
 

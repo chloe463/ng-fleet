@@ -16,15 +16,15 @@ export class AppComponent {
   ];
 
   public sideNavbarNodes: Array<IFrNavbarNode> = [
-    { url: "buttons", title: "buttons" },
-    { url: "chips", title: "chips" },
-    { url: "data-table", title: "data-table" },
-    { url: "dialog", title: "dialog" },
-    { url: "forms", title: "forms" },
-    { url: "progress", title: "progress" },
-    { url: "tabs", title: "tabs" },
-    { url: "toaster", title: "toaster" },
-    { url: "kpi-table", title: "kpi-table" }
+    { url: 'buttons', title: 'buttons' },
+    { url: 'chips', title: 'chips' },
+    { url: 'data-table', title: 'data-table' },
+    { url: 'dialog', title: 'dialog' },
+    { url: 'forms', title: 'forms' },
+    { url: 'progress', title: 'progress' },
+    { url: 'tabs', title: 'tabs' },
+    { url: 'toaster', title: 'toaster' },
+    { url: 'kpi-table', title: 'kpi-table' }
   ];
 
   public sideNavNodeGroups: Array<IFrSideNavNodeGroup> = [

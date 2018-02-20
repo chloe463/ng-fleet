@@ -7,7 +7,8 @@ import {
   EventEmitter,
   ContentChildren,
   QueryList,
-  forwardRef
+  forwardRef,
+  HostBinding
 } from '@angular/core';
 import { DefaultValueAccessor } from '@angular/forms';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -38,10 +39,12 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
   @Output() change: EventEmitter<FrCheckboxChange> = new EventEmitter<FrCheckboxChange>();
 
+  @HostBinding('class.fr-checkbox-host') true;
+
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
 
   public isRippleOn = false;
   public isFocused: boolean;
@@ -72,7 +75,7 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
     this.isRippleOn = true;
     timer(1000).subscribe(() => {
       this.isRippleOn = false;
-    })
+    });
 
     event.stopPropagation();
     this.emitChangeEvent();

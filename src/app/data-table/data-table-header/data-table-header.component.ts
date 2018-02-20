@@ -1,19 +1,20 @@
 import {
-  Directive,
+  Component,
   Input,
   Output,
   EventEmitter
 } from '@angular/core';
 import { FrDataTableEvent } from '../data-table/data-table.component';
 
-export type FrDataTableActionKey = {
+export interface FrDataTableActionKey {
   key: string;
   label: string;
   extraParams?: any;
 }
 
-@Directive({
-  selector: 'fr-data-table-header'
+@Component({
+  selector: 'fr-data-table-header',
+  template: ''
 })
 export class FrDataTableHeaderComponent {
 

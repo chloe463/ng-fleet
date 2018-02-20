@@ -5,27 +5,30 @@ import { RouterModule } from '@angular/router';
 import { FrSideNavModule } from '../side-nav/side-nav.module';
 
 import { FrNavbarComponent } from './navbar/navbar.component';
-import { FrNavbarItemDirective } from './navbar-item/navbar-item.component';
-import { FrNavbarLogoDirective } from './navbar-logo/navbar-logo.component';
-import { FrNavbarMenuDirective } from './navbar-menu/navbar-menu.component';
+import { FrNavbarItemComponent } from './navbar-item/navbar-item.component';
+import { FrNavbarLogoComponent } from './navbar-logo/navbar-logo.component';
+import { FrNavbarMenuComponent } from './navbar-menu/navbar-menu.component';
+
+import { FrRippleModule } from '../ripple/ripple.module';
 
 @NgModule({
   declarations: [
     FrNavbarComponent,
-    FrNavbarItemDirective,
-    FrNavbarLogoDirective,
-    FrNavbarMenuDirective
+    FrNavbarItemComponent,
+    FrNavbarLogoComponent,
+    FrNavbarMenuComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    FrSideNavModule
+    FrSideNavModule,
+    FrRippleModule
   ],
   exports: [
     FrNavbarComponent,
-    FrNavbarItemDirective,
-    FrNavbarLogoDirective,
-    FrNavbarMenuDirective
+    FrNavbarItemComponent,
+    FrNavbarLogoComponent,
+    FrNavbarMenuComponent
   ]
 })
 export class FrNavbarModule { }

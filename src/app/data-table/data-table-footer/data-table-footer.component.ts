@@ -1,5 +1,5 @@
 import {
-  Directive,
+  Component,
   Input,
   Output,
   EventEmitter
@@ -13,8 +13,9 @@ export interface IFrPaginationInfo {
   rowsPerPage: number;
 }
 
-@Directive({
-  selector: 'fr-data-table-footer'
+@Component({
+  selector: 'fr-data-table-footer',
+  template: ''
 })
 export class FrDataTableFooterComponent {
 
