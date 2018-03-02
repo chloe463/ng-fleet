@@ -1,25 +1,26 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
+import { ElementRef } from '@angular/core';
 
-import { TooltipComponent } from './tooltip.component';
+import { FrTooltipDirective } from './tooltip.directive';
 
-describe('TooltipComponent', () => {
-  let component: TooltipComponent;
-  let fixture: ComponentFixture<TooltipComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TooltipComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TooltipComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe('FrTooltipDirective', () => {
+  it('should create', () => {
+    const el = new ElementRef(document);
+    let directive = new FrTooltipDirective(el);
+    expect(directive).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should set position', () => {
+    const el = new ElementRef(document);
+    let directive = new FrTooltipDirective(el);
+    directive.position = 'position';
+    expect(directive.position).toBe('position');
+  });
+
+  it('should set message', () => {
+    const el = new ElementRef(document);
+    let directive = new FrTooltipDirective(el);
+    directive.message = 'message';
+    expect(directive.message).toBe('message');
   });
 });
