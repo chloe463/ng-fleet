@@ -1,43 +1,41 @@
-@mixin custom_tooltip_content($top, $left) {
-  display: inline-block;
-  background: $gray;
-  padding: 5px;
-  color: $white;
-  border-radius: 3px;
-  position: absolute;
-  top: $top;
-  left: $left;
-  z-index: 10;
-  width: 250px;
-}
-
 .fr-tooltip {
-  display: inline-block;
+  position: relative;
 
-  &:hover {
-    position: relative;
+  &__content {
+    position: absolute;
+    display: inline-block;
+    padding: 0 8px;
+    background: $gray;
+    border-radius: 2px;
+    color: $white;
+    line-height: 22px;
+    font-size: 10pt;
+    z-index: 1001;
+    visibility: hidden;
   }
 
-  &__content--top,
-  &__content--right,
-  &__content--bottom,
+  &__content--above {
+    visibility: visible;
+    left: 0;
+    bottom: 105%;
+    transform: scale(1);
+  }
+  &__content--right {
+    visibility: visible;
+    top: 0;
+    left: 105%;
+    transform: scale(1);
+  }
+  &__content--below {
+    visibility: visible;
+    top: 105%;
+    left: 0;
+    transform: scale(1);
+  }
   &__content--left {
-    display: none;
-  }
-
-  &:hover &__content--top {
-    @include custom_tooltip_content(-200%, 0);
-  }
-
-  &:hover &__content--right {
-    @include custom_tooltip_content(-5px, 110%);
-  }
-
-  &:hover &__content--bottom {
-    @include custom_tooltip_content(20px, 0);
-  }
-
-  &:hover &__content--left {
-    @include custom_tooltip_content(-5px, -110%);
+    visibility: visible;
+    top: 0;
+    right: 105%;
+    transform: scale(1);
   }
 }
