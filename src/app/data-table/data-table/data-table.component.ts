@@ -56,6 +56,7 @@ export class FrDataTableStripeDirective {
 @Component({
   selector: 'fr-data-table',
   templateUrl: './data-table.component.html',
+  styleUrls: ['./data-table.component.scss'],
   animations: [
     trigger('actionListState', [
       state('hidden', style({
