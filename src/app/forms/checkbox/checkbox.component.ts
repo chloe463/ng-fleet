@@ -30,6 +30,7 @@ export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-checkbox',
   templateUrl: './checkbox.component.html',
+  styleUrls: ['./checkbox.component.scss'],
   providers: [CHECKBOX_CONTROL_VALUE_ACCESSOR]
 })
 export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
