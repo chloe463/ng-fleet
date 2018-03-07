@@ -37,6 +37,7 @@ export class FrDialogInnerDirective {
   </div>
 </div>
   `,
+  styleUrls: ['./dialog-entry.component.scss'],
   animations: [
     trigger('dialogState', [
       state('void', style({
