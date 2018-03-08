@@ -13,7 +13,8 @@ import { FrSideNavComponent } from '../../side-nav/side-nav/side-nav.component';
 
 @Component({
   selector: 'fr-navbar',
-  templateUrl: './navbar.component.html'
+  templateUrl: './navbar.component.html',
+  styleUrls: ['navbar.component.scss']
 })
 export class FrNavbarComponent implements OnInit {
 
