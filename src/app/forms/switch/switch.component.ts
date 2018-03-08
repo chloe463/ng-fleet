@@ -31,6 +31,7 @@ export const SWITCH_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-switch',
   templateUrl: './switch.component.html',
+  styleUrls: ['switch.component.scss'],
   providers: [SWITCH_CONTROL_VALUE_ACCESSOR],
   animations: [
     trigger('rippleState', [
