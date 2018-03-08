@@ -1,0 +1,178 @@
+@import '../../../styles/themes/japanesque';
+
+.fr-timepicker {
+  position: relative;
+  display: inline-block;
+
+  &__input-text {
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $gray;
+    border-radius: 0;
+    height: 1.8em;
+    padding: 3px 0;
+    cursor: pointer;
+
+    &--disabled {
+      color: $gray;
+      border-bottom: 1px dotted $gray;
+      cursor: default;
+    }
+  }
+
+  &__toggle-button {
+    outline: none;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    width: 24px;
+    height: 24px;
+    vertical-align: top;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    &--disabled {
+      cursor: default;
+    }
+  }
+
+  &__body {
+    opacity: 0;
+    transform-origin: 0 0;
+    width: 320px;
+    position: absolute;
+    background: $white;
+    border: 1px solid $light-gray;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    z-index: 100;
+
+    &-header {
+      background: $primary;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &__meridian {
+    margin: 0 5px;
+    color: $primary-light;
+    cursor: pointer;
+
+    &--selected {
+      color: $white;
+    }
+  }
+
+  &__time {
+    font-size: 38px;
+    color: $white;
+
+    &-hours {
+      color: $primary-light;
+      cursor: pointer;
+      &--picking {
+        color: $white;
+      }
+    }
+    &-minutes {
+      color: $primary-light;
+      cursor: pointer;
+      &--picking {
+        color: $white;
+      }
+    }
+    &-colon {
+      margin: -10px;
+    }
+  }
+
+  &__clock {
+    position: relative;
+    margin: 10px;
+    height: 300px;
+    border-radius: 50%;
+    background: lighten($light-gray, 10%);
+  }
+
+  &__clock-dial {
+    position: absolute;
+    width: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    // font-size: 12px;
+    margin: 7px;
+    padding: 5px;
+    cursor: pointer;
+    transition-property: background;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+
+    &:hover {
+      background: $secondary-light;
+      color: $white;
+    }
+
+    &--picked {
+      background: $secondary;
+      color: $white;
+      &:hover {
+        background: $secondary;
+        color: $white;
+      }
+    }
+  }
+
+  &__clock-hand {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: $gray;
+    top: 50px;
+    left: 148px;
+    transform-origin: bottom;
+    transition: transform;
+    transition-duration: 600ms;
+    transition-timing-function: ease-out;
+
+    &:before {
+      position: absolute;
+      top: -14px;
+      left: -4px;
+      display: inline-block;
+      background: transparent;
+      border: 15px solid $gray;
+      border-top: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+      content: " ";
+    }
+    &:after {
+      position: absolute;
+      top: 95px;
+      left: -4px;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: $gray;
+      border-radius: 5px;
+      content: " ";
+    }
+  }
+
+  &__button--primary, &__button--secondary {
+    color: $primary;
+  }
+}
+
