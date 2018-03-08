@@ -1,0 +1,46 @@
+@import '../../../styles/themes/japanesque';
+.fr-progress-bar {
+  position: relative;
+  display: block;
+  height: 5px;
+  width: 100%;
+  overflow: hidden;
+
+  &__background {
+    position: absolute;
+    display: block;
+    height: 5px;
+    width: 100%;
+    background: $light-gray;
+  }
+
+  &__first-bar {
+    display: inline-block;
+    position: absolute;
+    height: 5px;
+    width: 50%;
+    background: $blue;
+    transform: translateX(-100%);
+    animation: slide 3s linear infinite;
+  }
+
+  &__second-bar {
+    display: inline-block;
+    position: absolute;
+    height: 5px;
+    width: 35%;
+    background: $blue;
+    animation: slide2 3s linear infinite;
+    animation-delay: 1s;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(500%);  }
+}
+@keyframes slide2 {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(300%);  }
+}
