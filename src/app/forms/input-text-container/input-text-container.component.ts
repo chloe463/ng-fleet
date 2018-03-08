@@ -132,7 +132,8 @@ export class FrInputDirective implements OnInit, OnDestroy {
 
 @Component({
   selector: 'fr-input-text-container',
-  templateUrl: './input-text-container.component.html'
+  templateUrl: './input-text-container.component.html',
+  styleUrls: ['./input-text-container.component.scss']
 })
 export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
