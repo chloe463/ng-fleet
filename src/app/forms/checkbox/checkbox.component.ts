@@ -10,6 +10,13 @@ import {
   forwardRef,
   HostBinding
 } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { DefaultValueAccessor } from '@angular/forms';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { timer } from 'rxjs/observable/timer';
@@ -21,6 +28,10 @@ export class FrCheckboxChange {
 
 const noop = () => {};
 
+const CHECKMARK_VOID      = 'VOID';
+const CHECKMARK_UNCHECKED = 'UNCHECKED';
+const CHECKMARK_CHECKED   = 'CHECKED';
+
 export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => FrCheckboxComponent),
@@ -31,7 +42,26 @@ export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'fr-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
-  providers: [CHECKBOX_CONTROL_VALUE_ACCESSOR]
+  providers: [CHECKBOX_CONTROL_VALUE_ACCESSOR],
+  animations: [
+    trigger('checkmarkState', [
+      state(CHECKMARK_UNCHECKED, style({
+        'stroke-width': '2.3px',
+        'stroke': 'transparent',
+        'stroke-dasharray': 0,
+        'stroke-dashoffset': -30
+      })),
+      state(CHECKMARK_CHECKED, style({
+        'stroke-width': '2.3px',
+        'stroke': 'white',
+        'stroke-dasharray': 100,
+        'stroke-dashoffset': 0
+      })),
+      transition(`${CHECKMARK_UNCHECKED} => ${CHECKMARK_CHECKED}`, [
+        animate('360ms linear')
+      ])
+    ])
+  ]
 })
 export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
@@ -49,6 +79,15 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
   public isRippleOn = false;
   public isFocused: boolean;
+
+  private _checkmarkState = CHECKMARK_VOID;
+
+  get checkmarkState() {
+    if (this._innerValue === null) {
+      return CHECKMARK_VOID;
+    }
+    return this._innerValue ? CHECKMARK_CHECKED : CHECKMARK_UNCHECKED;
+  }
 
   constructor() { }
 

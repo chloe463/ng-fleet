@@ -88,17 +88,17 @@ input[type="checkbox"] {
     width: 100%;
     height: 100%;
     &-path {
-      stroke-width: 2.3px;
-      stroke: transparent;
-      stroke-dasharray: 0;
-      stroke-dashoffset: -31;
-      transition-property: stroke-dashoffset;
-      transition-duration: 0.36s;
+      // stroke-width: 2.3px;
+      // stroke: transparent;
+      // stroke-dasharray: 0;
+      // stroke-dashoffset: -31;
+      // transition-property: stroke-dashoffset;
+      // transition-duration: 0.36s;
     }
     &--on > &-path {
-      stroke: $white;
-      stroke-dasharray: 31;
-      stroke-dashoffset: 0;
+      // stroke: $white;
+      // stroke-dasharray: 31;
+      // stroke-dashoffset: 0;
     }
   }
   &-label-text {
