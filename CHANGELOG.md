@@ -1,3 +1,24 @@
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/chloe463/francette/compare/v0.8.0...v0.8.1) (2018-03-15)
+
+
+### Bug Fixes
+
+* **input-text-container:** Fix scoped style ([48bb5f8](https://github.com/chloe463/francette/commit/48bb5f8))
+
+
+### Features
+
+* **buttons:** Add button:active style ([933023a](https://github.com/chloe463/francette/commit/933023a))
+* **tooltip:** Add tooltip directive ([752fbb7](https://github.com/chloe463/francette/commit/752fbb7))
+
+
+
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/chloe463/francette/compare/v0.8.0-rc.1...v0.8.0) (2018-02-20)
+
+
+
 <a name="0.8.0-rc.1"></a>
 # [0.8.0-rc.1](https://github.com/chloe463/francette/compare/v0.8.0-rc.0...v0.8.0-rc.1) (2018-02-19)
 
