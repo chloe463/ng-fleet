@@ -115,7 +115,8 @@ export class FrRadioGroupComponent implements ControlValueAccessor {
 
 @Component({
   selector: 'fr-radio',
-  templateUrl: '../radio/radio.component.html'
+  templateUrl: '../radio/radio.component.html',
+  styleUrls: ['./radio.component.scss']
 })
 export class FrRadioComponent implements OnInit {
 

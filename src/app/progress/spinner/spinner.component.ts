@@ -13,7 +13,8 @@ import {
     <path class="fr-spinner__arc" d="M 90,0 a 90 90 0 1 1 -12,-45" fill="none"/>
   </svg>
 </span>
-  `
+  `,
+  styleUrls: ['./spinner.component.scss']
 })
 export class FrProgressSpinnerComponent implements OnInit {
 

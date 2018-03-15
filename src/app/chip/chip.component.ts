@@ -9,7 +9,8 @@ import {
 
 @Component({
   selector: 'fr-chip',
-  templateUrl: './chip.component.html'
+  templateUrl: './chip.component.html',
+  styleUrls: ['./chip.component.scss']
 })
 export class FrChipComponent implements OnInit {
 

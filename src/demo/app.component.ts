@@ -24,6 +24,7 @@ export class AppComponent {
     { url: 'progress', title: 'progress' },
     { url: 'tabs', title: 'tabs' },
     { url: 'toaster', title: 'toaster' },
+    { url: 'tooltip', title: 'tooltip' },
     { url: 'kpi-table', title: 'kpi-table' }
   ];
 

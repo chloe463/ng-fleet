@@ -23,10 +23,10 @@ build_css () {
   ls -la $(dirname ${OUTPUT_FILE}) || mkdir -p $(dirname ${OUTPUT_FILE})
 
   # Compile sass to css and minify
-  $(npm bin)/node-sass --output-style compressed ${INPUT_FILE} > ${OUTPUT_FILE}
+  $(npm bin)/node-sass --output-style compressed --omit-source-map-url ${INPUT_FILE} > ${OUTPUT_FILE}
 
   # Add prefixes
-  $(npm bin)/postcss --use autoprefixer -o ${OUTPUT_FILE} ${OUTPUT_FILE}
+  $(npm bin)/postcss --use autoprefixer --no-map -o ${OUTPUT_FILE} ${OUTPUT_FILE}
 
   ls builds/styles || mkdir -p builds/styles
   mv ${OUTPUT_FILE} builds/styles/francette.css

@@ -47,6 +47,7 @@ export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-time-picker',
   templateUrl: './time-picker.component.html',
+  styleUrls: ['./time-picker.component.scss'],
   providers: [TIME_PICKER_CONTROL_VALUE_ACCESSOR],
   animations: [
     trigger('clockVisibility', [

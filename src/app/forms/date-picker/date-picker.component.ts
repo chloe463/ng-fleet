@@ -43,6 +43,7 @@ export const DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-date-picker',
   templateUrl: './date-picker.component.html',
+  styleUrls: ['./date-picker.component.scss'],
   providers: [DATE_PICKER_CONTROL_VALUE_ACCESSOR],
   animations: [
     trigger('calendarVisibility', [

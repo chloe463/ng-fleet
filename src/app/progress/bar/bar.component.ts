@@ -8,7 +8,8 @@ import { Component, OnInit, HostBinding } from '@angular/core';
       <div class="fr-progress-bar__first-bar"></div>
       <div class="fr-progress-bar__second-bar"></div>
     </div>
-  `
+  `,
+  styleUrls: ['./bar.component.scss']
 })
 export class FrProgressBarComponent implements OnInit {
 

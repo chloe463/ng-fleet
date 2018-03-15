@@ -15,6 +15,7 @@ import { DialogDemoComponent, DialogDummyComponent } from './dialog-demo.compone
 import { ToasterDemoComponent } from './toaster-demo.component';
 import { ProgressDemoComponent } from './progress-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
+import { TooltipDemoComponent } from './tooltip-demo.component';
 
 import { FrancetteModule } from '../app/francette.module';
 
@@ -31,6 +32,7 @@ const routeConfig: Routes = [
   { path: 'progress', component: ProgressDemoComponent },
   { path: 'tabs', component: TabsDemoComponent },
   { path: 'toaster', component: ToasterDemoComponent },
+  { path: 'tooltip', component: TooltipDemoComponent },
   { path: 'kpi-table', component: KpiTableDemoComponent },
   { path: '**', redirectTo: '' }
 ];
@@ -49,6 +51,7 @@ const routeConfig: Routes = [
     ToasterDemoComponent,
     ProgressDemoComponent,
     DialogDummyComponent,
+    TooltipDemoComponent
   ],
   imports: [
     BrowserModule,

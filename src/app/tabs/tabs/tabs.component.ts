@@ -11,7 +11,8 @@ import { FrTabComponent } from '../tab/tab.component';
 
 @Component({
   selector: 'fr-tabs',
-  templateUrl: './tabs.component.html'
+  templateUrl: './tabs.component.html',
+  styleUrls: ['./tabs.component.scss']
 })
 export class FrTabsComponent implements OnInit, AfterContentInit, OnChanges {
 

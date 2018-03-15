@@ -45,6 +45,7 @@ export const SELECT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'fr-select',
   templateUrl: './select.component.html',
+  styleUrls: ['./select.component.scss'],
   providers: [SELECT_CONTROL_VALUE_ACCESSOR],
   animations: [
     trigger('optionsState', [

@@ -40,8 +40,17 @@
   @extend .fr-btn;
   background: $background;
   color: $color;
+
+  transition-property: box-shadow;
+  transition-duration: .2s;
+  transition-timing-function: ease-out;
+
   &:hover {
     background: $hover_background;
+  }
+
+  &:active {
+    box-shadow: 0 5px 12px 1px rgba(0,0,0,.44);
   }
 }
 
@@ -177,8 +186,17 @@
   @extend .fr-btn-fab;
   background: $background;
   color: $color;
+
+  transition-property: box-shadow;
+  transition-duration: .2s;
+  transition-timing-function: ease-out;
+
   &:hover {
     background: $hover_background;
+  }
+
+  &:active {
+    box-shadow: 0 5px 12px 1px rgba(0,0,0,.44);
   }
 }
 
