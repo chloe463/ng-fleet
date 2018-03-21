@@ -35,8 +35,8 @@
           <span [class.fr-data-table__btn-ripple]="ripples.delete"></span>
         </span>
       </a>
-      <a class="fr-data-table__header-btn" (click)="toggleOtherActionList()" [hidden]="!headerComponent.actionKeys.length" #dots>
-        <span class="fr-data-table__icon">
+      <a class="fr-data-table__header-btn" [hidden]="!headerComponent.actionKeys.length" #dots>
+        <span class="fr-data-table__icon" (click)="toggleOtherActionList()">
           <!-- dots -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <ellipse cx="12" cy="5" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
@@ -45,8 +45,7 @@
           </svg>
           <span [class.fr-data-table__btn-ripple]="ripples.dots"></span>
         </span>
-      </a>
-      <span class="fr-data-table__other-actions">
+        <!-- menu -->
         <ul class="fr-data-table__other-action-list" [@actionListState]="actionListState">
           <li *ngFor="let action of headerComponent.actionKeys; let i = index"
             class="fr-data-table__other-action-item"
@@ -55,7 +54,7 @@
             {{action.label}}
           </li>
         </ul>
-      </span>
+      </a>
     </span>
   </div>
   <table class="fr-data-table">
