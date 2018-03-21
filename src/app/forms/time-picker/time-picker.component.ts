@@ -82,7 +82,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   /**
    * For ControlValueAccessor
    */
-  private _innerValue: any;
+  private _innerValue: Date = new Date();
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
@@ -100,14 +100,14 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   set value(obj: any) {
-    if (obj !== this._innerValue) {
+    if (obj !== this._innerValue || obj !== null || obj !== undefined) {
       this._innerValue = obj;
       this._onChangeCallback(obj);
     }
   }
 
   writeValue(obj: any): void {
-    if (obj !== this._innerValue) {
+    if (obj !== this._innerValue || obj !== null || obj !== undefined) {
       this._innerValue = obj;
     }
   }
