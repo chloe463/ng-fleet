@@ -75,13 +75,14 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   @Output() change: EventEmitter<FrTimePickerChange> = new EventEmitter<FrTimePickerChange>();
 
   @ViewChild('clock') clock: ElementRef;
+  @ViewChild('clockHand') clockHand: ElementRef;
 
   @HostBinding('class.fr-timepicker-host') true;
 
   /**
    * For ControlValueAccessor
    */
-  private _innerValue: any;
+  private _innerValue: Date = new Date();
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
@@ -99,14 +100,14 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   set value(obj: any) {
-    if (obj !== this._innerValue) {
+    if (obj !== this._innerValue || obj !== null || obj !== undefined) {
       this._innerValue = obj;
       this._onChangeCallback(obj);
     }
   }
 
   writeValue(obj: any): void {
-    if (obj !== this._innerValue) {
+    if (obj !== this._innerValue || obj !== null || obj !== undefined) {
       this._innerValue = obj;
     }
   }
@@ -170,14 +171,13 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   public putHandRightPosition(dial: number): void {
-    const hand = document.getElementById('clock-hand');
-    let deg  = 0;
+    let deg = 0;
     if (this.pickTarget === HOURS) {
       deg = (dial % 12) * 30;
     } else {
       deg = ((dial / 5) % 12) * 30;
     }
-    hand.style.transform = 'rotate(' + deg + 'deg)';
+    this.clockHand.nativeElement.style.transform = `rotate(${deg}deg)`;
   }
 
   public toggleTimePickerVisibility(): void {
