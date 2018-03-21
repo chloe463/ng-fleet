@@ -1,3 +1,14 @@
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/chloe463/francette/compare/v0.8.1...v0.8.2) (2018-03-21)
+
+
+### Bug Fixes
+
+* **data-table:** Fix data-table menu position ([c07cc22](https://github.com/chloe463/francette/commit/c07cc22))
+* **time-picker:** Do not assign null or undefined to innerValue ([0cf5257](https://github.com/chloe463/francette/commit/0cf5257))
+
+
+
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/chloe463/francette/compare/v0.8.0...v0.8.1) (2018-03-15)
 
