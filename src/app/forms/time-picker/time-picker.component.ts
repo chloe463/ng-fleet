@@ -100,14 +100,14 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   set value(obj: any) {
-    if (obj !== this._innerValue || obj !== null || obj !== undefined) {
+    if (obj !== this._innerValue && obj !== null && obj !== undefined) {
       this._innerValue = obj;
       this._onChangeCallback(obj);
     }
   }
 
   writeValue(obj: any): void {
-    if (obj !== this._innerValue || obj !== null || obj !== undefined) {
+    if (obj !== this._innerValue && obj !== null && obj !== undefined) {
       this._innerValue = obj;
     }
   }
