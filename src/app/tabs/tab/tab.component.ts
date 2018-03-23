@@ -67,6 +67,11 @@ export class FrTabComponent implements OnInit {
     this._selected = selected;
   }
 
+  @HostBinding('class.fr-tab--inactive')
+  get inActive(): boolean {
+    return !this._selected;
+  }
+
   get state(): string {
     return this._state;
   }
