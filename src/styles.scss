@@ -61,5 +61,8 @@ input[type="radio"] {
   &--active {
     position: relative;
   }
+  &--inactive {
+    pointer-events: none;
+  }
 }
 .fr-timepicker-host { display: inline-block; }
