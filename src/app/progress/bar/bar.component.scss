@@ -19,7 +19,6 @@
     position: absolute;
     height: 5px;
     width: 50%;
-    background: $blue;
     transform: translateX(-100%);
     animation: slide 3s linear infinite;
   }
@@ -29,7 +28,6 @@
     position: absolute;
     height: 5px;
     width: 35%;
-    background: $blue;
     animation: slide2 3s linear infinite;
     animation-delay: 1s;
     transform: translateX(-100%);
