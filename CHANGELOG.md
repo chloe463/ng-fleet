@@ -1,3 +1,18 @@
+<a name="0.8.4"></a>
+## [0.8.4](https://github.com/chloe463/francette/compare/v0.8.3...v0.8.4) (2018-03-23)
+
+
+### Bug Fixes
+
+* **tabs:** Fix inactive tab style ([9566fb2](https://github.com/chloe463/francette/commit/9566fb2))
+
+
+### Features
+
+* **progress:** Make it possible to pass color ([20e1267](https://github.com/chloe463/francette/commit/20e1267))
+
+
+
 <a name="0.8.3"></a>
 ## [0.8.3](https://github.com/chloe463/francette/compare/v0.8.2...v0.8.3) (2018-03-22)
 
