@@ -1,3 +1,13 @@
+<a name="0.8.5"></a>
+## [0.8.5](https://github.com/chloe463/francette/compare/v0.8.4...v0.8.5) (2018-04-05)
+
+
+### Features
+
+* **toaster:** Add pop() and deprecate open() ([9205ad1](https://github.com/chloe463/francette/commit/9205ad1))
+
+
+
 <a name="0.8.4"></a>
 ## [0.8.4](https://github.com/chloe463/francette/compare/v0.8.3...v0.8.4) (2018-03-23)
 
