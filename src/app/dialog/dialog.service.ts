@@ -46,6 +46,21 @@ export class FrDialogService {
     this.vcr = vcr;
   }
 
+  public pop<T>(component, extraParams?: any) {
+    const componentFactory = this.cfr.resolveComponentFactory(component);
+
+    const noop = () => {};
+    const bindings = ReflectiveInjector.resolve([
+      { provide: FrDialogContext, useValue: new FrDialogContext<T>(noop, noop, noop, extraParams) }
+    ]);
+    const contextInjector = this.vcr.parentInjector;
+    const injector        = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);
+
+    const componentRef = this.vcr.createComponent(componentFactory, this.vcr.length, injector);
+    this.vcr.element.nativeElement.appendChild(componentRef.location.nativeElement);
+    this.dialogStack.push(componentRef);
+  }
+
   public open<T>(component, extraParams?: any): Observable<T> {
     return new Observable<T>((observer: Observer<T>) => {
       const componentFactory = this.cfr.resolveComponentFactory(component);
@@ -61,7 +76,6 @@ export class FrDialogService {
       const _onError = (reason?: any) => {
         if (componentRef) {
           if (observer.error) { observer.error(reason); }
-          if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.close(componentRef);
         }
