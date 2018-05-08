@@ -11,7 +11,7 @@ import {
   trigger
 } from '@angular/animations';
 import { FrDialogService, FrDialogContext } from './../app/dialog/dialog.service';
-import { Observer } from 'rxjs/Observer';
+import { Observer } from 'rxjs';
 
 /* tslint:disable component-selector */
 @Component({

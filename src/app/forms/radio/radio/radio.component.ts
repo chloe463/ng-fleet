@@ -13,7 +13,7 @@ import {
   HostBinding
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { timer } from 'rxjs/observable/timer';
+import { timer } from 'rxjs';
 
 export class FrRadioChange {
   public source: FrRadioComponent | null;

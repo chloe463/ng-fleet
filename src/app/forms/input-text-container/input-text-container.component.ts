@@ -28,9 +28,7 @@ import {
   NG_VALUE_ACCESSOR,
   FormControl
 } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged, pluck, tap } from 'rxjs/operators';
 
 export const LABEL          = 'label';

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'fr-data-table-rows',
