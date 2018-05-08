@@ -5,7 +5,7 @@ import {
   HostListener,
   Input
 } from '@angular/core';
-import { timer } from 'rxjs/observable/timer';
+import { timer } from 'rxjs';
 
 @Directive({
   selector: '[frRipple]'

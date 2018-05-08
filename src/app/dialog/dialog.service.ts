@@ -5,9 +5,7 @@ import {
   ReflectiveInjector,
   ComponentRef
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import { timer } from 'rxjs/observable/timer';
+import { Observable, Observer, timer } from 'rxjs';
 
 export class FrDialogContext<T> implements Observer<T> {
 

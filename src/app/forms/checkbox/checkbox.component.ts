@@ -19,7 +19,7 @@ import {
 } from '@angular/animations';
 import { DefaultValueAccessor } from '@angular/forms';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { timer } from 'rxjs/observable/timer';
+import { timer } from 'rxjs';
 
 export class FrCheckboxChange {
   source: FrCheckboxComponent;

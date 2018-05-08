@@ -19,7 +19,7 @@ import {
   animate
 } from '@angular/animations';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { timer } from 'rxjs/observable/timer';
+import { timer } from 'rxjs';
 
 export class FrTimePickerChange {
   source: FrTimePickerComponent;

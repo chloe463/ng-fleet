@@ -22,9 +22,7 @@ import {
   transition,
   trigger
 } from '@angular/animations';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import { timer } from 'rxjs/observable/timer';
+import { Observable, Observer, timer } from 'rxjs';
 import { tap, delay, map } from 'rxjs/operators';
 import { FrToasterParam } from './toaster.types';
 

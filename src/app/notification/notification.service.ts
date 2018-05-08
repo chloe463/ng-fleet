@@ -23,9 +23,7 @@ import {
   transition
 } from '@angular/animations';
 import { FrNotificationType, FrNotificationParam } from './notification.types';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import { timer } from 'rxjs/observable/timer';
+import { Observable, Observer, timer } from 'rxjs';
 
 export class FrNotificationContext<T> implements Observer<T> {
   constructor(
