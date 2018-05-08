@@ -10,12 +10,12 @@ import {
   OnInit,
   OnChanges,
   AfterViewInit,
-  AnimationTransitionEvent,
   HostListener,
   ReflectiveInjector,
   ComponentRef
 } from '@angular/core';
 import {
+  AnimationEvent,
   animate,
   trigger,
   style,
@@ -258,7 +258,7 @@ export class FrNotificationContentComponent implements OnInit {
     this.notificationState = 'void';
   }
 
-  public dismiss(event: AnimationTransitionEvent): void {
+  public dismiss(event: AnimationEvent): void {
     if (event.fromState === 'active' && event.toState === 'void') {
       if (!this.closed) {
         this._context.complete();
