@@ -1,3 +1,5 @@
+@import '../../../styles/themes/japanesque';
+
 .fr-tabs {
   list-style: none;
   border-bottom: 1px solid $light-gray;
@@ -36,18 +38,5 @@
     display: flex;
     position: relative;
     overflow: hidden;
-  }
-}
-
-.fr-tab {
-  flex-grow: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-
-  &--active {
-    position: relative;
   }
 }

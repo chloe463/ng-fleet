@@ -8,10 +8,16 @@
     <span class="fr-checkbox__background"
       [class.fr-checkbox__background--checked]="value"
       [class.fr-checkbox__background--disabled]="disabled">
-      <svg class="fr-checkbox-checkmark"
+      <!-- <svg class="fr-checkbox-checkmark"
         [class.fr-checkbox-checkmark--on]="value"
         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path class="fr-checkbox-checkmark-path" d="M 22 5 L 9.508 19 L 2 11.78" style="fill: none;"/>
+      </svg> -->
+      <svg class="fr-checkbox-checkmark"
+        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path class="fr-checkbox-checkmark-path"
+          [@checkmarkState]="checkmarkState"
+          d="M 22 5 L 9.508 19 L 2 11.78" style="fill: none;"/>
       </svg>
     </span>
     <span [class.fr-checkbox-ripple]="isRippleOn"></span>

@@ -1,4 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/themes/japanesque';
+@import './styles/buttons';
+@import './styles/kpi-dashboard';
+@import './styles/ripple';
+@import './styles/table';
+@import './styles/toaster';
+@import './styles/tooltip';
+
 body {
   margin: 0;
   font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
@@ -9,33 +16,53 @@ button, input, select, textarea {
   margin: 0;
 }
 
-@import './styles/themes/japanesque';
-@import './styles/alerts';
-@import './styles/buttons';
-@import './styles/grid';
-@import './styles/navbar';
-@import './styles/list';
-@import './styles/panel';
-@import './styles/table';
-@import './styles/kpi-dashboard';
-@import './styles/tabs';
-@import './styles/radio';
-@import './styles/tile';
-@import './styles/timepicker';
-@import './styles/steps';
-@import './styles/ripple';
-@import './styles/chips';
-@import './styles/select';
-@import './styles/input-text';
-@import './styles/data-table';
-@import './styles/textbox';
-@import './styles/checkbox';
-@import './styles/date-picker';
-@import './styles/side-nav';
-@import './styles/form-group';
-@import './styles/input-container';
-@import './styles/switch';
-@import './styles/dialog';
-@import './styles/toaster';
-@import './styles/progress';
-@import './styles/input-file';
+.fr-checkbox-host {
+  display: inline-flex;
+  @media all and (max-width: 768px) {
+    display: flex;
+    margin: 20px 0;
+  }
+}
+.fr-chip-host { display: inline-block; }
+.fr-data-table-host { display: block; }
+.fr-date-picker-host { display: inline-block; }
+.fr-input-text-container-host { display: block; }
+.fr-input-text {
+  & > input::placeholder {
+    opacity: 0;
+  }
+  & > textarea::placeholder {
+    opacity: 0;
+  }
+}
+.fr-progress-spinner-host { display: inline-block; }
+.fr-progress-bar-host { display: block; }
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.fr-radio-host {
+  display: inline-block;
+  @media all and (max-width: 768px) {
+    display: flex;
+    margin: 20px 0;
+  }
+}
+.fr-select-host { display: block; }
+.fr-switch-host { display: inline-block; }
+.fr-tab {
+  flex-grow: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  &--active {
+    position: relative;
+  }
+  &--inactive {
+    pointer-events: none;
+  }
+}
+.fr-timepicker-host { display: inline-block; }

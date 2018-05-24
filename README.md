@@ -1,6 +1,6 @@
 # Francette
 
-Simple components and style sheets for Angular 2.0 or heigher.
+Simple components and style sheets for Angular 2.0 or higher.
 
 Please see [this directory](https://github.com/chloe463/francette/tree/master/src/demo) and learn how to use this.
 
@@ -75,5 +75,5 @@ export class AppModule {}
 |Angular version|Francette Version|
 |:-|:-|
 |2.x|0.6 or lower|
-|4.x or higher|0.7 or heigher|
+|4.x or higher|0.7 or higher|
 

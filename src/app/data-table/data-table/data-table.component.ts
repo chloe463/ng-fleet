@@ -21,7 +21,7 @@ import {
   transition,
   animate
 } from '@angular/animations';
-import { timer } from 'rxjs/observable/timer';
+import { timer } from 'rxjs';
 
 import { FrDataTableColumnsComponent, IFrDataTableColumn } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableHeaderComponent } from '../data-table-header/data-table-header.component';
@@ -56,6 +56,7 @@ export class FrDataTableStripeDirective {
 @Component({
   selector: 'fr-data-table',
   templateUrl: './data-table.component.html',
+  styleUrls: ['./data-table.component.scss'],
   animations: [
     trigger('actionListState', [
       state('hidden', style({

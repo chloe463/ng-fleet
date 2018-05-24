@@ -11,14 +11,15 @@ import {
   trigger
 } from '@angular/animations';
 import { FrDialogService, FrDialogContext } from './../app/dialog/dialog.service';
-import { Observer } from 'rxjs/Observer';
+import { Observer } from 'rxjs';
 
 /* tslint:disable component-selector */
 @Component({
     selector: 'dialog-demo',
     template: `
 <h1>Dialog</h1>
-<button class="fr-btn fr-btn--primary" frRipple (click)="showDialog()">dialog</button>
+  <button class="fr-btn fr-btn--primary" frRipple (click)="showDialog()">open dialog</button>
+  <button class="fr-btn fr-btn--primary" frRipple (click)="popDialog()">pop dialog</button>
   <span>Result: {{result}}</span>
 <fr-dialog-entry></fr-dialog-entry>
     `,
@@ -41,6 +42,11 @@ export class DialogDemoComponent {
     };
     const extraParams = { title: 'Hi! I\'m a dialog!' };
     this.dialogService.open<any>(DialogDummyComponent, extraParams).subscribe(dialogObserver);
+  }
+
+  public popDialog(): void {
+    const extraParams = { title: 'Hi! I\'m a dialog!' };
+    this.dialogService.pop<any>(PopupDummyComponent, extraParams);
   }
 
   public dialogAction(event): void {
@@ -101,4 +107,32 @@ export class DialogDummyComponent implements OnInit {
   ng(): void {
     this.dialogContext.error({ message: 'ng', text: this.text });
   }
+}
+
+@Component({
+  selector: 'popup-dummy',
+  styles: [`
+    .dummy-component {
+      display: block;
+      margin: auto;
+      background: #FFFFFF;
+    }
+    .header {
+      font-size: 18px;
+      padding: 20px;
+    }
+  `],
+  template: `
+  <div class="dummy-component">
+    <div class="header">{{title}}</div>
+  </div>
+  `
+})
+export class PopupDummyComponent {
+  constructor (private dialogContext: FrDialogContext<any>) {}
+
+  get title(): string {
+    return this.dialogContext.params.title;
+  }
+
 }

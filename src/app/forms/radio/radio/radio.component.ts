@@ -13,7 +13,7 @@ import {
   HostBinding
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { timer } from 'rxjs/observable/timer';
+import { timer } from 'rxjs';
 
 export class FrRadioChange {
   public source: FrRadioComponent | null;
@@ -115,7 +115,8 @@ export class FrRadioGroupComponent implements ControlValueAccessor {
 
 @Component({
   selector: 'fr-radio',
-  templateUrl: '../radio/radio.component.html'
+  templateUrl: '../radio/radio.component.html',
+  styleUrls: ['./radio.component.scss']
 })
 export class FrRadioComponent implements OnInit {
 

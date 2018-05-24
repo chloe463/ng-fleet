@@ -22,6 +22,7 @@ import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
 @Component({
   selector: 'fr-side-nav',
   templateUrl: './side-nav.component.html',
+  styleUrls: ['./side-nav.component.scss'],
   animations: [
     trigger('navState', [
       state('inactive', style({

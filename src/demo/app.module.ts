@@ -11,17 +11,18 @@ import { FormsDemoComponent } from './forms-demo.component';
 import { ButtonsDemoComponent } from './buttons-demo.component';
 import { TabsDemoComponent } from './tabs-demo.component';
 import { KpiTableDemoComponent } from './kpi-table-demo.component';
-import { DialogDemoComponent, DialogDummyComponent } from './dialog-demo.component';
+import { DialogDemoComponent, DialogDummyComponent, PopupDummyComponent } from './dialog-demo.component';
 import { ToasterDemoComponent } from './toaster-demo.component';
 import { ProgressDemoComponent } from './progress-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
+import { TooltipDemoComponent } from './tooltip-demo.component';
 
 import { FrancetteModule } from '../app/francette.module';
 
 const routeConfig: Routes = [
   // { path: '', component: DevelopAreaComponent },
   // { path: 'develop', component: DevelopAreaComponent },
-  { path: '', component: FormsDemoComponent, pathMatch: 'full' },
+  { path: '', component: DialogDemoComponent, pathMatch: 'full' },
   { path: 'develop', component: FormsDemoComponent },
   { path: 'data-table', component: DataTableDemoComponent },
   { path: 'dialog', component: DialogDemoComponent },
@@ -31,6 +32,7 @@ const routeConfig: Routes = [
   { path: 'progress', component: ProgressDemoComponent },
   { path: 'tabs', component: TabsDemoComponent },
   { path: 'toaster', component: ToasterDemoComponent },
+  { path: 'tooltip', component: TooltipDemoComponent },
   { path: 'kpi-table', component: KpiTableDemoComponent },
   { path: '**', redirectTo: '' }
 ];
@@ -49,6 +51,8 @@ const routeConfig: Routes = [
     ToasterDemoComponent,
     ProgressDemoComponent,
     DialogDummyComponent,
+    PopupDummyComponent,
+    TooltipDemoComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,7 @@ const routeConfig: Routes = [
   ],
   exports: [],
   providers: [],
-  entryComponents: [ DialogDummyComponent ],
+  entryComponents: [ DialogDummyComponent, PopupDummyComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

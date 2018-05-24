@@ -28,8 +28,8 @@ import {
   NG_VALUE_ACCESSOR,
   FormControl
 } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/debounceTime';
+import { fromEvent, Observable, Subscription } from 'rxjs';
+import { distinctUntilChanged, pluck, tap } from 'rxjs/operators';
 
 export const LABEL          = 'label';
 export const LABEL_ON_FOCUS = 'labelOnFocus';
@@ -44,7 +44,7 @@ export class FrInputDirective implements OnInit, OnDestroy {
 
   @HostBinding('class.fr-input-text__form') true;
 
-  private _ngModelSubscribtion: Subscription;
+  private _subscription: Subscription;
 
   private _placeholder = '';
 
@@ -64,6 +64,10 @@ export class FrInputDirective implements OnInit, OnDestroy {
     }
   }
 
+  get value(): string {
+    return this._el.nativeElement.value;
+  }
+
   get disabled() {
     return this._el.nativeElement.disabled;
   }
@@ -74,32 +78,31 @@ export class FrInputDirective implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    let source$: Observable<string>;
     if (this.ngModel) {
-      this.labelState = (this.ngModel.model) ? LABEL : PLACEHOLDER;
-      this._ngModelSubscribtion = this.ngModel.valueChanges.subscribe((v) => {
-        this._updateLabelState(v);
-      });
+      source$ = this.ngModel.valueChanges;
     } else if (this.formControl) {
-      this.labelState = PLACEHOLDER;
-      this.formControl.valueChanges
-        .debounceTime(100)
-        .subscribe(v => { this._updateLabelState(v); });
+      source$ = this.formControl.valueChanges;
     } else {
-      this.labelState = (this._el.nativeElement.value) ? LABEL : PLACEHOLDER;
+      source$ = fromEvent<string>(this._el.nativeElement as any, 'keydown')
+        .pipe(pluck('target', 'value'));
     }
+    this._subscription = source$.pipe(
+      distinctUntilChanged()
+    ).subscribe((v: string) => this._updateLabelState(v));
+
+    this.labelState = (this.value) ? LABEL : PLACEHOLDER;
     this.maxLength = this._el.nativeElement.maxLength;
   }
 
   ngOnDestroy() {
-    if (this._ngModelSubscribtion) {
-      this._ngModelSubscribtion.unsubscribe();
+    if (this._subscription) {
+      this._subscription.unsubscribe();
     }
   }
 
-  private _updateLabelState(v: any) {
-    if (this.labelState === LABEL_ON_FOCUS) {
-      this.labelState  = v ? LABEL_ON_FOCUS : PLACEHOLDER;
-    } else {
+  private _updateLabelState(v: string) {
+    if (this.labelState !== LABEL_ON_FOCUS) {
       this.labelState  = v ? LABEL : PLACEHOLDER;
     }
     this.valueLength = v ? v.length : 0;
@@ -114,25 +117,15 @@ export class FrInputDirective implements OnInit, OnDestroy {
   @HostListener('blur')
   public onBlur() {
     this.focus = false;
-    if (this.ngModel) {
-      if (!this.ngModel.viewModel) {
-        this.labelState = PLACEHOLDER;
-        return;
-      }
-    } else {
-      if (!this._el.nativeElement.value) {
-        this.labelState = PLACEHOLDER;
-        return;
-      }
-    }
-    this.labelState = LABEL;
+    this.labelState = this.value.length === 0 ? PLACEHOLDER : LABEL;
   }
 
 }
 
 @Component({
   selector: 'fr-input-text-container',
-  templateUrl: './input-text-container.component.html'
+  templateUrl: './input-text-container.component.html',
+  styleUrls: ['./input-text-container.component.scss']
 })
 export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 

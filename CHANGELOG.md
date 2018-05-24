@@ -1,3 +1,71 @@
+<a name="0.8.5"></a>
+## [0.8.5](https://github.com/chloe463/francette/compare/v0.8.4...v0.8.5) (2018-04-05)
+
+
+### Features
+
+* **toaster:** Add pop() and deprecate open() ([9205ad1](https://github.com/chloe463/francette/commit/9205ad1))
+
+
+
+<a name="0.8.4"></a>
+## [0.8.4](https://github.com/chloe463/francette/compare/v0.8.3...v0.8.4) (2018-03-23)
+
+
+### Bug Fixes
+
+* **tabs:** Fix inactive tab style ([9566fb2](https://github.com/chloe463/francette/commit/9566fb2))
+
+
+### Features
+
+* **progress:** Make it possible to pass color ([20e1267](https://github.com/chloe463/francette/commit/20e1267))
+
+
+
+<a name="0.8.3"></a>
+## [0.8.3](https://github.com/chloe463/francette/compare/v0.8.2...v0.8.3) (2018-03-22)
+
+
+### Bug Fixes
+
+* **data-table:** Fix menu position ([dda6e3d](https://github.com/chloe463/francette/commit/dda6e3d))
+* **time-picker:** Do not assign null or undefined to innerValue ([93b514f](https://github.com/chloe463/francette/commit/93b514f))
+
+
+
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/chloe463/francette/compare/v0.8.1...v0.8.2) (2018-03-21)
+
+
+### Bug Fixes
+
+* **data-table:** Fix data-table menu position ([c07cc22](https://github.com/chloe463/francette/commit/c07cc22))
+* **time-picker:** Do not assign null or undefined to innerValue ([0cf5257](https://github.com/chloe463/francette/commit/0cf5257))
+
+
+
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/chloe463/francette/compare/v0.8.0...v0.8.1) (2018-03-15)
+
+
+### Bug Fixes
+
+* **input-text-container:** Fix scoped style ([48bb5f8](https://github.com/chloe463/francette/commit/48bb5f8))
+
+
+### Features
+
+* **buttons:** Add button:active style ([933023a](https://github.com/chloe463/francette/commit/933023a))
+* **tooltip:** Add tooltip directive ([752fbb7](https://github.com/chloe463/francette/commit/752fbb7))
+
+
+
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/chloe463/francette/compare/v0.8.0-rc.1...v0.8.0) (2018-02-20)
+
+
+
 <a name="0.8.0-rc.1"></a>
 # [0.8.0-rc.1](https://github.com/chloe463/francette/compare/v0.8.0-rc.0...v0.8.0-rc.1) (2018-02-19)
 

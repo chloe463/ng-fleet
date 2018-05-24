@@ -15,6 +15,7 @@ import {
 @Component({
   selector: 'fr-tab',
   templateUrl: './tab.component.html',
+  styleUrls: ['./tab.component.scss'],
   animations: [
     trigger('tabState', [
       state('center', style({
@@ -64,6 +65,11 @@ export class FrTabComponent implements OnInit {
 
   set selected(selected: boolean) {
     this._selected = selected;
+  }
+
+  @HostBinding('class.fr-tab--inactive')
+  get inActive(): boolean {
+    return !this._selected;
   }
 
   get state(): string {
