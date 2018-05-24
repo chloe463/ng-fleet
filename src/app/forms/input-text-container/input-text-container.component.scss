@@ -104,6 +104,8 @@
 :host ::ng-deep textarea.fr-input-text__form {
   height: 60px;
   resize: vertical;
+  border-top: 18px solid transparent;
+  font-family: inherit;
 }
 
 @keyframes underline-ripple {
