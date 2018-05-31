@@ -32,7 +32,6 @@ input[type="checkbox"] {
     height: 18px;
     text-align: center;
     vertical-align: middle;
-    font-size: 14px;
     border: 2px solid rgba(0,0,0,.54);
     border-radius: 2px;
     padding: 0px;
@@ -42,7 +41,7 @@ input[type="checkbox"] {
     transition-duration: 0.3s;
     &--checked {
       color: $white;
-      // background: $magenta;
+      background: $magenta;
       border: 2px solid $secondary;
     }
     &--focused {
@@ -58,6 +57,7 @@ input[type="checkbox"] {
     left: 1px;
     right: 1px;
     bottom: 1px;
+    border-radius: 1px;
     &--checked {
       background: $secondary;
     }
