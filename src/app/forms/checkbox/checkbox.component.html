@@ -15,7 +15,9 @@
           d="M 22 5 L 9.508 19 L 2 11.78" style="fill: none;"/>
       </svg>
     </span>
-    <span [class.fr-checkbox-ripple]="isRippleOn"></span>
+    <span class="fr-checkbox__ripple-container">
+      <span [class.fr-checkbox-ripple]="isRippleOn"></span>
+    </span>
   </div>
   <input #input type="checkbox"
          name="{{name}}"
