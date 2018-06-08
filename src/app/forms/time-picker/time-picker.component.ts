@@ -9,7 +9,9 @@ import {
   ElementRef,
   HostBinding,
   HostListener,
-  ViewChild
+  ViewChild,
+  Renderer2,
+  NgZone
 } from '@angular/core';
 import {
   trigger,
@@ -93,7 +95,11 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   public changing = false;
   private _oldValue: Date;
 
-  constructor(private el: ElementRef) { }
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private ngZone: NgZone
+  ) { }
 
   get value(): any {
     return this._innerValue;
@@ -138,6 +144,9 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     this.pickTarget      = HOURS;
     this.clockVisibility = HIDDEN;
     this.setDials();
+
+    this.ngZone.runOutsideAngular(() => this.disapperOnClick());
+    this.ngZone.runOutsideAngular(() => this.disapperOnKeyDown());
   }
 
   ngAfterViewInit() {
@@ -267,17 +276,23 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     this.toggleTimePickerVisibility();
   }
 
-  @HostListener('document:click', ['$event'])
-  public disapperOnClick(event) {
-    if (!this.el.nativeElement.contains(event.target)) {
-      this.clockVisibility = HIDDEN;
-    }
+  public disapperOnClick() {
+    this.renderer.listen('document', 'click', (event: MouseEvent) => {
+      if (!this.el.nativeElement.contains(event.target) && this.clockVisibility !== HIDDEN) {
+        this.ngZone.run(() => {
+          this.clockVisibility = HIDDEN;
+        });
+      }
+    })
   }
 
-  @HostListener('window:keydown', ['$event'])
-  public disapperOnKeyDown(event) {
-    if (event.key === 'Escape') {
-      this.clockVisibility = HIDDEN;
-    }
+  public disapperOnKeyDown() {
+    this.renderer.listen('window', 'keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && this.clockVisibility !== HIDDEN) {
+        this.ngZone.run(() => {
+          this.clockVisibility = HIDDEN;
+        });
+      }
+    })
   }
 }

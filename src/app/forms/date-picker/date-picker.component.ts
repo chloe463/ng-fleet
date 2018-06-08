@@ -7,8 +7,9 @@ import {
   QueryList,
   forwardRef,
   HostBinding,
-  HostListener,
-  ElementRef
+  ElementRef,
+  Renderer2,
+  NgZone
 } from '@angular/core';
 import {
   trigger,
@@ -83,7 +84,11 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
   private _oldValue: Date;
   private _selectOutOfMonth: boolean;
 
-  constructor(private el: ElementRef) {
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private ngZone: NgZone
+  ) {
   }
 
   get value(): any {
@@ -129,6 +134,9 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
     this.calendarVisibility = HIDDEN;
     this.target             = new Date();
     this._resetCalendar(this.target);
+
+    this.ngZone.runOutsideAngular(() => this.disapperOnClick());
+    this.ngZone.runOutsideAngular(() => this.disapperOnKeyDown());
   }
 
   private _resetCalendar(target: Date): void {
@@ -225,25 +233,33 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
     this.calendarVisibility = HIDDEN;
   }
 
-  @HostListener('document:click', ['$event'])
-  public disapperOnClick(event) {
-    // Without this condition, calendar disappear
-    // when select previous or next month date.
-    if (this._selectOutOfMonth) {
-      this._selectOutOfMonth = false;
-      return;
-    }
+  public disapperOnClick() {
+    this.renderer.listen('document', 'click', (event: MouseEvent) => {
+      // Without this condition, calendar disappear
+      // when select previous or next month date.
+      if (this._selectOutOfMonth) {
+        this.ngZone.run(() => {
+          this._selectOutOfMonth = false;
+        });
+        return;
+      }
 
-    if (!this.el.nativeElement.contains(event.target)) {
-      this.calendarVisibility = HIDDEN;
-    }
+      if (!this.el.nativeElement.contains(event.target) && this.calendarVisibility !== HIDDEN) {
+        this.ngZone.run(() => {
+          this.calendarVisibility = HIDDEN;
+        });
+      }
+    })
   }
 
-  @HostListener('window:keydown', ['$event'])
-  public disapperOnKeyDown(event) {
-    if (event.key === 'Escape') {
-      this.calendarVisibility = HIDDEN;
-    }
+  public disapperOnKeyDown() {
+    this.renderer.listen('window', 'keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        this.ngZone.run(() => {
+          this.calendarVisibility = HIDDEN;
+        });
+      }
+    })
   }
 
   private emitChange(): void {

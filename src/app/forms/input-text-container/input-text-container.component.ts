@@ -13,7 +13,9 @@ import {
   ElementRef,
   HostListener,
   HostBinding,
-  Optional
+  Optional,
+  Renderer2,
+  NgZone
 } from '@angular/core';
 import {
   trigger,
@@ -74,7 +76,9 @@ export class FrInputDirective implements OnInit, OnDestroy {
 
   constructor(
     @Optional() public ngModel: NgModel,
-    private _el: ElementRef
+    private _el: ElementRef,
+    private _renderer: Renderer2,
+    private _ngZone: NgZone
   ) { }
 
   ngOnInit() {
@@ -93,6 +97,9 @@ export class FrInputDirective implements OnInit, OnDestroy {
 
     this.labelState = (this.value) ? LABEL : PLACEHOLDER;
     this.maxLength = this._el.nativeElement.maxLength;
+
+    this._ngZone.runOutsideAngular(() => this.onFocus());
+    this._ngZone.runOutsideAngular(() => this.onBlur());
   }
 
   ngOnDestroy() {
@@ -108,16 +115,22 @@ export class FrInputDirective implements OnInit, OnDestroy {
     this.valueLength = v ? v.length : 0;
   }
 
-  @HostListener('focus')
   public onFocus() {
-    this.focus      = true;
-    this.labelState = LABEL_ON_FOCUS;
+    this._renderer.listen(this._el.nativeElement, 'focus', (event) => {
+      this._ngZone.run(() => {
+        this.focus      = true;
+        this.labelState = LABEL_ON_FOCUS;
+      });
+    });
   }
 
-  @HostListener('blur')
   public onBlur() {
-    this.focus = false;
-    this.labelState = this.value.length === 0 ? PLACEHOLDER : LABEL;
+    this._renderer.listen(this._el.nativeElement, 'blur', () => {
+      this._ngZone.run(() => {
+        this.focus = false;
+        this.labelState = this.value.length === 0 ? PLACEHOLDER : LABEL;
+      });
+    });
   }
 
 }
