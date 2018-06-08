@@ -168,6 +168,7 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
     });
     this.value = filteredFiles;
     this.emitChange();
+    this._onTouchedCallback();
   }
 
   public onChange(event) {

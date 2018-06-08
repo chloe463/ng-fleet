@@ -240,6 +240,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
       if (this._selectOutOfMonth) {
         this.ngZone.run(() => {
           this._selectOutOfMonth = false;
+          this._onTouchedCallback();
         });
         return;
       }
@@ -247,6 +248,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
       if (!this.el.nativeElement.contains(event.target) && this.calendarVisibility !== HIDDEN) {
         this.ngZone.run(() => {
           this.calendarVisibility = HIDDEN;
+          this._onTouchedCallback();
         });
       }
     })
@@ -257,6 +259,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
       if (event.key === 'Escape') {
         this.ngZone.run(() => {
           this.calendarVisibility = HIDDEN;
+          this._onTouchedCallback();
         });
       }
     })

@@ -103,6 +103,7 @@ export class FrRadioGroupComponent implements ControlValueAccessor {
         radio.checked = false;
       }
     });
+    this._onTouchedCallback();
   }
 
   public selectOneByValue(value: any): void {

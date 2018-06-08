@@ -122,6 +122,7 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
     event.stopPropagation();
     this.emitChangeEvent();
+    this._onTouchedCallback();
   }
 
   public onFocus(event: Event): void {
