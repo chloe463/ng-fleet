@@ -12,7 +12,8 @@ import {
   ViewChild,
   QueryList,
   HostBinding,
-  HostListener
+  Renderer2,
+  NgZone
 } from '@angular/core';
 import {
   trigger,
@@ -140,6 +141,14 @@ export class FrDataTableComponent implements AfterContentInit {
 
   public ripples = { edit: false, delete: false, dots: false, chevronLeft: false, chevronRight: false };
 
+  constructor(
+    private renderer: Renderer2,
+    private ngZone: NgZone
+  ) {
+    this.ngZone.runOutsideAngular(() => this.hideActionListOnClick());
+    this.ngZone.runOutsideAngular(() => this.hideActionListOnEscape());
+  }
+
   ngAfterContentInit() {
     // this.title = this.headerComponent.title;
     if (this.headerComponent) {
@@ -256,22 +265,32 @@ export class FrDataTableComponent implements AfterContentInit {
     });
   }
 
-  @HostListener('document:click', ['$event'])
-  public hideActionListOnClick(event): void {
-    if (!this.dots.nativeElement.contains(event.target)) {
-      this.actionListState = 'hidden';
-    }
-    if (!this.pulldown.nativeElement.contains(event.target)) {
-      this.rowsListState   = 'hidden';
-    }
+  public hideActionListOnClick(): void {
+    this.renderer.listen('document', 'click', (event: MouseEvent) => {
+      if (!this.dots.nativeElement.contains(event.target) && this.actionListState !== 'hidden') {
+        this.ngZone.run(() => {
+          this.actionListState = 'hidden';
+        });
+      }
+      if (!this.pulldown.nativeElement.contains(event.target) && this.rowsListState !== 'hidden') {
+        this.ngZone.run(() => {
+          this.rowsListState = 'hidden';
+        });
+      }
+    });
   }
 
-  @HostListener('window:keydown', ['$event'])
-  public hideActionListOnEscape(event): void {
-    if (event.code === 'Escape' && event.key === 'Escape') {
-      this.actionListState = 'hidden';
-      this.rowsListState   = 'hidden';
-    }
+  public hideActionListOnEscape(): void {
+    this.renderer.listen('window', 'keydown', (event: KeyboardEvent) => {
+      if (event.code === 'Escape' && event.key === 'Escape' &&
+        (this.actionListState !== 'hidden' || this.rowsListState !== 'hidden')
+      ) {
+        this.ngZone.run(() => {
+          this.actionListState = 'hidden';
+          this.rowsListState   = 'hidden';
+        });
+      }
+    });
   }
 
 }
