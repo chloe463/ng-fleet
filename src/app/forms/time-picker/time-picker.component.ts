@@ -269,11 +269,13 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
   public cancel(): void {
     this.value = this._oldValue;
     this.toggleTimePickerVisibility();
+    this._onTouchedCallback();
   }
 
   public commit(): void {
     this.value = this._innerValue;
     this.toggleTimePickerVisibility();
+    this._onTouchedCallback();
   }
 
   public disapperOnClick() {
@@ -281,6 +283,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
       if (!this.el.nativeElement.contains(event.target) && this.clockVisibility !== HIDDEN) {
         this.ngZone.run(() => {
           this.clockVisibility = HIDDEN;
+          this._onTouchedCallback();
         });
       }
     })
@@ -291,6 +294,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
       if (event.key === 'Escape' && this.clockVisibility !== HIDDEN) {
         this.ngZone.run(() => {
           this.clockVisibility = HIDDEN;
+          this._onTouchedCallback();
         });
       }
     })

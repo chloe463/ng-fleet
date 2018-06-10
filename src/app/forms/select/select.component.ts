@@ -195,6 +195,7 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
     this.optionsVisibility = HIDDEN;
     this.labelState        = LABEL;
     this.emitChange();
+    this._onTouchedCallback();
   }
 
   public isSelected(value) {
@@ -235,6 +236,7 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
   public onBlur(event?: Event) {
     this.isFocused = false;
     this.optionsVisibility = HIDDEN;
+    this._onTouchedCallback();
     if (this.value === null || this.value === undefined || this.value === '') {
       this.label = '';
       this.labelState = PLACEHOLDER;
