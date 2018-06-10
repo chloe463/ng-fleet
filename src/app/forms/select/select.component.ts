@@ -10,7 +10,9 @@ import {
   forwardRef,
   ElementRef,
   HostBinding,
-  HostListener
+  HostListener,
+  Renderer2,
+  NgZone
 } from '@angular/core';
 import {
   trigger,
@@ -92,10 +94,16 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
   public labelState = PLACEHOLDER;
   public isFocused  = false;
 
-  constructor(private el: ElementRef) { }
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private ngZone: NgZone
+  ) { }
 
   ngOnInit() {
     this.optionsVisibility = HIDDEN;
+
+    this.ngZone.runOutsideAngular(() => this.disappear());
   }
 
   ngAfterContentInit() {
@@ -193,12 +201,14 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
     return this.value === value;
   }
 
-  @HostListener('document:click', ['$event'])
-  disappear(event) {
-    if (!this.el.nativeElement.contains(event.target)) {
-      this.optionsVisibility = HIDDEN;
-      this.onBlur();
-    }
+  disappear() {
+    this.renderer.listen('document', 'click', (event: MouseEvent) => {
+      if (!this.el.nativeElement.contains(event.target) && this.optionsVisibility !== HIDDEN) {
+        this.ngZone.run(() => {
+          this.onBlur();
+        })
+      }
+    });
   }
 
   // TODO: Make it possible to select value with arrow keys
@@ -231,6 +241,5 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
       return;
     }
     this.labelState        = LABEL;
-    this.optionsVisibility = HIDDEN;
   }
 }

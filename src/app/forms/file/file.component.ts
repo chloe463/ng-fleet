@@ -5,10 +5,11 @@ import {
   Output,
   EventEmitter,
   forwardRef,
-  HostListener,
   HostBinding,
   ViewChild,
-  ElementRef
+  ElementRef,
+  Renderer2,
+  NgZone
 } from '@angular/core';
 import {
   DefaultValueAccessor,
@@ -55,11 +56,20 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
   public files: any[] = [];
   public fileOnArea = false;
 
-  constructor() { }
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private ngZone: NgZone
+  ) { }
 
   ngOnInit() {
     this.input.nativeElement.multiple = this.multiple;
     this.acceptRegexp = this.buildRegexp(this.accept);
+
+    this.ngZone.runOutsideAngular(() => this.onDragEnter());
+    this.ngZone.runOutsideAngular(() => this.onDragOver());
+    this.ngZone.runOutsideAngular(() => this.onDragLeave());
+    this.ngZone.runOutsideAngular(() => this.onDrop());
   }
 
   public buildRegexp(accept: string): RegExp {
@@ -171,37 +181,43 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
     event.stopPropagation();
   }
 
-  @HostListener('dragenter', ['$event'])
-  public onDragEnter(event: Event) {
-    this.preventDefaults(event);
-    this.fileOnArea = !this.disabled ? true : false;
+  public onDragEnter() {
+    this.renderer.listen(this.el.nativeElement, 'dragenter', (event) => {
+      this.preventDefaults(event);
+      this.fileOnArea = !this.disabled ? true : false;
+    })
   }
 
-  @HostListener('dragover', ['$event'])
-  public onDragOver(event: Event) {
-    this.preventDefaults(event);
+  public onDragOver() {
+    this.renderer.listen(this.el.nativeElement, 'dragover', (event) => {
+      this.preventDefaults(event);
+    })
   }
 
-  @HostListener('dragleave', ['$event'])
-  public onDragLeave(event: Event) {
-    this.preventDefaults(event);
-    this.fileOnArea = false;
+  public onDragLeave() {
+    this.renderer.listen(this.el.nativeElement, 'dragleave', (event) => {
+      this.preventDefaults(event);
+      this.fileOnArea = false;
+    })
   }
 
-  @HostListener('drop', ['$event'])
-  public onDrop(event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
-    if (this.disabled) {
-      alert('It is disabled');
-      return;
-    }
-    // NOTE: Typecast for Safari
-    this.updateValue((event as DragEvent).dataTransfer.files);
-    // this.value      = event.dataTransfer.files;
-    this.fileOnArea = false;
+  public onDrop() {
+    this.renderer.listen(this.el.nativeElement, 'drop', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this.ngZone.run(() => {
+        if (this.disabled) {
+          alert('It is disabled');
+          return;
+        }
+        // NOTE: Typecast for Safari
+        this.updateValue((event as DragEvent).dataTransfer.files);
+        // this.value      = event.dataTransfer.files;
+        this.fileOnArea = false;
 
-    return false;
+        return false;
+      })
+    })
   }
 
 }
