@@ -166,7 +166,6 @@ export class FrRadioComponent implements OnInit {
 
     if (this.radioGroup) {
       this.radioGroup.value = this.value;
-      this.radioGroup._onChangeCallback(this.value);
       this.radioGroup.selectOneByRadioComponent(this);
       this.radioGroup.emitChangeEvent();
     }
