@@ -22,7 +22,8 @@ import {
   transition,
   animate
 } from '@angular/animations';
-import { timer } from 'rxjs';
+import { Observable, of, timer } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { FrDataTableColumnsComponent, IFrDataTableColumn } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableHeaderComponent } from '../data-table-header/data-table-header.component';
@@ -190,7 +191,7 @@ export class FrDataTableComponent implements AfterContentInit {
     return count;
   }
 
-  private _extraceCheckedRows(): Array<any> {
+  private _filterCheckedRows(): Array<any> {
     return this.rows.filter((row: any, index: number) => {
       return this.checkedRowIndices[index] === true;
     });
@@ -208,7 +209,7 @@ export class FrDataTableComponent implements AfterContentInit {
     this.sortState.column = targetColumn;
     const event = new FrDataTableEvent(
       'sort',
-      this._extraceCheckedRows(),
+      this._filterCheckedRows(),
       this.rowsPerPage,
       this.paginationInfo.page,
       {
@@ -219,38 +220,46 @@ export class FrDataTableComponent implements AfterContentInit {
   }
 
   public updateRowAction(updateAction: string, changeListState = false): void {
-    const checkedRows = this._extraceCheckedRows();
+    const checkedRows = this._filterCheckedRows();
     const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage, this.paginationInfo.page);
-    this.activateRippleEffect(updateAction);
-    if (this.dataTableAction) {
-      this.dataTableAction.emit(event);
-    }
+    this.activateRippleEffect(updateAction).subscribe(() => {
+      if (this.dataTableAction) {
+        this.dataTableAction.emit(event);
+      }
+    });
   }
 
   public otherAction(key: string): void {
-    const checkedRows = this._extraceCheckedRows();
+    const checkedRows = this._filterCheckedRows();
     const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     this.actionListState = 'hidden';
-    if (this.dataTableAction) {
-      this.dataTableAction.emit(event);
-    }
+    timer(500).subscribe(() => {
+      if (this.dataTableAction) {
+        this.dataTableAction.emit(event);
+      }
+    });
   }
 
   public paginationAction(action: string, rowsPerPage?): void {
     const direction = action === 'showPreviousPage' ? 'chevronLeft' : 'chevronRight';
+    let observable: Observable<number>;
     if (rowsPerPage) {
       this.rowsPerPage = rowsPerPage;
+      observable = of(rowsPerPage);
+    } else {
+      observable = this.activateRippleEffect(direction);
     }
-    this.activateRippleEffect(direction);
-    const checkedRows = this._extraceCheckedRows();
-    const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
-    if (this.dataTableAction) {
-      this.dataTableAction.emit(event);
-    }
+    observable.subscribe(() => {
+      const checkedRows = this._filterCheckedRows();
+      const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
+      if (this.dataTableAction) {
+        this.dataTableAction.emit(event);
+      }
+    });
   }
 
   public toggleOtherActionList(): void {
-    this.activateRippleEffect('dots');
+    this.activateRippleEffect('dots').subscribe();
     this.actionListState = (this.actionListState === 'hidden') ? 'show' : 'hidden';
   }
 
@@ -258,11 +267,11 @@ export class FrDataTableComponent implements AfterContentInit {
     this.rowsListState = (this.rowsListState === 'hidden') ? 'show' : 'hidden';
   }
 
-  private activateRippleEffect(key: string): void {
+  private activateRippleEffect(key: string): Observable<number> {
     this.ripples[key] = true;
-    timer(800).subscribe(() => {
-      this.ripples[key] = false;
-    });
+    return timer(500).pipe(
+      tap(() => this.ripples[key] = false)
+    );
   }
 
   public hideActionListOnClick(): void {
