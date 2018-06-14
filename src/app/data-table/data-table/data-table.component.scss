@@ -130,13 +130,14 @@
     z-index: 10;
     overflow-y: auto;
     max-height: 100px;
-    width: 80%;
+    width: 64px;
   }
   &-select-value {
     line-height: 18px;
-    padding: 5px 16px;
+    padding: 5px 18px;
     cursor: pointer;
     text-align: right;
+    font-size: 10pt;
   }
   &-select-value:hover {
     background: lighten($light-gray, 15%);
@@ -146,11 +147,13 @@
     color: $primary;
   }
   &-left-arrow {
+    position: relative;
     margin-left: 32px;
     width: 12px;
     cursor: pointer;
   }
   &-right-arrow {
+    position: relative;
     margin-left: 24px;
     margin-right: 16px;
     width: 12px;
@@ -293,6 +296,22 @@
   }
 }
 
+.fr-data-table__header-ripple-container {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  top: -13px;
+  left: -13px;
+}
+.fr-data-table__footer-ripple-container {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  top: -19px;
+  left: -18px;
+}
 .fr-data-table__btn-ripple {
   position: absolute;
   display: inline-block;
@@ -300,13 +319,11 @@
   height: 50px;
   background: #CCCCCC;
   border-radius: 50%;
-  top: -14px;
-  right: -14px;
-  bottom: -14px;
-  left: -14px;
+  top: 0;
+  left: 0;
   opacity: 0.3;
   transform: scale(0.2);
-  animation: button-ripple 0.8s ease-out;
+  animation: button-ripple 0.5s ease-out;
 }
 
 @keyframes button-ripple {

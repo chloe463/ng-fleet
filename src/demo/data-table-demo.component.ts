@@ -51,7 +51,7 @@ export class DataTableDemoComponent {
     ],
     paginationInfo: {
       totalRows: 100,
-      rowsPerPageValues: [10, 30, 50],
+      rowsPerPageValues: [10, 30, 50, 100],
       page: 1,
       rowsPerPage: 30
     }
