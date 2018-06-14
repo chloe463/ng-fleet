@@ -57,12 +57,13 @@ import { IFrSideNavNodeGroup } from '../../navbar/navbar/navbar.model';
     ]),
     trigger('menuState', [
       state('close', style({
-        display: 'none',
-        opacity: 0
+        transform: 'scaleY(0)',
+        'transform-origin': '0 0',
+        height: 0
       })),
       state('open', style({
-        display: 'block',
-        opacity: 1
+        transform: 'scaleY(1)',
+        'transform-origin': '0 0'
       })),
       transition('* => *', [
         animate('250ms cubic-bezier(0.35, 0.25, 0, 1)')
