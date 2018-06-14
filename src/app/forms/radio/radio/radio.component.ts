@@ -1,8 +1,6 @@
 import {
   Component,
-  Directive,
   OnInit,
-  AfterContentInit,
   Input,
   Output,
   EventEmitter,

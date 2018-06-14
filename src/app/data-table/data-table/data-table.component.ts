@@ -1,16 +1,13 @@
 import {
   Component,
   Directive,
-  OnInit,
   AfterContentInit,
   ElementRef,
   Input,
   Output,
   EventEmitter,
   ContentChild,
-  ContentChildren,
   ViewChild,
-  QueryList,
   HostBinding,
   Renderer2,
   NgZone

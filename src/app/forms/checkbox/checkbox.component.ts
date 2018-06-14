@@ -1,12 +1,9 @@
 import {
   Component,
-  Directive,
   OnInit,
   Input,
   Output,
   EventEmitter,
-  ContentChildren,
-  QueryList,
   forwardRef,
   HostBinding
 } from '@angular/core';
@@ -17,7 +14,6 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { DefaultValueAccessor } from '@angular/forms';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { timer } from 'rxjs';
 

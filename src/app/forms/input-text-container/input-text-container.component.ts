@@ -4,30 +4,16 @@ import {
   OnInit,
   OnDestroy,
   AfterContentInit,
-  AfterContentChecked,
   Input,
-  Output,
-  EventEmitter,
   ContentChild,
-  forwardRef,
   ElementRef,
-  HostListener,
   HostBinding,
   Optional,
   Renderer2,
   NgZone
 } from '@angular/core';
 import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate
-} from '@angular/animations';
-import {
   NgModel,
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
   FormControl
 } from '@angular/forms';
 import { fromEvent, Observable, Subscription } from 'rxjs';

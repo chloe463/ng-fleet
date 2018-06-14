@@ -1,11 +1,9 @@
 import {
-  Component,
   Directive,
   ElementRef,
   Input,
   HostBinding,
   HostListener,
-  Output,
   OnInit
 } from '@angular/core';
 

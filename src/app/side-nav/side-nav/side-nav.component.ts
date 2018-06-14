@@ -1,11 +1,8 @@
 import {
   Component,
-  OnInit,
   AfterContentInit,
-  Input,
   ContentChildren,
-  QueryList,
-  HostListener
+  QueryList
 } from '@angular/core';
 import {
   trigger,

@@ -8,12 +8,9 @@ import {
   ViewContainerRef,
   forwardRef,
   OnInit,
-  OnChanges,
   OnDestroy,
   AfterViewInit,
-  HostListener,
-  ReflectiveInjector,
-  ComponentRef
+  ReflectiveInjector
 } from '@angular/core';
 import {
   animate,

@@ -3,9 +3,7 @@ import {
   OnInit,
   AfterContentChecked,
   Input,
-  forwardRef,
-  ElementRef,
-  HostListener
+  forwardRef
 } from '@angular/core';
 import {
   trigger,

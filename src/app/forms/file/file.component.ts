@@ -5,7 +5,6 @@ import {
   Output,
   EventEmitter,
   forwardRef,
-  HostBinding,
   ViewChild,
   ElementRef,
   Renderer2,

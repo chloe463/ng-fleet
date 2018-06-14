@@ -10,7 +10,6 @@ import {
   forwardRef,
   ElementRef,
   HostBinding,
-  HostListener,
   Renderer2,
   NgZone
 } from '@angular/core';

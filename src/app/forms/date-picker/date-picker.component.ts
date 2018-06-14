@@ -4,7 +4,6 @@ import {
   Output,
   EventEmitter,
   OnInit,
-  QueryList,
   forwardRef,
   HostBinding,
   ElementRef,

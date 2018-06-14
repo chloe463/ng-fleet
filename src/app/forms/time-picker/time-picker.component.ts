@@ -8,7 +8,6 @@ import {
   forwardRef,
   ElementRef,
   HostBinding,
-  HostListener,
   ViewChild,
   Renderer2,
   NgZone

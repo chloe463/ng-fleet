@@ -8,11 +8,8 @@ import {
   ViewContainerRef,
   forwardRef,
   OnInit,
-  OnChanges,
   AfterViewInit,
-  HostListener,
-  ReflectiveInjector,
-  ComponentRef
+  ReflectiveInjector
 } from '@angular/core';
 import {
   AnimationEvent,
