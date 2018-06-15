@@ -1,13 +1,8 @@
 import {
-  Injectable,
   ViewContainerRef,
-  ComponentFactoryResolver,
-  ReflectiveInjector,
-  ComponentRef,
   Component,
   Directive,
   ViewChild,
-  OnChanges,
   AfterViewInit,
   HostListener
 } from '@angular/core';

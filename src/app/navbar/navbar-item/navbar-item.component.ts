@@ -1,12 +1,9 @@
 import {
   Component,
   Input,
-  ContentChildren,
-  QueryList
 } from '@angular/core';
 
 import { IFrNavbarNode } from '../navbar/navbar.model';
-import { FrNavbarMenuComponent } from '../navbar-menu/navbar-menu.component';
 
 @Component({
   selector: 'fr-navbar-item',

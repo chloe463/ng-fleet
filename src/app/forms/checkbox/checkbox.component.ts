@@ -1,12 +1,9 @@
 import {
   Component,
-  Directive,
   OnInit,
   Input,
   Output,
   EventEmitter,
-  ContentChildren,
-  QueryList,
   forwardRef,
   HostBinding
 } from '@angular/core';
@@ -17,7 +14,6 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { DefaultValueAccessor } from '@angular/forms';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { timer } from 'rxjs';
 
@@ -46,18 +42,21 @@ export const CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   animations: [
     trigger('checkmarkState', [
       state(CHECKMARK_UNCHECKED, style({
-        'stroke-width': '2.3px',
+        'stroke-width': '2.7px',
         'stroke': 'transparent',
         'stroke-dasharray': 0,
         'stroke-dashoffset': -30
       })),
       state(CHECKMARK_CHECKED, style({
-        'stroke-width': '2.3px',
+        'stroke-width': '2.7px',
         'stroke': 'white',
         'stroke-dasharray': 100,
         'stroke-dashoffset': 0
       })),
       transition(`${CHECKMARK_UNCHECKED} => ${CHECKMARK_CHECKED}`, [
+        style({
+          'stroke-width': '2.7px'
+        }),
         animate('360ms linear')
       ])
     ])
@@ -119,6 +118,7 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
     event.stopPropagation();
     this.emitChangeEvent();
+    this._onTouchedCallback();
   }
 
   public onFocus(event: Event): void {

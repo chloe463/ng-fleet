@@ -1,8 +1,6 @@
 import {
   Component,
-  Directive,
   OnInit,
-  AfterContentInit,
   Input,
   Output,
   EventEmitter,
@@ -103,6 +101,7 @@ export class FrRadioGroupComponent implements ControlValueAccessor {
         radio.checked = false;
       }
     });
+    this._onTouchedCallback();
   }
 
   public selectOneByValue(value: any): void {
@@ -165,7 +164,6 @@ export class FrRadioComponent implements OnInit {
 
     if (this.radioGroup) {
       this.radioGroup.value = this.value;
-      this.radioGroup._onChangeCallback(this.value);
       this.radioGroup.selectOneByRadioComponent(this);
       this.radioGroup.emitChangeEvent();
     }
