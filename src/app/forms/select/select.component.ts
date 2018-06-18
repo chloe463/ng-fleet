@@ -206,7 +206,7 @@ export class FrSelectComponent implements OnInit, AfterContentInit, ControlValue
       if (!this.el.nativeElement.contains(event.target) && this.optionsVisibility !== HIDDEN) {
         this.ngZone.run(() => {
           this.onBlur();
-        })
+        });
       }
     });
   }

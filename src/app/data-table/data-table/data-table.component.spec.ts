@@ -72,7 +72,7 @@ class SampleFrDataTableComponent {
       { column1: 2, column2: 'value2', column3: 100, column4: '2017-03-01 00:00:00', column5: 987 },
       { column1: 3, column2: 'value3', column3: 100, column4: '2017-03-01 00:00:00', column5: 989 }
     ]
-  }
+  };
 
   updateAction(event) {
   }

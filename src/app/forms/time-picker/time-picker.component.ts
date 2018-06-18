@@ -285,7 +285,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
           this._onTouchedCallback();
         });
       }
-    })
+    });
   }
 
   public disapperOnKeyDown() {
@@ -296,6 +296,6 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
           this._onTouchedCallback();
         });
       }
-    })
+    });
   }
 }

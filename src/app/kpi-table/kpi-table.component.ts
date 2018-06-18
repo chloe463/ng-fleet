@@ -6,7 +6,7 @@ export interface IKpiRow {
 }
 
 export interface IKpiData {
-  dateList: Array<Date>;
+  dateList: Array<number>;
   kpi: Array<IKpiRow>;
 }
 

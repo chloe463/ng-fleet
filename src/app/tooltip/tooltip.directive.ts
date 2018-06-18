@@ -14,8 +14,8 @@ export class FrTooltipDirective implements OnInit {
 
   @HostBinding('class.fr-tooltip') true;
 
-  private _message: string = '';
-  private _position: string = 'top';
+  private _message = '';
+  private _position = 'top';
 
   private tooltip: any;
 

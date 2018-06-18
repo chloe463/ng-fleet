@@ -13,7 +13,7 @@ describe('FrDataTableRowsComponent', () => {
   }));
 
   beforeEach(() => {
-    let directive = new FrDataTableRowsComponent();
+    const directive = new FrDataTableRowsComponent();
   });
 
   it('should create', () => {
@@ -43,7 +43,7 @@ describe('FrDataTableRowsComponent', () => {
       expect(v instanceof Array).toBeTruthy();
     }, () => {
       fail();
-    })
+    });
     directive.rows = [
       { column11: 'value11', column12: 'value12' },
       { column21: 'value21', column22: 'value22' }

@@ -3,6 +3,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  /* tslint:disable:component-selector */
   selector: 'tooltip-demo',
   template: `
 <div class="tooltip-demo">

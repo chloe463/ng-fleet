@@ -32,18 +32,18 @@ describe('FrCheckboxComponent', () => {
   });
 
   it('should emit change event', () => {
-    component.change.subscribe(event => {
-      expect(event instanceof FrCheckboxChange).toBeTruthy();
-    })
+    component.change.subscribe($event => {
+      expect($event instanceof FrCheckboxChange).toBeTruthy();
+    });
     const event = new Event('click');
     component.onClick(event);
   });
 
   it('should NOT emit change event if disabled is true', () => {
     component.disabled = true;
-    component.change.subscribe(event => {
+    component.change.subscribe($event => {
       fail();
-    })
+    });
     const event = new Event('click');
     component.onClick(event);
   });

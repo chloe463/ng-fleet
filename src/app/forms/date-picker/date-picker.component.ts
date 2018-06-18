@@ -250,7 +250,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
           this._onTouchedCallback();
         });
       }
-    })
+    });
   }
 
   public disapperOnKeyDown() {
@@ -261,7 +261,7 @@ export class FrDatePickerComponent implements OnInit, ControlValueAccessor {
           this._onTouchedCallback();
         });
       }
-    })
+    });
   }
 
   private emitChange(): void {

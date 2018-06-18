@@ -268,8 +268,8 @@ export class FrToasterContentComponent<T> implements OnInit, OnDestroy {
     }
   }
 
-  public onAction<T>(): Observable<T> {
-    return new Observable<T>((observer: Observer<T>) => {
+  public onAction<U>(): Observable<U> {
+    return new Observable<U>((observer: Observer<U>) => {
       this.onActionObserver = observer;
     });
   }

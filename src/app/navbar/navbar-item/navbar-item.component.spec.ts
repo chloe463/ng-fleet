@@ -7,7 +7,7 @@ import { FrNavbarItemComponent } from './navbar-item.component';
 
 describe('FrNavbarItemComponent', () => {
   it('should create an instance', () => {
-    let component = new FrNavbarItemComponent();
+    const component = new FrNavbarItemComponent();
     expect(component).toBeTruthy();
   });
 });
