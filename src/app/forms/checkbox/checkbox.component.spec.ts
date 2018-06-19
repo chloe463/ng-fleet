@@ -41,6 +41,7 @@ describe('FrCheckboxComponent', () => {
 
   it('should NOT emit change event if disabled is true', () => {
     component.disabled = true;
+    expect(component.disabled).toBeTruthy();
     component.change.subscribe($event => {
       fail();
     });
