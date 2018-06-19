@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -14,7 +15,8 @@ describe('FrCheckboxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrCheckboxComponent ]
+      declarations: [ FrCheckboxComponent ],
+      imports: [ NoopAnimationsModule ]
     })
     .compileComponents();
   }));
@@ -30,18 +32,19 @@ describe('FrCheckboxComponent', () => {
   });
 
   it('should emit change event', () => {
-    component.change.subscribe(event => {
-      expect(event instanceof FrCheckboxChange).toBeTruthy();
-    })
+    component.change.subscribe($event => {
+      expect($event instanceof FrCheckboxChange).toBeTruthy();
+    });
     const event = new Event('click');
     component.onClick(event);
   });
 
   it('should NOT emit change event if disabled is true', () => {
     component.disabled = true;
-    component.change.subscribe(event => {
+    expect(component.disabled).toBeTruthy();
+    component.change.subscribe($event => {
       fail();
-    })
+    });
     const event = new Event('click');
     component.onClick(event);
   });

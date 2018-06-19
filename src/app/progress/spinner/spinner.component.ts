@@ -19,6 +19,6 @@ export class FrProgressSpinnerComponent {
 
   @HostBinding('class.fr-progress-spinner-host') true;
 
-  @Input() color ='#F1B224';
+  @Input() color = '#F1B224';
 
 }

@@ -4,7 +4,7 @@ import { FrNavbarMenuComponent } from './navbar-menu.component';
 
 describe('FrNavbarMenuComponent', () => {
   it('should create an instance', () => {
-    let component = new FrNavbarMenuComponent();
+    const component = new FrNavbarMenuComponent();
     expect(component).toBeTruthy();
   });
 });
