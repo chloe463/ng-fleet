@@ -20,7 +20,7 @@ import {
   transition
 } from '@angular/animations';
 import { FrNotificationType, FrNotificationParam } from './notification.types';
-import { Observable, Observer, timer } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 
 export class FrNotificationContext<T> implements Observer<T> {
   constructor(
@@ -265,10 +265,10 @@ export class FrNotificationContentComponent implements OnInit {
     this.notificationState = 'active';
 
     // This is for animation
-    timer(this.timeout - 500).subscribe(() => {
+    setTimeout(() => {
       if (!this.closed) {
         this.notificationState = 'void';
       }
-    });
+    }, this.timeout - 500);
   }
 }

@@ -2,6 +2,7 @@ import {
   Component,
   Directive,
   AfterContentInit,
+  OnDestroy,
   ElementRef,
   Input,
   Output,
@@ -19,7 +20,7 @@ import {
   transition,
   animate
 } from '@angular/animations';
-import { Observable, of, timer } from 'rxjs';
+import { Observable, of, timer, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { FrDataTableColumnsComponent, IFrDataTableColumn } from '../data-table-columns/data-table-columns.component';
@@ -106,7 +107,7 @@ export class FrDataTableStripeDirective {
     ])
   ]
 })
-export class FrDataTableComponent implements AfterContentInit {
+export class FrDataTableComponent implements AfterContentInit, OnDestroy {
 
   @HostBinding('class.fr-data-table-host') true;
 
@@ -139,6 +140,10 @@ export class FrDataTableComponent implements AfterContentInit {
 
   public ripples = { edit: false, delete: false, dots: false, chevronLeft: false, chevronRight: false };
 
+  private _columnsSubscription: Subscription;
+  private _rowsSubsctiption: Subscription;
+  private _timerSubscription: Subscription;
+
   constructor(
     private renderer: Renderer2,
     private ngZone: NgZone
@@ -153,15 +158,20 @@ export class FrDataTableComponent implements AfterContentInit {
       this.title = this.headerComponent.title;
     }
     if (this.columnsComponent) {
-      this.columnsComponent.columns$.subscribe(newColumns => this.columns = newColumns);
+      this._columnsSubscription = this.columnsComponent.columns$.subscribe(newColumns => this.columns = newColumns);
     }
     if (this.rowsComponent) {
-      this.rowsComponent.rows$.subscribe(newRows => this._updateRows(newRows));
+      this._rowsSubsctiption = this.rowsComponent.rows$.subscribe(newRows => this._updateRows(newRows));
     }
     if (this.footerComponent) {
       this.paginationInfo = this.footerComponent.paginationInfo;
       this.rowsPerPage    = this.paginationInfo.rowsPerPage;
     }
+  }
+
+  ngOnDestroy() {
+    this._columnsSubscription.unsubscribe();
+    this._rowsSubsctiption.unsubscribe();
   }
 
   private _updateRows(newRows: Array<any>): void {
@@ -230,11 +240,11 @@ export class FrDataTableComponent implements AfterContentInit {
     const checkedRows = this._filterCheckedRows();
     const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     this.actionListState = 'hidden';
-    timer(500).subscribe(() => {
+    setTimeout(() => {
       if (this.dataTableAction) {
         this.dataTableAction.emit(event);
       }
-    });
+    }, 500);
   }
 
   public paginationAction(action: string, rowsPerPage?): void {

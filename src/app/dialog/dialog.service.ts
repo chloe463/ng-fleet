@@ -5,7 +5,7 @@ import {
   ReflectiveInjector,
   ComponentRef
 } from '@angular/core';
-import { Observable, Observer, timer } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 
 export class FrDialogContext<T> implements Observer<T> {
 
@@ -109,9 +109,9 @@ export class FrDialogService {
     }
 
     // Delay for dialog leaving animation
-    timer(500).subscribe(() => {
+    setTimeout(() => {
       componentRef.destroy();
       componentRef = undefined;
-    });
+    }, 500)
   }
 }
