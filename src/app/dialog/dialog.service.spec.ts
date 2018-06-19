@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { FrDialogContext, FrDialogService } from './dialog.service';
 import { FrDialogEntryComponent } from './dialog-entry.component';
 import { NgModule, Component, ComponentFactoryResolver } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 describe('FrDialogService', () => {
   let componentFactoryResolver: ComponentFactoryResolver;
@@ -21,7 +21,7 @@ describe('FrDialogService', () => {
     .compileComponents();
   });
 
-  let deps = [ComponentFactoryResolver];
+  const deps = [ComponentFactoryResolver];
   beforeEach(inject(deps, (cfr: ComponentFactoryResolver) => {
     componentFactoryResolver = cfr;
   }));
@@ -51,15 +51,16 @@ describe('FrDialogService', () => {
 });
 
 @Component({
-  selector: 'dummy',
+  /* tslint:disable:component-selector */
+  selector: 'dummy-dialog',
   template: `<fr-dialog-entry></fr-dialog-entry>`,
   providers: [FrDialogService]
 })
-class Dummy {
+class DummyComponent {
   constructor(public dialog: FrDialogService) {}
 
   openDialog() {
-    this.dialog.open<any>(DummyDialogContent).subscribe(
+    this.dialog.open<any>(DummyDialogContentComponent).subscribe(
       ok => { },
       ng => { }
     );
@@ -67,15 +68,16 @@ class Dummy {
 }
 
 @Component({
+  /* tslint:disabled:component-selector */
   selector: 'dialog-content',
   template: ``,
 })
-class DummyDialogContent {
+class DummyDialogContentComponent {
   constructor(public context: FrDialogContext<any>) {}
 }
 
 @NgModule({
-  declarations: [Dummy, DummyDialogContent, FrDialogEntryComponent],
-  entryComponents: [DummyDialogContent]
+  declarations: [DummyComponent, DummyDialogContentComponent, FrDialogEntryComponent],
+  entryComponents: [DummyDialogContentComponent]
 })
 class DummyDialogModule {}

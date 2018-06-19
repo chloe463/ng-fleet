@@ -185,20 +185,20 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
     this.renderer.listen(this.el.nativeElement, 'dragenter', (event) => {
       this.preventDefaults(event);
       this.fileOnArea = !this.disabled ? true : false;
-    })
+    });
   }
 
   public onDragOver() {
     this.renderer.listen(this.el.nativeElement, 'dragover', (event) => {
       this.preventDefaults(event);
-    })
+    });
   }
 
   public onDragLeave() {
     this.renderer.listen(this.el.nativeElement, 'dragleave', (event) => {
       this.preventDefaults(event);
       this.fileOnArea = false;
-    })
+    });
   }
 
   public onDrop() {
@@ -216,8 +216,8 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
         this.fileOnArea = false;
 
         return false;
-      })
-    })
+      });
+    });
   }
 
 }

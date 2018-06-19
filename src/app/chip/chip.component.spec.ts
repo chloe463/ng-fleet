@@ -29,7 +29,7 @@ describe('FrChipComponent', () => {
   it('should emit event', () => {
     component.dismiss.subscribe((value) => {
       expect(value).toBeUndefined();
-    })
+    });
     component.disappear();
   });
 

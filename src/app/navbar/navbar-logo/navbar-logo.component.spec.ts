@@ -7,7 +7,7 @@ import { FrNavbarLogoComponent } from './navbar-logo.component';
 
 describe('FrNavbarLogoComponent', () => {
   it('should create an instance', () => {
-    let component = new FrNavbarLogoComponent();
+    const component = new FrNavbarLogoComponent();
     expect(component).toBeTruthy();
   });
 });
