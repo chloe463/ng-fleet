@@ -43,7 +43,7 @@ workflows:
       - build
       - lint:
           requires:
-           - build
+            - build
       - test:
           required:
             - build
