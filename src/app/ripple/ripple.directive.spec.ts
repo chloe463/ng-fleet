@@ -32,6 +32,6 @@ describe('FrRippleDirective', () => {
       removeChild: (el) => {}
     };
     const directive = new FrRippleDirective(new MockElementRef(mockElement));
-    directive.onClick(new MouseEvent('mousedown'))
-  })
+    directive.onClick(new MouseEvent('mousedown'));
+  });
 });

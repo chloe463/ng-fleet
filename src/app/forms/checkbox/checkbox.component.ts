@@ -15,7 +15,6 @@ import {
   trigger,
 } from '@angular/animations';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { timer } from 'rxjs';
 
 export class FrCheckboxChange {
   source: FrCheckboxComponent;
@@ -112,9 +111,7 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
     }
     this.value = !this.value;
     this.isRippleOn = true;
-    timer(1000).subscribe(() => {
-      this.isRippleOn = false;
-    });
+    setTimeout(() => this.isRippleOn = false, 1000);
 
     event.stopPropagation();
     this.emitChangeEvent();
