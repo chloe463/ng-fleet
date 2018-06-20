@@ -45,5 +45,5 @@ workflows:
           requires:
             - build
       - test:
-          required:
+          requires:
             - build
