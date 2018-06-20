@@ -112,6 +112,6 @@ export class FrDialogService {
     setTimeout(() => {
       componentRef.destroy();
       componentRef = undefined;
-    }, 500)
+    }, 500);
   }
 }
