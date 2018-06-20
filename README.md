@@ -1,5 +1,8 @@
 # Francette
 
+[![CircleCI](https://circleci.com/gh/chloe463/francette.svg?style=shield)](https://circleci.com/gh/chloe463/francette)
+[![npm version](https://badge.fury.io/js/francette.svg)](https://badge.fury.io/js/francette)
+
 Simple components and style sheets for Angular 2.0 or higher.
 
 Please see [this directory](https://github.com/chloe463/francette/tree/master/src/demo) and learn how to use this.
