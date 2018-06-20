@@ -1,7 +1,7 @@
 version: 2
 jobs:
   # Install dependencies
-  setup:
+  build:
     docker:
       - image: circleci/node:8-stretch-browsers
 
@@ -35,3 +35,15 @@ jobs:
 
     steps:
       - run: yarn test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - lint:
+          requires:
+           - build
+      - test:
+          required:
+            - build
