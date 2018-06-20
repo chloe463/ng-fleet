@@ -1,3 +1,72 @@
+<a name="0.9.0-RC.1"></a>
+# [0.9.0-RC.1](https://github.com/chloe463/francette/compare/v0.9.0-RC.0...v0.9.0-RC.1) (2018-06-19)
+
+
+### Bug Fixes
+
+* **specs:** Fix spec files ([4e29756](https://github.com/chloe463/francette/commit/4e29756))
+
+
+
+<a name="0.9.0-RC.0"></a>
+# [0.9.0-RC.0](https://github.com/chloe463/francette/compare/v0.9.0-beta.5...v0.9.0-RC.0) (2018-06-14)
+
+
+
+<a name="0.9.0-beta.5"></a>
+# [0.9.0-beta.5](https://github.com/chloe463/francette/compare/v0.9.0-beta.2...v0.9.0-beta.5) (2018-06-14)
+
+
+### Bug Fixes
+
+* **checkbox:** Fix box and checkmark style ([aba2d02](https://github.com/chloe463/francette/commit/aba2d02))
+* **data-table:** Fix ripple effects ([c19d9e6](https://github.com/chloe463/francette/commit/c19d9e6))
+* **forms-demo:** Fix templates ([787dc3b](https://github.com/chloe463/francette/commit/787dc3b))
+* **select/option:** Add optgroup tag for smartphone a11y ([5d1f418](https://github.com/chloe463/francette/commit/5d1f418))
+* **sidenav:** Fix sidenav group collapse/expand animation ([ad899e5](https://github.com/chloe463/francette/commit/ad899e5))
+
+
+
+<a name="0.9.0-beta.1"></a>
+# [0.9.0-beta.1](https://github.com/chloe463/francette/compare/v0.9.0-beta.0...v0.9.0-beta.1) (2018-05-31)
+
+
+### Bug Fixes
+
+* **checkbox:** Fix checkbox style ([40c6d7c](https://github.com/chloe463/francette/commit/40c6d7c))
+
+
+
+<a name="0.9.0-beta.0"></a>
+# [0.9.0-beta.0](https://github.com/chloe463/francette/compare/v0.9.0-alpha.2...v0.9.0-beta.0) (2018-05-29)
+
+
+
+<a name="0.9.0-alpha.2"></a>
+# [0.9.0-alpha.2](https://github.com/chloe463/francette/compare/v0.9.0-alpha.0...v0.9.0-alpha.2) (2018-05-24)
+
+
+### Bug Fixes
+
+* **input-text-container:** Fix textarea border-top style ([6e3c545](https://github.com/chloe463/francette/commit/6e3c545))
+
+
+
+<a name="0.9.0-alpha.0"></a>
+# [0.9.0-alpha.0](https://github.com/chloe463/francette/compare/v0.8.5...v0.9.0-alpha.0) (2018-05-08)
+
+
+### Bug Fixes
+
+* **input-text-container:** Fix update logic of placeholder/label state ([0e7f4ad](https://github.com/chloe463/francette/commit/0e7f4ad))
+
+
+### Features
+
+* **dialog:** Add pop() ([5ace7bb](https://github.com/chloe463/francette/commit/5ace7bb))
+
+
+
 <a name="0.8.5"></a>
 ## [0.8.5](https://github.com/chloe463/francette/compare/v0.8.4...v0.8.5) (2018-04-05)
 

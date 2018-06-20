@@ -1,5 +1,8 @@
 # Francette
 
+[![CircleCI](https://circleci.com/gh/chloe463/francette.svg?style=shield)](https://circleci.com/gh/chloe463/francette)
+[![npm version](https://badge.fury.io/js/francette.svg)](https://badge.fury.io/js/francette)
+
 Simple components and style sheets for Angular 2.0 or higher.
 
 Please see [this directory](https://github.com/chloe463/francette/tree/master/src/demo) and learn how to use this.
@@ -75,5 +78,6 @@ export class AppModule {}
 |Angular version|Francette Version|
 |:-|:-|
 |2.x|0.6 or lower|
-|4.x or higher|0.7 or higher|
-
+|4.x|0.7|
+|5.x|0.8|
+|6.x|0.9|

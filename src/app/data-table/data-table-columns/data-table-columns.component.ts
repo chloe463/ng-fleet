@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
 export interface IFrDataTableColumn {
@@ -11,7 +11,7 @@ export interface IFrDataTableColumn {
   selector: 'fr-data-table-columns',
   template: ''
 })
-export class FrDataTableColumnsComponent {
+export class FrDataTableColumnsComponent implements OnDestroy {
 
   private _columns: Array<IFrDataTableColumn> = [];
   private _columns$: ReplaySubject<Array<IFrDataTableColumn>> = new ReplaySubject<Array<IFrDataTableColumn>>(1);
@@ -30,4 +30,7 @@ export class FrDataTableColumnsComponent {
     return this._columns$;
   }
 
+  ngOnDestroy() {
+    this._columns$.complete();
+  }
 }
