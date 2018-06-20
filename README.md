@@ -75,5 +75,6 @@ export class AppModule {}
 |Angular version|Francette Version|
 |:-|:-|
 |2.x|0.6 or lower|
-|4.x or higher|0.7 or higher|
-
+|4.x|0.7|
+|5.x|0.8|
+|6.x|0.9|
