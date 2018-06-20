@@ -170,8 +170,12 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this._columnsSubscription.unsubscribe();
-    this._rowsSubsctiption.unsubscribe();
+    if (this._columnsSubscription instanceof Subscription) {
+      this._columnsSubscription.unsubscribe();
+    }
+    if (this._rowsSubsctiption instanceof Subscription) {
+      this._rowsSubsctiption.unsubscribe();
+    }
   }
 
   private _updateRows(newRows: Array<any>): void {
