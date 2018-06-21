@@ -1,3 +1,18 @@
+<a name="0.9.0-RC.2"></a>
+# [0.9.0-RC.2](https://github.com/chloe463/francette/compare/v0.9.0-RC.1...v0.9.0-RC.2) (2018-06-20)
+
+
+### Bug Fixes
+
+* **data-table:** Fix process in onDestroy ([38d859b](https://github.com/chloe463/francette/commit/38d859b))
+
+
+### Performance Improvements
+
+* Use setTimeout instead of rxjs.timer and unsubscribe subscriptions in onDestroy ([a607d7a](https://github.com/chloe463/francette/commit/a607d7a))
+
+
+
 <a name="0.9.0-RC.1"></a>
 # [0.9.0-RC.1](https://github.com/chloe463/francette/compare/v0.9.0-RC.0...v0.9.0-RC.1) (2018-06-19)
 
