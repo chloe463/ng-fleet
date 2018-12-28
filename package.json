@@ -1,6 +1,6 @@
 {
   "name": "francette",
-  "version": "0.9.0",
+  "version": "0.10.0-alpha.1",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -8,6 +8,7 @@
     "start": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
+    "ci:test": "ng test --watch=false",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
     "changelog": "conventional-changelog --preset angular -i CHANGELOG.md -s -r 0",
@@ -57,6 +58,7 @@
     "protractor": "5.3.1",
     "rollup": "0.58.2",
     "ts-node": "6.0.3",
+    "tsickle": "^0.34.0",
     "tslint": "5.10.0",
     "typescript": "3.1.6"
   },
