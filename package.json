@@ -57,6 +57,7 @@
     "protractor": "5.3.1",
     "rollup": "0.58.2",
     "ts-node": "6.0.3",
+    "tsickle": "^0.34.0",
     "tslint": "5.10.0",
     "typescript": "3.1.6"
   },
