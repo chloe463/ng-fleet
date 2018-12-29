@@ -81,3 +81,4 @@ export class AppModule {}
 |4.x|0.7|
 |5.x|0.8|
 |6.x|0.9|
+|7.x|0.10|
