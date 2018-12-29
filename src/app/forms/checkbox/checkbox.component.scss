@@ -47,7 +47,7 @@ input[type="checkbox"] {
     background: transparent;
     transition-property: background;
     transition-duration: 0.3s;
-    &--checked {
+    &--checked, &--indeterminate {
       color: $white;
       background: $secondary;
       border: 2px solid $secondary;
@@ -68,7 +68,7 @@ input[type="checkbox"] {
     bottom: 0px;
     padding: 2px;
     border-radius: 2px;
-    &--checked {
+    &--checked, &--indeterminate {
       background: $secondary;
     }
   }
@@ -105,6 +105,11 @@ input[type="checkbox"] {
   &-checkmark {
     width: 100%;
     height: 100%;
+  }
+  &-indeterminate-path {
+    fill: none;
+    stroke: $white;
+    stroke-width: 2px;
   }
   &-label-text {
     margin: 0 8px;

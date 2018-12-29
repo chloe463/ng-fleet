@@ -56,4 +56,15 @@ describe('FrCheckboxComponent', () => {
     component.onBlur(new Event('click'));
     expect(component.isFocused).toBeFalsy();
   });
+
+  it ('should set indeterminate flag false when it is clicked', () => {
+    component.indeterminate = true;
+    expect(component.indeterminate).toBeTruthy();
+
+    component.onClick(new Event('click'));
+    expect(component.indeterminate).toBeFalsy();
+
+    component.onClick(new Event('click'));
+    expect(component.indeterminate).toBeFalsy();
+  });
 });

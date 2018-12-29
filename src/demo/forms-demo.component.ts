@@ -28,9 +28,10 @@ export class FormsDemoComponent {
     { label: 'Object', value: { key: 'value' } }
   ];
   checkboxes = [
-    { name: 'check1' },
-    { name: 'check2' },
-    { name: 'check3' }
+    { name: 'check1', indeterminate: false },
+    { name: 'check2', indeterminate: false },
+    { name: 'check3', indeterminate: false },
+    { name: 'check4 (indeterminate)', indeterminate: true },
   ];
   options = [
     { label: 'Option1 number', value: 1 },
@@ -62,6 +63,7 @@ export class FormsDemoComponent {
         select: '',
         radio: [],
         checkboxes: new FormArray([
+          new FormControl(false),
           new FormControl(false),
           new FormControl(false),
           new FormControl(false)

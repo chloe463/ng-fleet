@@ -74,9 +74,18 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
+  private _indeterminate = false;
 
   public isRippleOn = false;
   public isFocused: boolean;
+
+  @Input()
+  set indeterminate(_indeterminate: boolean) {
+    this._indeterminate = _indeterminate;
+  }
+  get indeterminate(): boolean {
+    return this._indeterminate;
+  }
 
   private _checkmarkState = CHECKMARK_VOID;
 
@@ -109,6 +118,7 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
     if (this.disabled) {
       return;
     }
+    this.indeterminate = false;
     this.value = !this.value;
     this.isRippleOn = true;
     setTimeout(() => this.isRippleOn = false, 1000);
