@@ -70,7 +70,7 @@
     <thead class="fr-data-table__thead" *ngIf="columnsComponent">
       <tr class="fr-data-table__thead-row">
         <td class="fr-data-table__thead-checkbox" [hidden]="!selectable">
-          <fr-checkbox [(ngModel)]="checkAllFlag" (change)="checkAll()"></fr-checkbox>
+          <fr-checkbox [(ngModel)]="checkAllFlag" [indeterminate]="isPartialSelect()" (change)="checkAll()"></fr-checkbox>
         </td>
         <th *ngFor="let column of columns; let i = index"
           class="fr-data-table__thead-column"

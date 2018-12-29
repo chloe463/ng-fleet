@@ -186,6 +186,19 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
     });
   }
 
+  public isPartialSelect(): boolean {
+    const trueCount = Object.values(this.checkedRowIndices).filter(v => v).length;
+    if (trueCount === this.rows.length) {
+      this._turnOnCheckAllFlag();
+      return false;
+    }
+    return trueCount !== 0;
+  }
+
+  private _turnOnCheckAllFlag(): void {
+    this.checkAllFlag = true;
+  }
+
   public checkAll(): void {
     Object.keys(this.checkedRowIndices).forEach((index) => {
       this.checkedRowIndices[index] = this.checkAllFlag;
