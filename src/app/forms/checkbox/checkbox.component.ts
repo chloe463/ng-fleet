@@ -65,7 +65,6 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
   @Input() label: string;
   @Input() name: string;
-  @Input() indeterminate: boolean;
 
   @Output() change: EventEmitter<FrCheckboxChange> = new EventEmitter<FrCheckboxChange>();
 
@@ -75,9 +74,18 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
+  private _indeterminate = false;
 
   public isRippleOn = false;
   public isFocused: boolean;
+
+  @Input()
+  set indeterminate(_indeterminate: boolean) {
+    this._indeterminate = _indeterminate;
+  }
+  get indeterminate(): boolean {
+    return this._indeterminate;
+  }
 
   private _checkmarkState = CHECKMARK_VOID;
 
