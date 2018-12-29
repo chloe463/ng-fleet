@@ -28,9 +28,9 @@ export class FormsDemoComponent {
     { label: 'Object', value: { key: 'value' } }
   ];
   checkboxes = [
-    { name: 'check1' },
-    { name: 'check2' },
-    { name: 'check3' }
+    { name: 'check1', indeterminate: false },
+    { name: 'check2', indeterminate: true  },
+    { name: 'check3', indeterminate: false }
   ];
   options = [
     { label: 'Option1 number', value: 1 },

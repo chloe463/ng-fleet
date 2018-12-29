@@ -32,6 +32,7 @@
       <td>
         <fr-form-group label="checkbox">
           <fr-checkbox *ngFor="let checkbox of formGroup.controls['checkboxes']['controls']; let i = index" [formControl]="checkbox"
+            [indeterminate]="checkboxes[i].indeterminate"
             (change)="onCheckboxChange($event)">
             {{checkboxes[i]['name']}}
           </fr-checkbox>

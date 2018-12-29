@@ -2,17 +2,20 @@
   <div class="fr-checkbox-box-container">
     <span class="fr-checkbox__square"
       [class.fr-checkbox__square--checked]="value"
+      [class.fr-checkbox__square--indeterminate]="indeterminate"
       [class.fr-checkbox__square--focused]="isFocused"
       [class.fr-checkbox__square--disabled]="disabled">
     </span>
     <span class="fr-checkbox__background"
       [class.fr-checkbox__background--checked]="value"
+      [class.fr-checkbox__background--indeterminate]="indeterminate"
       [class.fr-checkbox__background--disabled]="disabled">
       <svg class="fr-checkbox-checkmark"
         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path class="fr-checkbox-checkmark-path"
           [@checkmarkState]="checkmarkState"
           d="M 22 5 L 9.508 19 L 2 11.78" style="fill: none;"/>
+        <path *ngIf="indeterminate" class="fr-checkbox-indeterminate-path" style="fill: none;" d="M 2 12 L 8.853 12 L 22 12"/>
       </svg>
     </span>
     <span class="fr-checkbox__ripple-container">
@@ -22,6 +25,7 @@
   <input #input type="checkbox"
          name="{{name}}"
          class="fr-checkbox__input"
+         [indeterminate]="indeterminate"
          (click)="onClick($event)"
          (change)="onchange($event)"
          (focus)="onFocus($event)"

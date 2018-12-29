@@ -65,6 +65,7 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
 
   @Input() label: string;
   @Input() name: string;
+  @Input() indeterminate: boolean;
 
   @Output() change: EventEmitter<FrCheckboxChange> = new EventEmitter<FrCheckboxChange>();
 
@@ -109,6 +110,7 @@ export class FrCheckboxComponent implements OnInit, ControlValueAccessor {
     if (this.disabled) {
       return;
     }
+    this.indeterminate = false;
     this.value = !this.value;
     this.isRippleOn = true;
     setTimeout(() => this.isRippleOn = false, 1000);
