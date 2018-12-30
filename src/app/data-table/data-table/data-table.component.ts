@@ -192,11 +192,16 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
       this._turnOnCheckAllFlag();
       return false;
     }
+    this._turnOffCheckAllFlag();
     return trueCount !== 0;
   }
 
   private _turnOnCheckAllFlag(): void {
     this.checkAllFlag = true;
+  }
+
+  private _turnOffCheckAllFlag(): void {
+    this.checkAllFlag = false;
   }
 
   public checkAll(): void {
