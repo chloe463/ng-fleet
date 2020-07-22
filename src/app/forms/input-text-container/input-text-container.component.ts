@@ -130,7 +130,7 @@ export class FrInputTextContainerComponent implements OnInit, AfterContentInit {
 
   @HostBinding('class.fr-input-text-container-host') true;
 
-  @ContentChild(FrInputDirective) input: FrInputDirective;
+  @ContentChild(FrInputDirective, { static: true }) input: FrInputDirective;
 
   public maxLength: number;
   public labelState = 'placeholder';

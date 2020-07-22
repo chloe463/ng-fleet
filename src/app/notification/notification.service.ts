@@ -145,7 +145,7 @@ export class FrNotificationInnerDirective {
   animations: []
 })
 export class FrNotificationEntryComponent implements AfterViewInit {
-  @ViewChild(FrNotificationInnerDirective) public inner: FrNotificationInnerDirective;
+  @ViewChild(FrNotificationInnerDirective, { static: true }) public inner: FrNotificationInnerDirective;
 
   constructor (@Inject(forwardRef(() => FrNotificationService)) public notification: FrNotificationService) {}
 

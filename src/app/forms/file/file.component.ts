@@ -44,7 +44,7 @@ export class FrInputFileComponent implements OnInit, ControlValueAccessor {
 
   @Output() change: EventEmitter<FrInputFileChange> = new EventEmitter<FrInputFileChange>();
 
-  @ViewChild('input') private input: ElementRef;
+  @ViewChild('input', { static: true }) private input: ElementRef;
 
   private _innerValue: any;
   private _onChangeCallback: (_: any) => void = noop;

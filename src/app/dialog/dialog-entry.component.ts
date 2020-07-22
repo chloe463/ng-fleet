@@ -53,7 +53,7 @@ export class FrDialogInnerDirective {
   ]
 })
 export class FrDialogEntryComponent implements AfterViewInit {
-  @ViewChild(FrDialogInnerDirective) public inner: FrDialogInnerDirective;
+  @ViewChild(FrDialogInnerDirective, { static: true }) public inner: FrDialogInnerDirective;
 
   private _dialogState = 'void';
 

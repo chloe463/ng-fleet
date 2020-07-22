@@ -116,13 +116,13 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
 
   @Output() dataTableAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
-  @ViewChild('dots') dots: ElementRef;
-  @ViewChild('pulldown') pulldown: ElementRef;
+  @ViewChild('dots', { static: true }) dots: ElementRef;
+  @ViewChild('pulldown', { static: true }) pulldown: ElementRef;
 
-  @ContentChild(FrDataTableHeaderComponent) headerComponent: FrDataTableHeaderComponent;
-  @ContentChild(FrDataTableColumnsComponent) columnsComponent: FrDataTableColumnsComponent;
-  @ContentChild(FrDataTableRowsComponent) rowsComponent: FrDataTableRowsComponent;
-  @ContentChild(FrDataTableFooterComponent) footerComponent: FrDataTableFooterComponent;
+  @ContentChild(FrDataTableHeaderComponent, { static: true }) headerComponent: FrDataTableHeaderComponent;
+  @ContentChild(FrDataTableColumnsComponent, { static: true }) columnsComponent: FrDataTableColumnsComponent;
+  @ContentChild(FrDataTableRowsComponent, { static: true }) rowsComponent: FrDataTableRowsComponent;
+  @ContentChild(FrDataTableFooterComponent, { static: true }) footerComponent: FrDataTableFooterComponent;
 
   public title = '';
   public columns: Array<any> = [];

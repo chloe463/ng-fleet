@@ -74,8 +74,8 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
 
   @Output() change: EventEmitter<FrTimePickerChange> = new EventEmitter<FrTimePickerChange>();
 
-  @ViewChild('clock') clock: ElementRef;
-  @ViewChild('clockHand') clockHand: ElementRef;
+  @ViewChild('clock', { static: true }) clock: ElementRef;
+  @ViewChild('clockHand', { static: true }) clockHand: ElementRef;
 
   @HostBinding('class.fr-timepicker-host') true;
 
