@@ -176,7 +176,7 @@ export class FrToasterInnerDirective {
   animations: []
 })
 export class FrToasterEntryComponent implements AfterViewInit {
-  @ViewChild(FrToasterInnerDirective) public inner: FrToasterInnerDirective;
+  @ViewChild(FrToasterInnerDirective, { static: true }) public inner: FrToasterInnerDirective;
 
   private _toasterState = 'void';
 

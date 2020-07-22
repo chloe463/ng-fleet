@@ -20,7 +20,7 @@ export class FrNavbarComponent implements OnInit {
 
   @ContentChildren(FrNavbarLogoComponent) logos: QueryList<FrNavbarLogoComponent>;
   @ContentChildren(FrNavbarItemComponent) items: QueryList<FrNavbarItemComponent>;
-  @ContentChild(FrSideNavComponent) sideNav: FrSideNavComponent;
+  @ContentChild(FrSideNavComponent, { static: true }) sideNav: FrSideNavComponent;
 
   @Input() withSideBar: boolean;
 
