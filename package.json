@@ -73,5 +73,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/chloe463/francette"
+  },
+  "resolutions": {
+    "minimist": "^1.2.3",
+    "set-value": "^2.0.1",
+    "js-yaml": "^3.13.1"
   }
 }
