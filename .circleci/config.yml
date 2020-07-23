@@ -21,6 +21,6 @@ jobs:
           key: dependencies-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
 
       - run: yarn lint
-      - run: yarn ci:test
+      - run: yarn test:ci
       - run: ./node_modules/.bin/ng build --configuration=production --aot
       - run: yarn build
