@@ -42,8 +42,6 @@
     "@angular-devkit/build-angular": "~0.1000.4",
     "@angular-devkit/build-optimizer": "~0.901.11",
     "@angular-devkit/build-webpack": "~0.1000.4",
-    "@angular-devkit/core": "10.0.4",
-    "@angular-devkit/schematics": "10.0.4",
     "@angular/cli": "10.0.4",
     "@angular/compiler-cli": "10.0.5",
     "@angular/language-service": "10.0.5",
