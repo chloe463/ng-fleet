@@ -10,15 +10,15 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+          - {{ .Environment.CACHE_VERSION }}-dependencies-{{ checksum "package.json" }}
+          - {{ .Environment.CACHE_VERSION }}-dependencies-
 
       - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: {{ .Environment.CACHE_VERSION }}-dependencies-{{ checksum "package.json" }}
 
       - run: yarn lint
       - run: yarn ci:test
