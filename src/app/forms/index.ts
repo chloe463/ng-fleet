@@ -11,4 +11,5 @@ export { FrOptionComponent } from './select/option.component';
 export { FrSelectComponent } from './select/select.component';
 export { FrSwitchComponent } from './switch/switch.component';
 export { FrTimePickerComponent } from './time-picker/time-picker.component';
+export { FrInputFileComponent } from './file/file.component';
 export { FrFormsModule } from './forms.module';
