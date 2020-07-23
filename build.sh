@@ -53,7 +53,7 @@ build_js () {
 
   # Move assets
   mkdir builds/src
-  cp -r .packaging/esm2015/*.d.ts .packaging/esm2015/** .packaging/esm2015/*.json builds/src
+  cp -r .packaging/esm2015/*.d.ts .packaging/esm2015/** builds/src
   cp README.md builds
 
   $(npm bin)/ts-node -O '{"target":"es2015"}' ./scripts/modify-package-json.ts

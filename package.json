@@ -20,7 +20,8 @@
     "build:esm5": "ngc -p src/tsconfig-esm5.json",
     "build:fesm5": "rollup -c rollup-esm5.conf.js",
     "build:umd": "rollup -c rollup-umd.conf.js",
-    "build:umd-min": "uglifyjs builds/bundles/francette.umd.js -c -m -o builds/bundles/francette.umd.min.js"
+    "build:umd-min": "uglifyjs builds/bundles/francette.umd.js -c -m -o builds/bundles/francette.umd.min.js",
+    "postinstall": "ngcc"
   },
   "dependencies": {
     "@angular/animations": "10.0.5",
@@ -58,12 +59,15 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "node-sass": "^4.14.1",
     "postcss-cli": "^7.1.1",
     "protractor": "~7.0.0",
     "rollup": "^2.22.2",
     "ts-node": "8.10.2",
+    "tsickle": "^0.39.1",
     "tslint": "~6.1.0",
-    "typescript": "3.9.7"
+    "typescript": "3.9.7",
+    "uglify-js": "^3.10.0"
   },
   "repository": {
     "type": "git",
