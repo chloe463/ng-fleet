@@ -1,17 +1,4 @@
-## Issue Type
+## Why
 
-- Bug Report
-- Feature Idea
+## What
 
-## Summary
-
-## Version
-
-- Angular:
-- Francette:
-
-## Module / Component
-
-## Expected Result
-
-## Actual Result
