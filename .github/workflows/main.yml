@@ -19,7 +19,5 @@ jobs:
         run: |
           yarn install
           yarn ci:test
-      - name: AOT build test
-        run: ./node_modules/.bin/ng build --configuration=production --aot
-      - name: Package build test
-      - run: yarn build
+          ./node_modules/.bin/ng build --configuration=production --aot
+          yarn build
