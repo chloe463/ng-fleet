@@ -9,12 +9,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
     - name: Cache node modules
       uses: actions/cache@v2
       env:
         cache-version: ${{ secrets.CACHE_VERSION }}
       with:
-        path: ~/.cache/yarn
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
         key: ${{ runner.os }}-pkg-cache-${{ hashFiles('**/yarn.lock') }}-${{ env.cache-version }}
         restore-keys: |
           ${{ runner.os }}-pkg-cache-${{ hashFiles('**/yarn.lock') }}-
