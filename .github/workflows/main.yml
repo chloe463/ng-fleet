@@ -8,16 +8,29 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: yarn install
-      - run: yarn lint
-  test:
-    runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-version: ${{ secrets.CACHE_VERSION }}
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-pkg-cache-${{ hashFiles('**/yarn.lock') }}-${{ env.cache-version }}
+          restore-keys: |
+            ${{ runner.os }}-pkg-cache-${{ hashFiles('**/yarn.lock') }}-
+            ${{ runner.os }}-pkg-cache
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint
+      - run: yarn lint
+
       - name: Test package
-        run: |
-          yarn install
-          yarn test:ci
-          ./node_modules/.bin/ng build --configuration=production --aot
-          yarn build
+        run: yarn test:ci
+
+      - name: Aot building test
+        run: ./node_modules/.bin/ng build --configuration=production --aot
+
+      - name: Package building test
+        run: yarn build
