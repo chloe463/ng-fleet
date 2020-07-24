@@ -22,7 +22,7 @@
     "build:fesm5": "rollup -c rollup-esm5.conf.js",
     "build:umd": "rollup -c rollup-umd.conf.js",
     "build:umd-min": "uglifyjs builds/bundles/francette.umd.js -c -m -o builds/bundles/francette.umd.min.js",
-    "build:storyboo": "build-storybook -c ./.storybook -o storybook-build",
+    "build:storybook": "build-storybook -c ./.storybook -o storybook-build",
     "postinstall": "ngcc"
   },
   "dependencies": {
