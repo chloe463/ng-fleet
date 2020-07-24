@@ -13,6 +13,7 @@ import {
   FrSkeletonWarningButtonDirective,
   FrWarningButtonDirective,
 } from "../src/app/button/button.directive";
+import { FrRippleDirective } from "../src/app/ripple/ripple.directive";
 
 export default {
   title: "My Buttons",
@@ -132,5 +133,14 @@ export const flat = () => ({
   },
   template: `
     <button frFlatButton>Skeleton</button>
+  `,
+});
+
+export const withRippleEffect = () => ({
+  moduleMetadata: {
+    declarations: [FrPrimaryButtonDirective, FrRippleDirective],
+  },
+  template: `
+    <button frPrimaryButton frRipple>Skeleton</button>
   `,
 });
