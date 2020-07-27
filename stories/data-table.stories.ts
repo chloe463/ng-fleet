@@ -2,6 +2,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   FrDataTableColumnsComponent,
   FrDataTableComponent,
+  FrDataTableEvent,
   FrDataTableFooterComponent,
   FrDataTableHeaderComponent,
   FrDataTableRowsComponent,
@@ -76,14 +77,8 @@ export const Datatable = () => ({
     ],
   },
   props: {
-    selectable: true,
-    sortable: true,
-    dataTableAction: (e) => console.log(e),
-    title: "DataTable",
-    actionKeys: dataTableInfo.actionKeys,
-    columns: dataTableInfo.columns,
-    rows: dataTableInfo.rows,
-    paginationInfo: dataTableInfo.paginationInfo,
+    ...dataTableInfo,
+    dataTableAction: (e: FrDataTableEvent) => console.log(e),
   },
   template: `
     <!-- Table Container -->
