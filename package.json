@@ -20,8 +20,7 @@
     "build:esm5": "ngc -p src/tsconfig-esm5.json",
     "build:fesm5": "rollup -c rollup-esm5.conf.js",
     "build:umd": "rollup -c rollup-umd.conf.js",
-    "build:umd-min": "uglifyjs builds/bundles/francette.umd.js -c -m -o builds/bundles/francette.umd.min.js",
-    "postinstall": "ngcc"
+    "build:umd-min": "uglifyjs builds/bundles/francette.umd.js -c -m -o builds/bundles/francette.umd.min.js"
   },
   "dependencies": {
     "@angular/animations": "10.0.5",
