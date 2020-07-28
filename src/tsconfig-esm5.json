@@ -5,12 +5,15 @@
     "outDir": "../.packaging/esm5",
     "rootDir": "../.packaging"
   },
-  "files": ["../.packaging/index.ts"],
+  "files": [
+    "../.packaging/index.ts"
+  ],
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "francette.js",
-    "flatModuleId": "francette"
+    "flatModuleId": "francette",
+    "generateCodeForLibraries": true
   }
 }
