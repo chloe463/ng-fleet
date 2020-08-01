@@ -49,6 +49,7 @@
     "@angular/language-service": "10.0.5",
     "@babel/core": "^7.10.5",
     "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addon-viewport": "^5.3.19",
     "@storybook/angular": "^5.3.19",
     "@types/jasmine": "2.8.7",
