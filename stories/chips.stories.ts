@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { FrChipComponent } from "../src/app/chip/chip.component";
 
 export default {
@@ -9,7 +10,7 @@ export const defaultChip = () => ({
     declarations: [FrChipComponent],
   },
   props: {
-    dismiss: () => console.log("dismiss!"),
+    dismiss: () => action("fr-chip-dismiss"),
   },
   template: `
     <fr-chip (dismiss)="dismiss(i)">

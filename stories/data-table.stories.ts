@@ -1,11 +1,11 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { action } from "@storybook/addon-actions";
 import {
   FrDataTableColumnsComponent,
   FrDataTableComponent,
-  FrDataTableEvent,
   FrDataTableFooterComponent,
   FrDataTableHeaderComponent,
-  FrDataTableRowsComponent,
+  FrDataTableRowsComponent
 } from "../src/app/data-table";
 import { FrCheckboxComponent } from "../src/app/forms/checkbox/checkbox.component";
 import { FrRippleDirective } from "../src/app/ripple/ripple.directive";
@@ -78,7 +78,7 @@ export const Datatable = () => ({
   },
   props: {
     ...dataTableInfo,
-    dataTableAction: (e: FrDataTableEvent) => console.log(e),
+    dataTableAction: action("data-table-action"),
   },
   template: `
     <!-- Table Container -->
