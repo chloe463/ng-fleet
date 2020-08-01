@@ -11,7 +11,7 @@ import {
   FrSkeletonInfoButtonDirective,
   FrSkeletonPrimaryButtonDirective,
   FrSkeletonWarningButtonDirective,
-  FrWarningButtonDirective,
+  FrWarningButtonDirective
 } from "../src/app/button/button.directive";
 import { FrRippleDirective } from "../src/app/ripple/ripple.directive";
 

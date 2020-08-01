@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { Observer } from "rxjs";
 import {
@@ -7,7 +7,7 @@ import {
   FrDialogContext,
   FrDialogModule,
   FrDialogService,
-  FrFormsModule,
+  FrFormsModule
 } from "../src/app";
 
 /* tslint:disable component-selector */
@@ -23,7 +23,7 @@ import {
 class DialogDemoComponent1 {
   result: string;
 
-  constructor(private dialogService: FrDialogService) {}
+  constructor(private dialogService: FrDialogService) { }
 
   get hasResult(): boolean {
     return this.result && Object.keys(this.result).length > 0;
@@ -57,7 +57,7 @@ class DialogDemoComponent1 {
 class DialogDemoComponent2 {
   result: string;
 
-  constructor(private dialogService: FrDialogService) {}
+  constructor(private dialogService: FrDialogService) { }
 
   public popDialog(): void {
     const extraParams = { title: "Hi! I'm a dialog!" };
@@ -102,7 +102,7 @@ class DialogDemoComponent2 {
   `,
 })
 class DialogDummyComponent implements OnInit {
-  constructor(private dialogContext: FrDialogContext<any>) {}
+  constructor(private dialogContext: FrDialogContext<any>) { }
 
   public text = "";
   public title = "";
@@ -139,7 +139,7 @@ class DialogDummyComponent implements OnInit {
   `,
 })
 class PopupDummyComponent {
-  constructor(private dialogContext: FrDialogContext<any>) {}
+  constructor(private dialogContext: FrDialogContext<any>) { }
 
   get title(): string {
     return this.dialogContext.params.title;
