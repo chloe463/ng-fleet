@@ -116,8 +116,8 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
 
   @Output() dataTableAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
-  @ViewChild('dots', { static: true }) dots: ElementRef;
-  @ViewChild('pulldown', { static: true }) pulldown: ElementRef;
+  @ViewChild('dots', { static: false }) dots: ElementRef;
+  @ViewChild('pulldown', { static: false }) pulldown: ElementRef;
 
   @ContentChild(FrDataTableHeaderComponent, { static: true }) headerComponent: FrDataTableHeaderComponent;
   @ContentChild(FrDataTableColumnsComponent, { static: true }) columnsComponent: FrDataTableColumnsComponent;

@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "storybook": "start-storybook",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
@@ -20,7 +21,8 @@
     "build:esm5": "ngc -p src/tsconfig-esm5.json",
     "build:fesm5": "rollup -c rollup-esm5.conf.js",
     "build:umd": "rollup -c rollup-umd.conf.js",
-    "build:umd-min": "uglifyjs builds/bundles/francette.umd.js -c -m -o builds/bundles/francette.umd.min.js"
+    "build:umd-min": "uglifyjs builds/bundles/francette.umd.js -c -m -o builds/bundles/francette.umd.min.js",
+    "build:storybook": "build-storybook -c ./.storybook -o storybook-build"
   },
   "dependencies": {
     "@angular/animations": "10.0.5",
@@ -45,10 +47,16 @@
     "@angular/cli": "10.0.4",
     "@angular/compiler-cli": "10.0.5",
     "@angular/language-service": "10.0.5",
+    "@babel/core": "^7.10.5",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-viewport": "^5.3.19",
+    "@storybook/angular": "^5.3.19",
     "@types/jasmine": "2.8.7",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^12.11.1",
     "autoprefixer": "8.4.1",
+    "babel-loader": "^8.1.0",
     "codelyzer": "^6.0.0",
     "conventional-changelog-cli": "^2.0.34",
     "jasmine-core": "~3.5.0",
