@@ -55,7 +55,7 @@
     "@types/jasmine": "2.8.7",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^12.11.1",
-    "autoprefixer": "8.4.1",
+    "autoprefixer": "8.6.5",
     "babel-loader": "^8.1.0",
     "codelyzer": "^6.0.0",
     "conventional-changelog-cli": "^2.0.34",
