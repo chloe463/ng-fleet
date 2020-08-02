@@ -38,3 +38,6 @@ jobs:
 
     - name: Package building test
       run: yarn build
+
+    - name: Build storybook
+      run: yarn build:storybook
