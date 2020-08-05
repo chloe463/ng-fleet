@@ -1,0 +1,16 @@
+<div class="todo-item">
+  <div class="todo-item__left">
+    <fr-checkbox [(ngModel)]="todo.finished"></fr-checkbox>
+    <p class="todo-item__task" [ngClass]="{'todo-item__task--finished': todo.finished}">
+      {{todo.taskTitle}}
+    </p>
+  </div>
+  <div class="todo-item__right">
+    <button fr-flat-button>
+      edit
+    </button>
+    <button fr-flat-button>
+      delete
+    </button>
+  </div>
+</div>

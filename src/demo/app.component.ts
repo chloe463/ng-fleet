@@ -8,24 +8,27 @@ import { IFrNavbarNode, IFrSideNavNodeGroup } from './../app/navbar/navbar/navba
 export class AppComponent {
   public navbarNodes: Array<IFrNavbarNode> = [
     { url: '', title: 'nav' },
-    { url: '', title: 'menu', children: [
-      { url: '', title: 'child1' },
-      { url: '', title: 'child2' },
-      { url: '', title: 'child3' },
-    ] }
+    {
+      url: '', title: 'menu', children: [
+        { url: '', title: 'child1' },
+        { url: '', title: 'child2' },
+        { url: '', title: 'child3' },
+      ]
+    }
   ];
 
   public sideNavbarNodes: Array<IFrNavbarNode> = [
-    { url: 'buttons', title: 'buttons' },
-    { url: 'chips', title: 'chips' },
-    { url: 'data-table', title: 'data-table' },
-    { url: 'dialog', title: 'dialog' },
-    { url: 'forms', title: 'forms' },
-    { url: 'progress', title: 'progress' },
-    { url: 'tabs', title: 'tabs' },
-    { url: 'toaster', title: 'toaster' },
-    { url: 'tooltip', title: 'tooltip' },
-    { url: 'kpi-table', title: 'kpi-table' }
+    { url: 'todos', title: 'TodoList' },
+    // { url: 'buttons', title: 'buttons' },
+    // { url: 'chips', title: 'chips' },
+    // { url: 'data-table', title: 'data-table' },
+    // { url: 'dialog', title: 'dialog' },
+    // { url: 'forms', title: 'forms' },
+    // { url: 'progress', title: 'progress' },
+    // { url: 'tabs', title: 'tabs' },
+    // { url: 'toaster', title: 'toaster' },
+    // { url: 'tooltip', title: 'tooltip' },
+    // { url: 'kpi-table', title: 'kpi-table' }
   ];
 
   public sideNavNodeGroups: Array<IFrSideNavNodeGroup> = [

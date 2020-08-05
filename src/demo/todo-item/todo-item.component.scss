@@ -1,0 +1,33 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__task {
+    &--finished {
+      text-decoration: line-through;
+    }
+  }
+
+  &__right {
+    opacity: 0;
+    transition: all 200ms ease-out;
+    transform: translateX(5%);
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    .todo-item__right {
+      opacity: 1;
+      display: flex;
+      align-items: center;
+      transform: none;
+    }
+  }
+}

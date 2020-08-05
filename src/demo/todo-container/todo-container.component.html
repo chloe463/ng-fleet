@@ -1,0 +1,9 @@
+<div class="todo-container">
+  <form class="todo-container__form" #f="ngForm" (ngSubmit)="submit(f)">
+    <fr-input-text-container>
+      <!-- <input type="text" name="task" frInput placeholder="Task" [(ngModel)]="task" /> -->
+      <input type="text" name="task" frInput placeholder="Task" ngModel />
+    </fr-input-text-container>
+  </form>
+  <todo-list [todoItems]="todoItems"></todo-list>
+</div>
