@@ -52,7 +52,7 @@
     "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addon-viewport": "^5.3.19",
     "@storybook/angular": "^5.3.19",
-    "@types/jasmine": "2.8.7",
+    "@types/jasmine": "3.6.1",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^12.11.1",
     "autoprefixer": "8.4.1",
