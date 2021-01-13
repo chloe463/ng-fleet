@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component } from '@angular/core';
 
 import { FrRippleModule } from '../../ripple/ripple.module';
@@ -6,7 +6,7 @@ import { FrDataTableFooterComponent } from './data-table-footer.component';
 
 describe('FrDataTableFooterComponent', () => {
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ FrDataTableFooterComponent ],
       imports: [ FrRippleModule ]

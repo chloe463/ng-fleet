@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FrInputFileComponent } from './file.component';
 import { FrRippleModule } from './../../ripple/ripple.module';
@@ -7,7 +7,7 @@ describe('FrInputFileComponent', () => {
   let component: FrInputFileComponent;
   let fixture: ComponentFixture<FrInputFileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ FrInputFileComponent ],
       imports: [ FrRippleModule ]

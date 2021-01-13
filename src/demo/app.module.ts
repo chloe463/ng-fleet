@@ -59,7 +59,7 @@ const routeConfig: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(routeConfig),
+    RouterModule.forRoot(routeConfig, { relativeLinkResolution: 'legacy' }),
     FrancetteModule
   ],
   exports: [],
