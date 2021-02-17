@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { boolean, withKnobs } from "@storybook/addon-knobs/angular";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
 import { FrChipComponent } from "../src/app/chip/chip.component";
 
 export default {
