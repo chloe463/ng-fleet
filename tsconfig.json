@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "module": "es2020",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -15,6 +16,12 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "francette": [
+        "dist/francette/francette",
+        "dist/francette"
+      ]
+    }
   }
 }
