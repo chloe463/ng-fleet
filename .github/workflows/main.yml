@@ -37,8 +37,8 @@ jobs:
     - name: Test package
       run: yarn test:francette:ci
 
-    - name: Aot building test
-      run: ./node_modules/.bin/ng build --configuration=production --aot
+    # - name: Aot building test
+    #   run: ./node_modules/.bin/ng build --configuration=production --aot
 
     - name: Package building test
       run: yarn build francette
