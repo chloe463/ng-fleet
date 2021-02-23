@@ -1,9 +1,8 @@
 // Angular modules
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Francette modules
 import { FrButtonModule } from './button/button.module';
 import { FrChipModule } from './chip/chip.module';
@@ -19,6 +18,7 @@ import { FrSideNavModule } from './side-nav/side-nav.module';
 import { FrTabsModule } from './tabs/tabs.module';
 import { FrToasterModule } from './toaster/toaster.module';
 import { FrTooltipModule } from './tooltip/tooltip.module';
+
 
 @NgModule({
   imports: [
@@ -58,4 +58,4 @@ import { FrTooltipModule } from './tooltip/tooltip.module';
     FrTooltipModule
   ]
 })
-export class FrancetteModule { }
+export class _FrancetteModule { }

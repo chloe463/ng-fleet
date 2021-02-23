@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { FrDataTableEvent } from '../app/data-table/data-table/data-table.component';
+import { FrDataTableEvent } from 'francette';
 
 /* tslint:disable component-selector */
 @Component({

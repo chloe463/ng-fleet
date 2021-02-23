@@ -1,16 +1,8 @@
 import {
   Component,
-  OnInit,
-  OnDestroy
+  OnInit
 } from '@angular/core';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
-import { FrDialogService, FrDialogContext } from './../app/dialog/dialog.service';
+import { FrDialogContext, FrDialogService } from 'francette';
 import { Observer } from 'rxjs';
 
 /* tslint:disable component-selector */

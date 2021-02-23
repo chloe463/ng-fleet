@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IFrNavbarNode, IFrSideNavNodeGroup } from './../app/navbar/navbar/navbar.model';
+import { IFrNavbarNode, IFrSideNavNodeGroup } from 'francette';
 
 @Component({
   selector: 'fr-root',

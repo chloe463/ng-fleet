@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-import { FrToasterService } from './../app/toaster/toaster.service';
-import { FrToasterParam } from './../app/toaster/toaster.types';
-import { FrNotificationService } from './../app/notification/notification.service';
-import { FrNotificationParam, FrNotificationType } from './../app/notification/notification.types';
+import { FrNotificationParam, FrNotificationService, FrNotificationType, FrToasterParam, FrToasterService } from 'francette';
 
 /* tslint:disable component-selector */
 @Component({
