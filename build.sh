@@ -56,7 +56,7 @@ build_js () {
   cp -r .packaging/esm2015/*.d.ts .packaging/esm2015/** builds/src
   cp README.md builds
 
-  $(npm bin)/ts-node -O '{"target":"es2015"}' ./scripts/modify-package-json.ts
+  node ./scripts/modify-package-json.js
 
   rm -f builds/src/*.js builds/src/**/*.js builds/src/**/**/*.js
 

@@ -1,29 +1,27 @@
-import { sync as glob } from 'glob';
-import { dirname } from 'path';
-import { existsSync, writeFileSync } from 'fs';
-import { sync as mkdirp } from 'mkdirp';
-
-import { renderSync as sassRender } from 'node-sass';
-import * as postcss from 'postcss';
-import * as autoprefixer from 'autoprefixer';
-
-import { pipeline } from './utils';
+const autoprefixer = require('autoprefixer');
+const { existsSync, writeFileSync } = require('fs');
+const { sync: glob } = require('glob');
+const { sync: mkdirp } = require('mkdirp');
+const { renderSync: sassRender } = require('node-sass');
+const { dirname } = require('path');
+const postcss = require('postcss');
+const { pipeline } = require('./utils');
 
 glob('./src/app/**/*.scss').forEach(file => {
   pipeline(
     compileSassToCss,
-    (css: string) => addPrefixes(css, file)
+    (css) => addPrefixes(css, file)
   )(file);
 });
 
-export function compileSassToCss(filePath: string): string {
+function compileSassToCss(filePath) {
   return sassRender({
     file: filePath,
     outputStyle: 'compressed'
   }).css;
 }
 
-export function addPrefixes(css: string, filePath: string): void {
+function addPrefixes(css, filePath) {
   const outFilePath = filePath.replace('src/app', '.packaging').replace('.scss', '.css');
   const outDir      = dirname(outFilePath);
   postcss([ autoprefixer ]).process(css).then(prefixed => {

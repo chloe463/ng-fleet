@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ describe('FrNavbarComponent', () => {
   let component: FrNavbarComponent;
   let fixture: ComponentFixture<FrNavbarComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ FrNavbarComponent ],
       imports: [CommonModule, RouterModule, FrRippleModule]

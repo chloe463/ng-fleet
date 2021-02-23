@@ -1,8 +1,8 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { join, dirname } from 'path';
+const { readFileSync, writeFileSync } = require('fs');
+const { dirname, join } = require('path');
 
 const packageJson = JSON.parse(readFileSync(join(dirname(dirname(process.argv[1])), './package.json'), 'utf-8'));
-const modified = <any>Object.assign({}, packageJson, {
+const modified = Object.assign({}, packageJson, {
   dependencies: {},
   devDependencies: {},
   peerDependencies: packageJson.dependencies,

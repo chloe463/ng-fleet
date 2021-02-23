@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { FrDialogContext, FrDialogService } from './dialog.service';
 import { ComponentFactoryResolver } from '@angular/core';
 

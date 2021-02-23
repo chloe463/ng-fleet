@@ -1,10 +1,9 @@
-import { FileSystemCollectionDesc } from '@angular-devkit/schematics/tools';
-import { sync as glob } from 'glob';
-import { existsSync, readFileSync, writeFileSync } from 'fs';
-import { join, dirname } from 'path';
-import { sync as mkdirp } from 'mkdirp';
+const { existsSync, readFileSync, writeFileSync } = require('fs');
+const { sync: glob } = require('glob');
+const { sync: mkdirp } = require('mkdirp');
+const { dirname, join } = require('path');
+const { pipeline } = require('./utils');
 
-import { pipeline } from './utils';
 
 glob('./src/app/**/*.ts').filter(file => {
   return !file.match(/.*\.spec.ts$/);
@@ -12,11 +11,11 @@ glob('./src/app/**/*.ts').filter(file => {
   replaceInlineResources(file);
 });
 
-function getOutFilePath(filePath: string): string {
+function getOutFilePath(filePath) {
   return filePath.replace('src/app', '.packaging');
 }
 
-export function replaceInlineResources(filePath: string): void {
+function replaceInlineResources(filePath) {
   const fileContent = pipeline(
     (_filePath) => readFileSync(_filePath, 'utf-8'),
     (_fileContent) => replaceInlineTemplate(_fileContent, filePath),
@@ -30,8 +29,8 @@ export function replaceInlineResources(filePath: string): void {
   writeFileSync(getOutFilePath(filePath), fileContent, 'utf-8');
 }
 
-function replaceInlineTemplate(fileContent: string, filePath: string): string {
-  return fileContent.replace(/templateUrl:\s*\'(.*\.html)\'/, (_, templateUrl): string => {
+function replaceInlineTemplate(fileContent, filePath) {
+  return fileContent.replace(/templateUrl:\s*\'(.*\.html)\'/, (_, templateUrl) => {
     // const templatePath = join(dirname(filePath), templateUrl);
     // const templateContent = readResourceFile(templatePath);
     const templateContent = pipeline(
@@ -42,8 +41,8 @@ function replaceInlineTemplate(fileContent: string, filePath: string): string {
   });
 }
 
-function replaceInlineStyles(fileContent: string, filePath: string): string {
-  return fileContent.replace(/styleUrls:\s*(\[.*\])/, (_, styleUrlsValue): string => {
+function replaceInlineStyles(fileContent, filePath) {
+  return fileContent.replace(/styleUrls:\s*(\[.*\])/, (_, styleUrlsValue) => {
     /* tslint:disable:no-eval */
     const styleUrls = eval(styleUrlsValue);
     const styleContent = styleUrls
@@ -57,7 +56,7 @@ function replaceInlineStyles(fileContent: string, filePath: string): string {
   });
 }
 
-function readResourceFile(filePath: string): string {
+function readResourceFile(filePath) {
   return readFileSync(filePath, 'utf-8')
     .replace(/([\n\r]\s*)+/gm, ' ')
     .replace(/"/gm, '\\"');
