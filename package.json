@@ -15,15 +15,7 @@
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
     "changelog": "conventional-changelog --preset angular -i CHANGELOG.md -s -r 0",
-    "build": "./build.sh all",
-    "build:global-css": "./build.sh css",
-    "build:inline": "node scripts/build-css.js && node scripts/inline-resources.js",
-    "build:esm2015": "ngc -p src/tsconfig-esm2015.json",
-    "build:fesm2015": "rollup -c rollup-esm2015.conf.js",
-    "build:esm5": "ngc -p src/tsconfig-esm5.json",
-    "build:fesm5": "rollup -c rollup-esm5.conf.js",
-    "build:umd": "rollup -c rollup-umd.conf.js",
-    "build:umd-min": "uglifyjs builds/bundles/francette.umd.js -c -m -o builds/bundles/francette.umd.min.js",
+    "build": "ng build",
     "build:storybook": "build-storybook -c ./.storybook -o storybook-build"
   },
   "dependencies": {
