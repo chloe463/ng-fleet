@@ -57,7 +57,7 @@ export class FormsDemoComponent {
       switch: false,
       date: new Date(),
       textArea: ''
-    })
+    });
   }
 
   public resetFormGroup() {

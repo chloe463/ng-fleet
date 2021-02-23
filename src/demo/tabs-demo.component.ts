@@ -18,5 +18,5 @@ import { Component } from '@angular/core';
   `
 })
 export class TabsDemoComponent {
-  public selectedIndex: number = 0;
+  public selectedIndex = 0;
 }
