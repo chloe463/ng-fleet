@@ -1,10 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
 import { FrDatePickerComponent } from './date-picker.component';
+
 
 describe('FrDatePickerComponent', () => {
   let component: FrDatePickerComponent;
@@ -44,13 +42,14 @@ describe('FrDatePickerComponent', () => {
   });
 
   it('should judge date is today', () => {
-    expect(component.isToday(new Date())).toBeTruthy();
-    expect(component.isToday(null)).toBeFalsy();
+    const today = new Date();
+    expect(component.isToday(today)).toBeTruthy();
+    const yesterDay = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate() - 1);
+    expect(component.isToday(yesterDay)).toBeFalsy();
   });
 
   it('should judge if the given date is selected date', () => {
     component.value = new Date(2017, 9, 1);
     expect(component.isSelected(new Date(2017, 9, 1))).toBeTruthy();
-    expect(component.isSelected(null)).toBeFalsy();
   });
 });

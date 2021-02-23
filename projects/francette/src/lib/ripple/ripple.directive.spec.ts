@@ -1,6 +1,5 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, waitForAsync } from '@angular/core/testing';
 import { ElementRef } from '@angular/core';
 import { FrRippleDirective } from './ripple.directive';
 
@@ -22,14 +21,14 @@ describe('FrRippleDirective', () => {
       clientWidth: 100,
       clientHeight: 100,
       getBoundingClientRect: () => ({ top: 50, left: 50 }),
-      appendChild: (el) => {
+      appendChild: (el: HTMLElement) => {
         expect(el.style.background).toBe('white');
         expect(el.style.height).toBe('100px');
         expect(el.style.width).toBe('100px');
         expect(el.style.top).toBe('-100px');
         expect(el.style.left).toBe('-100px');
       },
-      removeChild: (el) => {}
+      removeChild: (el: HTMLLIElement) => {}
     };
     const directive = new FrRippleDirective(new MockElementRef(mockElement));
     directive.onClick(new MouseEvent('mousedown'));

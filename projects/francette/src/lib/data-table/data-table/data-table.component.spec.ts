@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-
 import { FrRippleModule } from '../../ripple/ripple.module';
-import { FrDataTableComponent } from './data-table.component';
 import { FrDataTableColumnsComponent } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableFooterComponent } from '../data-table-footer/data-table-footer.component';
 import { FrDataTableHeaderComponent } from '../data-table-header/data-table-header.component';
 import { FrDataTableRowsComponent } from '../data-table-rows/data-table-rows.component';
 import { FrFormsModule } from './../../forms/forms.module';
+import { FrDataTableComponent } from './data-table.component';
+
 
 describe('FrDataTableComponent', () => {
   let component: FrDataTableComponent;
@@ -74,8 +74,8 @@ class SampleFrDataTableComponent {
     ]
   };
 
-  updateAction(event) {
+  updateAction(event: any) {
   }
-  paginationAction(event) {
+  paginationAction(event: any) {
   }
 }

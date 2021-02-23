@@ -1,6 +1,4 @@
-import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
-import { FrDialogContext, FrDialogService } from './dialog.service';
-import { ComponentFactoryResolver } from '@angular/core';
+import { FrDialogContext } from './dialog.service';
 
 describe('FrDialogContext', () => {
   let dialogContext: FrDialogContext<any>;
@@ -14,26 +12,32 @@ describe('FrDialogContext', () => {
   });
 
   it ('should execute onNext', () => {
-    const onNext = (value) => {
+    const onNext = (value: string) => {
       expect(value).toBe('dummy value');
     };
-    dialogContext = new FrDialogContext(onNext, null, null);
+    const onError = () => {};
+    const onComplete = () => {};
+    dialogContext = new FrDialogContext(onNext, onError, onComplete)
     dialogContext.next('dummy value');
   });
 
   it ('should execute onError', () => {
-    const onError = (err) => {
+    const onNext = () => {};
+    const onError = (err: string) => {
       expect(err).toBe('dummy error');
     };
-    dialogContext = new FrDialogContext(null, onError, null);
+    const onComplete = () => {};
+    dialogContext = new FrDialogContext(onNext, onError, onComplete);
     dialogContext.error('dummy error');
   });
 
   it ('should execute onComplete', () => {
+    const onNext = () => {};
+    const onError = () => {};
     const onComplete = () => {
       expect(true).toBeTruthy();
     };
-    dialogContext = new FrDialogContext(null, null, onComplete);
+    dialogContext = new FrDialogContext(onNext, onError, onComplete);
     dialogContext.complete();
   });
 });

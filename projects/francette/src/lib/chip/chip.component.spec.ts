@@ -1,9 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { FrChipComponent } from './chip.component';
+
 
 describe('FrChipComponent', () => {
   let component: FrChipComponent;
@@ -27,7 +25,7 @@ describe('FrChipComponent', () => {
   });
 
   it('should emit event', () => {
-    component.dismiss.subscribe((value) => {
+    component.dismiss.subscribe((value: undefined) => {
       expect(value).toBeUndefined();
     });
     component.disappear();
