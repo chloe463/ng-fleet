@@ -32,16 +32,16 @@ jobs:
       run: yarn install
 
     - name: Lint
-      run: yarn lint
+      run: yarn lint francette
 
     - name: Test package
-      run: yarn test:ci
+      run: yarn test:francette:ci
 
     - name: Aot building test
       run: ./node_modules/.bin/ng build --configuration=production --aot
 
     - name: Package building test
-      run: yarn build
+      run: yarn build francette
 
-    - name: Build storybook
-      run: yarn build:storybook
+    # - name: Build storybook
+    #   run: yarn build:storybook
