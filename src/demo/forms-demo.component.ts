@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FrCheckboxChange, FrDatePickerChange, FrInputFileChange, FrRadioChange, FrSelectChange, FrTimePickerChange } from 'francette';
 
 /* tslint:disable component-selector */
 @Component({
@@ -20,12 +21,13 @@ import { FormControl, FormArray, FormGroup, FormBuilder, Validators } from '@ang
   templateUrl: './forms-demo.component.html'
 })
 export class FormsDemoComponent {
+  // formGroup: FormGroup = this.fb.group({ });
   formGroup: FormGroup;
   radios = [
-    { label: 'number', value: 1 },
-    { label: 'string', value: 2 },
-    { label: 'Array',  value: [1, 2, 3] },
-    { label: 'Object', value: { key: 'value' } }
+    { label: 'option1', value: '1' },
+    { label: 'option2', value: '2' },
+    { label: 'option3', value: '3' },
+    { label: 'option4', value: '4' },
   ];
   checkboxes = [
     { name: 'check1', indeterminate: false },
@@ -34,45 +36,45 @@ export class FormsDemoComponent {
     { name: 'check4 (indeterminate)', indeterminate: true },
   ];
   options = [
-    { label: 'Option1 number', value: 1 },
-    { label: 'Option2 string', value: 'string' },
-    { label: 'Option3 Array',  value: [1, 2, 3] },
-    { label: 'Option4 Object', value: { key: 'value' } }
+    { label: 'Option1', value: 1 },
+    { label: 'Option2', value: 2 },
+    { label: 'Option3', value: 3 },
+    { label: 'Option4', value: 4 }
   ];
 
   constructor(private fb: FormBuilder) {
-    this.resetFormGroup();
+    this.formGroup = this.fb.group({
+      file: [],
+      text: ['', Validators.required],
+      select: '',
+      radio: 1,
+      checkboxes: new FormArray([
+        new FormControl(false),
+        new FormControl(false),
+        new FormControl(false),
+        new FormControl(false)
+      ]),
+      switch: false,
+      date: new Date(),
+      textArea: ''
+    })
   }
 
   public resetFormGroup() {
-    if (this.formGroup) {
-      this.formGroup.setValue({
-        file: [],
-        text: '',
-        select: '',
-        radio: 1,
-        checkboxes: [false, false, false],
-        switch: false,
-        date: new Date(),
-        textArea: ''
-      });
-    } else {
-      this.formGroup = this.fb.group({
-        file: [],
-        text: ['', Validators.required],
-        select: '',
-        radio: [],
-        checkboxes: new FormArray([
-          new FormControl(false),
-          new FormControl(false),
-          new FormControl(false),
-          new FormControl(false)
-        ]),
-        switch: false,
-        date: new Date(),
-        textArea: ''
-      });
-    }
+    this.formGroup.setValue({
+      file: [],
+      text: '',
+      select: null,
+      radio: null,
+      checkboxes: [false, false, false, false],
+      switch: false,
+      date: new Date(),
+      textArea: ''
+    });
+  }
+
+  get checkBoxControls() {
+    return (this.formGroup.controls['checkboxes'] as FormArray).controls as FormControl[];
   }
 
   public onSubmit() {
@@ -81,27 +83,27 @@ export class FormsDemoComponent {
     return false;
   }
 
-  public onFileChange(event): void {
+  public onFileChange(event: FrInputFileChange): void {
     console.log(event);
   }
 
-  public onSelectChange(event: Event): void {
+  public onSelectChange(event: FrSelectChange): void {
     console.log(event);
   }
 
-  public onRadioChange(event: Event): void {
+  public onRadioChange(event: FrRadioChange): void {
     console.log(event);
   }
 
-  public onCheckboxChange(event: Event): void {
+  public onCheckboxChange(event: FrCheckboxChange): void {
     console.log(event);
   }
 
-  public onDatePickerChange(event: Event): void {
+  public onDatePickerChange(event: FrDatePickerChange): void {
     console.log(event);
   }
 
-  public onTimePickerChange(event: Event): void {
+  public onTimePickerChange(event: FrTimePickerChange): void {
     console.log(event);
   }
 

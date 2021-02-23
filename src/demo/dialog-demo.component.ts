@@ -33,7 +33,7 @@ export class DialogDemoComponent {
       complete: ()     => console.log('onComplete')
     };
     const extraParams = { title: 'Hi! I\'m a dialog!' };
-    this.dialogService.open<any>(DialogDummyComponent, extraParams).subscribe(dialogObserver);
+    (this.dialogService as FrDialogService).open<any>(DialogDummyComponent, extraParams).subscribe(dialogObserver);
   }
 
   public popDialog(): void {
@@ -41,7 +41,7 @@ export class DialogDemoComponent {
     this.dialogService.pop<any>(PopupDummyComponent, extraParams);
   }
 
-  public dialogAction(event): void {
+  public dialogAction(event: Readonly<Event>): void {
     console.log(event);
   }
 

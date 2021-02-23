@@ -3,6 +3,7 @@ import {
   ComponentRef,
   Injectable,
   ReflectiveInjector,
+  Type,
   ViewContainerRef
 } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
@@ -44,7 +45,7 @@ export class FrDialogService {
     this.vcr = vcr;
   }
 
-  public pop<T>(component: FunctionConstructor, extraParams?: any) {
+  public pop<T>(component: Type<T>, extraParams?: any) {
     const componentFactory = this.cfr.resolveComponentFactory(component);
 
     const noop = () => {};
@@ -59,7 +60,7 @@ export class FrDialogService {
     this.dialogStack.push(componentRef);
   }
 
-  public open<T>(component: FunctionConstructor, extraParams?: any): Observable<T> {
+  public open<T>(component: Type<T>, extraParams?: any): Observable<T> {
     return new Observable<T>((observer: Observer<T>) => {
       const componentFactory = this.cfr.resolveComponentFactory(component);
 
