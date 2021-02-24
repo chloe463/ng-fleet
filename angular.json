@@ -21,7 +21,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "dist/francette/styles/index.scss"
             ],
             "scripts": []
           },
