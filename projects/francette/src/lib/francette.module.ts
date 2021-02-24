@@ -7,7 +7,6 @@ import { FrChipModule } from './chip/chip.module';
 import { FrDataTableModule } from './data-table/data-table.module';
 import { FrDialogModule } from './dialog/dialog.module';
 import { FrFormsModule } from './forms/forms.module';
-import { FrancetteComponent } from './francette.component';
 import { FrKpiTableModule } from './kpi-table/kpi-table.module';
 import { FrNavbarModule } from './navbar';
 import { FrNotificationModule } from './notification/notification.module';
@@ -19,7 +18,7 @@ import { FrToasterModule } from './toaster/toaster.module';
 import { FrTooltipModule } from './tooltip/tooltip.module';
 
 @NgModule({
-  declarations: [FrancetteComponent],
+  declarations: [],
   imports: [
     BrowserAnimationsModule,
     CommonModule,
