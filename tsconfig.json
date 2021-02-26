@@ -9,8 +9,8 @@
     "noImplicitReturns": true,
     "paths": {
       "francette": [
-        "dist/francette/francette",
-        "dist/francette"
+        "artifacts/francette/francette",
+        "artifacts/francette"
       ]
     },
     "noFallthroughCasesInSwitch": true,
