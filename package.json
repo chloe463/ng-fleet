@@ -16,6 +16,11 @@
     "e2e": "protractor",
     "changelog": "conventional-changelog --preset angular -i CHANGELOG.md -s -r 0",
     "build": "ng build",
+    "dev:francette:js": "ng build francette --watch",
+    "dev:francette:css": "sass projects/francette/styles/index.scss ./dist/francette/francette.css --watch",
+    "build:francette:js": "ng build francette",
+    "build:francette:css": "sass projects/francette/styles/index.scss --style compressed | postcss --use autoprefixer -b 'last 10 versions' --no-map > ./dist/francette/francette.css",
+    "build:francette": "yarn build:francette:js && yarn build:francette:css",
     "build:storybook": "build-storybook -c ./.storybook -o storybook-build"
   },
   "dependencies": {
