@@ -22,7 +22,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "dist/francette/styles/index.scss"
+              "dist/francette/francette.css"
             ],
             "scripts": []
           },
