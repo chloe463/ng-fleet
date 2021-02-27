@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FrancetteModule } from 'francette';
 import { AppComponent } from './app.component';
-import { ButtonsDemoComponent } from './buttons-demo.component';
+import { ButtonsDemoComponent } from './button/buttons-demo.component';
 import { ChipsDemoComponent } from './chips-demo.component';
 import { DataTableDemoComponent } from './data-table-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
@@ -15,9 +15,6 @@ import { ProgressDemoComponent } from './progress-demo.component';
 import { TabsDemoComponent } from './tabs-demo.component';
 import { ToasterDemoComponent } from './toaster-demo.component';
 import { TooltipDemoComponent } from './tooltip-demo.component';
-
-
-// import { FrancetteModule } from '../app/francette.module';
 
 const routeConfig: Routes = [
   { path: '', component: DevelopAreaComponent },
