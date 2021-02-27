@@ -5,20 +5,8 @@ import { FrCheckboxChange, FrDatePickerChange, FrInputFileChange, FrRadioChange,
 /* tslint:disable component-selector */
 @Component({
   selector: 'forms-demo',
-  styles: [`
-    table {
-      width: 80%;
-      margin: 24px auto;
-    }
-    tr {
-      height: 70px;
-    }
-    .buttons {
-      display: flex;
-      justify-content: space-around;
-    }
-  `],
-  templateUrl: './forms-demo.component.html'
+  templateUrl: './forms-demo.component.html',
+  styleUrls: ['./forms-demo.component.scss'],
 })
 export class FormsDemoComponent {
   // formGroup: FormGroup = this.fb.group({ });

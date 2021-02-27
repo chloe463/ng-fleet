@@ -9,7 +9,7 @@ import { ChipsDemoComponent } from './chip/chips-demo.component';
 import { DataTableDemoComponent } from './data-table/data-table-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
 import { DialogDemoComponent, DialogDummyComponent, PopupDummyComponent } from './dialog/dialog-demo.component';
-import { FormsDemoComponent } from './forms-demo.component';
+import { FormsDemoComponent } from './forms/forms-demo.component';
 import { KpiTableDemoComponent } from './kpi-table-demo.component';
 import { ProgressDemoComponent } from './progress-demo.component';
 import { TabsDemoComponent } from './tabs-demo.component';
