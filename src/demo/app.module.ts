@@ -6,7 +6,7 @@ import { FrancetteModule } from 'francette';
 import { AppComponent } from './app.component';
 import { ButtonsDemoComponent } from './button/buttons-demo.component';
 import { ChipsDemoComponent } from './chip/chips-demo.component';
-import { DataTableDemoComponent } from './data-table-demo.component';
+import { DataTableDemoComponent } from './data-table/data-table-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
 import { DialogDemoComponent, DialogDummyComponent, PopupDummyComponent } from './dialog-demo.component';
 import { FormsDemoComponent } from './forms-demo.component';
