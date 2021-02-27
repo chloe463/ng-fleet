@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Toaster and Notification</h2>
+  <div class="toaster-demo">
+    <h3>Toaster</h3>
+    <button class="fr-btn fr-btn--primary" frRipple (click)="showToaster()">toaster</button>
+  </div>
+  <div class="notification-demo">
+    <h3>Notification</h3>
+    <fr-select
+      class="level-selector"
+      [placeholder]="'Notification Level'"
+      [browserNative]="false"
+      [(ngModel)]="notificationLevel">
+      <fr-option *ngFor="let level of levels"
+        [value]="level" [label]="level"></fr-option>
+    </fr-select>
+    <button class="fr-btn fr-btn--primary" (click)="showNotification()">Notification</button>
+  </div>
+</div>
+<fr-toaster-entry></fr-toaster-entry>
+<fr-notification-entry></fr-notification-entry>

@@ -5,37 +5,13 @@ import { FrNotificationParam, FrNotificationService, FrNotificationType, FrToast
 @Component({
   selector: 'toaster-demo',
   styles: [`
-  .container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-  }
   .level-selector {
     display: block;
     width: 360px;
     margin: 5px;
   }
   `],
-  template: `
-  <h1>Toaster and Toaster Demo</h1>
-  <div class="container">
-    <div class="toaster-demo">
-      <button class="fr-btn fr-btn--primary" frRipple (click)="showToaster()">toaster</button>
-    </div>
-    <div class="notification-demo">
-      <fr-select
-        class="level-selector"
-        [placeholder]="'Notification Level'"
-        [browserNative]="false"
-        [(ngModel)]="notificationLevel">
-        <fr-option *ngFor="let level of levels"
-          [value]="level" [label]="level"></fr-option>
-      </fr-select>
-      <button class="fr-btn fr-btn--primary" (click)="showNotification()">Notification</button>
-    </div>
-  </div>
-  <fr-toaster-entry></fr-toaster-entry>
-  <fr-notification-entry></fr-notification-entry>
-  `,
+  templateUrl: './toaster-demo.component.html',
   providers: [ FrToasterService, FrNotificationService ]
 })
 export class ToasterDemoComponent {
