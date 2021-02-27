@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Tooltip</h2>
+  <span frTooltip
+    class="tooltip"
+    [message]="tooltipMessage"
+    [position]="toolTipPosition">
+    I have tooltip!
+  </span>
+  <fr-select
+    [placeholder]="'Tooltip position'"
+    [browserNative]="false"
+    [(ngModel)]="toolTipPosition"
+    style="display:inline-block;width: 240px;">
+    <fr-option *ngFor="let position of positions" [value]="position" [label]="position"></fr-option>
+  </fr-select>
+</div>

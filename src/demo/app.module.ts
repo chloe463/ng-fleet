@@ -13,7 +13,7 @@ import { FormsDemoComponent } from './forms/forms-demo.component';
 import { ProgressDemoComponent } from './progress/progress-demo.component';
 import { TabsDemoComponent } from './tab/tabs-demo.component';
 import { ToasterDemoComponent } from './toaster/toaster-demo.component';
-import { TooltipDemoComponent } from './tooltip-demo.component';
+import { TooltipDemoComponent } from './tooltip/tooltip-demo.component';
 
 const routeConfig: Routes = [
   { path: '', component: DevelopAreaComponent },
