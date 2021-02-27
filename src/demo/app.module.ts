@@ -11,7 +11,7 @@ import { DevelopAreaComponent } from './develop-area.component';
 import { DialogDemoComponent, DialogDummyComponent, PopupDummyComponent } from './dialog/dialog-demo.component';
 import { FormsDemoComponent } from './forms/forms-demo.component';
 import { ProgressDemoComponent } from './progress/progress-demo.component';
-import { TabsDemoComponent } from './tabs-demo.component';
+import { TabsDemoComponent } from './tab/tabs-demo.component';
 import { ToasterDemoComponent } from './toaster-demo.component';
 import { TooltipDemoComponent } from './tooltip-demo.component';
 
