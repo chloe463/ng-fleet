@@ -10,7 +10,6 @@ import { DataTableDemoComponent } from './data-table/data-table-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
 import { DialogDemoComponent, DialogDummyComponent, PopupDummyComponent } from './dialog/dialog-demo.component';
 import { FormsDemoComponent } from './forms/forms-demo.component';
-import { KpiTableDemoComponent } from './kpi-table-demo.component';
 import { ProgressDemoComponent } from './progress-demo.component';
 import { TabsDemoComponent } from './tabs-demo.component';
 import { ToasterDemoComponent } from './toaster-demo.component';
@@ -30,7 +29,6 @@ const routeConfig: Routes = [
   { path: 'tabs', component: TabsDemoComponent },
   { path: 'toaster', component: ToasterDemoComponent },
   { path: 'tooltip', component: TooltipDemoComponent },
-  { path: 'kpi-table', component: KpiTableDemoComponent },
   { path: '**', redirectTo: '' }
 ];
 
@@ -42,7 +40,6 @@ const routeConfig: Routes = [
     FormsDemoComponent,
     ButtonsDemoComponent,
     TabsDemoComponent,
-    KpiTableDemoComponent,
     DevelopAreaComponent,
     DialogDemoComponent,
     ToasterDemoComponent,
