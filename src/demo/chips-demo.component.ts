@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     <fr-chip *ngFor="let chip of chips; let i = index" (dismiss)="removeChip(i)">
       {{chip.label}}
     </fr-chip>
-    <fr-chip on="true">readOnly</fr-chip>
+    <fr-chip [on]="true">readOnly</fr-chip>
   `
 })
 export class ChipsDemoComponent {

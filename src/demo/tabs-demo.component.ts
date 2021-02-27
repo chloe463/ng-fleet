@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'tabs-demo',
   template: `
-    <fr-tabs [(selectedIndex)]="selectedIndex">
+    <fr-tabs [selectedIndex]="selectedIndex">
       <fr-tab title="tab1">
         <p>Tab1 content</p>
       </fr-tab>
@@ -18,5 +18,5 @@ import { Component } from '@angular/core';
   `
 })
 export class TabsDemoComponent {
-  selectedIndex = 0;
+  public selectedIndex = 0;
 }

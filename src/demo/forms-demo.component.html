@@ -8,7 +8,7 @@
     <tr>
       <td>
         <fr-input-text-container>
-          <input frInput type="text" placeholder="text" [formControl]="formGroup.controls['text']">
+          <input frInput type="text" placeholder="text" [formControlName]="'text'">
         </fr-input-text-container>
       </td>
     </tr>
@@ -31,7 +31,7 @@
     <tr>
       <td>
         <fr-form-group label="checkbox">
-          <fr-checkbox *ngFor="let checkbox of formGroup.controls['checkboxes']['controls']; let i = index" [formControl]="checkbox"
+          <fr-checkbox *ngFor="let checkbox of checkBoxControls; let i = index" [formControl]="checkbox"
             [indeterminate]="checkboxes[i].indeterminate"
             (change)="onCheckboxChange($event)">
             {{checkboxes[i]['name']}}
