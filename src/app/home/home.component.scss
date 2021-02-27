@@ -1,0 +1,40 @@
+.container {
+  margin-top: 32px;
+}
+
+.hero {
+  display: block;
+  &::before {
+    content: "";
+    background-color: #352838;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 320px;
+  }
+}
+
+.description {
+  position: relative;
+  text-align: center;
+  color: rgba(255, 255, 255, .86);
+
+  p {
+    font-family: Lato;
+    margin-top: 36px;
+  }
+
+  a {
+    color: rgba(255, 255, 255, .86);
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+    &:active {
+      color: rgba(255, 255, 255, 1);
+    }
+    &:visited{
+      color: rgba(255, 255, 255, .86);
+    }
+  }
+}

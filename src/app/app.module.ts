@@ -10,13 +10,14 @@ import { DataTableDemoComponent } from './data-table/data-table-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
 import { DialogDemoComponent, DialogDummyComponent, PopupDummyComponent } from './dialog/dialog-demo.component';
 import { FormsDemoComponent } from './forms/forms-demo.component';
+import { HomeComponent } from './home/home.component';
 import { ProgressDemoComponent } from './progress/progress-demo.component';
 import { TabsDemoComponent } from './tab/tabs-demo.component';
 import { ToasterDemoComponent } from './toaster/toaster-demo.component';
 import { TooltipDemoComponent } from './tooltip/tooltip-demo.component';
 
 const routeConfig: Routes = [
-  { path: '', component: DevelopAreaComponent },
+  { path: '', component: HomeComponent },
   { path: 'develop', component: DevelopAreaComponent },
   // { path: '', component: FormsDemoComponent, pathMatch: 'full' },
   { path: 'develop', component: FormsDemoComponent },
@@ -46,7 +47,8 @@ const routeConfig: Routes = [
     ProgressDemoComponent,
     DialogDummyComponent,
     PopupDummyComponent,
-    TooltipDemoComponent
+    TooltipDemoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
