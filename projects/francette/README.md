@@ -1,24 +1,94 @@
 # Francette
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
+![Main](https://github.com/chloe463/francette/workflows/Main/badge.svg)
+[![npm version](https://badge.fury.io/js/francette.svg)](https://badge.fury.io/js/francette)
 
-## Code scaffolding
+Simple components and style sheets for Angular 2.0 or higher.
 
-Run `ng generate component component-name --project francette` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project francette`.
-> Note: Don't forget to add `--project francette` or else it will be added to the default project in your `angular.json` file. 
+Please see [this directory](https://github.com/chloe463/francette/tree/master/src/demo) and learn how to use this.
 
-## Build
+## Modules
 
-Run `ng build francette` to build the project. The build artifacts will be stored in the `dist/` directory.
+|Name|Modules|Notes|
+|:-|:-|:-|
+|Buttons|`FrButtonModule`||
+|Chips|`FrChipModule`||
+|Data table|`FrDataTableModule`|Consists of `header`, `columns`, `rows` and `footer` components.|
+|Dialog|`FrDialogModule`||
+|Forms|`FrFormsModule`|Includes `checkbox`, `date-picker`, `input[type="file"]`, `input[type="text"]`, `radio`, `select`, `switch` and  `time-picker`.|
+|Navbar|`FrNavbarModule`||
+|Notification|`FrNotificationModule`||
+|Progress bar/spinner|`FrProgressModule`||
+|Ripple Effect|`FrRippleModule`||
+|Sidenav|`FrSideNavModule`|It works with `FrNavbarModule`.|
+|Tabs|`FrTabsModule`||
+|Toaster|`FrToasterModule`||
 
-## Publishing
+## Installation
 
-After building your library with `ng build francette`, go to the dist folder `cd dist/francette` and run `npm publish`.
+```
+$ npm install --save francette
 
-## Running unit tests
+# or
 
-Run `ng test francette` to execute the unit tests via [Karma](https://karma-runner.github.io).
+$ yarn add --save francette
+```
 
-## Further help
+## Getting started
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Add `FrancetteModule` to your NgModule imports array.
+
+```typescript
+import { NgModule } from '@angular/core';
+import { FrancetteModule } from 'francette';
+
+@NgModule({
+  declarations: [
+    /** Your components */
+  ],
+  imports: [
+    /** Some other modules */
+    FrancetteModule
+  ]
+})
+export class AppModule {}
+```
+
+If you don't need all the `FrancetteModule` but need some parts of the module, you can import partial modules, say `FrFormsModule` or `FrTabsModule`.
+
+```typescript
+import { NgModule } from '@angular/core';
+import { FrFormsModule, FrTabsModule } from 'francette';
+
+@NgModule({
+  declarations: [
+    /** Your components */
+  ],
+  imports: [
+    /** Some other modules */
+    FrFormsModule,
+    FrTabsModule
+  ]
+})
+export class AppModule {}
+```
+
+Add a line to angular.json to import francette css file.
+
+```json
+{
+  ...
+  "project": {
+    <projectName>: {
+      "architect": {
+        "build": {
+          "styles: [
+            "src/styles.scss".
+            "node_modules/francette/francette.css" # Add this line
+          ]
+        }
+      }
+    }
+  }
+}
+```
