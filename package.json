@@ -1,8 +1,9 @@
 {
   "name": "ng-fleet",
-  "version": "0.13.0-alpha.1",
+  "version": "0.0.1",
   "license": "MIT",
   "angular-cli": {},
+  "private": "true",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
