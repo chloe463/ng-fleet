@@ -26,7 +26,6 @@ export class AppComponent {
     { url: 'tabs', title: 'tabs' },
     { url: 'toaster', title: 'toaster' },
     { url: 'tooltip', title: 'tooltip' },
-    { url: 'kpi-table', title: 'kpi-table' }
   ];
 
   public sideNavNodeGroups: Array<IFrSideNavNodeGroup> = [
