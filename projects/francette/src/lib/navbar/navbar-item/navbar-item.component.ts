@@ -17,7 +17,7 @@ export class FrNavbarItemComponent {
   }
 
   get url(): string {
-    return this.node.url || "";
+    return this.node.url || '';
   }
 
   get children(): Array<IFrNavbarNode> {
