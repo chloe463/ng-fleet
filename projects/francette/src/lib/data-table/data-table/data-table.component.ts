@@ -139,7 +139,13 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
   public rowsListState   = 'hidden';
 
   // public ripples = { edit: false, delete: false, dots: false, chevronLeft: false, chevronRight: false };
-  public ripples: { [key in DataTableIcon]: boolean } = { edit: false, delete: false, dots: false, chevronLeft: false, chevronRight: false };
+  public ripples: { [key in DataTableIcon]: boolean } = {
+    edit: false,
+    delete: false,
+    dots: false,
+    chevronLeft: false,
+    chevronRight: false,
+  };
 
   private _columnsSubscription: Subscription;
   private _rowsSubsctiption: Subscription;
