@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'chips-demo',
   template: `
-<div>
+<div class="container">
   <h2>Chip component</h2>
   <fr-chip *ngFor="let chip of chips; let i = index" (dismiss)="removeChip(i)">
     {{chip.label}}

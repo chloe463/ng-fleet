@@ -7,3 +7,12 @@ button, input, select, textarea {
   line-height: 1.15;
   margin: 0;
 }
+
+.container {
+  display: block;
+  width: max(720px, min(calc(100vw * 0.8), 1280px));
+  margin: 96px auto;
+  @media screen and (max-width: 864px) {
+    margin-left: 72px;
+  }
+}

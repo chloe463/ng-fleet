@@ -1,8 +1,0 @@
-.container {
-  display: block;
-  width: max(720px, min(calc(100vw * 0.8), 1280px));
-  margin: 96px auto;
-  @media screen and (max-width: 864px) {
-    margin-left: 72px;
-  }
-}

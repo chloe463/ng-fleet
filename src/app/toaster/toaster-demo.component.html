@@ -6,15 +6,17 @@
   </div>
   <div class="notification-demo">
     <h3>Notification</h3>
-    <fr-select
-      class="level-selector"
-      [placeholder]="'Notification Level'"
-      [browserNative]="false"
-      [(ngModel)]="notificationLevel">
-      <fr-option *ngFor="let level of levels"
-        [value]="level" [label]="level"></fr-option>
-    </fr-select>
-    <button class="fr-btn fr-btn--primary" (click)="showNotification()">Notification</button>
+    <div class="level-selector-wrapper">
+      <fr-select
+        class="level-selector"
+        [placeholder]="'Notification Level'"
+        [browserNative]="false"
+        [(ngModel)]="notificationLevel">
+        <fr-option *ngFor="let level of levels"
+          [value]="level" [label]="level"></fr-option>
+      </fr-select>
+      <button class="fr-btn fr-btn--primary" (click)="showNotification()">Notification</button>
+    </div>
   </div>
 </div>
 <fr-toaster-entry></fr-toaster-entry>

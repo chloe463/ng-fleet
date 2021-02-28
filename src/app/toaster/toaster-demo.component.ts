@@ -5,6 +5,10 @@ import { FrNotificationParam, FrNotificationService, FrNotificationType, FrToast
 @Component({
   selector: 'toaster-demo',
   styles: [`
+  .level-selector-wrapper {
+    display: flex;
+    align-items: center;
+  }
   .level-selector {
     display: block;
     width: 360px;
