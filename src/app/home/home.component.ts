@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+/* tslint:disable component-selector */
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
