@@ -7,4 +7,20 @@
       </p>
     </div>
   </div>
+
+  <div class="spacer"></div>
+
+  <section class="components-section">
+    <h2 class="components-section-title">Components</h2>
+    <div class="component-cards-container">
+      <div *ngFor="let comp of components">
+        <a [routerLink]="comp.url" class="component-card-link">
+          <div class="component-card">
+            <h4 class="component-name">{{comp.name}}</h4>
+            <img class="component-image" [src]="comp.image" alt=`component-image-${comp.name}` />
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 </div>
