@@ -17,7 +17,7 @@ describe('FrDialogContext', () => {
     };
     const onError = () => {};
     const onComplete = () => {};
-    dialogContext = new FrDialogContext(onNext, onError, onComplete)
+    dialogContext = new FrDialogContext(onNext, onError, onComplete);
     dialogContext.next('dummy value');
   });
 
