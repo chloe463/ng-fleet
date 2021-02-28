@@ -9,7 +9,7 @@ import { Observer } from 'rxjs';
 @Component({
     selector: 'dialog-demo',
     template: `
-<h1>Dialog</h1>
+<h2>Dialog</h2>
   <button class="fr-btn fr-btn--primary" frRipple (click)="showDialog()">open dialog</button>
   <button class="fr-btn fr-btn--primary" frRipple (click)="popDialog()">pop dialog</button>
   <span>Result: {{result}}</span>
@@ -19,7 +19,7 @@ import { Observer } from 'rxjs';
 })
 export class DialogDemoComponent {
 
-  result: string;
+  public result = '';
 
   constructor (private dialogService: FrDialogService) {}
 
@@ -77,8 +77,8 @@ export class DialogDemoComponent {
       </fr-input-text-container>
     </div>
     <div class="buttons">
-      <button fr-flat-button (click)="ok()">OK</button>
       <button fr-flat-button (click)="ng()">NG</button>
+      <button fr-flat-button (click)="ok()">OK</button>
     </div>
   </div>
   `

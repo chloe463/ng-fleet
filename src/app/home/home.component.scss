@@ -1,0 +1,103 @@
+.container {
+  margin-top: 128px;
+}
+
+.hero {
+  display: block;
+  &::before {
+    content: "";
+    background-color: #352838;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 320px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  line-height: 48px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.description {
+  position: relative;
+  text-align: center;
+  color: rgba(255, 255, 255, .86);
+
+  p {
+    font-family: Lato;
+    margin-top: 36px;
+  }
+
+  a {
+    color: rgba(255, 255, 255, .86);
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+    &:active {
+      color: rgba(255, 255, 255, 1);
+    }
+    &:visited{
+      color: rgba(255, 255, 255, .86);
+    }
+  }
+}
+
+.spacer {
+  margin-top: 84px;
+}
+
+.components-section {
+  padding-top: 24px;
+}
+
+.components-section-title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.component-cards-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.component-card-link {
+  display: block;
+  color: rgba(0, 0, 0, 0.86);
+  text-decoration: none;
+  &:visited {
+    color: rgba(0, 0, 0, 0.74);
+    text-decoration: none;
+  }
+}
+
+.component-name {
+  margin: 0;
+}
+
+.component-card {
+  display: block;
+  width: 240px;
+  height: 320px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: rgb(0 0 0 / 10%) 0px 1px 3px, rgb(0 0 0 / 2%) 0px 0px 0px 1px;
+  margin-top: 16px;
+  padding: 24px;
+  transition: all 0.2s cubic-bezier(0.3, 0.3, 0.3, 1);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    box-shadow: rgb(0 0 0 / 2%) 0px 0px 0px 1px, rgb(0 0 0 / 10%) 0px 3px 9px 0px;
+  }
+}
+
+.component-image {
+  margin-top: 16px;
+}

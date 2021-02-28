@@ -4,23 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FrancetteModule } from 'francette';
 import { AppComponent } from './app.component';
-import { ButtonsDemoComponent } from './buttons-demo.component';
-import { ChipsDemoComponent } from './chips-demo.component';
-import { DataTableDemoComponent } from './data-table-demo.component';
+import { ButtonsDemoComponent } from './button/buttons-demo.component';
+import { ChipsDemoComponent } from './chip/chips-demo.component';
+import { DataTableDemoComponent } from './data-table/data-table-demo.component';
 import { DevelopAreaComponent } from './develop-area.component';
-import { DialogDemoComponent, DialogDummyComponent, PopupDummyComponent } from './dialog-demo.component';
-import { FormsDemoComponent } from './forms-demo.component';
-import { KpiTableDemoComponent } from './kpi-table-demo.component';
-import { ProgressDemoComponent } from './progress-demo.component';
-import { TabsDemoComponent } from './tabs-demo.component';
-import { ToasterDemoComponent } from './toaster-demo.component';
-import { TooltipDemoComponent } from './tooltip-demo.component';
-
-
-// import { FrancetteModule } from '../app/francette.module';
+import { DialogDemoComponent, DialogDummyComponent, PopupDummyComponent } from './dialog/dialog-demo.component';
+import { FormsDemoComponent } from './forms/forms-demo.component';
+import { HomeComponent } from './home/home.component';
+import { ProgressDemoComponent } from './progress/progress-demo.component';
+import { TabsDemoComponent } from './tab/tabs-demo.component';
+import { ToasterDemoComponent } from './toaster/toaster-demo.component';
+import { TooltipDemoComponent } from './tooltip/tooltip-demo.component';
 
 const routeConfig: Routes = [
-  { path: '', component: DevelopAreaComponent },
+  { path: '', component: HomeComponent },
   { path: 'develop', component: DevelopAreaComponent },
   // { path: '', component: FormsDemoComponent, pathMatch: 'full' },
   { path: 'develop', component: FormsDemoComponent },
@@ -33,7 +30,6 @@ const routeConfig: Routes = [
   { path: 'tabs', component: TabsDemoComponent },
   { path: 'toaster', component: ToasterDemoComponent },
   { path: 'tooltip', component: TooltipDemoComponent },
-  { path: 'kpi-table', component: KpiTableDemoComponent },
   { path: '**', redirectTo: '' }
 ];
 
@@ -45,14 +41,14 @@ const routeConfig: Routes = [
     FormsDemoComponent,
     ButtonsDemoComponent,
     TabsDemoComponent,
-    KpiTableDemoComponent,
     DevelopAreaComponent,
     DialogDemoComponent,
     ToasterDemoComponent,
     ProgressDemoComponent,
     DialogDummyComponent,
     PopupDummyComponent,
-    TooltipDemoComponent
+    TooltipDemoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

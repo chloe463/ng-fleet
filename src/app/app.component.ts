@@ -3,7 +3,8 @@ import { IFrNavbarNode, IFrSideNavNodeGroup } from 'francette';
 
 @Component({
   selector: 'fr-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   public navbarNodes: Array<IFrNavbarNode> = [
@@ -25,7 +26,6 @@ export class AppComponent {
     { url: 'tabs', title: 'tabs' },
     { url: 'toaster', title: 'toaster' },
     { url: 'tooltip', title: 'tooltip' },
-    { url: 'kpi-table', title: 'kpi-table' }
   ];
 
   public sideNavNodeGroups: Array<IFrSideNavNodeGroup> = [

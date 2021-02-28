@@ -4,11 +4,15 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'develop-area',
   template: `
-  <h1>Progress demo</h1>
-  <h2>Spinner</h2>
+<div class="container">
+  <h2>Progress demo</h2>
+
+  <h3>Spinner</h3>
   <fr-progress-spinner></fr-progress-spinner>
-  <h2>Bar</h2>
+
+  <h3>Bar</h3>
   <fr-progress-bar></fr-progress-bar>
+</div>
   `
 })
 export class ProgressDemoComponent {

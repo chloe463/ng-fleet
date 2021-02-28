@@ -4,10 +4,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'chips-demo',
   template: `
-    <fr-chip *ngFor="let chip of chips; let i = index" (dismiss)="removeChip(i)">
-      {{chip.label}}
-    </fr-chip>
-    <fr-chip [on]="true">readOnly</fr-chip>
+<div class="container">
+  <h2>Chip component</h2>
+  <fr-chip *ngFor="let chip of chips; let i = index" (dismiss)="removeChip(i)">
+    {{chip.label}}
+  </fr-chip>
+  <fr-chip [on]="true">readOnly</fr-chip>
+</div>
   `
 })
 export class ChipsDemoComponent {

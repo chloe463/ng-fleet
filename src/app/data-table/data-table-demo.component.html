@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Data table</h2>
+  <!-- Table Container -->
+  <fr-data-table
+    [selectable]="dataTableInfo.selectable"
+    [sortable]="dataTableInfo.sortable"
+    (dataTableAction)="dataTableAction($event)">
+
+    <!-- Header component which contains title and action buttons -->
+    <fr-data-table-header [title]="dataTableInfo.title" [actionKeys]="dataTableInfo.actionKeys"></fr-data-table-header>
+
+    <!-- Define columns -->
+    <fr-data-table-columns [columns]="dataTableInfo.columns"></fr-data-table-columns>
+
+    <!-- Set Data rows -->
+    <fr-data-table-rows [rows]="dataTableInfo.rows"></fr-data-table-rows>
+
+    <!-- Footer component which contains pagination info and actions -->
+    <fr-data-table-footer [paginationInfo]="dataTableInfo.paginationInfo" ></fr-data-table-footer>
+  </fr-data-table>
+</div>
