@@ -127,7 +127,7 @@
       "projectType": "library",
       "root": "projects/francette",
       "sourceRoot": "projects/francette/src",
-      "prefix": "lib",
+      "prefix": "fr",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
