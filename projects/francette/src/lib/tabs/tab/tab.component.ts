@@ -46,10 +46,10 @@ export class FrTabComponent implements OnInit {
 
   @HostBinding('class.fr-tab') tab = true;
 
-  @Input() title: string = '';
+  @Input() title = '';
 
-  private _selected: boolean = false;
-  private _state: string = 'inactive';
+  private _selected = false;
+  private _state = 'inactive';
 
   constructor() { }
 
