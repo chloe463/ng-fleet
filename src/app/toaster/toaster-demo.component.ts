@@ -34,7 +34,7 @@ export class ToasterDemoComponent {
       action: 'undo',
       timeout: 2000
     };
-    this.toasterService.open<any>(toasterParam).subscribe(
+    this.toasterService.open(toasterParam).subscribe(
       (v) => {
         console.log(v);
       },

@@ -23,7 +23,7 @@ import { Observable, Observer, timer } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 import { FrToasterParam } from './toaster.types';
 
-export class FrToasterContext<T> implements Observer<T> {
+export class FrToasterContext implements Observer<void> {
   constructor(
     private _onNext: Function,
     private _onError: Function,
@@ -40,12 +40,9 @@ export class FrToasterContext<T> implements Observer<T> {
   get timeout(): number | undefined {
     return this.toasterParam.timeout;
   }
-  get params(): any {
-    return this.toasterParam.params;
-  }
 
-  public next(value?: T) {
-    this._onNext(value);
+  public next() {
+    this._onNext();
   }
 
   public error(reason?: any) {
@@ -72,7 +69,7 @@ export class FrToasterService {
     this.vcr = vcr;
   }
 
-  public pop<T>(toasterParam: FrToasterParam) {
+  public pop(toasterParam: FrToasterParam) {
     const component = FrToasterContentComponent;
     const componentFactory = this.cfr.resolveComponentFactory(component);
 
@@ -98,15 +95,14 @@ export class FrToasterService {
     return componentRef.instance;
   }
 
-  public open<T>(toasterParam: FrToasterParam): Observable<T> {
-    console.warn('FrToasterService.open is DEPRECATED. Use FrToasterService.pop instead.');
-    return new Observable<T>((observer: Observer<T>) => {
+  public open(toasterParam: FrToasterParam): Observable<void> {
+    return new Observable<void>((observer: Observer<void>) => {
       const component = FrToasterContentComponent;
       const componentFactory = this.cfr.resolveComponentFactory(component);
 
-      const _onNext = (value: T) => {
+      const _onNext = () => {
         if (componentRef) {
-          if (observer.next) { observer.next(value); }
+          if (observer.next) { observer.next(); }
           observer.closed = true;
           this.count--;
         }
@@ -234,14 +230,13 @@ export class FrToasterEntryComponent implements AfterViewInit {
     ])
   ]
 })
-export class FrToasterContentComponent<T> implements OnInit, OnDestroy {
+export class FrToasterContentComponent implements OnInit, OnDestroy {
   public text = '';
   public action = '';
   public timeout = 500;
   public closed = false;
   public toasterState = 'void';
-  public onActionObserver: Observer<any>;
-  constructor (@Inject(forwardRef(() => FrToasterContext)) private _context: FrToasterContext<T>) {
+  constructor (@Inject(forwardRef(() => FrToasterContext)) private _context: FrToasterContext) {
     this.text    = this._context.text;
     this.action  = this._context.action || '';
     this.timeout = this._context.timeout || 500;
@@ -250,11 +245,7 @@ export class FrToasterContentComponent<T> implements OnInit, OnDestroy {
   public emitAction(): void {
     this.closed = true;
     this.toasterState = 'void';
-    this._context.next(<any>this.action as T);
-    if (this.onActionObserver) {
-      this.onActionObserver.next(this._context.action);
-      this.onActionObserver.complete();
-    }
+    this._context.next();
   }
 
   ngOnInit() {
@@ -263,14 +254,5 @@ export class FrToasterContentComponent<T> implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this._context.complete();
-    if (this.onActionObserver) {
-      this.onActionObserver.complete();
-    }
-  }
-
-  public onAction<U>(): Observable<U> {
-    return new Observable<U>((observer: Observer<U>) => {
-      this.onActionObserver = observer;
-    });
   }
 }
