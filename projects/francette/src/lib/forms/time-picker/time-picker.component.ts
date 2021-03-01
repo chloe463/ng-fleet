@@ -16,6 +16,7 @@ import {
   NgZone,
   OnInit,
   Output,
+  Provider,
   Renderer2,
   ViewChild
 } from '@angular/core';
@@ -23,7 +24,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export class FrTimePickerChange {
   source: FrTimePickerComponent;
-  value: any;
+  value: Date;
 }
 
 const noop = () => {};
@@ -41,7 +42,7 @@ const DIALS: { [key in DialKey]: number[] } = {
 const HIDDEN = 'hidden';
 const SHOW   = 'show';
 
-export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
+export const TIME_PICKER_CONTROL_VALUE_ACCESSOR: Provider = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => FrTimePickerComponent),
   multi: true
@@ -86,7 +87,7 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
    * For ControlValueAccessor
    */
   private _innerValue: Date = new Date();
-  private _onChangeCallback: (_: any) => void = noop;
+  private _onChangeCallback: (_: Date) => void = noop;
   private _onTouchedCallback: () => void = noop;
   private _isDisabled = false;
 
@@ -102,28 +103,28 @@ export class FrTimePickerComponent implements OnInit, AfterViewInit, ControlValu
     private ngZone: NgZone
   ) { }
 
-  get value(): any {
+  get value(): Date {
     return this._innerValue;
   }
 
-  set value(obj: any) {
+  set value(obj: Date) {
     if (obj !== this._innerValue && obj !== null && obj !== undefined) {
       this._innerValue = obj;
       this._onChangeCallback(obj);
     }
   }
 
-  writeValue(obj: any): void {
+  writeValue(obj: Date): void {
     if (obj !== this._innerValue && obj !== null && obj !== undefined) {
       this._innerValue = obj;
     }
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (v: Date) => void): void {
     this._onChangeCallback = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this._onTouchedCallback = fn;
   }
 
