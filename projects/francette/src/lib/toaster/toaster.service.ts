@@ -13,9 +13,9 @@ import {
   forwardRef,
   Inject,
   Injectable,
+  Injector,
   OnDestroy,
   OnInit,
-  ReflectiveInjector,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -77,11 +77,11 @@ export class FrToasterService {
     const componentFactory = this.cfr.resolveComponentFactory(component);
 
     const noop = () => {};
-    const bindings = ReflectiveInjector.resolve([
-      { provide: FrToasterContext, useValue: new FrToasterContext(noop, noop, noop, toasterParam) }
-    ]);
-    const contextInjector = this.vcr.parentInjector;
-    const injector = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);
+    const injector = Injector.create({
+      providers: [
+        { provide: FrToasterContext, useValue: new FrToasterContext(noop, noop, noop, toasterParam) }
+      ]
+    });
 
     const componentRef = this.vcr.createComponent(componentFactory, this.vcr.length, injector);
     this.vcr.element.nativeElement.appendChild(componentRef.location.nativeElement);
@@ -125,11 +125,11 @@ export class FrToasterService {
           this.count--;
         }
       };
-      const bindings = ReflectiveInjector.resolve([
-        { provide: FrToasterContext, useValue: new FrToasterContext(_onNext, _onError, _onComplete, toasterParam) }
-      ]);
-      const contextInjector = this.vcr.parentInjector;
-      const injector        = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);
+      const injector = Injector.create({
+        providers: [
+          { provide: FrToasterContext, useValue: new FrToasterContext(_onNext, _onError, _onComplete, toasterParam) }
+        ]
+      });
 
       const componentRef = this.vcr.createComponent(componentFactory, this.vcr.length, injector);
       this.vcr.element.nativeElement.appendChild(componentRef.location.nativeElement);
