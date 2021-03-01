@@ -1,26 +1,25 @@
 import {
+  animate,
+  AnimationEvent,
+  state,
+  style,
+  transition, trigger
+} from '@angular/animations';
+import {
+  AfterViewInit,
   Component,
   ComponentFactoryResolver,
   Directive,
+  forwardRef,
   Inject,
   Injectable,
-  ViewChild,
-  ViewContainerRef,
-  forwardRef,
+  Injector,
   OnInit,
-  AfterViewInit,
-  ReflectiveInjector
+  ViewChild,
+  ViewContainerRef
 } from '@angular/core';
-import {
-  AnimationEvent,
-  animate,
-  trigger,
-  style,
-  state,
-  transition
-} from '@angular/animations';
-import { FrNotificationType, FrNotificationParam } from './notification.types';
 import { Observable, Observer } from 'rxjs';
+import { FrNotificationParam, FrNotificationType } from './notification.types';
 
 export class FrNotificationContext<T> implements Observer<T> {
   constructor(
@@ -102,11 +101,11 @@ export class FrNotificationService {
           componentRef.destroy();
         }
       };
-      const bindings = ReflectiveInjector.resolve([
-        { provide: FrNotificationContext, useValue: new FrNotificationContext(_onNext, _onError, _onComplete, notificationParam) }
-      ]);
-      const contextInjector = this.vcr.parentInjector;
-      const injector        = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);
+      const injector = Injector.create({
+        providers: [
+          { provide: FrNotificationContext, useValue: new FrNotificationContext(_onNext, _onError, _onComplete, notificationParam) }
+        ],
+      });
 
       const componentRef = this.vcr.createComponent(componentFactory, this.vcr.length, injector);
       this.vcr.element.nativeElement.appendChild(componentRef.location.nativeElement);
