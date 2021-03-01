@@ -2,7 +2,7 @@ import {
   ComponentFactoryResolver,
   ComponentRef,
   Injectable,
-  ReflectiveInjector,
+  Injector,
   Type,
   ViewContainerRef
 } from '@angular/core';
@@ -49,11 +49,11 @@ export class FrDialogService {
     const componentFactory = this.cfr.resolveComponentFactory(component);
 
     const noop = () => {};
-    const bindings = ReflectiveInjector.resolve([
-      { provide: FrDialogContext, useValue: new FrDialogContext<T>(noop, noop, noop, extraParams) }
-    ]);
-    const contextInjector = this.vcr.parentInjector;
-    const injector        = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);
+    const injector = Injector.create({
+      providers: [
+        { provide: FrDialogContext, useValue: new FrDialogContext<T>(noop, noop, noop, extraParams) }
+      ]
+    });
 
     const componentRef = this.vcr.createComponent(componentFactory, this.vcr.length, injector);
     this.vcr.element.nativeElement.appendChild(componentRef.location.nativeElement);
@@ -86,11 +86,11 @@ export class FrDialogService {
           this.close(componentRef);
         }
       };
-      const bindings = ReflectiveInjector.resolve([
-        { provide: FrDialogContext, useValue: new FrDialogContext<T>(_onNext, _onError, _onComplete, extraParams) }
-      ]);
-      const contextInjector = this.vcr.parentInjector;
-      const injector        = ReflectiveInjector.fromResolvedProviders(bindings, contextInjector);
+      const injector = Injector.create({
+        providers: [
+          { provide: FrDialogContext, useValue: new FrDialogContext<T>(_onNext, _onError, _onComplete, extraParams) }
+        ],
+      });
 
       const componentRef = this.vcr.createComponent(componentFactory, this.vcr.length, injector);
       this.vcr.element.nativeElement.appendChild(componentRef.location.nativeElement);

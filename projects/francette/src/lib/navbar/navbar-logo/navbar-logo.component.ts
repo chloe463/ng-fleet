@@ -13,6 +13,6 @@ export class FrNavbarLogoComponent {
   }
 
   get url(): string {
-    return this.logo.url || "";
+    return this.logo.url || '';
   }
 }
