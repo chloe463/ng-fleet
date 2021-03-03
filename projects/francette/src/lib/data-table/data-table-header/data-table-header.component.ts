@@ -1,15 +1,14 @@
 import {
   Component,
+  EventEmitter,
   Input,
-  Output,
-  EventEmitter
+  Output
 } from '@angular/core';
 import { FrDataTableEvent } from '../data-table/data-table.component';
 
 export interface FrDataTableActionKey {
   key: string;
   label: string;
-  extraParams?: any;
 }
 
 @Component({
@@ -21,8 +20,7 @@ export class FrDataTableHeaderComponent {
   @Output() updateAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
   @Output() otherAction:  EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
-  private _title: string;
-  private _otherActionKeys: Array<FrDataTableActionKey> = [];
+  private _title?: string;
 
   @Input()
   set title(title) {
@@ -30,16 +28,7 @@ export class FrDataTableHeaderComponent {
   }
 
   get title(): string {
-    return this._title;
-  }
-
-  @Input()
-  set otherActionKeys(otherActionKeys) {
-    this._otherActionKeys = otherActionKeys;
-  }
-
-  get otherActionKeys(): Array<FrDataTableActionKey> {
-    return this._otherActionKeys;
+    return this._title || "";
   }
 
   private _actionKeys: Array<FrDataTableActionKey> = [];
@@ -49,9 +38,6 @@ export class FrDataTableHeaderComponent {
   }
 
   get actionKeys(): Array<FrDataTableActionKey> {
-    if (this._otherActionKeys.length) {
-      return this._otherActionKeys;
-    }
     return this._actionKeys;
   }
 
