@@ -21,7 +21,7 @@ import {
 import { Observable, Observer } from 'rxjs';
 import { FrNotificationParam, FrNotificationType } from './notification.types';
 
-export class FrNotificationContext<T> implements Observer<T> {
+export class FrNotificationContext implements Observer<void> {
   constructor(
     private _onNext: Function,
     private _onError: Function,
@@ -38,12 +38,9 @@ export class FrNotificationContext<T> implements Observer<T> {
   get timeout(): number {
     return this.notificationParam.timeout;
   }
-  get extraParam(): any {
-    return this.notificationParam.extraParams;
-  }
 
-  public next(value?: T) {
-    this._onNext(value);
+  public next() {
+    this._onNext();
   }
 
   public error(reason?: any) {
@@ -70,14 +67,14 @@ export class FrNotificationService {
     this.vcr = vcr;
   }
 
-  public open<T>(notificationParam: FrNotificationParam): Observable<T> {
-    return new Observable<T>((observer: Observer<T>) => {
+  public open(notificationParam: FrNotificationParam): Observable<void> {
+    return new Observable<void>((observer: Observer<void>) => {
       const component = FrNotificationContentComponent;
       const componentFactory = this.cfr.resolveComponentFactory(component);
 
-      const _onNext = (value: T) => {
+      const _onNext = () => {
         if (componentRef) {
-          if (observer.next) { observer.next(value); }
+          if (observer.next) { observer.next(); }
           if (observer.complete) { observer.complete(); }
           observer.closed = true;
           this.count--;
@@ -237,7 +234,7 @@ export class FrNotificationContentComponent implements OnInit {
 
   public notificationState = 'void';
   public notificationType: any;
-  constructor (@Inject(forwardRef(() => FrNotificationContext)) private _context: FrNotificationContext<string|number>) {
+  constructor (@Inject(forwardRef(() => FrNotificationContext)) private _context: FrNotificationContext) {
     this.text    = this._context.text;
     this.timeout = this._context.timeout;
     this.notificationType = 'fr-notification--' + this._context.type;

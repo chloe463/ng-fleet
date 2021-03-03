@@ -5,6 +5,14 @@ import {
 import { FrDialogContext, FrDialogService } from 'francette';
 import { Observer } from 'rxjs';
 
+type DialogPositiveResult = {
+  message: 'ok',
+  text: string,
+};
+type DialogExtraParam = {
+  title: string,
+};
+
 /* tslint:disable component-selector */
 @Component({
     selector: 'dialog-demo',
@@ -24,7 +32,7 @@ export class DialogDemoComponent {
   constructor (private dialogService: FrDialogService) {}
 
   public showDialog(): void {
-    const dialogObserver: Observer<any> = {
+    const dialogObserver: Observer<DialogPositiveResult> = {
       next:     val    => {
         this.result = JSON.stringify(val);
         console.log('onNext: ', val);
@@ -33,12 +41,14 @@ export class DialogDemoComponent {
       complete: ()     => console.log('onComplete')
     };
     const extraParams = { title: 'Hi! I\'m a dialog!' };
-    (this.dialogService as FrDialogService).open<any>(DialogDummyComponent, extraParams).subscribe(dialogObserver);
+    this.dialogService
+      .open<DialogPositiveResult, DialogExtraParam>(DialogDummyComponent, extraParams)
+      .subscribe(dialogObserver);
   }
 
   public popDialog(): void {
     const extraParams = { title: 'Hi! I\'m a dialog!' };
-    this.dialogService.pop<any>(PopupDummyComponent, extraParams);
+    this.dialogService.pop<DialogPositiveResult, DialogExtraParam>(PopupDummyComponent, extraParams);
   }
 
   public dialogAction(event: Readonly<Event>): void {
@@ -84,13 +94,13 @@ export class DialogDemoComponent {
   `
 })
 export class DialogDummyComponent implements OnInit {
-  constructor (private dialogContext: FrDialogContext<any>) {}
+  constructor (private dialogContext: FrDialogContext<DialogPositiveResult, DialogExtraParam>) {}
 
   public text = '';
   public title = '';
 
   ngOnInit() {
-    this.title = this.dialogContext.params.title;
+    this.title = this.dialogContext.params?.title || "";
   }
 
   ok(): void {

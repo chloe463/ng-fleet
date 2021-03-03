@@ -17,7 +17,7 @@ export class FrTooltipDirective implements OnInit {
   private _message = '';
   private _position = 'top';
 
-  private tooltip: any;
+  private tooltip: HTMLSpanElement = document.createElement('span');
 
   constructor(private _el: ElementRef) {}
 

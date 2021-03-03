@@ -8,5 +8,4 @@ export interface FrNotificationParam {
   text: string;
   type?: FrNotificationType;
   timeout: number;
-  extraParams?: any;
 }

@@ -34,7 +34,7 @@ export class ToasterDemoComponent {
       action: 'undo',
       timeout: 2000
     };
-    this.toasterService.open<any>(toasterParam).subscribe(
+    this.toasterService.open(toasterParam).subscribe(
       (v) => {
         console.log(v);
       },
@@ -50,9 +50,8 @@ export class ToasterDemoComponent {
       text: 'Hi! I\'m a notification!',
       type: this.notificationLevel,
       timeout: 3000,
-      extraParams: { message: 'message' }
     };
-    this.notificationService.open<any>(notificationParam).subscribe(
+    this.notificationService.open(notificationParam).subscribe(
       (v) => {
         console.log(v);
       },
@@ -68,9 +67,8 @@ export class ToasterDemoComponent {
       text: 'Hi! I\'m a notification!',
       type: type,
       timeout: 3000,
-      extraParams: { message: 'message' }
     };
-    this.notificationService.open<any>(notificationParam).subscribe(
+    this.notificationService.open(notificationParam).subscribe(
       (v) => {
         console.log(v);
       },

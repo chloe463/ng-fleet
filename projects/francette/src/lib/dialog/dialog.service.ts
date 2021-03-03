@@ -8,16 +8,16 @@ import {
 } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 
-export class FrDialogContext<T> implements Observer<T> {
+export class FrDialogContext<T, P = any> implements Observer<T> {
 
   constructor(
     private _onNext: Function,
     private _onError: Function,
     private _onComplete: Function,
-    public  params?: any
+    public  params?: P,
   ) { }
 
-  public next(val?: any): void {
+  public next(val?: T): void {
     this._onNext(val);
   }
 
@@ -29,6 +29,8 @@ export class FrDialogContext<T> implements Observer<T> {
     this._onComplete();
   }
 }
+
+export type FrDialogComponent<T = any> = new (context: FrDialogContext<T>) => any;
 
 @Injectable()
 export class FrDialogService {
@@ -45,7 +47,7 @@ export class FrDialogService {
     this.vcr = vcr;
   }
 
-  public pop<T>(component: Type<T>, extraParams?: any) {
+  public pop<T, P = any>(component: Type<any>, extraParams?: P) {
     const componentFactory = this.cfr.resolveComponentFactory(component);
 
     const noop = () => {};
@@ -60,7 +62,7 @@ export class FrDialogService {
     this.dialogStack.push(componentRef);
   }
 
-  public open<T>(component: Type<T>, extraParams?: any): Observable<T> {
+  public open<T, P = any>(component: FrDialogComponent, extraParams?: P): Observable<T> {
     return new Observable<T>((observer: Observer<T>) => {
       const componentFactory = this.cfr.resolveComponentFactory(component);
 
@@ -88,7 +90,7 @@ export class FrDialogService {
       };
       const injector = Injector.create({
         providers: [
-          { provide: FrDialogContext, useValue: new FrDialogContext<T>(_onNext, _onError, _onComplete, extraParams) }
+          { provide: FrDialogContext, useValue: new FrDialogContext<T, P>(_onNext, _onError, _onComplete, extraParams) }
         ],
       });
 
