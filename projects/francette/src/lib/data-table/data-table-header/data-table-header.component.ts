@@ -28,7 +28,7 @@ export class FrDataTableHeaderComponent {
   }
 
   get title(): string {
-    return this._title || "";
+    return this._title || '';
   }
 
   private _actionKeys: Array<FrDataTableActionKey> = [];

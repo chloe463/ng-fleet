@@ -30,9 +30,7 @@ export class FrDialogContext<T, P = any> implements Observer<T> {
   }
 }
 
-export interface FrDialogComponent<T = any> extends Function {
-  new (context: FrDialogContext<T>): any;
-}
+export type FrDialogComponent<T = any> = new (context: FrDialogContext<T>) => any;
 
 @Injectable()
 export class FrDialogService {
