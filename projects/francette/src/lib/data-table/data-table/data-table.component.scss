@@ -35,6 +35,15 @@
 
   &-buttons {
     // margin-left: auto;
+    display: flex;
+    align-items: center;
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &-dots-btn-wrapper {
+    position: relative;
   }
 
   &-btn {
@@ -404,28 +413,4 @@
   top: 0;
   left: 0;
   overflow: hidden;
-}
-.fr-data-table__btn-ripple {
-  position: absolute;
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  background: #CCCCCC;
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-  animation-name: button-ripple;
-  animation-duration:  0.3s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes button-ripple {
-  from {
-    transform: scale(0.2);
-    opacity: 1;
-  }
-  to {
-    transform: scale(1);
-    opacity: 0;
-  }
 }
