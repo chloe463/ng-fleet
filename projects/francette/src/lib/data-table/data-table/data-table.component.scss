@@ -122,14 +122,31 @@
 .fr-data-table__footer {
   height: 56px;
   padding-right: 12px;
-  font-size: 12px;
   color: rgba(0,0,0,.56);
   display: flex;
   justify-content: flex-end;
   align-items: center;
 
+  &-page {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: rgba(0,0,0, .56);
+  }
+
+  &-page-value {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgba(0,0,0, .56);
+  }
+
   &-select-label {
     padding-left: 32px;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: rgba(0,0,0, .56);
   }
 
   &-select-wrapper {
@@ -142,6 +159,10 @@
   &-rows {
     width: 40px;
     text-align: right;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    color: rgba(0,0,0, .56);
   }
   &-select-arrow {
     margin: 0 10px;
@@ -154,7 +175,8 @@
   &-select {
     position: absolute;
     background: $white;
-    top: -10px;
+    top: 8px;
+    right: 16px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -165,11 +187,11 @@
     width: 64px;
   }
   &-select-value {
-    line-height: 18px;
-    padding: 5px 18px;
+    line-height: 24px;
+    padding: 4px 18px;
     cursor: pointer;
     text-align: right;
-    font-size: 10pt;
+    font-size: 12pt;
   }
   &-select-value:hover {
     background: lighten($light-gray, 15%);
@@ -178,6 +200,30 @@
     background: lighten($light-gray, 20%);
     color: $primary;
   }
+
+  &-arrow {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 24px;
+    appearance: none;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    padding: 12px;
+    box-sizing: content-box;
+    background-color: transparent;
+    transition: all 0.2s cubic-bezier(.3,.3,.3,1);
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+    &:focus, &:active {
+      background-color: rgba(0, 0, 0, 0.06);
+    }
+  }
+
   &-left-arrow {
     position: relative;
     margin-left: 32px;
@@ -341,8 +387,8 @@
   display: inline-block;
   width: 50px;
   height: 50px;
-  top: -19px;
-  left: -18px;
+  top: 0;
+  left: 0;
 }
 .fr-data-table__btn-ripple {
   position: absolute;
