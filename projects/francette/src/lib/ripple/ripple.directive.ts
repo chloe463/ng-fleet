@@ -6,12 +6,14 @@ import {
   Input
 } from '@angular/core';
 
+const DEFAULT_RIPPLE_COLOR = 'rgba(255, 255, 255, 0.8)';
+
 @Directive({
   selector: '[frRipple]'
 })
 export class FrRippleDirective {
 
-  @Input() rippleColor: string;
+  @Input() rippleColor = DEFAULT_RIPPLE_COLOR;
 
   @HostBinding('class.fr-ripple') private ripple = true;
 
@@ -33,11 +35,11 @@ export class FrRippleDirective {
     const left = event.pageX - rect.left - window.pageXOffset - (rippleRadius / 2);
 
     const ripple = document.createElement('div');
-    ripple.style.setProperty('background', this.rippleColor || 'white');
+    ripple.style.setProperty('background', this.rippleColor);
     ripple.style.setProperty('height', `${rippleRadius}px`);
-    ripple.style.setProperty('width',  `${rippleRadius}px`);
-    ripple.style.setProperty('top',    `${top}px`);
-    ripple.style.setProperty('left',   `${left}px`);
+    ripple.style.setProperty('width', `${rippleRadius}px`);
+    ripple.style.setProperty('top', `${top}px`);
+    ripple.style.setProperty('left', `${left}px`);
     ripple.classList.add('fr-ripple-effect');
     element.appendChild(ripple);
 
