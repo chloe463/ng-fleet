@@ -295,11 +295,20 @@
       font-size: 12px;
       font-weight: 100;
     }
-    &-checkbox {
+    &-checkbox-cell {
+      padding: 0;
       padding-left: 24px;
       width: 18px;
     }
+    &-checkbox-wrapper {
+      display: grid;
+      place-items: center;
+      padding: 18px 0;
+    }
     &-column {
+      font-size: 12px;
+      line-height: 24px;
+      font-weight: 400;
       &--sortable {
         cursor: pointer;
       }

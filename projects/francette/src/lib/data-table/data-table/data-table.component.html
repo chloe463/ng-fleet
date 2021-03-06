@@ -62,8 +62,10 @@
     <colgroup *ngFor="let column of columns" class="fr-data-table__column"></colgroup>
     <thead class="fr-data-table__thead" *ngIf="columnsComponent">
       <tr class="fr-data-table__thead-row">
-        <td class="fr-data-table__thead-checkbox" [hidden]="!selectable">
-          <fr-checkbox [(ngModel)]="checkAllFlag" [indeterminate]="isPartialSelect()" (change)="checkAll()"></fr-checkbox>
+        <td class="fr-data-table__thead-checkbox-cell" [hidden]="!selectable">
+          <div class="fr-data-table__thead-checkbox-wrapper">
+            <fr-checkbox [(ngModel)]="checkAllFlag" [indeterminate]="isPartialSelect()" (change)="checkAll()"></fr-checkbox>
+          </div>
         </td>
         <th *ngFor="let column of columns; let i = index"
           class="fr-data-table__thead-column"
