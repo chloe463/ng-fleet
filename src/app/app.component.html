@@ -1,0 +1,11 @@
+<fr-navbar>
+  <fr-navbar-logo [logo]="{title: 'Francette', url: '/'}"></fr-navbar-logo>
+  <fr-navbar-item *ngFor="let node of navbarNodes" [node]="node"></fr-navbar-item>
+  <fr-side-nav>
+    <fr-side-nav-item-group *ngFor="let group of sideNavNodeGroups" [group]="group">
+      <fr-side-nav-item *ngFor="let node of group.nodes" [node]="node"></fr-side-nav-item>
+    </fr-side-nav-item-group>
+  </fr-side-nav>
+</fr-navbar>
+
+<router-outlet></router-outlet>

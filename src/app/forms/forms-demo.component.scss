@@ -1,0 +1,20 @@
+.form-elements {
+  display: flex;
+  flex-direction: column;
+}
+.form-element {
+  height: 72px;
+  & + & {
+    margin-top: 24px;
+  }
+
+  &--responsive {
+    @media screen and (max-width: 768px) {
+      height: 196px;
+    }
+  }
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
