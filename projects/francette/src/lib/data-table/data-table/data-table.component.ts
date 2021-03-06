@@ -283,13 +283,12 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
     } else {
       observable = this.activateRippleEffect(direction);
     }
-    observable.subscribe(() => {
-      const checkedRows = this._filterCheckedRows();
-      const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
-      if (this.dataTableAction) {
-        this.dataTableAction.emit(event);
-      }
-    });
+    observable.subscribe(() => {});
+    const checkedRows = this._filterCheckedRows();
+    const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
+    if (this.dataTableAction) {
+      this.dataTableAction.emit(event);
+    }
   }
 
   public toggleOtherActionList(): void {
