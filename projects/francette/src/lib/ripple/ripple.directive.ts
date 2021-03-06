@@ -33,8 +33,8 @@ export class FrRippleDirective {
 
     const rect = element.getBoundingClientRect();
 
-    let top = event.offsetY - (rippleRadius / 2);
-    let left = event.offsetX - (rippleRadius / 2);
+    let top  = event.pageY - rect.top  - window.pageYOffset - (rippleRadius / 2);
+    let left = event.pageX - rect.left - window.pageXOffset - (rippleRadius / 2);
     if (this.ripplePosition === 'center') {
       top = (rect.height - rippleRadius) / 2;
       left = (rect.width - rippleRadius) / 2;
