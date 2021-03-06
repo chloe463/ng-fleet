@@ -5,7 +5,10 @@
         {{title}}
       </h2>
     </div>
-    <div class="fr-data-table__header-buttons" [hidden]="!countCheckedRows()">
+    <div
+      class="fr-data-table__header-buttons"
+      [ngClass]="{'fr-data-table__header-buttons--hidden': !shouldDisplayHeaderButtons()}"
+    >
       <button class="fr-data-table__header-btn" (click)="updateRowAction('edit')">
         <!-- pencil -->
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
@@ -15,9 +18,7 @@
           <path d="M -10.5 -25.86 L -7 -21 L -14 -21 L -10.5 -25.86 Z" transform="matrix(-1, 0, 0, -1, 0, 0)" style="fill: rgba(0, 0, 0, 0.560784);" bx:shape="triangle -14 -25.86 7 4.86 0.5 0 1@8bac0b8a"/>
           </g>
         </svg>
-        <span class="fr-data-table__header-ripple-container">
-          <span [class.fr-data-table__btn-ripple]="ripples.edit"></span>
-        </span>
+        <span class="fr-data-table__header-ripple-container" frRipple ripplePosition="center"></span>
       </button>
       <button class="fr-data-table__header-btn" (click)="updateRowAction('delete')">
         <!-- trash -->
@@ -32,30 +33,35 @@
           <rect x="8.211" width="1" height="13" rx="0.337" ry="0.337" style="fill: rgb(255, 255, 255);" y="2.242"/>
           </g>
         </svg>
-        <span class="fr-data-table__header-ripple-container">
-          <span [class.fr-data-table__btn-ripple]="ripples.delete"></span>
-        </span>
+        <span class="fr-data-table__header-ripple-container" frRipple ripplePosition="center"></span>
       </button>
-      <button class="fr-data-table__header-btn" [hidden]="!headerComponent.actionKeys.length" #dots (click)="toggleOtherActionList()">
-        <!-- dots -->
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="12" cy="5" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
-          <ellipse cx="12" cy="12" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
-          <ellipse cx="12" cy="19" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
-        </svg>
-        <span class="fr-data-table__header-ripple-container">
-          <span [class.fr-data-table__btn-ripple]="ripples.dots"></span>
-        </span>
+      <div class="fr-data-table__header-dots-btn-wrapper">
+        <button
+          class="fr-data-table__header-btn"
+          [hidden]="!headerComponent.actionKeys.length"
+          #dots
+          frRipple
+          ripplePosition="center"
+          (click)="toggleOtherActionList()"
+        >
+          <!-- dots -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="12" cy="5" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
+            <ellipse cx="12" cy="12" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
+            <ellipse cx="12" cy="19" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
+          </svg>
+          <span class="fr-data-table__header-ripple-container" frRipple ripplePosition="center"></span>
+        </button>
         <!-- menu -->
         <ul class="fr-data-table__other-action-list" [@actionListState]="actionListState">
           <li *ngFor="let action of headerComponent.actionKeys; let i = index"
             class="fr-data-table__other-action-item"
-            frRipple [rippleColor]="'#CCCCCC'"
+            frRipple
             (click)="otherAction(action.key, $event)">
             {{action.label}}
           </li>
         </ul>
-      </button>
+      </div>
     </div>
   </header>
   <table class="fr-data-table">
@@ -136,25 +142,29 @@
       </ul>
       <span class="fr-data-table__footer-select-arrow"></span>
     </div>
-    <button class="fr-data-table__footer-arrow fr-data-table__footer-arrow--left" (click)="paginationAction('showPreviousPage')">
+    <button
+      class="fr-data-table__footer-arrow fr-data-table__footer-arrow--left"
+      frRipple
+      ripplePosition="center"
+      (click)="paginationAction('showPreviousPage')"
+    >
       <!-- chevron left -->
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="12px" height="12px">
         <path d="M 17.719 2.5 L 8 12.051 L 17.672 21.534" style="fill: none; stroke: rgba(0, 0, 0, 0.560784); stroke-width: 5;"/>
         <path d="M 24.407 18.581 C 24.407 18.581 24.407 18.581 24.407 18.581 Z" style="fill: none; stroke: black;"/>
       </svg>
-      <span class="fr-data-table__footer-ripple-container">
-        <span [class.fr-data-table__btn-ripple]="ripples.chevronLeft"></span>
-      </span>
     </button>
-    <button class="fr-data-table__footer-arrow fr-data-table__footer-arrow--right" (click)="paginationAction('showNextPage')">
+    <button
+      class="fr-data-table__footer-arrow fr-data-table__footer-arrow--right"
+      frRipple
+      ripplePosition="center"
+      (click)="paginationAction('showNextPage')"
+    >
       <!-- chevron right -->
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="12px" height="12px">
         <path d="M 17.719 21.534 L 8 11.983 L 17.672 2.5" style="fill: none; stroke: rgba(0, 0, 0, 0.560784); stroke-width: 5;" transform="matrix(-1, 0, 0, -1, 25.719, 24.034)"/>
         <path d="M 24.407 18.581 C 24.407 18.581 24.407 18.581 24.407 18.581 Z" style="fill: none; stroke: black;"/>
       </svg>
-      <span class="fr-data-table__footer-ripple-container">
-        <span [class.fr-data-table__btn-ripple]="ripples.chevronRight"></span>
-      </span>
     </button>
   </footer>
 </div>
