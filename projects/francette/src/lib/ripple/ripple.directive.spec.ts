@@ -22,15 +22,15 @@ describe('FrRippleDirective', () => {
       clientHeight: 100,
       getBoundingClientRect: () => ({ top: 50, left: 50 }),
       appendChild: (el: HTMLElement) => {
-        expect(el.style.background).toBe('white');
+        expect(el.style.background).toBe('rgba(255, 255, 255, 0.8)');
         expect(el.style.height).toBe('100px');
         expect(el.style.width).toBe('100px');
-        expect(el.style.top).toBe('-100px');
-        expect(el.style.left).toBe('-100px');
+        expect(el.style.top).toBe('0px');
+        expect(el.style.left).toBe('0px');
       },
       removeChild: (el: HTMLLIElement) => {}
     };
     const directive = new FrRippleDirective(new MockElementRef(mockElement));
-    directive.onClick(new MouseEvent('mousedown'));
+    directive.onClick(new MouseEvent('mousedown', { clientX: 50, clientY: 50 }));
   });
 });
