@@ -1,3 +1,32 @@
+## [0.0.1](https://github.com/chloe463/francette/compare/v0.20.0-alpha.0...v0.0.1) (2021-03-06)
+
+
+### Bug Fixes
+
+* **data-table:** Fix max-line-length error ([884e89c](https://github.com/chloe463/francette/commit/884e89c790db423665e8a75530605682563521a1))
+* **data-table-header:** Delete unused param ([8ce71e7](https://github.com/chloe463/francette/commit/8ce71e7cf11d7322407322ea2d977f53bd5400c1))
+* **dialog:** Delete any ([605ef75](https://github.com/chloe463/francette/commit/605ef75136dc2bfe0e5bbe0618dedb2143daf55a))
+* **dialog:** Fix deprecation warnings ([b02a758](https://github.com/chloe463/francette/commit/b02a7586c3d4b61b2679a45fbc8d2b140b91aeaa))
+* **dialog:** Fix semicolon error ([593d7c5](https://github.com/chloe463/francette/commit/593d7c57249d49d1d1739685af113cec614abf9b))
+* **navbar:** Fix quotemark error ([1269961](https://github.com/chloe463/francette/commit/1269961b49edbaf4b96c61e721ab9f98a09e8a0d))
+* **notification:** Fix deprecation warnings ([7693d38](https://github.com/chloe463/francette/commit/7693d384be1ba40fb093249e8103aeb8eab0e609))
+* **tab:** Fix no-inferrable-types error ([6484faf](https://github.com/chloe463/francette/commit/6484faf7f8a5b69def5e98834c179df52f4f49d4))
+* **toaster:** Fix deprecation warnings ([8f2c278](https://github.com/chloe463/francette/commit/8f2c278f300164d256b6b0a4fa4ab4e41dfc8738))
+* **tooltip:** Delete any ([281e4b5](https://github.com/chloe463/francette/commit/281e4b552d8bf17bc787c1a6bfccf2e1662536b4))
+
+
+### Bug Fixes
+
+* **francette:** Delete wasted export statements from publid-api ([c457351](https://github.com/chloe463/francette/commit/c4573514d2235a6e2c24c41568e57c394f1637a8))
+* **FrancetteModule:** Delete FrancetteComponent from declarations ([e19717c](https://github.com/chloe463/francette/commit/e19717c452e25410419148797a2138eed0785a6e))
+
+
+### Reverts
+
+* Revert "ci: Run yarn install only if cache is not found" ([3e68b5c](https://github.com/chloe463/francette/commit/3e68b5c26ee0b1b56f079c24986bc054ce18c76b))
+
+
+
 # [0.13.0-alpha.1](https://github.com/chloe463/francette/compare/v0.13.0-alpha.0...v0.13.0-alpha.1) (2020-07-23)
 
 
