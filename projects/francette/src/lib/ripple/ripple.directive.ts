@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 const DEFAULT_RIPPLE_COLOR = 'rgba(255, 255, 255, 0.8)';
+export type RipplePosition = 'onPointer' | 'center';
 
 @Directive({
   selector: '[frRipple]'
@@ -14,6 +15,7 @@ const DEFAULT_RIPPLE_COLOR = 'rgba(255, 255, 255, 0.8)';
 export class FrRippleDirective {
 
   @Input() rippleColor = DEFAULT_RIPPLE_COLOR;
+  @Input() ripplePosition: RipplePosition = 'onPointer';
 
   @HostBinding('class.fr-ripple') private ripple = true;
 
@@ -22,7 +24,7 @@ export class FrRippleDirective {
 
   @HostListener('mousedown', ['$event'])
   public onClick(event: MouseEvent) {
-    const element = this._el.nativeElement;
+    const element: HTMLElement = this._el.nativeElement;
 
     let rippleRadius = Math.max(element.clientWidth, element.clientHeight);
     if (element.clientHeight * 10 < element.clientWidth) {
@@ -31,8 +33,12 @@ export class FrRippleDirective {
 
     const rect = element.getBoundingClientRect();
 
-    const top  = event.pageY - rect.top  - window.pageYOffset - (rippleRadius / 2);
-    const left = event.pageX - rect.left - window.pageXOffset - (rippleRadius / 2);
+    let top = event.offsetY - (rippleRadius / 2);
+    let left = event.offsetX - (rippleRadius / 2);
+    if (this.ripplePosition === 'center') {
+      top = (rect.height - rippleRadius) / 2;
+      left = (rect.width - rippleRadius) / 2;
+    }
 
     const ripple = document.createElement('div');
     ripple.style.setProperty('background', this.rippleColor);
