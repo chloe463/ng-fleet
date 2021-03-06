@@ -93,8 +93,10 @@
     <tbody class="fr-data-table__tbody" *ngIf="rowsComponent">
       <tr *ngFor="let row of rows; let ri = index"
            class="fr-data-table__tbody-row">
-        <td class="fr-data-table__tbody-checkbox" [hidden]="!selectable">
-          <fr-checkbox [(ngModel)]="checkedRowIndices[ri]"></fr-checkbox>
+        <td class="fr-data-table__tbody-checkbox-cell" [hidden]="!selectable">
+          <div class="fr-data-table__tbody-checkbox-wrapper">
+            <fr-checkbox [(ngModel)]="checkedRowIndices[ri]"></fr-checkbox>
+          </div>
         </td>
         <td *ngFor="let column of columns; let ci = index"
            class="fr-data-table__tbody-cell"
