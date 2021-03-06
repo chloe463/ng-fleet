@@ -20,7 +20,7 @@ import {
   Renderer2,
   ViewChild
 } from '@angular/core';
-import { Observable, of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { FrDataTableColumnsComponent } from '../data-table-columns/data-table-columns.component';
 import { FrDataTableFooterComponent, IFrPaginationInfo } from '../data-table-footer/data-table-footer.component';
 import { FrDataTableHeaderComponent } from '../data-table-header/data-table-header.component';
@@ -32,8 +32,8 @@ export class FrDataTableEvent {
   constructor(
     public action: string,
     public rows: Array<any>,
-    public rowsPerPage: number,
-    public page: number,
+    public rowsPerPage?: number,
+    public page?: number,
     public extraParam?: any
   ) {}
 
@@ -115,31 +115,30 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
 
   @Output() dataTableAction: EventEmitter<FrDataTableEvent> = new EventEmitter<FrDataTableEvent>();
 
-  @ViewChild('dots', { static: false }) dots: ElementRef;
-  @ViewChild('pulldown', { static: false }) pulldown: ElementRef;
+  @ViewChild('dots', { static: false }) dots?: ElementRef;
+  @ViewChild('paginationDropDown', { static: false }) paginationDropDown?: ElementRef;
 
-  @ContentChild(FrDataTableHeaderComponent, { static: true }) headerComponent: FrDataTableHeaderComponent;
-  @ContentChild(FrDataTableColumnsComponent, { static: true }) columnsComponent: FrDataTableColumnsComponent;
-  @ContentChild(FrDataTableRowsComponent, { static: true }) rowsComponent: FrDataTableRowsComponent;
-  @ContentChild(FrDataTableFooterComponent, { static: true }) footerComponent: FrDataTableFooterComponent;
+  @ContentChild(FrDataTableHeaderComponent, { static: true }) headerComponent?: FrDataTableHeaderComponent;
+  @ContentChild(FrDataTableColumnsComponent, { static: true }) columnsComponent?: FrDataTableColumnsComponent;
+  @ContentChild(FrDataTableRowsComponent, { static: true }) rowsComponent?: FrDataTableRowsComponent;
+  @ContentChild(FrDataTableFooterComponent, { static: true }) footerComponent?: FrDataTableFooterComponent;
 
   public title = '';
   public columns: Array<any> = [];
   public rows: Array<any>    = [];
   public sortState = { column: null, order: 'asc' };
 
-  public rowsPerPage: number;
-  public paginationInfo: IFrPaginationInfo;
+  public rowsPerPage?: number;
+  public paginationInfo?: IFrPaginationInfo;
 
   public checkedRowIndices: any;
-  public checkAllFlag: boolean;
+  public checkAllFlag = false;
 
   public actionListState = 'hidden';
   public rowsListState   = 'hidden';
 
-  private _columnsSubscription: Subscription;
-  private _rowsSubsctiption: Subscription;
-  private _timerSubscription: Subscription;
+  private _columnsSubscription?: Subscription;
+  private _rowsSubsctiption?: Subscription;
 
   constructor(
     private renderer: Renderer2,
@@ -162,7 +161,7 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
     }
     if (this.footerComponent) {
       this.paginationInfo = this.footerComponent.paginationInfo;
-      this.rowsPerPage    = this.paginationInfo.rowsPerPage;
+      this.rowsPerPage = this.paginationInfo.rowsPerPage;
     }
   }
 
@@ -241,7 +240,7 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
       'sort',
       this._filterCheckedRows(),
       this.rowsPerPage,
-      this.paginationInfo.page,
+      this.paginationInfo?.page,
       {
         sortParams: { targetColumn, order: this.sortState.order }
       }
@@ -251,7 +250,7 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
 
   public updateRowAction(updateAction: DataTableIcon, changeListState = false): void {
     const checkedRows = this._filterCheckedRows();
-    const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage, this.paginationInfo.page);
+    const event = new FrDataTableEvent(updateAction, checkedRows, this.rowsPerPage, this.paginationInfo?.page);
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
     }
@@ -260,7 +259,7 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
   public otherAction(key: string, $event: Event): void {
     $event.stopPropagation();
     const checkedRows = this._filterCheckedRows();
-    const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage, this.paginationInfo.page);
+    const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage, this.paginationInfo?.page);
     this.actionListState = 'hidden';
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
@@ -269,7 +268,7 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
 
   public paginationAction(action: string, rowsPerPage?: number): void {
     const checkedRows = this._filterCheckedRows();
-    const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo.page);
+    const event = new FrDataTableEvent(action, checkedRows, this.rowsPerPage, this.paginationInfo?.page);
     if (this.dataTableAction) {
       this.dataTableAction.emit(event);
     }
@@ -285,12 +284,12 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
 
   public hideActionListOnClick(): void {
     this.renderer.listen('document', 'click', (event: MouseEvent) => {
-      if (!this.dots.nativeElement.contains(event.target) && this.actionListState !== 'hidden') {
+      if (!this.dots?.nativeElement.contains(event.target) && this.actionListState !== 'hidden') {
         this.ngZone.run(() => {
           this.actionListState = 'hidden';
         });
       }
-      if (!this.pulldown.nativeElement.contains(event.target) && this.rowsListState !== 'hidden') {
+      if (!this.paginationDropDown?.nativeElement.contains(event.target) && this.rowsListState !== 'hidden') {
         this.ngZone.run(() => {
           this.rowsListState = 'hidden';
         });
