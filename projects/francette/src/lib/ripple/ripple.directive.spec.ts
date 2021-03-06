@@ -25,8 +25,8 @@ describe('FrRippleDirective', () => {
         expect(el.style.background).toBe('rgba(255, 255, 255, 0.8)');
         expect(el.style.height).toBe('100px');
         expect(el.style.width).toBe('100px');
-        expect(el.style.top).toBe('-25px');
-        expect(el.style.left).toBe('-25px');
+        expect(el.style.top).toBe('-75px');
+        expect(el.style.left).toBe('-75px');
       },
       removeChild: (el: HTMLLIElement) => {}
     };
