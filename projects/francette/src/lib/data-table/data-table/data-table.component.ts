@@ -264,7 +264,8 @@ export class FrDataTableComponent implements AfterContentInit, OnDestroy {
     this.activateRippleEffect(updateAction).subscribe(() => {});
   }
 
-  public otherAction(key: string): void {
+  public otherAction(key: string, $event: Event): void {
+    $event.stopPropagation();
     const checkedRows = this._filterCheckedRows();
     const event = new FrDataTableEvent(key, checkedRows, this.rowsPerPage, this.paginationInfo.page);
     this.actionListState = 'hidden';

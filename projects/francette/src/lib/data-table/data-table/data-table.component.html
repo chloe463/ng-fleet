@@ -1,11 +1,12 @@
 <div class="fr-data-table__wrapper">
-  <div class="fr-data-table__header" *ngIf="headerComponent">
-    <span class="fr-data-table__header-title">
-      {{title}}
-    </span>
-    <span class="fr-data-table__header-buttons"
-      [hidden]="!countCheckedRows()">
-      <a class="fr-data-table__header-btn" (click)="updateRowAction('edit')">
+  <header class="fr-data-table__header" *ngIf="headerComponent">
+    <div class="fr-data-table__header-title-wrapper">
+      <h2 class="fr-data-table__header-title">
+        {{title}}
+      </h2>
+    </div>
+    <div class="fr-data-table__header-buttons" [hidden]="!countCheckedRows()">
+      <button class="fr-data-table__header-btn" (click)="updateRowAction('edit')">
         <span class="fr-data-table__icon">
           <!-- pencil -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
@@ -19,8 +20,8 @@
             <span [class.fr-data-table__btn-ripple]="ripples.edit"></span>
           </span>
         </span>
-      </a>
-      <a class="fr-data-table__header-btn" (click)="updateRowAction('delete')">
+      </button>
+      <button class="fr-data-table__header-btn" (click)="updateRowAction('delete')">
         <span class="fr-data-table__icon">
           <!-- trash -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -38,9 +39,9 @@
             <span [class.fr-data-table__btn-ripple]="ripples.delete"></span>
           </span>
         </span>
-      </a>
-      <a class="fr-data-table__header-btn" [hidden]="!headerComponent.actionKeys.length" #dots>
-        <span class="fr-data-table__icon" (click)="toggleOtherActionList()">
+      </button>
+      <button class="fr-data-table__header-btn" [hidden]="!headerComponent.actionKeys.length" #dots (click)="toggleOtherActionList()">
+        <span class="fr-data-table__icon">
           <!-- dots -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <ellipse cx="12" cy="5" rx="2" ry="2" style="fill: rgba(0, 0, 0, 0.560784);"/>
@@ -56,17 +57,15 @@
           <li *ngFor="let action of headerComponent.actionKeys; let i = index"
             class="fr-data-table__other-action-item"
             frRipple [rippleColor]="'#CCCCCC'"
-            (click)="otherAction(action.key)">
+            (click)="otherAction(action.key, $event)">
             {{action.label}}
           </li>
         </ul>
-      </a>
-    </span>
-  </div>
+      </button>
+    </div>
+  </header>
   <table class="fr-data-table">
-    <colgroup *ngFor="let column of columns"
-         class="fr-data-table__column">
-    </colgroup>
+    <colgroup *ngFor="let column of columns" class="fr-data-table__column"></colgroup>
     <thead class="fr-data-table__thead" *ngIf="columnsComponent">
       <tr class="fr-data-table__thead-row">
         <td class="fr-data-table__thead-checkbox" [hidden]="!selectable">

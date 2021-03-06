@@ -12,24 +12,55 @@
 }
 
 .fr-data-table__header {
-  font-size: 20px;
-  padding: 12px 14px 12px 24px;
-  height: 22px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24px;
 
   transition-property: background;
   transition-duration: .3s;
   transition-timing-function: linear;
 
-  &-buttons {
-    margin-left: auto;
+  &-title-wrapper {
+    padding: 12px 0;
   }
+
+  &-title {
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+
+  &-buttons {
+    // margin-left: auto;
+  }
+
   &-btn {
     position: relative;
     display: inline-block;
-    margin-left: 24px;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 12px;
+    background-color: transparent;
     color: rgba(0,0,0,.56);
     cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    box-sizing: content-box;
+    transition: all 0.2s cubic-bezier(.3,.3,.3,1);
+    & + & {
+      margin-left: 8px;
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.06);
+    }
   }
 
   &--checked {
@@ -56,6 +87,7 @@
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
   transform-origin: 100% 0;
   color: rgba(0,0,0,.87);
+  text-align: left;
 }
 
 .fr-data-table__other-action-item {
