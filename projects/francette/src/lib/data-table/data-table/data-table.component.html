@@ -38,7 +38,7 @@
       <div class="fr-data-table__header-dots-btn-wrapper">
         <button
           class="fr-data-table__header-btn"
-          [hidden]="!headerComponent.actionKeys.length"
+          [hidden]="!headerComponent?.actionKeys?.length"
           #dots
           frRipple
           ripplePosition="center"
@@ -54,7 +54,7 @@
         </button>
         <!-- menu -->
         <ul class="fr-data-table__other-action-list" [@actionListState]="actionListState">
-          <li *ngFor="let action of headerComponent.actionKeys; let i = index"
+          <li *ngFor="let action of headerComponent?.actionKeys; let i = index"
             class="fr-data-table__other-action-item"
             frRipple
             (click)="otherAction(action.key, $event)">
@@ -118,21 +118,21 @@
     </tbody>
   </table>
   <footer class="fr-data-table__footer" *ngIf="footerComponent">
-    <div class="fr-data-table__footer-page" [hidden]="!paginationInfo.page">
+    <div class="fr-data-table__footer-page" [hidden]="!paginationInfo?.page">
       Page:
       <span class="fr-data-table__footer-page-value">
-        {{paginationInfo.page}}
+        {{paginationInfo?.page}}
       </span>
     </div>
-    <div class="fr-data-table__footer-select-label" [hidden]="!paginationInfo.rowsPerPageValues">
+    <div class="fr-data-table__footer-select-label" [hidden]="!paginationInfo?.rowsPerPageValues">
       Rows per page :
     </div>
-    <div class="fr-data-table__footer-select-wrapper" [hidden]="!paginationInfo.rowsPerPageValues" (click)="toggleRowsList()" #pulldown>
+    <div class="fr-data-table__footer-select-wrapper" [hidden]="!paginationInfo?.rowsPerPageValues" (click)="toggleRowsList()" #paginationDropDown>
       <span class="fr-data-table__footer-rows">
         {{rowsPerPage}}
       </span>
       <ul class="fr-data-table__footer-select" [@rowsListState]="rowsListState">
-        <li *ngFor="let value of paginationInfo.rowsPerPageValues"
+        <li *ngFor="let value of paginationInfo?.rowsPerPageValues"
           class="fr-data-table__footer-select-value"
           [class.fr-data-table__footer-select-value--selected]="rowsPerPage === value"
           frRipple [rippleColor]="'#CCCCCC'"
