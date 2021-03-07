@@ -51,6 +51,7 @@
 }
 
 .components-section {
+  margin: 0 24px;
   padding-top: 24px;
 }
 
@@ -95,6 +96,9 @@
   &:hover {
     background-color: rgba(0, 0, 0, 0.03);
     box-shadow: rgb(0 0 0 / 2%) 0px 0px 0px 1px, rgb(0 0 0 / 10%) 0px 3px 9px 0px;
+  }
+  @media screen and (max-width: 720px) and (orientation: portrait) {
+    width: calc(100vw - 96px);
   }
 }
 
