@@ -12,6 +12,9 @@ import { Component } from '@angular/core';
 
   <h3>Bar</h3>
   <fr-progress-bar></fr-progress-bar>
+  
+  <h3>Ripple</h3>
+  <fr-progress-ripple size="96" duration="3000"></fr-progress-ripple>
 </div>
   `
 })
