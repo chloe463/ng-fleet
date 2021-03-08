@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
   <fr-progress-bar></fr-progress-bar>
   
   <h3>Ripple</h3>
-  <fr-progress-ripple size="96" [duration]="3000"></fr-progress-ripple>
+  <fr-progress-ripple [size]="96" [duration]="3000"></fr-progress-ripple>
 </div>
   `
 })
